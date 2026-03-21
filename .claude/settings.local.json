@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(find:*)",
+      "Bash(npm run:*)",
+      "Bash(npm start:*)",
+      "Bash(git config:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /mnt/c/Users/jb/Documents/GitHub/aston_site && pkill -f 'eleventy' 2>/dev/null; npm run build 2>/dev/null && npm start &",
+            "statusMessage": "Rebuilding site..."
+          }
+        ]
+      }
+    ]
+  }
+}
