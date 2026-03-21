@@ -1,0 +1,7 @@
+{
+  "main": [
+    { "text": "Research", "url": "/research/" },
+    { "text": "Tools", "url": "/tools/" },
+    { "text": "Courses", "url": "/courses/" }
+  ]
+}

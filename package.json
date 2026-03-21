@@ -1,0 +1,12 @@
+{
+  "name": "aston-site",
+  "version": "1.0.0",
+  "description": "Academic website for John Blake - NLP, Data Structures, Algorithms",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

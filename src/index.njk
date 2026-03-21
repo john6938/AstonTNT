@@ -1,0 +1,72 @@
+---
+layout: layouts/base.njk
+title: John Blake - NLP Research
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h1>Natural Language Processing</h1>
+        <p class="lead">Using NLP to develop and disseminate cutting-edge impactful natural language processing systems</p>
+        <p class="text-muted">Try the interactive sentiment analyzer &rarr;</p>
+      </div>
+      <div class="col-lg-6">
+        <div class="demo-card">
+          <label for="demo-input" class="form-label fw-semibold mb-2">
+            <i class="bi bi-chat-square-text me-2"></i>Sentiment Analysis Demo
+          </label>
+          <textarea id="demo-input" class="form-control mb-3" placeholder="Type or paste any text here... (e.g., 'I love learning new things!' or 'This is frustrating.')"></textarea>
+          <button id="analyze-btn" class="btn btn-primary w-100">
+            <i class="bi bi-cpu me-2"></i>Analyse Sentiment
+          </button>
+          <div id="result-container" class="result-container"></div>
+          <p class="text-muted small mt-3 mb-0">
+            <i class="bi bi-info-circle me-1"></i>Powered by Transformers.js - runs entirely in your browser
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4 section-cards">
+      <div class="col-md-4">
+        <div class="card section-card h-100">
+          <div class="card-body text-center">
+            <i class="bi bi-journal-richtext card-icon"></i>
+            <h3 class="card-title">Research</h3>
+            <p class="card-text text-muted">Publications, projects, and opportunities for graduate students interested in NLP and computational linguistics.</p>
+            <a href="/research/" class="btn btn-outline-primary">Explore Research</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card section-card h-100">
+          <div class="card-body text-center">
+            <i class="bi bi-app-indicator card-icon"></i>
+            <h3 class="card-title">Tools</h3>
+            <p class="card-text text-muted">Educational web applications, datasets, and tools for language learning and text analysis.</p>
+            <a href="/tools/" class="btn btn-outline-primary">View Tools</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card section-card h-100">
+          <div class="card-body text-center">
+            <i class="bi bi-mortarboard card-icon"></i>
+            <h3 class="card-title">Courses</h3>
+            <p class="card-text text-muted">Online course materials covering academic writing, language patterns, and computational methods.</p>
+            <a href="/courses/" class="btn btn-outline-primary">Browse Courses</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block scripts %}
+<script type="module" src="/assets/js/sentiment.js"></script>
+{% endblock %}

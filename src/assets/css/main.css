@@ -1,0 +1,206 @@
+/* Custom styles for Aston Academic Site */
+
+/* Page background */
+body {
+  background-color: #3B3B3B;
+  color: #f0f0f0;
+}
+
+/* Nav links white */
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+}
+
+/* Hero section */
+.hero {
+  background-color: #3B3B3B;
+  color: white;
+  padding: 3rem 0;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 5rem 0;
+  }
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero .lead {
+  opacity: 0.9;
+}
+
+/* Sentiment Demo */
+.demo-card {
+  background: #808080;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: #ffffff;
+}
+
+#demo-input {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 0.5rem;
+  min-height: 100px;
+  resize: vertical;
+}
+
+#demo-input:focus {
+  background: white;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+#analyze-btn {
+  background: #ff8c00;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: #000000;
+}
+
+#analyze-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.4);
+  background: #e67e00;
+}
+
+#analyze-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+/* Result display */
+.result-container {
+  margin-top: 1.5rem;
+  min-height: 80px;
+}
+
+.result-box {
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-positive {
+  background: rgba(40, 167, 69, 0.9);
+}
+
+.result-negative {
+  background: rgba(220, 53, 69, 0.9);
+}
+
+.result-label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.result-confidence {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #ffffff;
+}
+
+.loading-indicator .spinner-border {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Section cards */
+.section-card {
+  border: none;
+  border-radius: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+}
+
+.section-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.section-card .card-body {
+  padding: 2rem;
+}
+
+.section-card .card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #0f3460;
+}
+
+.section-card .card-title {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.section-card .btn {
+  margin-top: 1rem;
+  background-color: #ff8c00;
+  border: none;
+  color: #000000;
+  font-weight: 500;
+}
+
+.section-card .btn:hover {
+  background-color: #e67e00;
+  border: none;
+  color: #000000;
+}
+
+/* Page headers */
+.page-header {
+  background: #000000;
+  color: white;
+  padding: 3rem 0;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ff8c00;
+}
+
+/* Orange headings on dark background sections */
+.container h2,
+.container h3 {
+  color: #ff8c00;
+}
+
+/* Utility */
+.text-gradient {
+  background: linear-gradient(90deg, #e94560, #0f3460);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Mobile improvements */
+@media (max-width: 767.98px) {
+  .demo-card {
+    padding: 1rem;
+  }
+
+  .section-cards .col {
+    margin-bottom: 1rem;
+  }
+}
