@@ -194,6 +194,53 @@ body {
   background-clip: text;
 }
 
+/* Cards - white background, black text */
+.card {
+  background-color: #ffffff;
+  border-color: #dddddd;
+  color: #000000;
+}
+
+.card-title {
+  color: #000000;
+}
+
+/* FAQ Accordion - dark theme */
+.accordion-item {
+  background-color: #4a4a4a;
+  border-color: #5a5a5a;
+}
+
+.accordion-button {
+  background-color: #4a4a4a;
+  color: #f0f0f0;
+  font-weight: 500;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #555555;
+  color: #ff8c00;
+  box-shadow: none;
+}
+
+.accordion-button::after {
+  filter: invert(1);
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.3);
+}
+
+.accordion-body {
+  background-color: #4a4a4a;
+  color: #f0f0f0;
+}
+
+/* Blockquote styling */
+.blockquote-footer {
+  color: #aaaaaa;
+}
+
 /* Mobile improvements */
 @media (max-width: 767.98px) {
   .demo-card {

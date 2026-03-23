@@ -1,4 +1,9 @@
 module.exports = function(eleventyConfig) {
+  // Listen on all interfaces so WSL2 port proxy can reach the server
+  eleventyConfig.setServerOptions({
+    host: "0.0.0.0",
+  });
+
   // Copy assets folder to output
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
