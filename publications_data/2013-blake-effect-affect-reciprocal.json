@@ -1,0 +1,23 @@
+{
+  "id": "blake2013-effect-affect-reciprocal",
+  "bibtex_key": "Blake2013EffectAffectReciprocal",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "The effect and affect of reciprocal observation",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2013,
+  "date": "2013-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Explorations in Teacher Education, 21(3), 3-8. [ pdf ]",
+  "pages": "3-8",
+  "pdf": "https://td.jalt.org/wp-content/uploads/2020/10/V21_03_Winter2013_Blake.pdf",
+  "abstract": "",
+  "tags": []
+}

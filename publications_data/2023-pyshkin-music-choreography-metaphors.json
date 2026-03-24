@@ -1,0 +1,34 @@
+{
+  "id": "pyshkin2023-music-choreography-metaphors",
+  "bibtex_key": "Pyshkin2023MusicChoreographyMetaphors",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Music and Choreography Metaphors in Spoken Language Rhythm Modelling and Their Application to Computer-Assisted Pronunciation Training for Mora-Timed Japanese",
+  "authors": [
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Kusakari",
+      "given": "A."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Bogach",
+      "given": "N."
+    }
+  ],
+  "year": 2023,
+  "date": "2023-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of the 4th Kyoto Conference on Arts, Media and Culture",
+  "pdf": "https://papers.iafor.org/wp-content/uploads/papers/kamc2023/KAMC2023_74247.pdf",
+  "abstract": "",
+  "tags": []
+}

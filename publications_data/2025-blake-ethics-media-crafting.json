@@ -1,0 +1,24 @@
+{
+  "id": "blake2025-ethics-media-crafting",
+  "bibtex_key": "Blake2025EthicsMediaCrafting",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "The Ethics of AI in media: Crafting integrity, inclusivity, and impact",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2025,
+  "date": "2025-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "Camilo, E. and Bouziane, K.",
+  "pages": "229-254",
+  "publisher": "Labcom Publications",
+  "url": "https://labcom.ubi.pt/transcultural-media-narratives-cross-cultural-communication-insights/",
+  "abstract": "",
+  "tags": []
+}

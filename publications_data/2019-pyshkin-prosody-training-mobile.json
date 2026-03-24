@@ -1,0 +1,43 @@
+{
+  "id": "pyshkin2019-prosody-training-mobile",
+  "bibtex_key": "Pyshkin2019ProsodyTrainingMobile",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Prosody Training Mobile Application: Early Design Assessment and Lessons Learned",
+  "authors": [
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Lamtev",
+      "given": "A."
+    },
+    {
+      "family": "Lezhenin",
+      "given": "I."
+    },
+    {
+      "family": "Zhuikov",
+      "given": "A."
+    },
+    {
+      "family": "Bogach",
+      "given": "N."
+    }
+  ],
+  "year": 2019,
+  "date": "2019-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of 2019 IEEE 10th International Conference on Intelligent Data Acquisition and Advanced Computing Systems: Technology and Applications (IDAACS)",
+  "publisher": "IEEE",
+  "doi": "10.1109/IDAACS.2019.8924359",
+  "abstract": "",
+  "tags": []
+}

@@ -1,0 +1,29 @@
+{
+  "id": "lai2002-english-everywhere",
+  "bibtex_key": "Lai2002EnglishEverywhere",
+  "type": "misc",
+  "pure_category": "other",
+  "title": "English everywhere",
+  "authors": [
+    {
+      "family": "Lai",
+      "given": "V."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Cheung",
+      "given": "M."
+    }
+  ],
+  "year": 2002,
+  "date": "2002-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "venue": "Newspaper column",
+  "abstract": "",
+  "tags": []
+}

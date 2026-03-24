@@ -1,0 +1,29 @@
+{
+  "id": "kondo2018-pronunciation-scaffolder-annotation-2",
+  "bibtex_key": "Kondo2018PronunciationScaffolderAnnotation2",
+  "type": "misc",
+  "pure_category": "other",
+  "title": "Pronunciation Scaffolder: Annotation accuracy",
+  "authors": [
+    {
+      "family": "Kondo",
+      "given": "T."
+    },
+    {
+      "family": "Inoue",
+      "given": "J."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2018,
+  "date": "2018-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "venue": "Extended abstract in Conference booklet of 2nd International Symposium on Applied Phonetics",
+  "abstract": "",
+  "tags": []
+}

@@ -1,0 +1,24 @@
+{
+  "id": "blake2023-unleashing-potential-positive",
+  "bibtex_key": "Blake2023UnleashingPotentialPositive",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Unleashing the potential: Positive impacts of generative AI on learning and teaching",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2023,
+  "date": "2023-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "Hai-Jew, S.",
+  "publisher": "IGI Global",
+  "doi": "10.4018/979-8-3693-0074-9.ch002",
+  "pdf": "/pdfs/papers/blake2023unleashing.pdf",
+  "abstract": "",
+  "tags": []
+}

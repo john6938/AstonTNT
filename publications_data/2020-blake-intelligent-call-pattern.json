@@ -1,0 +1,26 @@
+{
+  "id": "blake2020-intelligent-call-pattern",
+  "bibtex_key": "Blake2020IntelligentCallPattern",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Intelligent CALL: Using pattern matching to learn English",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2020,
+  "date": "2020-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "booktitle": "New Technological Applications for Foreign and Second Language Learning and Teaching,",
+  "editor": "Mariusz Kruk and Mark Peterson",
+  "pages": "1-23",
+  "publisher": "IGI Global",
+  "url": "https://www.igi-global.com/book/new-technological-applications-foreign-second/237011",
+  "pdf": "/pdfs/papers/blake2020intelligent.pdf",
+  "abstract": "",
+  "tags": []
+}

@@ -1,0 +1,32 @@
+{
+  "id": "nicholas2021-efl-learners-english",
+  "bibtex_key": "Nicholas2021EflLearnersEnglish",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "EFL learners and English email writing: Developing a computerised diagnostic language assessment",
+  "authors": [
+    {
+      "family": "Nicholas",
+      "given": "A."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Mozgovoy",
+      "given": "M."
+    }
+  ],
+  "year": 2021,
+  "date": "2021-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "N. Zoghlami, C. Brudermann, C. Sarré, M. Grosbois, L. Bradley, and S. Thouësny",
+  "pages": "238-242",
+  "publisher": "Research-publishing.net",
+  "url": "https://research-publishing.net/manuscript?10.14705/rpnet.2021.54.1339",
+  "abstract": "",
+  "tags": []
+}

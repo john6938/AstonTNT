@@ -1,0 +1,32 @@
+{
+  "id": "sungheetha2026-bwidth-adaptive-binning",
+  "bibtex_key": "Sungheetha2026BwidthAdaptiveBinning",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Bwidth Adaptive Binning AI-Enabled Edge Computing Framework for Sustainable Smart City Healthcare Monitoring and Energy Management",
+  "authors": [
+    {
+      "family": "Sungheetha",
+      "given": "A."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Mahapatra",
+      "given": "S."
+    },
+    {
+      "family": "Dhawan",
+      "given": "A."
+    }
+  ],
+  "year": 2026,
+  "date": "2026-01-01",
+  "status": "in_press",
+  "peer_reviewed": true,
+  "abstract": "",
+  "tags": []
+}

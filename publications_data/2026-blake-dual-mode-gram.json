@@ -1,0 +1,30 @@
+{
+  "id": "blake2026-dual-mode-gram",
+  "bibtex_key": "Blake2026DualModeGram",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Dual-mode N-gram Similarity Detection for Forensic Authorship Analysis",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Tamura",
+      "given": "K."
+    },
+    {
+      "family": "Kredens",
+      "given": "K."
+    }
+  ],
+  "year": 2026,
+  "date": "2026-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings for 39th Pacific Asia Conference on Language, Information and Computation (PACLIC 39)",
+  "pdf": "https://aclanthology.org/2025.paclic-1.75.pdf",
+  "abstract": "",
+  "tags": []
+}

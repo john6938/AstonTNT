@@ -1,0 +1,33 @@
+{
+  "id": "blake2025-trendscribe-design-development",
+  "bibtex_key": "Blake2025TrendscribeDesignDevelopment",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "TrendScribe: Design and Development of a Pedagogic Trend Description Generator for Learners of English",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Zhao",
+      "given": "P."
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    }
+  ],
+  "year": 2025,
+  "date": "2025-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "C. Sombattheera, Weng, P. and Pang, J.",
+  "pages": "89-101",
+  "publisher": "Springer",
+  "doi": "10.1007/978-981-96-0692-4_8",
+  "pdf": "/pdfs/papers/blake2025trendscribe.pdf",
+  "abstract": "",
+  "tags": []
+}

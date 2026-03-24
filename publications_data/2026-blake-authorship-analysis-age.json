@@ -1,0 +1,21 @@
+{
+  "id": "blake2026-authorship-analysis-age",
+  "bibtex_key": "Blake2026AuthorshipAnalysisAge",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Authorship Analysis in the Age of AI: From Expert Reasoning to Multi-Agent Pipelines",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2026,
+  "date": "2026-01-01",
+  "status": "in_press",
+  "peer_reviewed": true,
+  "venue": "Proceedings of the 14th International Conference on Information and Education Technology",
+  "abstract": "",
+  "tags": []
+}

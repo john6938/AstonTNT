@@ -1,0 +1,46 @@
+{
+  "id": "mikhailava2022-language-accent-detection",
+  "bibtex_key": "Mikhailava2022LanguageAccentDetection",
+  "type": "journal",
+  "pure_category": "contribution_to_journal_article",
+  "title": "Language accent detection with CNN using sparse data from a crowd-sourced speech archive",
+  "authors": [
+    {
+      "family": "Mikhailava",
+      "given": "V."
+    },
+    {
+      "family": "Lesnichaia",
+      "given": "M."
+    },
+    {
+      "family": "Bogach",
+      "given": "N."
+    },
+    {
+      "family": "Lezhenin",
+      "given": "I."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    }
+  ],
+  "year": 2022,
+  "date": "2022-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Mathematics",
+  "volume": "10",
+  "issue": "16",
+  "pages": "2913",
+  "doi": "10.3390/math10162913",
+  "pdf": "/pdfs/papers/mikhailava2022language_mathematics.pdf",
+  "abstract": "",
+  "tags": []
+}

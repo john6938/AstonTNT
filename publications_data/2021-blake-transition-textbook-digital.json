@@ -1,0 +1,23 @@
+{
+  "id": "blake2021-transition-textbook-digital-2",
+  "bibtex_key": "Blake2021TransitionTextbookDigital2",
+  "type": "misc",
+  "pure_category": "other",
+  "title": "Transition from textbook to digital delivery",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2021,
+  "date": "2021-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "venue": "Abstracts of the 17th Asia Association of Computer Assisted Language Learning International Conference and VLTESOL",
+  "pages": "43",
+  "url": "https://asiacall.info/acoj/index.php/journal/article/view/46/15",
+  "abstract": "",
+  "tags": []
+}

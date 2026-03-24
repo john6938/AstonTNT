@@ -1,0 +1,31 @@
+{
+  "id": "zhao2026-modular-multi-agentic",
+  "bibtex_key": "Zhao2026ModularMultiAgentic",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "A Modular Multi-Agentic Architecture for Automating Multiple-Choice Question Generation in Language Assessment",
+  "authors": [
+    {
+      "family": "Zhao",
+      "given": "P."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    }
+  ],
+  "year": 2026,
+  "date": "2026-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of 7th International Conference on AI in Computational Linguistics, Procedia Computer Science, Elsevier",
+  "doi": "10.1016/j.procs.2026.01.070",
+  "pdf": "/pdfs/papers/zhao2026modular.pdf",
+  "abstract": "",
+  "tags": []
+}

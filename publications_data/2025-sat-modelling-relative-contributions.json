@@ -1,0 +1,31 @@
+{
+  "id": "sat2025-modelling-relative-contributions",
+  "bibtex_key": "Sat2025ModellingRelativeContributions",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Modelling the Relative Contributions of Stylistic Features in Forensic Authorship Attribution",
+  "authors": [
+    {
+      "family": "Sat",
+      "given": "G.C."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    }
+  ],
+  "year": 2025,
+  "date": "2025-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings for the Recent Advanced in Natural Language Processing 2025 Conference",
+  "url": "https://acl-bg.org/proceedings/2025/RANLP%202025/index.html",
+  "pdf": "/pdfs/papers/sat2025modelling.pdf",
+  "abstract": "",
+  "tags": []
+}

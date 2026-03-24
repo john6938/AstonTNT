@@ -1,0 +1,23 @@
+{
+  "id": "blake2015-prescriptive-descriptive-disjuncture",
+  "bibtex_key": "Blake2015PrescriptiveDescriptiveDisjuncture",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Prescriptive-descriptive disjuncture: Rhetorical organisation of research abstracts in information science",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2015,
+  "date": "2015-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Conference proceedings in F",
+  "pages": "377-8",
+  "pdf": "/papers/Disjuncture.pdf",
+  "abstract": "",
+  "tags": []
+}

@@ -1,0 +1,21 @@
+{
+  "id": "blake2012-harnessing-technology-help",
+  "bibtex_key": "Blake2012HarnessingTechnologyHelp",
+  "type": "misc",
+  "pure_category": "other",
+  "title": "Harnessing technology to help researchers avoid plagiarism",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2012,
+  "date": "2012-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "venue": "Extended abstract in KOTESOL International Conference 2012 handbook",
+  "abstract": "",
+  "tags": []
+}

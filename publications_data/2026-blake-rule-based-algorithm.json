@@ -1,0 +1,20 @@
+{
+  "id": "blake2026-rule-based-algorithm",
+  "bibtex_key": "Blake2026RuleBasedAlgorithm",
+  "type": "journal",
+  "pure_category": "contribution_to_journal_article",
+  "title": "A rule-based algorithm for identifying request head acts in L2 English learner emails",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2026,
+  "date": "2026-01-01",
+  "status": "under_review",
+  "peer_reviewed": true,
+  "abstract": "",
+  "tags": []
+}

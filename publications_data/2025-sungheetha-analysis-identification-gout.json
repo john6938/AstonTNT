@@ -1,0 +1,35 @@
+{
+  "id": "sungheetha2025-analysis-identification-gout",
+  "bibtex_key": "Sungheetha2025AnalysisIdentificationGout",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Analysis and identification of gout flares using machine learning",
+  "authors": [
+    {
+      "family": "Sungheetha",
+      "given": "A."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Adere",
+      "given": "K."
+    },
+    {
+      "family": "Shifaw",
+      "given": "B."
+    }
+  ],
+  "year": 2025,
+  "date": "2025-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "In Diagnosing Musculoskeletal Conditions using Artifical Intelligence and Machine Learning to Aid Interpretation of Clinical Imaging, (pp. 179-194)",
+  "pages": "179-194",
+  "doi": "10.1016/B978-0-443-32892-3.00010-5",
+  "abstract": "",
+  "tags": []
+}

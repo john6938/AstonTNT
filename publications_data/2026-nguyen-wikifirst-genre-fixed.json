@@ -1,0 +1,35 @@
+{
+  "id": "nguyen2026-wikifirst-genre-fixed",
+  "bibtex_key": "Nguyen2026WikifirstGenreFixed",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "WikiFirst: A Genre-Fixed, Content-controlled Corpus for Evaluating Content Effects in Authorship Analysis",
+  "authors": [
+    {
+      "family": "Nguyen",
+      "given": "D.T."
+    },
+    {
+      "family": "Sat",
+      "given": "C.G."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    }
+  ],
+  "year": 2026,
+  "date": "2026-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of 10th Joint SIGHUM Workshop on Computational Linguistics for Cultural Heritage, Social Sciences, Humanities and Literature co-located at the 19th Conference of the European Chapter of the Association for Computational Linguistics (EACL 2026), (pp",
+  "pages": "323--327",
+  "pdf": "https://aclanthology.org/anthology-files/anthology-files/pdf/latechclfl/2026.latechclfl-1.31.pdf",
+  "abstract": "",
+  "tags": []
+}

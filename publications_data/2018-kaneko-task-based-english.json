@@ -1,0 +1,50 @@
+{
+  "id": "kaneko2018-task-based-english",
+  "bibtex_key": "Kaneko2018TaskBasedEnglish",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Task-Based English Curriculum Innovation for Computer Science Majors in Japan: Preliminary Report",
+  "authors": [
+    {
+      "family": "Kaneko",
+      "given": "E."
+    },
+    {
+      "family": "Park",
+      "given": "M."
+    },
+    {
+      "family": "Wilson",
+      "given": "I."
+    },
+    {
+      "family": "Roy",
+      "given": "D."
+    },
+    {
+      "family": "Heo",
+      "given": "Y."
+    },
+    {
+      "family": "Yasuta",
+      "given": "T."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Nicholas",
+      "given": "A."
+    }
+  ],
+  "year": 2018,
+  "date": "2018-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of the fourth biennial TBLT in Asia 2018 Conference",
+  "url": "https://www.tblsig.org/publications",
+  "abstract": "",
+  "tags": []
+}

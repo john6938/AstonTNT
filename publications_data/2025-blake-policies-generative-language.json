@@ -1,0 +1,22 @@
+{
+  "id": "blake2025-policies-generative-language",
+  "bibtex_key": "Blake2025PoliciesGenerativeLanguage",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Policies for Generative AI in Language Education: Challenges and Choices",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2025,
+  "date": "2025-01-01",
+  "status": "in_press",
+  "peer_reviewed": true,
+  "venue": "Proceedings of HKAECT 2025",
+  "publisher": "Springer",
+  "abstract": "",
+  "tags": []
+}

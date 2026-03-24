@@ -1,0 +1,22 @@
+{
+  "id": "blake2015-incorporating-information-structure",
+  "bibtex_key": "Blake2015IncorporatingInformationStructure",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Incorporating information structure in the EAP curriculum",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2015,
+  "date": "2015-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Conference proceedings of 2nd International Symposium on Innovative Teaching and Research in ESP, UEC Tokyo",
+  "pdf": "http://www.shilab.bunka.uec.ac.jp/esp2015/proceedings/Blake_ESP2015.pdf",
+  "abstract": "",
+  "tags": []
+}

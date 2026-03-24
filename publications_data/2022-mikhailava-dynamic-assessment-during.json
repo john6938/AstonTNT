@@ -1,0 +1,56 @@
+{
+  "id": "mikhailava2022-dynamic-assessment-during",
+  "bibtex_key": "Mikhailava2022DynamicAssessmentDuring",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Dynamic Assessment during Suprasegmental Training with Mobile CAPT",
+  "authors": [
+    {
+      "family": "Mikhailava",
+      "given": "V."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Bogach",
+      "given": "N."
+    },
+    {
+      "family": "Chernonog",
+      "given": "S."
+    },
+    {
+      "family": "Zhuikov",
+      "given": "A."
+    },
+    {
+      "family": "Lesnichaya",
+      "given": "M."
+    },
+    {
+      "family": "Lezhenin",
+      "given": "I."
+    },
+    {
+      "family": "Svechnikov",
+      "given": "R."
+    }
+  ],
+  "year": 2022,
+  "date": "2022-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Conference proceedings of Speech Prosody, 2022",
+  "pages": "2022",
+  "doi": "10.21437/SpeechProsody.2022-88",
+  "pdf": "/pdfs/papers/mikhailava22_speechprosody.pdf",
+  "abstract": "",
+  "tags": []
+}

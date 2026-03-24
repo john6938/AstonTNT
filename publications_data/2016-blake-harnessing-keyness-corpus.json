@@ -1,0 +1,23 @@
+{
+  "id": "blake2016-harnessing-keyness-corpus",
+  "bibtex_key": "Blake2016HarnessingKeynessCorpus",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Harnessing keyness: A corpus-based approach to ESP material development",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2016,
+  "date": "2016-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "venue": "OnCUE, 9(2), 102-110. [ pdf ]",
+  "pages": "102-110",
+  "pdf": "http://jaltcue.org/files/OnCUE/OCJ9.2/OCJ9.2_pp102-110_Blake.pdf",
+  "abstract": "",
+  "tags": []
+}

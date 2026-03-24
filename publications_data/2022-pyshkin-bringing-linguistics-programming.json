@@ -1,0 +1,29 @@
+{
+  "id": "pyshkin2022-bringing-linguistics-programming",
+  "bibtex_key": "Pyshkin2022BringingLinguisticsProgramming",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Bringing linguistics to a programming class: A problem of automatic text generation for describing data series",
+  "authors": [
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2022,
+  "date": "2022-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "H. Fujita, Y. Watanobe, and T. Azumi",
+  "pages": "621-630",
+  "publisher": "IOS Press",
+  "doi": "10.3233/FAIA220291",
+  "pdf": "/pdfs/papers/pyshkin2022bringing.pdf",
+  "abstract": "",
+  "tags": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "blake2013-one-class-one",
+  "bibtex_key": "Blake2013OneClassOne",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "One class, one improvement: A case study of systematic incremental improvement",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2013,
+  "date": "2013-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Research on Communication, 11",
+  "pages": "11",
+  "abstract": "",
+  "tags": []
+}

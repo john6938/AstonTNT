@@ -1,0 +1,33 @@
+{
+  "id": "blake2023-automatic-detection-visualization",
+  "bibtex_key": "Blake2023AutomaticDetectionVisualization",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Automatic detection and visualization of information structure in English",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Pavlic",
+      "given": "S."
+    }
+  ],
+  "year": 2023,
+  "date": "2023-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of the 6th International Conference on Natural Language Processing and Information Retrieval",
+  "pages": "200-204",
+  "publisher": "ACM",
+  "doi": "10.1145/3582768.3582784",
+  "pdf": "/pdfs/papers/blake2023automatic.pdf",
+  "abstract": "",
+  "tags": []
+}

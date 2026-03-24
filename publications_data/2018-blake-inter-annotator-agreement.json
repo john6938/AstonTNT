@@ -1,0 +1,23 @@
+{
+  "id": "blake2018-inter-annotator-agreement",
+  "bibtex_key": "Blake2018InterAnnotatorAgreement",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Inter-annotator Agreement: By hook or by crook",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2018,
+  "date": "2018-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "Y. Tono and Isahara, H.",
+  "pages": "43-49",
+  "pdf": "papers/APCLChook.pdf",
+  "abstract": "",
+  "tags": []
+}

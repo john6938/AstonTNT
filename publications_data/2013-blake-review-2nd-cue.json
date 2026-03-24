@@ -1,0 +1,27 @@
+{
+  "id": "blake2013-review-2nd-cue",
+  "bibtex_key": "Blake2013Review2ndCue",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Review of 2nd CUE ESP Symposium",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Hinchey",
+      "given": "D."
+    }
+  ],
+  "year": 2013,
+  "date": "2013-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "venue": "OnCUE, 7(1), 58-62. [ pdf ]",
+  "pages": "58-62",
+  "pdf": "http://jaltcue.org/files/OnCUE/OCJ7.1/OCJ7.1_pp58-62_CR_Blake.pdf",
+  "abstract": "",
+  "tags": []
+}

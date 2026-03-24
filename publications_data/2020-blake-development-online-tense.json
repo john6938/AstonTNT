@@ -1,0 +1,23 @@
+{
+  "id": "blake2020-development-online-tense",
+  "bibtex_key": "Blake2020DevelopmentOnlineTense",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Development of online tense and aspect identifier for English",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2020,
+  "date": "2020-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "K.-M. Frederiksen, S.Larsen, L.Bradley, and S. Thouësny",
+  "pages": "1-6",
+  "doi": "10.14705/rpnet.2020.48.1161",
+  "abstract": "",
+  "tags": []
+}

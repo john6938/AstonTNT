@@ -1,0 +1,24 @@
+{
+  "id": "blake2023-surprise-delight-application",
+  "bibtex_key": "Blake2023SurpriseDelightApplication",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Surprise and delight: Application of a service quality model to language teaching",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2023,
+  "date": "2023-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings (pp",
+  "pages": "5616-5623",
+  "doi": "10.21125/inted.2023.1467",
+  "pdf": "/pdfs/papers/blake2023surprise.pdf",
+  "abstract": "",
+  "tags": []
+}

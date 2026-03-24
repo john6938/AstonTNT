@@ -1,0 +1,24 @@
+{
+  "id": "blake2020-applied-logic-mastery",
+  "bibtex_key": "Blake2020AppliedLogicMastery",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Applied logic: A mastery learning approach delivered fully online",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2020,
+  "date": "2020-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "So, H. J., Rodrigo, M.M., Mason, J. and Mitrovic, A.",
+  "pages": "261-268",
+  "publisher": "Asia-Pacific Society",
+  "pdf": "https://apsce.net/upfile/icce2020/ICCE2020-Proceedings-Vol2-FinalUpdated.pdf",
+  "abstract": "",
+  "tags": []
+}

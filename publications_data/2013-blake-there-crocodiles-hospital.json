@@ -1,0 +1,21 @@
+{
+  "id": "blake2013-there-crocodiles-hospital",
+  "bibtex_key": "Blake2013ThereCrocodilesHospital",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "There are no crocodiles in this hospital",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2013,
+  "date": "2013-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Medical Education, Volume 46. 10th Asia Pacific Medical Education Conference Handbook",
+  "abstract": "",
+  "tags": []
+}

@@ -1,0 +1,26 @@
+{
+  "id": "villegas2022-typesetting-instructions",
+  "bibtex_key": "Villegas2022TypesettingInstructions",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Typesetting instructions",
+  "authors": [
+    {
+      "family": "Villegas",
+      "given": "J."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2022,
+  "date": "2022-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "University of Aizu. [ html ]",
+  "url": "https://onkyo.u-aizu.ac.jp/typesetting/",
+  "abstract": "",
+  "tags": []
+}

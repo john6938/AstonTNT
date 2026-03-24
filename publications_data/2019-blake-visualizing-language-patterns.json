@@ -1,0 +1,23 @@
+{
+  "id": "blake2019-visualizing-language-patterns",
+  "bibtex_key": "Blake2019VisualizingLanguagePatterns",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Visualizing language patterns to help language learners",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2019,
+  "date": "2019-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "The Language Teacher, 43(6), 19-21. [ pdf ]",
+  "pages": "19-21",
+  "pdf": "https://jalt-publications.org/sites/default/files/pdf-article/43.6-tlt-wired.pdf",
+  "abstract": "",
+  "tags": []
+}

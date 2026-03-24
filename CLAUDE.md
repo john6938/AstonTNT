@@ -18,18 +18,23 @@ Academic website for showcasing research, recruiting graduate students, and shar
 - [x] Transformers.js sentiment analysis demo (Option B)
 - [x] Data-driven navigation (`src/_data/navigation.json`)
 - [x] Landing page with interactive NLP demo hero
-- [x] Three section pages: Research, Applications, Courses
+- [x] Four section pages: Research, Supervision, Tools, Courses
 - [x] GitHub Actions workflow for automatic deployment
 - [x] Responsive collapsible navbar
+- [x] Supervision page added to navigation
+- [x] Orange color scheme (#ff8c00 accent, black navbar, #3B3B3B body)
+- [x] Favicon added (favicon.ico)
+- [x] pathPrefix fix: all URLs use `| url` filter for subfolder deployment
+- [x] Deployed to https://john6938.github.io/AstonTNT/
 
 ### To Do
 - [ ] Add real content to Research page (publications, projects, team)
-- [ ] Add real content to Applications page (link to actual tools)
+- [ ] Add real content to Tools page (link to actual tools)
 - [ ] Add real content to Courses page (link to course materials)
+- [ ] Add real content to Supervision page (graduate student info, requirements)
 - [ ] Add profile photo/images
 - [ ] Add contact information
 - [ ] Configure custom domain for GitHub Pages
-- [ ] Test deployment to GitHub Pages
 - [ ] Consider adding more NLP demos (language detection, etc.)
 
 ---
@@ -72,8 +77,10 @@ aston_site/
     ├── index.njk             # Landing page
     ├── research/
     │   └── index.njk         # Research section
-    ├── applications/
-    │   └── index.njk         # Applications section
+    ├── supervision/
+    │   └── index.njk         # Supervision/graduate students section
+    ├── tools/
+    │   └── index.njk         # Tools section
     └── courses/
         └── index.njk         # Courses section
 ```
@@ -93,6 +100,8 @@ npm start
 npm run build
 ```
 
+> **WSL note:** 11ty watch mode is unreliable in WSL2. After changes, manually rebuild: `npm run build && npm start`. Hard-refresh in browser with Ctrl+Shift+R. Server may shift to port 8081 if 8080 is occupied.
+
 ---
 
 ## How to Update Navigation
@@ -102,7 +111,8 @@ Edit `src/_data/navigation.json`:
 {
   "main": [
     { "text": "Research", "url": "/research/" },
-    { "text": "Applications", "url": "/applications/" },
+    { "text": "Supervision", "url": "/supervision/" },
+    { "text": "Tools", "url": "/tools/" },
     { "text": "Courses", "url": "/courses/" }
   ]
 }
@@ -149,16 +159,19 @@ To enable GitHub Pages:
 ## Design Direction
 
 ### Implemented Style
-- Dark gradient hero section (#1a1a2e → #16213e → #0f3460)
-- Clean white content sections
+- Black navbar with bold "John Blake" brand (white nav links)
+- Dark body background (#3B3B3B)
+- Orange (#ff8c00) headings (h1, h2, h3) and buttons
+- Demo card background: #808080
 - Bootstrap cards for section navigation
-- Pink accent color (#e94560) for buttons
 - Mobile-first responsive layout
 
 ### Color Palette
-- Primary dark: `#1a1a2e`, `#16213e`, `#0f3460`
-- Accent: `#e94560`
-- Text: Bootstrap defaults (dark on light, light on dark)
+- Navbar: `#000000`
+- Body background: `#3B3B3B`
+- Accent / buttons / headings: `#ff8c00`
+- Demo card: `#808080`
+- Text: Bootstrap defaults (light on dark)
 
 ---
 

@@ -1,0 +1,29 @@
+{
+  "id": "blake2023-blake",
+  "bibtex_key": "Blake2023Blake",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Blake, J",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "In Elshenraki",
+      "given": "H."
+    }
+  ],
+  "year": 2023,
+  "date": "2023-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "the Metaverse: A Study on Classification, Prediction, and Mitigation Strategies. In Elshenraki, H.",
+  "pages": "66-77",
+  "publisher": "IGI Global",
+  "doi": "10.4018/979-8-3693-0220-0.ch004",
+  "pdf": "/pdfs/papers/blake2023online.pdf",
+  "abstract": "",
+  "tags": []
+}

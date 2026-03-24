@@ -1,0 +1,37 @@
+{
+  "id": "blake2025-detection-generated-texts",
+  "bibtex_key": "Blake2025DetectionGeneratedTexts",
+  "type": "journal",
+  "pure_category": "contribution_to_journal_article",
+  "title": "Detection of AI-generated texts: A Bi-LSTM and attention-based approach",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Miah",
+      "given": "A.S.M."
+    },
+    {
+      "family": "Kredens",
+      "given": "K."
+    },
+    {
+      "family": "Shin",
+      "given": "J."
+    }
+  ],
+  "year": 2025,
+  "date": "2025-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "IEEE Access",
+  "volume": "13",
+  "pages": "71563-71576",
+  "doi": "10.1109/ACCESS.2025.3562750",
+  "pdf": "/pdfs/papers/blake2025detection_published.pdf",
+  "abstract": "",
+  "tags": []
+}

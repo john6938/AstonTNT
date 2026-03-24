@@ -1,0 +1,31 @@
+{
+  "id": "hinchey2014-paper-pixels-design",
+  "bibtex_key": "Hinchey2014PaperPixelsDesign",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "From paper to pixels: The design and delivery of online language courses",
+  "authors": [
+    {
+      "family": "Hinchey",
+      "given": "D."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Holden",
+      "given": "W."
+    }
+  ],
+  "year": 2014,
+  "date": "2014-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "venue": "PeerSpectives, 12, 23-25. [ pdf ]",
+  "pages": "23-25",
+  "pdf": "http://peerspectives.files.wordpress.com/2010/04/dubhgan-hinchey-john-blake-and-william-holden.pdf",
+  "abstract": "",
+  "tags": []
+}

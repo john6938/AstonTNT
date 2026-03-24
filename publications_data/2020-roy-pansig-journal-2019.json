@@ -1,0 +1,26 @@
+{
+  "id": "roy2020-pansig-journal-2019",
+  "bibtex_key": "Roy2020PansigJournal2019",
+  "type": "book",
+  "pure_category": "book",
+  "title": "PanSIG Journal 2019",
+  "authors": [
+    {
+      "family": "Roy",
+      "given": "D."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2020,
+  "date": "2020-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "publisher": "JALT",
+  "pdf": "https://pansig.org/publications/2019/PanSIG_2019_Journal.pdf",
+  "abstract": "",
+  "tags": []
+}

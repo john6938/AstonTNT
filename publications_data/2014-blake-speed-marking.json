@@ -1,0 +1,23 @@
+{
+  "id": "blake2014-speed-marking",
+  "bibtex_key": "Blake2014SpeedMarking",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Speed-marking",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2014,
+  "date": "2014-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "The Language Teacher, 38(4), 51-52. [ http ]",
+  "pages": "51-52",
+  "url": "http://jalt-publications.org/tlt/departments/myshare/articles/3855-speed-marking",
+  "abstract": "",
+  "tags": []
+}

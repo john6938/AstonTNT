@@ -1,0 +1,39 @@
+{
+  "id": "khaustova2023-capturing-accents-approach",
+  "bibtex_key": "Khaustova2023CapturingAccentsApproach",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "CAPTuring Accents: An Approach to Personalize Pronunciation Training for Learners with Different L1 Backgrounds",
+  "authors": [
+    {
+      "family": "Khaustova",
+      "given": "V."
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Khaustov",
+      "given": "V."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Bogach",
+      "given": "N."
+    }
+  ],
+  "year": 2023,
+  "date": "2023-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "publisher": "Springer",
+  "doi": "10.1007/978-3-031-48312-7_5",
+  "pdf": "/pdfs/papers/khaustova2023capturing.pdf",
+  "abstract": "",
+  "tags": []
+}

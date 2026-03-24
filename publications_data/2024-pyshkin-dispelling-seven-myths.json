@@ -1,0 +1,28 @@
+{
+  "id": "pyshkin2024-dispelling-seven-myths",
+  "bibtex_key": "Pyshkin2024DispellingSevenMyths",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Dispelling the seven myths of Tchaikovsky's Children's Album through computational and language modeling",
+  "authors": [
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2024,
+  "date": "2024-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "E. Himonides, Johnson, C., Prior, H., and King, A.",
+  "pages": "29-31",
+  "doi": "10.17605/OSF.IO/WE2AV",
+  "pdf": "/pdfs/papers/pyshkin2024dispelling.pdf",
+  "abstract": "",
+  "tags": []
+}

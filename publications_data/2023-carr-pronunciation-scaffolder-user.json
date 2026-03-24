@@ -1,0 +1,29 @@
+{
+  "id": "carr2023-pronunciation-scaffolder-user",
+  "bibtex_key": "Carr2023PronunciationScaffolderUser",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Pronunciation Scaffolder 3.0: A User Experience and Usability Study",
+  "authors": [
+    {
+      "family": "Carr",
+      "given": "N."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2023,
+  "date": "2023-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of the 16th International Conference on E-Service and Knowledge Management within14th IIAI International Congress on Advanced Applied Informatics, (pp",
+  "pages": "29-34",
+  "publisher": "IEEE",
+  "doi": "10.1109/IIAI-AAI59060.2023.00016",
+  "pdf": "/pdfs/papers/carr2023pronunciation.pdf",
+  "abstract": "",
+  "tags": []
+}

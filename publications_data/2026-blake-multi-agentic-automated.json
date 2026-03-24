@@ -1,0 +1,34 @@
+{
+  "id": "blake2026-multi-agentic-automated",
+  "bibtex_key": "Blake2026MultiAgenticAutomated",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Multi-agentic Automated Classification of Passive Voice Constructions by Mystification Level",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Lingle",
+      "given": "W."
+    },
+    {
+      "family": "Nguyen",
+      "given": "D.T."
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    }
+  ],
+  "year": 2026,
+  "date": "2026-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of the 20th International Joint Symposium on Artificial Intelligence and Natural Language Processing (iSAI-NLP 2025)",
+  "doi": "10.1109/iSAI-NLP66160.2025.11320469",
+  "abstract": "",
+  "tags": []
+}

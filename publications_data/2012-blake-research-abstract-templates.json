@@ -1,0 +1,22 @@
+{
+  "id": "blake2012-research-abstract-templates",
+  "bibtex_key": "Blake2012ResearchAbstractTemplates",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Research abstract templates: The skeletons are out of the virtual cupboard",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2012,
+  "date": "2012-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Conference proceedings of the 5th ICT for Language Learning Conference",
+  "pdf": "http://www.pixel-online.net/ICT4LL2012/common/download/Paper_pdf/230-IBT92-FP-Blake-ICT2012.pdf",
+  "abstract": "",
+  "tags": []
+}

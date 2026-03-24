@@ -1,0 +1,31 @@
+{
+  "id": "nassani2025-adaptive-learning-companions",
+  "bibtex_key": "Nassani2025AdaptiveLearningCompanions",
+  "type": "misc",
+  "pure_category": "other",
+  "title": "Adaptive Learning Companions: Enhancing Education with Biosignal-Driven Digital Human",
+  "authors": [
+    {
+      "family": "Nassani",
+      "given": "A."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Villegas",
+      "given": "J."
+    }
+  ],
+  "year": 2025,
+  "date": "2025-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "venue": "Proceedings of the Extended Abstracts of the Conference on Human Factors in Computing Systems, CHI 2025",
+  "doi": "10.1145/3706599.3719877",
+  "pdf": "/pdfs/papers/nassani2025adaptive.pdf",
+  "abstract": "",
+  "tags": []
+}

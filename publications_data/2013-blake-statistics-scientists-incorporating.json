@@ -1,0 +1,28 @@
+{
+  "id": "blake2013-statistics-scientists-incorporating",
+  "bibtex_key": "Blake2013StatisticsScientistsIncorporating",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Statistics for scientists: Incorporating data-driven decision making in the publishing process",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2013,
+  "date": "2013-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "venue": "OnCUE, 7(2), 106-109. [ pdf ]",
+  "pages": "106-109",
+  "pdf": "http://jaltcue.org/files/OnCUE/OCJ7.2/OCJ7.2_pp106-109_Blake_Blake.pdf",
+  "abstract": "",
+  "tags": []
+}

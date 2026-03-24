@@ -1,0 +1,24 @@
+{
+  "id": "blake2020-automatic-identification-tense",
+  "bibtex_key": "Blake2020AutomaticIdentificationTense",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Automatic identification of tense and grammatical meaning in context",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2020,
+  "date": "2020-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "So, H. J., Rodrigo, M.M., Mason, J. and Mitrovic, A.",
+  "pages": "739-742",
+  "publisher": "Asia-Pacific Society",
+  "pdf": "https://apsce.net/upfile/icce2020/ICCE2020-Proceedings-Vol2-FinalUpdated.pdf",
+  "abstract": "",
+  "tags": []
+}

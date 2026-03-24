@@ -1,0 +1,28 @@
+{
+  "id": "nicholas2020-annotating-pragmatic-errors",
+  "bibtex_key": "Nicholas2020AnnotatingPragmaticErrors",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Annotating pragmatic errors in a Japanese learner corpus of English emails",
+  "authors": [
+    {
+      "family": "Nicholas",
+      "given": "A."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2020,
+  "date": "2020-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "booktitle": "Learner Corpus Studies in Asia and the World",
+  "editor": "S. Ishikawa",
+  "pages": "94-109",
+  "url": "http://www.lib.kobe-u.ac.jp/kernel/seika/ISSN=21876746.html",
+  "abstract": "",
+  "tags": []
+}

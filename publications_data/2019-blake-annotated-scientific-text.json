@@ -1,0 +1,23 @@
+{
+  "id": "blake2019-annotated-scientific-text",
+  "bibtex_key": "Blake2019AnnotatedScientificText",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Annotated scientific text visualizer: Design, development and deployment",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2019,
+  "date": "2019-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "Fanny Meunier, Julie Van de Vyver, Linda Bradley, and Sylvie Thouësny",
+  "pages": "45-50",
+  "doi": "10.14705/rpnet.2019.38.984",
+  "abstract": "",
+  "tags": []
+}

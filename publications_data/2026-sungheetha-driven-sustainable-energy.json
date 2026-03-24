@@ -1,0 +1,29 @@
+{
+  "id": "sungheetha2026-driven-sustainable-energy",
+  "bibtex_key": "Sungheetha2026DrivenSustainableEnergy",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "AI-Driven Sustainable Energy Harvesting System with Triboelectric Nanogenerators for Smart Environmental Monitoring",
+  "authors": [
+    {
+      "family": "Sungheetha",
+      "given": "A."
+    },
+    {
+      "family": "Mahapatra",
+      "given": "S."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2026,
+  "date": "2026-01-01",
+  "status": "in_press",
+  "peer_reviewed": true,
+  "publisher": "Springer",
+  "abstract": "",
+  "tags": []
+}

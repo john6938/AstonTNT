@@ -1,0 +1,27 @@
+{
+  "id": "tranvu2021-design-development-question",
+  "bibtex_key": "Tranvu2021DesignDevelopmentQuestion",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Design and development of a question generator for learners of English",
+  "authors": [
+    {
+      "family": "Tran Vu",
+      "given": "D."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2021,
+  "date": "2021-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "D. Roy, G. Fragulis and H.A. Cantu Campos",
+  "pages": "01011",
+  "doi": "10.1051/shsconf/202110201011",
+  "abstract": "",
+  "tags": []
+}

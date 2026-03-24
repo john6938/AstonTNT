@@ -1,0 +1,70 @@
+{
+  "id": "bogach2021-speech-processing-language",
+  "bibtex_key": "Bogach2021SpeechProcessingLanguage",
+  "type": "journal",
+  "pure_category": "contribution_to_journal_article",
+  "title": "Speech Processing for Language Learning: A Practical Approach to Computer-Assisted Pronunciation Teaching",
+  "authors": [
+    {
+      "family": "Bogach",
+      "given": "N."
+    },
+    {
+      "family": "Boitsova",
+      "given": "E."
+    },
+    {
+      "family": "Chernonog",
+      "given": "S."
+    },
+    {
+      "family": "Lamtev",
+      "given": "A."
+    },
+    {
+      "family": "Lesnichaya",
+      "given": "M."
+    },
+    {
+      "family": "Lezhenin",
+      "given": "I."
+    },
+    {
+      "family": "Novopashenny",
+      "given": "A."
+    },
+    {
+      "family": "Svechnikov",
+      "given": "R."
+    },
+    {
+      "family": "Tsikach",
+      "given": "D."
+    },
+    {
+      "family": "Vasiliev",
+      "given": "K."
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2021,
+  "date": "2021-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Electronics",
+  "volume": "10",
+  "issue": "3",
+  "pages": "235",
+  "doi": "10.3390/electronics10030235",
+  "pdf": "/pdfs/papers/speech_processing_for_language_learning.pdf",
+  "abstract": "",
+  "tags": []
+}

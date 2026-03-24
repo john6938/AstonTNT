@@ -1,0 +1,20 @@
+{
+  "id": "blake2026-raising-learner-awareness",
+  "bibtex_key": "Blake2026RaisingLearnerAwareness",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Raising Learner Awareness of Genre Conventions through LLM-Based Dynamic Assessment",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2026,
+  "date": "2026-01-01",
+  "status": "under_review",
+  "peer_reviewed": true,
+  "abstract": "",
+  "tags": []
+}

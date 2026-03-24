@@ -1,0 +1,34 @@
+{
+  "id": "nguyen2015-knowledge-management-auditing",
+  "bibtex_key": "Nguyen2015KnowledgeManagementAuditing",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Knowledge Management in Auditing: A Case Study in Vietnam",
+  "authors": [
+    {
+      "family": "Nguyen",
+      "given": "L."
+    },
+    {
+      "family": "Umemoto",
+      "given": "K."
+    },
+    {
+      "family": "Kohda",
+      "given": "Y."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2015,
+  "date": "2015-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of the 16th European Conference on Knowledge Management (ECKM) (pp",
+  "pages": "571-577",
+  "abstract": "",
+  "tags": []
+}

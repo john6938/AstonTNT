@@ -1,0 +1,29 @@
+{
+  "id": "lai2004-get-job-succeed",
+  "bibtex_key": "Lai2004GetJobSucceed",
+  "type": "book",
+  "pure_category": "book",
+  "title": "Get a Job and Succeed",
+  "authors": [
+    {
+      "family": "Lai",
+      "given": "V."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Cheung",
+      "given": "M."
+    }
+  ],
+  "year": 2004,
+  "date": "2004-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "publisher": "Ming Pao Publishing",
+  "abstract": "",
+  "tags": []
+}

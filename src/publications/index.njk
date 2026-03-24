@@ -1,0 +1,71 @@
+---
+layout: layouts/base.njk
+title: Publications - John Blake
+description: Full list of publications by John Blake in NLP, computational linguistics, and language learning technology.
+---
+
+<section class="page-header">
+  <div class="container">
+    <h1>Publications</h1>
+    <p class="lead mb-0">{{ publications | length }} publication{% if publications | length != 1 %}s{% endif %}</p>
+  </div>
+</section>
+
+<section class="container py-4">
+
+  <!-- View toggle tabs -->
+  <ul class="nav nav-tabs mb-4" id="pubViewTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="chrono-tab" data-bs-toggle="tab" data-bs-target="#chrono" type="button" role="tab">
+        Chronological
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="bytype-tab" data-bs-toggle="tab" data-bs-target="#bytype" type="button" role="tab">
+        By Type
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="pubViewTabContent">
+
+    <!-- Chronological view (newest first) -->
+    <div class="tab-pane fade show active" id="chrono" role="tabpanel">
+      {% if publications | length %}
+        {% for pub in publications %}
+          {% include "partials/pub-item.njk" %}
+        {% endfor %}
+      {% else %}
+        <p class="text-muted">No publications yet.</p>
+      {% endif %}
+    </div>
+
+    <!-- Grouped by type view -->
+    <div class="tab-pane fade" id="bytype" role="tabpanel">
+      {% set typeOrder = ["journal", "conference", "book_chapter", "book", "misc"] %}
+      {% for type in typeOrder %}
+        {% set items = publications | pubsByType(type) %}
+        {% if items | length %}
+          <h2 class="mt-4 mb-3">{{ type | typeLabel }}</h2>
+          {% for pub in items %}
+            {% include "partials/pub-item.njk" %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+
+
+</section>
+
+<script>
+function pubCopy(btn, id) {
+  const el = document.getElementById(id);
+  navigator.clipboard.writeText(el.innerText).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+</script>

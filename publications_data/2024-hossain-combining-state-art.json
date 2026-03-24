@@ -1,0 +1,41 @@
+{
+  "id": "hossain2024-combining-state-art",
+  "bibtex_key": "Hossain2024CombiningStateArt",
+  "type": "journal",
+  "pure_category": "contribution_to_journal_article",
+  "title": "Combining State-of-the-Art Pre-Trained Deep Learning Models: A Noble Approach for Skin Cancer Detection Using Max Voting Ensemble",
+  "authors": [
+    {
+      "family": "Hossain",
+      "given": "M.M."
+    },
+    {
+      "family": "Hossain",
+      "given": "M.M."
+    },
+    {
+      "family": "Arefin",
+      "given": "M.B."
+    },
+    {
+      "family": "Akhtar",
+      "given": "F."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2024,
+  "date": "2024-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Diagnostics",
+  "volume": "14",
+  "issue": "1",
+  "doi": "10.3390/diagnostics14010089",
+  "pdf": "/pdfs/papers/hossain2024combining.pdf",
+  "abstract": "",
+  "tags": []
+}

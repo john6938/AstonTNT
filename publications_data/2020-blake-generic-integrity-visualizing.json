@@ -1,0 +1,22 @@
+{
+  "id": "blake2020-generic-integrity-visualizing",
+  "bibtex_key": "Blake2020GenericIntegrityVisualizing",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Generic integrity: Visualizing lexicogrammatical features in scientific articles",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2020,
+  "date": "2020-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "proceedings of the British Association of Applied Linguists Annual Conference 2019",
+  "pdf": "https://www.mmu.ac.uk/media/mmuacuk/content/documents/languages/baal-2019/Blake,-John.pdf",
+  "abstract": "",
+  "tags": []
+}

@@ -1,6 +1,7 @@
 {
   "main": [
     { "text": "Research", "url": "/research/" },
+    { "text": "Publications", "url": "/publications/" },
     { "text": "Supervision", "url": "/supervision/" },
     { "text": "Tools", "url": "/tools/" },
     { "text": "Courses", "url": "/courses/" }

@@ -1,0 +1,30 @@
+{
+  "id": "nicholas2020-failure-mode-effects",
+  "bibtex_key": "Nicholas2020FailureModeEffects",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "A failure mode and effects analysis of pragmatic errors in learner e-mails",
+  "authors": [
+    {
+      "family": "Nicholas",
+      "given": "A."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2020,
+  "date": "2020-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "booktitle": "SHS Web Conf, Volume 77",
+  "editor": "D. Roy",
+  "pages": "1-6",
+  "publisher": "ACM",
+  "doi": "10.1051/shsconf/20207702001",
+  "pdf": "/pdfs/papers/nicholas2020failure.pdf",
+  "abstract": "",
+  "tags": []
+}

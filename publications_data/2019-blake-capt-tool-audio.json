@@ -1,0 +1,43 @@
+{
+  "id": "blake2019-capt-tool-audio",
+  "bibtex_key": "Blake2019CaptToolAudio",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "CAPT Tool Audio-Visual Feedback Assessment Across a Variety of Learning Styles",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Bogach",
+      "given": "N."
+    },
+    {
+      "family": "Zhuikov",
+      "given": "A."
+    },
+    {
+      "family": "Lezhenin",
+      "given": "I."
+    },
+    {
+      "family": "Maltcev",
+      "given": "M."
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    }
+  ],
+  "year": 2019,
+  "date": "2019-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of the 2nd Workshop on Information Management in Human-Centric Systems at the 18th IEEE International Conference on Ubiquitous Computing and Communications",
+  "publisher": "IEEE",
+  "doi": "10.1109/IUCC/DSCI/SmartCNS.2019.00119",
+  "abstract": "",
+  "tags": []
+}

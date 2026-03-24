@@ -1,0 +1,27 @@
+{
+  "id": "tamura2024-finer-grained-part",
+  "bibtex_key": "Tamura2024FinerGrainedPart",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Finer-grained part-of-speech classification of adjectives",
+  "authors": [
+    {
+      "family": "Tamura",
+      "given": "K."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2024,
+  "date": "2024-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of The Japanese Society for Language Sciences 25th Annual International Conference (pp",
+  "pages": "182-183",
+  "pdf": "/pdfs/papers/tamura2024finer-grained.pdf",
+  "abstract": "",
+  "tags": []
+}

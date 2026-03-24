@@ -1,0 +1,52 @@
+{
+  "id": "kaneko2018-english-curriculum-innovation",
+  "bibtex_key": "Kaneko2018EnglishCurriculumInnovation",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "English Curriculum Innovation for Computer Science Majors in the Japanese EFL Context: From Needs to Tasks",
+  "authors": [
+    {
+      "family": "Kaneko",
+      "given": "E."
+    },
+    {
+      "family": "Park",
+      "given": "M."
+    },
+    {
+      "family": "Wilson",
+      "given": "I."
+    },
+    {
+      "family": "Heo",
+      "given": "Y."
+    },
+    {
+      "family": "Roy",
+      "given": "D."
+    },
+    {
+      "family": "Yasuta",
+      "given": "T."
+    },
+    {
+      "family": "Nicholas",
+      "given": "A."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2018,
+  "date": "2018-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of 2018 IEEE ProComm Annual Conference (pp",
+  "pages": "84-89",
+  "publisher": "IEEE",
+  "doi": "10.1109/ProComm.2018.00028",
+  "abstract": "",
+  "tags": []
+}

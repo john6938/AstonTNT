@@ -1,0 +1,36 @@
+{
+  "id": "sungheetha2026-gan-based-hardware",
+  "bibtex_key": "Sungheetha2026GanBasedHardware",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "GaN-Based Hardware Acceleration Framework for Energy-Efficient Real-Time Stream Processing in Smart City Applications",
+  "authors": [
+    {
+      "family": "Sungheetha",
+      "given": "A."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Mahapatra",
+      "given": "S."
+    },
+    {
+      "family": "Abeysinghe",
+      "given": "N."
+    },
+    {
+      "family": "Parashar",
+      "given": "K."
+    }
+  ],
+  "year": 2026,
+  "date": "2026-01-01",
+  "status": "in_press",
+  "peer_reviewed": true,
+  "abstract": "",
+  "tags": []
+}

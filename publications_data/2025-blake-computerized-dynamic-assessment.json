@@ -1,0 +1,31 @@
+{
+  "id": "blake2025-computerized-dynamic-assessment",
+  "bibtex_key": "Blake2025ComputerizedDynamicAssessment",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Computerized Dynamic Assessment for pragmatic competence in second language learners' English email requests",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Mozgovoy",
+      "given": "M."
+    },
+    {
+      "family": "Nicholas",
+      "given": "A."
+    }
+  ],
+  "year": 2025,
+  "date": "2025-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "pages": "17–28",
+  "publisher": "Springer",
+  "doi": "10.1007/978-3-031-85561-0_2",
+  "abstract": "",
+  "tags": []
+}

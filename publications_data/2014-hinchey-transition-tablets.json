@@ -1,0 +1,27 @@
+{
+  "id": "hinchey2014-transition-tablets",
+  "bibtex_key": "Hinchey2014TransitionTablets",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Transition to tablets",
+  "authors": [
+    {
+      "family": "Hinchey",
+      "given": "D."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2014,
+  "date": "2014-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "The Language Teacher, 38(2), 41-43. [ pdf ]",
+  "pages": "41-43",
+  "pdf": "https://jalt-publications.org/files/pdf-article/38.2_wired.pdf",
+  "abstract": "",
+  "tags": []
+}

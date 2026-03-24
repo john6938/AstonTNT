@@ -11,6 +11,32 @@ module.exports = function(eleventyConfig) {
   // Shortcode for current year
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
+  // Format author array [{family, given, self?}] → HTML string, self author highlighted
+  eleventyConfig.addFilter("formatAuthors", function(authors) {
+    if (!authors || !authors.length) return '';
+    return authors.map(a => {
+      const name = `${a.family}, ${a.given.charAt(0)}.`;
+      return a.self ? `<span class="pub-author-self">${name}</span>` : name;
+    }).join(', ');
+  });
+
+  // Filter publications array by type
+  eleventyConfig.addFilter("pubsByType", function(pubs, type) {
+    return (pubs || []).filter(p => p.type === type);
+  });
+
+  // Human-readable label for publication type
+  eleventyConfig.addFilter("typeLabel", function(type) {
+    const labels = {
+      journal: "Journal Articles",
+      conference: "Conference Papers",
+      book_chapter: "Book Chapters",
+      book: "Books",
+      misc: "Miscellaneous"
+    };
+    return labels[type] || type;
+  });
+
   return {
     pathPrefix: process.env.ELEVENTY_PREFIX || "/",
     dir: {

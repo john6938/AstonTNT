@@ -1,0 +1,41 @@
+{
+  "id": "pyshkin2023-multimodal-modeling-mora",
+  "bibtex_key": "Pyshkin2023MultimodalModelingMora",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Multimodal Modeling of the Mora-timed Rhythm of Japanese and its Application to Computer-assisted Pronunciation Training",
+  "authors": [
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Kusakari",
+      "given": "A."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Pham",
+      "given": "N.B."
+    },
+    {
+      "family": "Bogach",
+      "given": "N."
+    }
+  ],
+  "year": 2023,
+  "date": "2023-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of the 14th International Conference on Learning Technologies and Learning Environments within 14th IIAI International Congress on Advanced Applied Informatics, (pp",
+  "pages": "174-179",
+  "publisher": "IEEE",
+  "doi": "10.1109/IIAI-AAI59060.2023.00044",
+  "pdf": "/pdfs/papers/pyshkin2023multimodal.pdf",
+  "abstract": "",
+  "tags": []
+}

@@ -1,0 +1,48 @@
+{
+  "id": "pyshkin2024-multimodal-contextualizing-targeting",
+  "bibtex_key": "Pyshkin2024MultimodalContextualizingTargeting",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Multimodal contextualizing and targeting exercises in iCAPT system",
+  "authors": [
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Khaustova",
+      "given": "V."
+    },
+    {
+      "family": "Khaustov",
+      "given": "V."
+    },
+    {
+      "family": "Lezhenin",
+      "given": "I."
+    },
+    {
+      "family": "Svechnikov",
+      "given": "R."
+    },
+    {
+      "family": "Bogach",
+      "given": "N."
+    }
+  ],
+  "year": 2024,
+  "date": "2024-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of INTED 2024, (pp",
+  "pages": "438-448",
+  "publisher": "IATED",
+  "doi": "10.21125/inted.2024.0164",
+  "abstract": "",
+  "tags": []
+}

@@ -1,0 +1,88 @@
+<div class="pub-item py-3 border-bottom border-secondary">
+
+  <!-- Header row: type badge, year, action buttons -->
+  <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
+    <span class="badge pub-badge-{{ pub.type }}">{{ pub.type | typeLabel | replace("Articles","Article") | replace("Papers","Paper") | replace("Chapters","Chapter") | replace("Miscellaneous","Misc") }}</span>
+    {% if pub.status and pub.status != "published" %}
+      <span class="badge bg-warning text-dark text-capitalize">{{ pub.status | replace("_", " ") }}</span>
+    {% endif %}
+    <span class="text-muted small">{{ pub.year }}</span>
+    <span class="ms-auto d-flex gap-1">
+      {% if pub.doi %}
+        <a href="https://doi.org/{{ pub.doi }}" class="btn btn-sm pub-action-btn" target="_blank" rel="noopener">DOI</a>
+      {% elif pub.url %}
+        <a href="{{ pub.url }}" class="btn btn-sm pub-action-btn" target="_blank" rel="noopener">Link</a>
+      {% endif %}
+      {% if pub.pdf %}
+        <a href="{{ pub.pdf }}" class="btn btn-sm pub-pdf-btn" target="_blank" rel="noopener">PDF</a>
+      {% endif %}
+    </span>
+  </div>
+
+  <!-- Title -->
+  <div class="pub-title fw-semibold lh-sm">{{ pub.title }}</div>
+
+  <!-- Authors -->
+  <div class="pub-authors small text-muted mt-1">
+    {{ pub.authors | formatAuthors | safe }}
+  </div>
+
+  <!-- Venue line -->
+  <div class="pub-venue small mt-1">
+    {% if pub.type == "journal" %}
+      <em>{{ pub.venue }}</em>{% if pub.volume %},&nbsp;<em>{{ pub.volume }}</em>{% if pub.issue %}({{ pub.issue }}){% endif %}{% if pub.pages %},&nbsp;{{ pub.pages }}{% endif %}{% endif %}.
+    {% elif pub.type == "conference" %}
+      In <em>{{ pub.venue }}</em>{% if pub.pages %}, pp.&nbsp;{{ pub.pages }}{% endif %}.
+    {% elif pub.type == "book_chapter" %}
+      In {% if pub.editor %}{{ pub.editor }} (Ed.), {% endif %}<em>{{ pub.booktitle }}</em>{% if pub.pages %} (pp.&nbsp;{{ pub.pages }}){% endif %}{% if pub.publisher %}. {{ pub.publisher }}{% endif %}.
+    {% elif pub.type == "book" %}
+      {% if pub.publisher %}{{ pub.publisher }}.{% endif %}
+    {% else %}
+      {% if pub.venue %}<em>{{ pub.venue }}</em>.{% endif %}
+    {% endif %}
+  </div>
+
+  <!-- Toggle buttons -->
+  <div class="pub-toggles mt-2 d-flex gap-2 flex-wrap">
+    {% if pub.abstract %}
+    <button class="btn btn-sm pub-toggle-btn" type="button"
+            data-bs-toggle="collapse" data-bs-target="#abs-{{ pub.id }}" aria-expanded="false">
+      Abstract
+    </button>
+    {% endif %}
+    <button class="btn btn-sm pub-toggle-btn" type="button"
+            data-bs-toggle="collapse" data-bs-target="#bib-{{ pub.id }}" aria-expanded="false">
+      BibTeX
+    </button>
+    <button class="btn btn-sm pub-toggle-btn" type="button"
+            data-bs-toggle="collapse" data-bs-target="#apa-{{ pub.id }}" aria-expanded="false">
+      APA7
+    </button>
+  </div>
+
+  <!-- Abstract collapse -->
+  {% if pub.abstract %}
+  <div class="collapse pub-collapse" id="abs-{{ pub.id }}">
+    <div class="pub-collapse-body">
+      <p class="mb-0">{{ pub.abstract }}</p>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- BibTeX collapse -->
+  <div class="collapse pub-collapse" id="bib-{{ pub.id }}">
+    <div class="pub-collapse-body">
+      <button class="btn btn-sm pub-copy-btn float-end" onclick="pubCopy(this, 'bibtex-{{ pub.id }}')">Copy</button>
+      <pre class="pub-code" id="bibtex-{{ pub.id }}">{{ pub.bibtexStr }}</pre>
+    </div>
+  </div>
+
+  <!-- APA7 collapse -->
+  <div class="collapse pub-collapse" id="apa-{{ pub.id }}">
+    <div class="pub-collapse-body">
+      <button class="btn btn-sm pub-copy-btn float-end" onclick="pubCopy(this, 'apa7-{{ pub.id }}')">Copy</button>
+      <p class="mb-0" id="apa7-{{ pub.id }}">{{ pub.apa7 | safe }}</p>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,43 @@
+{
+  "id": "lesnichaia2022-classification-accented-english",
+  "bibtex_key": "Lesnichaia2022ClassificationAccentedEnglish",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Classification of Accented English Using CNN Model Trained on Amplitude Mel-Spectrograms",
+  "authors": [
+    {
+      "family": "Lesnichaia",
+      "given": "M."
+    },
+    {
+      "family": "Mikhailava",
+      "given": "V."
+    },
+    {
+      "family": "Bogach",
+      "given": "N."
+    },
+    {
+      "family": "Lezhenin",
+      "given": "I."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    }
+  ],
+  "year": 2022,
+  "date": "2022-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Conference proceedings of Interspeech 2022",
+  "doi": "10.21437/Interspeech.2022-462",
+  "pdf": "/pdfs/papers/lesnichaia2022classification.pdf",
+  "abstract": "",
+  "tags": []
+}

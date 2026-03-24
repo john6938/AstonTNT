@@ -1,0 +1,32 @@
+{
+  "id": "nicholas2025-computerized-diagnostic-language",
+  "bibtex_key": "Nicholas2025ComputerizedDiagnosticLanguage",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Computerized Diagnostic Language Assessment of Oral Requesting-in-interaction: Proof-of-concept",
+  "authors": [
+    {
+      "family": "Nicholas",
+      "given": "A."
+    },
+    {
+      "family": "Mozgovoy",
+      "given": "M."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2025,
+  "date": "2025-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of 13th International Conference on Information and Education Technology",
+  "publisher": "IEEE Xplore",
+  "doi": "10.1109/ICIET66371.2025.11046328",
+  "pdf": "/pdfs/papers/nicholas2025computerized.pdf",
+  "abstract": "",
+  "tags": []
+}

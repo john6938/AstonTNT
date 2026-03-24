@@ -1,0 +1,22 @@
+{
+  "id": "blake2020-english-verb-analyzer",
+  "bibtex_key": "Blake2020EnglishVerbAnalyzer",
+  "type": "misc",
+  "pure_category": "other",
+  "title": "English Verb Analyzer: Identifying tense, voice, aspect, sense and grammatical meaning in context for pedagogic purposes",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2020,
+  "date": "2020-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "venue": "Extended abstract in 8th Swedish Language Technology Conference 2020 program",
+  "url": "https://gubox.app.box.com/v/SLTC-2020-paper-25",
+  "abstract": "",
+  "tags": []
+}

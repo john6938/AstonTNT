@@ -1,0 +1,29 @@
+{
+  "id": "lai2004-daily-life-hong",
+  "bibtex_key": "Lai2004DailyLifeHong",
+  "type": "book",
+  "pure_category": "book",
+  "title": "Daily Life in Hong Kong",
+  "authors": [
+    {
+      "family": "Lai",
+      "given": "V."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Cheung",
+      "given": "M."
+    }
+  ],
+  "year": 2004,
+  "date": "2004-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "publisher": "Ming Pao Publishing",
+  "abstract": "",
+  "tags": []
+}

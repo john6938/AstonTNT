@@ -1,0 +1,44 @@
+{
+  "id": "mikhailava2022-tailoring-computer-assisted",
+  "bibtex_key": "Mikhailava2022TailoringComputerAssisted",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Tailoring computer-assisted pronunciation teaching: Mixing and matching the mode and manner of feedback to learners",
+  "authors": [
+    {
+      "family": "Mikhailava",
+      "given": "V."
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Chernonog",
+      "given": "S."
+    },
+    {
+      "family": "Lezhenin",
+      "given": "I."
+    },
+    {
+      "family": "Bogach",
+      "given": "N."
+    }
+  ],
+  "year": 2022,
+  "date": "2022-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Proceedings of 16th International Technology, Education and Development Conference (INTED 2022), (pp",
+  "pages": "767-773",
+  "doi": "10.21125/inted.2022.0263",
+  "pdf": "/pdfs/papers/Mikhailava2022tailoring.pdf",
+  "abstract": "",
+  "tags": []
+}

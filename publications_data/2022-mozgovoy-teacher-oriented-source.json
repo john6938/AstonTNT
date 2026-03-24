@@ -1,0 +1,41 @@
+{
+  "id": "mozgovoy2022-teacher-oriented-source",
+  "bibtex_key": "Mozgovoy2022TeacherOrientedSource",
+  "type": "journal",
+  "pure_category": "contribution_to_journal_article",
+  "title": "Teacher-oriented source code similarity detection and visualization for programming assignments",
+  "authors": [
+    {
+      "family": "Mozgovoy",
+      "given": "M."
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Purgina",
+      "given": "M."
+    },
+    {
+      "family": "Leung",
+      "given": "A."
+    }
+  ],
+  "year": 2022,
+  "date": "2022-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "IIAI Letters on Informatics and Interdisciplinary Research",
+  "volume": "2",
+  "pages": "82",
+  "doi": "10.52731/liir.v002.082",
+  "pdf": "/pdfs/papers/mozgovoy2022teacher-orientated.pdf",
+  "abstract": "",
+  "tags": []
+}

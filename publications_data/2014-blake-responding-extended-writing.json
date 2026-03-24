@@ -1,0 +1,23 @@
+{
+  "id": "blake2014-responding-extended-writing",
+  "bibtex_key": "Blake2014RespondingExtendedWriting",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Responding to extended writing electronically",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2014,
+  "date": "2014-01-01",
+  "status": "published",
+  "peer_reviewed": false,
+  "venue": "PeerSpectives, 12, 14-17. [ pdf ]",
+  "pages": "14-17",
+  "pdf": "http://peerspectives.files.wordpress.com/2010/04/john-blake.pdf",
+  "abstract": "",
+  "tags": []
+}

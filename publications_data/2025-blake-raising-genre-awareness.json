@@ -1,0 +1,29 @@
+{
+  "id": "blake2025-raising-genre-awareness",
+  "bibtex_key": "Blake2025RaisingGenreAwareness",
+  "type": "journal",
+  "pure_category": "contribution_to_journal_article",
+  "title": "Raising genre awareness though visualizing language features",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Mozgovoy",
+      "given": "M."
+    }
+  ],
+  "year": 2025,
+  "date": "2025-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Applied Corpus Linguistics",
+  "volume": "5",
+  "issue": "3",
+  "pages": "100162",
+  "doi": "10.1016/j.acorp.2025.100162",
+  "abstract": "",
+  "tags": []
+}

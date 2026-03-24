@@ -1,0 +1,35 @@
+{
+  "id": "jaganov2025-large-language-model-2",
+  "bibtex_key": "Jaganov2025LargeLanguageModel2",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Large Language Model-Driven Dynamic Assessment of Grammatical Accuracy in English Language Learner Writing",
+  "authors": [
+    {
+      "family": "Jaganov",
+      "given": "T."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Villegas",
+      "given": "J."
+    },
+    {
+      "family": "Carr",
+      "given": "N."
+    }
+  ],
+  "year": 2025,
+  "date": "2025-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "(arXiv:2505.00931). arXiv preprint. [ arxiv | pdf ]",
+  "url": "https://arxiv.org/abs/2505.00931",
+  "pdf": "/pdfs/papers/jaganov2025large_arxiv.pdf",
+  "abstract": "",
+  "tags": []
+}

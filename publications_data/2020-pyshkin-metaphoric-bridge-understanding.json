@@ -1,0 +1,29 @@
+{
+  "id": "pyshkin2020-metaphoric-bridge-understanding",
+  "bibtex_key": "Pyshkin2020MetaphoricBridgeUnderstanding",
+  "type": "journal",
+  "pure_category": "contribution_to_journal_article",
+  "title": "A metaphoric bridge: Understanding software engineering through literature and fine arts",
+  "authors": [
+    {
+      "family": "Pyshkin",
+      "given": "E.V."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2020,
+  "date": "2020-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Terra Linguistica",
+  "volume": "11",
+  "issue": "3",
+  "pages": "59-77",
+  "url": "https://human.spbstu.ru/en/article/2020.41.5/",
+  "abstract": "",
+  "tags": []
+}

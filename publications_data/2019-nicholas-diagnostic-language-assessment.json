@@ -1,0 +1,28 @@
+{
+  "id": "nicholas2019-diagnostic-language-assessment",
+  "bibtex_key": "Nicholas2019DiagnosticLanguageAssessment",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Diagnostic Language Assessment: Lessons Learned from Rapid Prototyping",
+  "authors": [
+    {
+      "family": "Nicholas",
+      "given": "A."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2019,
+  "date": "2019-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "Chang, M., So, H.J., Wong, L.H., Shih, J.L. and Yu, F.Y.",
+  "pages": "679-684",
+  "publisher": "Asia-Pacific Society",
+  "pdf": "http://ilt.nutn.edu.tw/icce2019/dw/ICCE2019%20Proceedings%20Volume%20I.pdf",
+  "abstract": "",
+  "tags": []
+}

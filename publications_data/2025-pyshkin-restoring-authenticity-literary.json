@@ -1,0 +1,28 @@
+{
+  "id": "pyshkin2025-restoring-authenticity-literary",
+  "bibtex_key": "Pyshkin2025RestoringAuthenticityLiterary",
+  "type": "journal",
+  "pure_category": "contribution_to_journal_article",
+  "title": "Restoring Authenticity: Literary, Linguistic, and Computational Study of the Manuscripts of Tchaikovsky's Children's Album",
+  "authors": [
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2025,
+  "date": "2025-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Arts",
+  "volume": "14",
+  "doi": "10.3390/arts14030049",
+  "pdf": "/pdfs/papers/pyshkin2025restoring.pdf",
+  "abstract": "",
+  "tags": []
+}

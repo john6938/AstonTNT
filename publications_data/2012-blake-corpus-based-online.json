@@ -1,0 +1,22 @@
+{
+  "id": "blake2012-corpus-based-online",
+  "bibtex_key": "Blake2012CorpusBasedOnline",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Corpus-based online common error detector",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2012,
+  "date": "2012-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Conference proceedings of the 20th International Conference on Computers in Education",
+  "pdf": "papers/Corpus-based_online_common_error_detector_paper.pdf",
+  "abstract": "",
+  "tags": []
+}

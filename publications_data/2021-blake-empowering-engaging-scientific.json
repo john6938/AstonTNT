@@ -1,0 +1,29 @@
+{
+  "id": "blake2021-empowering-engaging-scientific",
+  "bibtex_key": "Blake2021EmpoweringEngagingScientific",
+  "type": "book_chapter",
+  "pure_category": "contribution_to_book",
+  "title": "Empowering and engaging scientific writers across disciplines",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Holden",
+      "given": "W."
+    }
+  ],
+  "year": 2021,
+  "date": "2021-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "editor": "B. Morrison, J. Chen, L. Lin and A. Urmston",
+  "pages": "73-89",
+  "publisher": "WAC Clearinghouse",
+  "doi": "10.37514/INT-B.2021.1220.2.04",
+  "pdf": "https://wac.colostate.edu/docs/books/eac2018/chapter4.pdf",
+  "abstract": "",
+  "tags": []
+}

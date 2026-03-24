@@ -1,0 +1,34 @@
+{
+  "id": "purgina2020-wordbricks-mobile-technology",
+  "bibtex_key": "Purgina2020WordbricksMobileTechnology",
+  "type": "journal",
+  "pure_category": "contribution_to_journal_article",
+  "title": "WordBricks: Mobile Technology and Visual Grammar Formalism for Gamification of Natural Language Grammar Acquisition",
+  "authors": [
+    {
+      "family": "Purgina",
+      "given": "M."
+    },
+    {
+      "family": "Mozgovoy",
+      "given": "M."
+    },
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    }
+  ],
+  "year": 2020,
+  "date": "2020-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Journal of Educational Computing Research",
+  "volume": "58",
+  "issue": "1",
+  "pages": "126-159",
+  "doi": "10.1177/0735633119833010",
+  "pdf": "https://u-aizu.ac.jp/~mozgovoy/homepage/papers/pmb19.pdf",
+  "abstract": "",
+  "tags": []
+}

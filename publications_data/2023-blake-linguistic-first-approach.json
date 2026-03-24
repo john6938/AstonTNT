@@ -1,0 +1,32 @@
+{
+  "id": "blake2023-linguistic-first-approach",
+  "bibtex_key": "Blake2023LinguisticFirstApproach",
+  "type": "conference",
+  "pure_category": "contribution_to_conference",
+  "title": "Linguistic-first approach to learning Python for natural language generation: Problem breakdown to pseudocode",
+  "authors": [
+    {
+      "family": "Blake",
+      "given": "John",
+      "self": true
+    },
+    {
+      "family": "Tamura",
+      "given": "K."
+    },
+    {
+      "family": "Pyshkin",
+      "given": "E."
+    }
+  ],
+  "year": 2023,
+  "date": "2023-01-01",
+  "status": "published",
+  "peer_reviewed": true,
+  "venue": "Conference Proceedings of the 5th International Conference on ICT Integration in Technical Education, 2909 (1), 020002",
+  "pages": "020002",
+  "doi": "10.1063/5.0183649",
+  "pdf": "/pdfs/papers/blake2023linguistic-first.pdf",
+  "abstract": "",
+  "tags": []
+}
