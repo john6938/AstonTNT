@@ -25,6 +25,14 @@ module.exports = function(eleventyConfig) {
     return (pubs || []).filter(p => p.type === type);
   });
 
+  // Filter publications array by status (treats missing status as "published")
+  eleventyConfig.addFilter("pubsByStatus", function(pubs, status) {
+    if (status === "published") {
+      return (pubs || []).filter(p => !p.status || p.status === "published");
+    }
+    return (pubs || []).filter(p => p.status === status);
+  });
+
   // Human-readable label for publication type
   eleventyConfig.addFilter("typeLabel", function(type) {
     const labels = {

@@ -1,13 +1,21 @@
 <div class="pub-item py-3 border-bottom border-secondary">
 
-  <!-- Header row: type badge, year, action buttons -->
+  <!-- Header row: type badge, status badge, year, bibtex, apa7, doi, pdf -->
   <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
     <span class="badge pub-badge-{{ pub.type }}">{{ pub.type | typeLabel | replace("Articles","Article") | replace("Papers","Paper") | replace("Chapters","Chapter") | replace("Miscellaneous","Misc") }}</span>
     {% if pub.status and pub.status != "published" %}
       <span class="badge bg-warning text-dark text-capitalize">{{ pub.status | replace("_", " ") }}</span>
     {% endif %}
-    <span class="text-muted small">{{ pub.year }}</span>
-    <span class="ms-auto d-flex gap-1">
+    <span class="pub-year small">{{ pub.year }}</span>
+    <span class="ms-auto d-flex gap-1 flex-wrap justify-content-end">
+      <button class="btn btn-sm pub-toggle-btn" type="button"
+              data-bs-toggle="collapse" data-bs-target="#bib-{{ pub.id }}" aria-expanded="false">
+        BibTeX
+      </button>
+      <button class="btn btn-sm pub-toggle-btn" type="button"
+              data-bs-toggle="collapse" data-bs-target="#apa-{{ pub.id }}" aria-expanded="false">
+        APA7
+      </button>
       {% if pub.doi %}
         <a href="https://doi.org/{{ pub.doi }}" class="btn btn-sm pub-action-btn" target="_blank" rel="noopener">DOI</a>
       {% elif pub.url %}
@@ -23,7 +31,7 @@
   <div class="pub-title fw-semibold lh-sm">{{ pub.title }}</div>
 
   <!-- Authors -->
-  <div class="pub-authors small text-muted mt-1">
+  <div class="pub-authors small mt-1">
     {{ pub.authors | formatAuthors | safe }}
   </div>
 
@@ -42,26 +50,14 @@
     {% endif %}
   </div>
 
-  <!-- Toggle buttons -->
-  <div class="pub-toggles mt-2 d-flex gap-2 flex-wrap">
-    {% if pub.abstract %}
+  <!-- Abstract toggle (only if abstract present) -->
+  {% if pub.abstract %}
+  <div class="pub-toggles mt-2">
     <button class="btn btn-sm pub-toggle-btn" type="button"
             data-bs-toggle="collapse" data-bs-target="#abs-{{ pub.id }}" aria-expanded="false">
       Abstract
     </button>
-    {% endif %}
-    <button class="btn btn-sm pub-toggle-btn" type="button"
-            data-bs-toggle="collapse" data-bs-target="#bib-{{ pub.id }}" aria-expanded="false">
-      BibTeX
-    </button>
-    <button class="btn btn-sm pub-toggle-btn" type="button"
-            data-bs-toggle="collapse" data-bs-target="#apa-{{ pub.id }}" aria-expanded="false">
-      APA7
-    </button>
   </div>
-
-  <!-- Abstract collapse -->
-  {% if pub.abstract %}
   <div class="collapse pub-collapse" id="abs-{{ pub.id }}">
     <div class="pub-collapse-body">
       <p class="mb-0">{{ pub.abstract }}</p>

@@ -25,6 +25,16 @@ description: Full list of publications by John Blake in NLP, computational lingu
         By Type
       </button>
     </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="bystatus-tab" data-bs-toggle="tab" data-bs-target="#bystatus" type="button" role="tab">
+        By Status
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="search-tab" data-bs-toggle="tab" data-bs-target="#search-pane" type="button" role="tab">
+        Search
+      </button>
+    </li>
   </ul>
 
   <div class="tab-content" id="pubViewTabContent">
@@ -54,8 +64,53 @@ description: Full list of publications by John Blake in NLP, computational lingu
       {% endfor %}
     </div>
 
-  </div>
+    <!-- Grouped by status view -->
+    <div class="tab-pane fade" id="bystatus" role="tabpanel">
+      {% set underReview = publications | pubsByStatus("under_review") %}
+      {% set inPress = publications | pubsByStatus("in_press") %}
+      {% set published = publications | pubsByStatus("published") %}
 
+      {% if underReview | length %}
+        <h2 class="mt-4 mb-3">Under Review</h2>
+        {% for pub in underReview %}
+          {% include "partials/pub-item.njk" %}
+        {% endfor %}
+      {% endif %}
+
+      {% if inPress | length %}
+        <h2 class="mt-4 mb-3">In Press</h2>
+        {% for pub in inPress %}
+          {% include "partials/pub-item.njk" %}
+        {% endfor %}
+      {% endif %}
+
+      {% if published | length %}
+        <h2 class="mt-4 mb-3">Published</h2>
+        {% for pub in published %}
+          {% include "partials/pub-item.njk" %}
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <!-- Search view -->
+    <div class="tab-pane fade" id="search-pane" role="tabpanel">
+      <div class="mt-3 mb-3">
+        <input type="text" id="pub-search-input" class="form-control pub-search-input"
+               placeholder="Search by title or author name…" autocomplete="off">
+      </div>
+      <p id="pub-search-status" class="text-muted small mb-3">Type at least 2 characters to search.</p>
+      <div id="pub-search-results">
+        {% for pub in publications %}
+          <div class="pub-search-item d-none"
+               data-title="{{ pub.title }}"
+               data-authors="{% for a in pub.authors %}{{ a.family }} {{ a.given }}{% if not loop.last %} {% endif %}{% endfor %}">
+            {% include "partials/pub-item.njk" %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
 
 </section>
 
@@ -68,4 +123,33 @@ function pubCopy(btn, id) {
     setTimeout(() => btn.textContent = orig, 2000);
   });
 }
+
+(function() {
+  const input = document.getElementById('pub-search-input');
+  const status = document.getElementById('pub-search-status');
+  const items = document.querySelectorAll('.pub-search-item');
+
+  input.addEventListener('input', function() {
+    const q = this.value.trim().toLowerCase();
+    if (q.length < 2) {
+      items.forEach(el => el.classList.add('d-none'));
+      status.textContent = 'Type at least 2 characters to search.';
+      return;
+    }
+    let count = 0;
+    items.forEach(el => {
+      const match =
+        el.dataset.title.toLowerCase().includes(q) ||
+        el.dataset.authors.toLowerCase().includes(q);
+      el.classList.toggle('d-none', !match);
+      if (match) count++;
+    });
+    status.textContent = count + ' publication' + (count !== 1 ? 's' : '') + ' found.';
+  });
+
+  // Focus search input when tab is activated
+  document.getElementById('search-tab').addEventListener('shown.bs.tab', function() {
+    input.focus();
+  });
+})();
 </script>

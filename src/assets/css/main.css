@@ -254,6 +254,19 @@ body {
   color: #f0f0f0;
 }
 
+.pub-year {
+  color: #ffffff;
+}
+
+.pub-authors {
+  color: #ffffff;
+}
+
+.pub-author-self {
+  color: #ffe680;
+  font-weight: 500;
+}
+
 .pub-link {
   color: #ff8c00;
   text-decoration: none;
@@ -262,11 +275,6 @@ body {
 .pub-link:hover {
   color: #ffad40;
   text-decoration: underline;
-}
-
-.pub-author-self {
-  color: #ffe680;
-  font-weight: 500;
 }
 
 .pub-doi-link {
@@ -304,67 +312,22 @@ body {
   border-color: #666;
 }
 
-/* Publications */
-.pub-item {
-  line-height: 1.5;
-}
-
-.pub-item:last-child {
-  border-bottom: none !important;
-}
-
-.pub-title {
+/* Search input */
+.pub-search-input {
+  background-color: #2a2a2a;
   color: #f0f0f0;
-}
-
-.pub-link {
-  color: #ff8c00;
-  text-decoration: none;
-}
-
-.pub-link:hover {
-  color: #ffad40;
-  text-decoration: underline;
-}
-
-.pub-author-self {
-  color: #ffe680;
-  font-weight: 500;
-}
-
-.pub-doi-link {
-  color: #aaaaaa;
-  text-decoration: none;
-  word-break: break-all;
-}
-
-.pub-doi-link:hover {
-  color: #ff8c00;
-}
-
-/* Type badges */
-.pub-badge-journal      { background-color: #0d6efd; color: #fff; }
-.pub-badge-conference   { background-color: #198754; color: #fff; }
-.pub-badge-book_chapter { background-color: #6f42c1; color: #fff; }
-.pub-badge-book         { background-color: #dc3545; color: #fff; }
-.pub-badge-misc         { background-color: #6c757d; color: #fff; }
-
-/* Publication view tabs */
-#pubViewTabs .nav-link {
-  color: #aaaaaa;
   border-color: #555;
-  background-color: transparent;
 }
 
-#pubViewTabs .nav-link.active {
-  color: #ff8c00;
-  background-color: #3B3B3B;
-  border-color: #555 #555 #3B3B3B;
+.pub-search-input::placeholder {
+  color: #888;
 }
 
-#pubViewTabs .nav-link:hover:not(.active) {
+.pub-search-input:focus {
+  background-color: #2a2a2a;
   color: #f0f0f0;
-  border-color: #666;
+  border-color: #ff8c00;
+  box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25);
 }
 
 /* DOI / Link / PDF action buttons (top-right of each entry) */
