@@ -37,7 +37,7 @@
   "peer_reviewed": true,
   "venue": "Conference proceedings of Interspeech 2022",
   "doi": "10.21437/Interspeech.2022-462",
-  "pdf": "/pdfs/papers/lesnichaia2022classification.pdf",
+  "pdf": "https://jb11.org/pdfs/lesnichaia2022classification.pdf",
   "abstract": "",
   "tags": []
 }

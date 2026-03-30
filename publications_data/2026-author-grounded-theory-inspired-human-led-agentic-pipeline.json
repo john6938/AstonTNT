@@ -1,9 +1,9 @@
 {
-  "id": "blake2026-human-verifiable-api",
-  "bibtex_key": "Blake2026HumanVerifiableApi",
+  "id": "author2026-grounded-theory-inspired-human-led-agentic-pipeline",
+  "bibtex_key": "Author2026Groundedtheoryinspired",
   "type": "conference",
   "pure_category": "contribution_to_conference",
-  "title": "Human-Verifiable API Documentation Generation for Legacy Web Frameworks Using Multi-Agent LLMs",
+  "title": "Grounded-Theory-Inspired Human-Led Agentic Pipeline for Qualitative Analysis: A Proof-of-Concept",
   "authors": [
     {
       "family": "Author",
@@ -15,7 +15,7 @@
       "self": true
     },
     {
-      "family": "Another",
+      "family": "Author",
       "given": "Another"
     }
   ],
@@ -23,6 +23,7 @@
   "date": "2026-01-01",
   "status": "under_review",
   "peer_reviewed": true,
+  "venue": "18th International Conference on Human System Interaction",
   "abstract": "",
   "tags": []
 }

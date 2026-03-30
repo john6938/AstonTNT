@@ -2,13 +2,21 @@
   "id": "blake2026-extensible-framework-interactive",
   "bibtex_key": "Blake2026ExtensibleFrameworkInteractive",
   "type": "journal",
-  "pure_category": "contribution_to_journal_article",
+  "pure_category": "journal_article",
   "title": "An Extensible Framework for Interactive Pronunciation Support for Orthographically Complex Languages: The Case of Sinhala",
   "authors": [
+    {
+      "family": "Author",
+      "given": "An"
+    },
     {
       "family": "Blake",
       "given": "John",
       "self": true
+    },
+    {
+      "family": "Author",
+      "given": "Another"
     }
   ],
   "year": 2026,
@@ -16,5 +24,6 @@
   "status": "under_review",
   "peer_reviewed": true,
   "abstract": "",
-  "tags": []
+  "tags": [],
+  "venue": "journal"
 }

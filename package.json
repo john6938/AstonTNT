@@ -5,7 +5,9 @@
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy",
-    "bib": "node scripts/generate-bib.js"
+    "bib": "node scripts/generate-bib.js",
+    "add-pub": "node scripts/add-publication.js",
+    "edit-pub": "node scripts/edit-publication.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
