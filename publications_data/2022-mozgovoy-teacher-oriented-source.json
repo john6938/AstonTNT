@@ -36,6 +36,6 @@
   "pages": "82",
   "doi": "10.52731/liir.v002.082",
   "pdf": "https://jb11.org/pdfs/mozgovoy2022teacher-orientated.pdf",
-  "abstract": "",
+  "abstract": "In programming classes, instructors need to work with numerous exercise submissions to verifywhetherthesubmittedsourcecodemeetstherequirements,andwhetherthereisany unauthorizedborrowingofcodefragments. Thecheckingprocedureislaboriousrequiring much unproductive effort and time. However, ignoring instances of potential plagiarism may negatively impact learner motivation. Despite the existence of practical tools devel- oped for software testing and similarity detection, there are still issues in developing an open-sourcesubmissionassessmentsystemthatwouldstreamlinetheclassroomworkflow. Thispaperdescribesapracticalsubmissionassessmentsystemthatreducesthetimeteach- ersspendcheckingthesolutionssubmittedbystudents.",
   "tags": []
 }

@@ -21,6 +21,6 @@
   "pages": "179-187",
   "doi": "10.1177/0033688219898282",
   "pdf": "https://jb11.org/pdfs/blake2020genre.pdf",
-  "abstract": "",
+  "abstract": "A purpose-built online error detection tool was developed to provide genre-specific corpus- based feedback on errors occurring in draft research articles and graduation theses. The primary envisaged users were computer science majors studying at a public university in Japan. This article discusses the development and evaluation of this interactive, multimodal tool. An in-house learner corpus of graduation theses was annotated for errors that affect the accuracy, brevity, clarity, objectivity and formality of scientific research writing. Software was developed to identify the errors discovered and provide learners with actionable advice and multimodal explanations in both English and Japanese. Qualitative evaluation received in usability studies and focus groups from both teachers and students was extremely positive. Preliminary quantitative evaluation of the effectiveness of the error detector was conducted. Through this pedagogic tool, learners can receive immediate actionable feedback on potential errors, and their teachers no longer feel obliged to check for common genre-specific errors.",
   "tags": []
 }

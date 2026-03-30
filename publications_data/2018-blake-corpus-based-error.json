@@ -18,6 +18,6 @@
   "editor": "Y. Tono and Isahara, H.",
   "pages": "50-54",
   "pdf": "papers/APCLCerror.pdf",
-  "abstract": "",
+  "abstract": "This study describes the design and development of a corpus-based error detector for short research articles produced by computer science majors. This genre-specific error detector provides automated pedagogic feedback on surface-level errors using rule-based pattern matching. In the corpus phase, a learner corpus of all theses (n = 629) submitted for three academic years was compiled. A held- out corpus of 50 theses was created for evaluation purposes. The remaining theses were added to the working corpus. Errors in the working corpus were identified manually and automatically. The first 50 theses were annotated using the UAM Corpus Tool. Errors were classified into one of five categories (i.e. accuracy, brevity, clarity, objectivity and formality). By the fiftieth thesis, saturation had been reached, that is the number of new errors discovered had dropped considerably. Annotated errors were extracted into an error bank (xml file). Each error was assigned values for severity, detectability and frequency. The weighted priority of each error was calculated from these values. For the remaining theses only new errors were recorded and were added directly into the error bank. In the software phase, regular expressions were created. Easy-to-understand actionable advice was written that could be displayed on matching the error.",
   "tags": []
 }
