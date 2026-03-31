@@ -257,6 +257,7 @@ a:not(.btn):not(.nav-link):hover {
 /* Blockquote styling */
 .blockquote-footer {
   color: #aaaaaa;
+  margin-top: 0.5rem;
 }
 
 /* Publications */
