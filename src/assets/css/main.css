@@ -186,6 +186,24 @@ body {
   color: #ff8c00;
 }
 
+/* Hyperlink colours — light pink on dark/grey backgrounds, blue on white */
+a:not(.btn):not(.nav-link) {
+  color: #ffb3c1;
+}
+
+a:not(.btn):not(.nav-link):hover {
+  color: #ff85a1;
+}
+
+/* Inside white-background cards, revert to standard blue */
+.card a:not(.btn) {
+  color: #0d6efd;
+}
+
+.card a:not(.btn):hover {
+  color: #0a58ca;
+}
+
 /* Utility */
 .text-gradient {
   background: linear-gradient(90deg, #e94560, #0f3460);

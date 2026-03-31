@@ -165,6 +165,12 @@ async function editPublication(entry) {
   const pr = await askField('Peer reviewed? (y/n)', pub.peer_reviewed ? 'y' : 'n');
   pub.peer_reviewed = pr.toLowerCase() !== 'n';
 
+  const currentAbstract = pub.abstract || '';
+  console.log(`\nAbstract${currentAbstract ? ` [current: ${currentAbstract.slice(0, 80)}...]` : ' [blank]'}`);
+  console.log('Paste abstract text and press Enter (or press Enter to keep current, "-" to clear):');
+  pub.abstract = await askField('Abstract', currentAbstract);
+  if (!pub.abstract) delete pub.abstract;
+
   console.log('\n--- Preview ---');
   console.log(JSON.stringify(pub, null, 2));
   console.log(`\nFile: publications_data/${file}`);
