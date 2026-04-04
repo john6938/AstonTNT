@@ -140,4 +140,4 @@ inputEl.addEventListener('keydown', (e) => {
 });
 
 // Initial state
-updateUI('empty', 'Enter text and click Analyze to see sentiment');
+updateUI('ready', '');

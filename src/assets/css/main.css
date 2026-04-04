@@ -76,8 +76,8 @@ body {
 
 /* Result display */
 .result-container {
-  margin-top: 1.5rem;
-  min-height: 80px;
+  margin-top: 0.75rem;
+  min-height: 40px;
 }
 
 .result-box {
