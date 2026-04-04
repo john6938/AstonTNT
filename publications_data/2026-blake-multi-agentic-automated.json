@@ -29,6 +29,6 @@
   "peer_reviewed": true,
   "venue": "Proceedings of the 20th International Joint Symposium on Artificial Intelligence and Natural Language Processing (iSAI-NLP 2025)",
   "doi": "10.1109/iSAI-NLP66160.2025.11320469",
-  "abstract": "",
+  "abstract": "Passive voice constructions vary in how explicitly they represent the agent, or doer of the action, ranging from clauses with fully stated agents to instances where the agent is omitted or difficult to infer. This paper introduces a multi-agentic system designed to automatically categorize English passive voice instances according to a four-level mystification index. The index ranges from Level 1, where the agent is explicitly stated, to Level 4, where the agent is maximally mystified, i.e., omitted and unrecoverable to casual readers without specialized knowledge. The system is implemented using LangChain and LangGraph, integrating PassivePy with multiple specialized agents dedicated to subtasks such as agent detection, inference, verification, and classification. Evaluation was conducted using manually annotated newspaper editorials. Results show that the system performs at expert-level accuracy when agents are explicit or guessable with certainty (Levels 1 and 2), while performance drops sharply in ambiguous or unknown cases (Levels 3 and 4). These findings demonstrate both the feasibility of automatic mystification analysis and the potential for future improvements in handling highly ambiguous contexts.",
   "tags": []
 }

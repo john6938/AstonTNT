@@ -30,6 +30,6 @@
   "venue": "Proceedings of 10th Joint SIGHUM Workshop on Computational Linguistics for Cultural Heritage, Social Sciences, Humanities and Literature co-located at the 19th Conference of the European Chapter of the Association for Computational Linguistics (EACL 2026), (pp",
   "pages": "323--327",
   "pdf": "https://aclanthology.org/anthology-files/anthology-files/pdf/latechclfl/2026.latechclfl-1.31.pdf",
-  "abstract": "",
+  "abstract": "This paper presents the design and construction of WikiFirst, a corpus for investigating the impact of content variation on authorship similarity under a fixed genre. Prior work has investigated individual authorial style and impact of genre. However, the role of content has remained underexplored due to the lack of suitable data. We address this gap by constructing a Wikipedia-based corpus consisting exclusively of first revisions authored by non-anonymous editors, thereby ensuring high authorship certainty while maintaining a stable encyclopaedic genre.",
   "tags": []
 }

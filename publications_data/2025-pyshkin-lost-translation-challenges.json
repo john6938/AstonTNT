@@ -2,7 +2,7 @@
   "id": "pyshkin2025-lost-translation-challenges",
   "bibtex_key": "Pyshkin2025LostTranslationChallenges",
   "type": "journal",
-  "pure_category": "contribution_to_journal_article",
+  "pure_category": "journal_article",
   "title": "\"Lost in Translation\"? Challenges in Conveying the Original Titles of Tchaikovsky's Children's Album",
   "authors": [
     {
@@ -16,7 +16,7 @@
     }
   ],
   "year": 2025,
-  "date": "2025-04-01",
+  "date": "2025-01-01",
   "status": "published",
   "peer_reviewed": true,
   "venue": "Terra Linguistica",
@@ -25,6 +25,6 @@
   "pages": "99-111",
   "doi": "10.18721/JHSS.16107",
   "pdf": "https://jb11.org/pdfs/pyshkin2025lost.pdf",
-  "abstract": "",
+  "abstract": "Using the linguistic methods of metaphor, discourse, and comparative analysis, this study presents the problem of authentic translation of the composition titles from Tchaikovsky’s Children’s Album, Op. 39, for English editions or concert programs. We examine this problem from the perspective of the origins of this piano masterpiece and its subsequent transformations. Among many other factors, reordering of the compositions influenced the editorial decisions on selecting the proper equivalents for titles in English. Specifically, we explore how appropriate translations of the composition titles can help in preserving the important historical and cultural connotations and musical authenticity of the 24 piano pieces known as the Children’s Album, and therefore contribute to a better understanding of the whole original masterpiece, particularly in light of the significant reordering of the pieces in the first published edition compared to the original manuscript. By comparing the number of canonical known editions, we suggest a model designed to address the evident “lost in translation” issues in existing editions and resources.",
   "tags": []
 }

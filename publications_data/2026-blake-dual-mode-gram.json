@@ -25,6 +25,6 @@
   "peer_reviewed": true,
   "venue": "Proceedings for 39th Pacific Asia Conference on Language, Information and Computation (PACLIC 39)",
   "pdf": "https://aclanthology.org/2025.paclic-1.75.pdf",
-  "abstract": "",
+  "abstract": "This paper introduces a dual-mode n-gram similarity detection tool specifically designed for corpus-based forensic authorship analysis. Intra-corpus mode is used to verify consistency within a dataset while inter-corpus mode is for comparison to a questioned dataset. Preliminary accuracy evaluation of shared n-gram detection is perfect at 100%.",
   "tags": []
 }
