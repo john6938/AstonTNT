@@ -34,6 +34,7 @@ body {
 /* Photo floats left at all sizes */
 .profile-photo-wrap {
   float: left;
+  width: 130px;
   margin: 0 1.25rem 0.75rem 0;
 }
 .profile-text { overflow: hidden; }
