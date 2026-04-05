@@ -1,13 +1,12 @@
 <footer class="bg-dark text-light py-4 mt-5">
   <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <p class="mb-1" style="color: #ffffff;">John Blake</p>
-        <p class="small" style="color: #ffffff;">Aston University</p>
-      </div>
-      <div class="col-md-6 text-md-end">
-        <p class="small mb-0" style="color: #ffffff;">&copy; {% year %} All rights reserved</p>
-      </div>
+    {% if quote %}
+    <p class="text-end fst-italic mb-3" style="color: #ffffff;">{{ quote | safe }}</p>
+    {% endif %}
+    <div class="d-flex flex-column flex-md-row justify-content-md-end gap-1 gap-md-3 text-end" style="color: #ffffff;">
+      <span>John Blake</span>
+      <span>Aston University</span>
+      <span>&copy; {% year %} All rights reserved</span>
     </div>
   </div>
 </footer>

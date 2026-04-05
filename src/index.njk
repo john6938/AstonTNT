@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.njk
 title: John Blake - NLP Research
+quote: '"Grit, tenacity and perseverance outweigh talent." — John Blake'
 ---
 
 <section class="page-header">
@@ -11,11 +12,14 @@ title: John Blake - NLP Research
 
 <section class="hero">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 mb-4 mb-lg-0">
-        <p class="lead">I am a multidisciplinary researcher with formal training in applied linguistics, education, computer science, mathematics education, business administration, creative writing, and combined studies. Much of my work is at the intersection of natural language processing (NLP) and forensic linguistics, with a particular focus on authorship analysis, including attribution, verification, and profiling. I develop software and online tools that make linguistic analysis more systematic, transparent, and applicable to real-world problems. I am particularly interested in combining corpus-based approaches with machine learning and explainable AI. My broader research agenda includes computational stylistics, cross-genre and cross-modal authorship analysis, and the design of intelligent systems for language analysis and learning. I lead and collaborate on projects that translate theoretical insights into practical tools, with an emphasis on usability, interpretability, and impact.</p>
+    <div class="profile-layout">
+      <div class="profile-text">
+        <div class="profile-photo-wrap">
+          <img src="{{ '/assets/JB_2025c.png' | url }}" alt="John Blake" class="profile-photo" id="dynamicImage">
+        </div>
+        <p class="lead">I am a multidisciplinary researcher with degrees in applied linguistics, education, computer science, mathematics education, business administration, creative writing, and combined studies. Much of my work is at the intersection of natural language processing (NLP) and forensic linguistics, with a particular focus on authorship analysis, including attribution, verification, and profiling. I develop software and online tools that make linguistic analysis more systematic, transparent, and applicable to real-world problems. I am particularly interested in combining corpus-based approaches with machine learning and explainable AI. My broader research agenda includes computational stylistics, cross-genre and cross-modal authorship analysis, and the design of intelligent systems for language analysis and learning. I lead and collaborate on projects that translate theoretical insights into practical tools, with an emphasis on usability, interpretability, and impact.</p>
       </div>
-      <div class="col-lg-6">
+      <div class="profile-demo">
         <div class="demo-card">
           <label for="demo-input" class="form-label fw-semibold mb-2">
             <i class="bi bi-chat-square-text me-2"></i>Sentiment Analysis Demo
@@ -73,4 +77,5 @@ title: John Blake - NLP Research
 
 {% block scripts %}
 <script type="module" src="{{ '/assets/js/sentiment.js' | url }}"></script>
+<script defer src="{{ '/assets/js/photo-swap.js' | url }}"></script>
 {% endblock %}

@@ -24,6 +24,41 @@ body {
   }
 }
 
+/* Profile layout: mobile stacks photo → text → demo */
+.profile-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Photo floats left at all sizes */
+.profile-photo-wrap {
+  float: left;
+  margin: 0 1.25rem 0.75rem 0;
+}
+.profile-text { overflow: hidden; }
+
+/* Desktop: 2 columns — text+photo (float) left, demo right */
+@media (min-width: 992px) {
+  .profile-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "text demo";
+    gap: 2rem;
+    align-items: start;
+  }
+  .profile-text { grid-area: text; }
+  .profile-demo { grid-area: demo; }
+}
+
+.profile-photo {
+  width: 130px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
 .hero h1 {
   font-weight: 700;
   margin-bottom: 1rem;
