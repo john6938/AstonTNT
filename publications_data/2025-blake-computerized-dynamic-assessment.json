@@ -23,9 +23,11 @@
   "date": "2025-01-01",
   "status": "published",
   "peer_reviewed": true,
+  "booktitle": "",
+  "editor": "",
   "pages": "17–28",
   "publisher": "Springer",
   "doi": "10.1007/978-3-031-85561-0_2",
-  "abstract": "",
+  "abstract": "Here we report on the development of the first Computerized Dynamic Assessment (C-DA) platform for pragmatic failure in request emails written by Japanese learners of English. Dynamic language assessments are usually dyadic interactions between the tutor and the learner. In our online C-DA, we harness natural language processing algorithms to detect specific instances of pragmatic failure in learner email texts. On matching, graduated feedback in the form of increasingly more explicit hints is displayed sequentially until either learners have appropriately revised the text or the allocated number of attempts is reached. The C-DA incorporates researcher- and learner-facing interfaces, automatically generates progress reports for learners, and tracks all activities for research purposes.",
   "tags": []
 }

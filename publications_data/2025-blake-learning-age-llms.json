@@ -15,9 +15,11 @@
   "date": "2025-01-01",
   "status": "published",
   "peer_reviewed": true,
+  "booktitle": "",
+  "editor": "",
   "publisher": "Springer",
   "doi": "10.1007/978-981-96-2921-3_9",
   "pdf": "https://jb11.org/pdfs/blake2025learning.pdf",
-  "abstract": "",
+  "abstract": "This paper explores the transformative impact of LLMs on education and proposes an innovative solution: harnessing bimodal input and output as a means to boost, not bypass, the learning process. This proposed approach emphasizes the critical roles of synthesis and analysis within learning tasks. By structuring assignments in a manner that requires students to synthesize information from different sources to create suitable prompts for LLMs, the true potential of learning is reignited. Furthermore, students need to analyze the output of the LLM to create the required mode and format. This process necessitates a higher level of cognitive engagement, fostering critical thinking, creativity, and active learning. By interweaving textual and non-textual elements, the bimodal approach ensures that students are not merely recipients of information but active constructors of knowledge. By embracing the bimodal approach, the potential hindrance of LLMs is transformed into a powerful tool enriching and amplifying the learning process.",
   "tags": []
 }

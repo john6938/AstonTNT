@@ -12,22 +12,23 @@
     },
     {
       "family": "Zhao",
-      "given": "P."
+      "given": "Peng"
     },
     {
       "family": "Pyshkin",
-      "given": "E."
+      "given": "Evgeny"
     }
   ],
   "year": 2025,
   "date": "2025-01-01",
   "status": "published",
   "peer_reviewed": true,
+  "booktitle": "",
   "editor": "C. Sombattheera, Weng, P. and Pang, J.",
   "pages": "89-101",
   "publisher": "Springer",
   "doi": "10.1007/978-981-96-0692-4_8",
   "pdf": "https://jb11.org/pdfs/blake2025trendscribe.pdf",
-  "abstract": "",
+  "abstract": " Time series descriptions often accompany graphs to help readers focus on the key trends. Major English language proficiency tests, such as IELTS and TOEIC, incorporate such descriptions into their written examinations. Trend descriptions are, therefore, a high-stakes genre for learners of English aiming to study at universities in Anglophone countries. To help learners become more familiar with the genre and to provide language practice at an appropriate level, we developed TrendScribe. This is the first interactive online tool that enables users to generate textual descriptions of single-line graphs from user-submitted time series data. Both rule-based and LLM-based systems are used to generate textual descriptions. Complex datasets are preprocessed using a smoothing algorithm. Users can view descriptions at their preferred proficiency level, with each level offering a corresponding increase in lexical and grammatical complexity.",
   "tags": []
 }

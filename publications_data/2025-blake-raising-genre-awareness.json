@@ -24,6 +24,6 @@
   "issue": "3",
   "pages": "100162",
   "doi": "10.1016/j.acorp.2025.100162",
-  "abstract": "",
+  "abstract": "This paper introduces the Feature Visualizer, an open-access AI-powered tool designed to raise genre awareness among novice academic writers through inductive learning, a process that includes approaches such as discovery learning. The tool houses an annotated corpus of scientific research articles written by computer science majors and allows learners to explore authentic texts using on-demand visualizations and multimodal explanations. By engaging with the corpus, learners identify recurring language patterns and rhetorical structures at macro, meso, and micro levels, facilitating the bottom-up discovery of genre conventions. A longitudinal study with Japanese undergraduate computer science majors showed that the tool enhanced learners’ awareness of academic writing conventions and genre features. Focus group interviews further confirmed the usability and pedagogical value of the Feature Visualizer. We conclude by discussing practical applications for genre-based writing instruction informed by inductive learning principles.",
   "tags": []
 }

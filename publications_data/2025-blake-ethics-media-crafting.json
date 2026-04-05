@@ -15,10 +15,11 @@
   "date": "2025-01-01",
   "status": "published",
   "peer_reviewed": true,
+  "booktitle": "",
   "editor": "Camilo, E. and Bouziane, K.",
   "pages": "229-254",
   "publisher": "Labcom Publications",
   "url": "https://labcom.ubi.pt/transcultural-media-narratives-cross-cultural-communication-insights/",
-  "abstract": "",
+  "abstract": "This chapter investigates the interplay between ethical considerations and artificial intelligence (AI) in content production and interpretation by transcultural audiences, focusing on integrity, inclusivity, and impact. It argues for the enhancement of critical and digital literacy to assess the authenticity of AI-mediated narratives, the need for AI to support rather than replace human judgment in avoiding misinformation, and the development of human-centric AI systems that respect cultural subtleties and foster equitable representation. Through ethical frameworks, such as consequentialism, deontological ethics, virtue ethics, and the ethics of care, I advocate for AI that promotes truthfulness, mitigates biases, and respects diverse identities. Transparency and critical literacy are paramount in empowering audiences to demand diverse media narratives and the responsibility for ensuring AI-generated content does not perpetuate stereotypes is placed on both the users and creators of AI. This chapter calls for ethical AI deployment that aligns with human values and enhances global cultural discourse, showing the significance of ethical foresight and humanistic considerations in transcultural communications.",
   "tags": []
 }

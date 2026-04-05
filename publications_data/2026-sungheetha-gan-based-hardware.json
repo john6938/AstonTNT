@@ -31,6 +31,8 @@
   "date": "2026-01-01",
   "status": "in_press",
   "peer_reviewed": true,
+  "booktitle": "",
+  "editor": "",
   "abstract": "",
   "tags": []
 }

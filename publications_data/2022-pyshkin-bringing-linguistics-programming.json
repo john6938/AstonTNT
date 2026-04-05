@@ -19,6 +19,7 @@
   "date": "2022-01-01",
   "status": "published",
   "peer_reviewed": true,
+  "booktitle": "",
   "editor": "H. Fujita, Y. Watanobe, and T. Azumi",
   "pages": "621-630",
   "publisher": "IOS Press",

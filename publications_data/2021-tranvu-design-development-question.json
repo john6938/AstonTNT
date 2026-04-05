@@ -19,6 +19,7 @@
   "date": "2021-01-01",
   "status": "published",
   "peer_reviewed": true,
+  "booktitle": "",
   "editor": "D. Roy, G. Fragulis and H.A. Cantu Campos",
   "pages": "01011",
   "doi": "10.1051/shsconf/202110201011",

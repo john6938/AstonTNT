@@ -26,13 +26,18 @@ Academic website for showcasing research, recruiting graduate students, and shar
 - [x] Favicon added (favicon.ico)
 - [x] pathPrefix fix: all URLs use `| url` filter for subfolder deployment
 - [x] Deployed to https://john6938.github.io/AstonTNT/
+- [x] Profile photo added to homepage
+- [x] Publications page with full data-driven system (`publications_data/` JSON files)
+  - Chronological, By Type, By Status, and Search views
+  - BibTeX and APA7 auto-generation, DOI/PDF links, collapsible abstracts
+  - All book chapters have `booktitle` and `editor` fields (content to be filled)
+- [x] Footer quotes added
+- [x] Page content updated (supervision, research, tools, courses)
 
 ### To Do
-- [ ] Add real content to Research page (publications, projects, team)
+- [ ] Fill in `booktitle` for all book chapters in `publications_data/`
 - [ ] Add real content to Tools page (link to actual tools)
 - [ ] Add real content to Courses page (link to course materials)
-- [ ] Add real content to Supervision page (graduate student info, requirements)
-- [ ] Add profile photo/images
 - [ ] Add contact information
 - [ ] Configure custom domain for GitHub Pages
 - [ ] Consider adding more NLP demos (language detection, etc.)
@@ -77,6 +82,8 @@ aston_site/
     ├── index.njk             # Landing page
     ├── research/
     │   └── index.njk         # Research section
+    ├── publications/
+    │   └── index.njk         # Publications list (data-driven)
     ├── supervision/
     │   └── index.njk         # Supervision/graduate students section
     ├── tools/
@@ -179,7 +186,6 @@ To enable GitHub Pages:
 
 - Add language detection demo alongside sentiment
 - Word cloud visualization (from old site)
-- Publication list with filtering
 - Course progress tracking
 - Graduate student application form
 - Research project showcases with demos
