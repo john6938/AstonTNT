@@ -42,6 +42,11 @@ Academic website for showcasing research, recruiting graduate students, and shar
 - [ ] Configure custom domain for GitHub Pages
 - [ ] Consider adding more NLP demos (language detection, etc.)
 
+### Course Design Issues
+- [ ] Create bespoke landing pages for each course (currently the template only covers unit pages)
+- [ ] Decide on tool URLs for the sidebar tools list (currently placeholders)
+- [ ] Add remaining activity types as macros: drag-and-drop, timer, code editor, canvas visualizer, async simulation
+
 ---
 
 ## Tech Stack (Implemented)

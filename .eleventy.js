@@ -11,6 +11,9 @@ module.exports = function(eleventyConfig) {
   // Shortcode for current year
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
+  // Zero-pad a number to 2 digits (e.g. 1 → "01") — used in course unit nav URLs
+  eleventyConfig.addFilter("twoDigit", n => String(n).padStart(2, '0'));
+
   // Format author array [{family, given, self?}] → HTML string, self author highlighted
   eleventyConfig.addFilter("formatAuthors", function(authors) {
     if (!authors || !authors.length) return '';

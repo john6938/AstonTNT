@@ -1,0 +1,208 @@
+---
+unit: 1
+unitTitle: Introduction
+title: "Unit 1: Introduction — Demo Course"
+description: "A template unit demonstrating all available course activity components."
+quote: "&ldquo;The more that you read, the more things you will know.&rdquo; &mdash; Dr. Seuss"
+objectives:
+  - Understand the structure and purpose of a course unit page
+  - Identify the core activity types available in the template
+  - Use the accordion, quiz, audio, video, and tab components correctly
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, audioPlayer, videoEmbed, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Reading / Introduction ═════════════════════════════ #}
+
+{% call activitySection(1, "Introduction", "book") %}
+<p>
+  Welcome to Unit 1. This page is a <strong>template</strong> showing all the
+  standard activity components available for building course units. Replace the
+  placeholder content with your own material.
+</p>
+<p>
+  Each activity is wrapped in a numbered card. The objectives above are driven
+  by the <code>objectives</code> list in the page frontmatter — no HTML needed.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Accordion (Q&A reveal) ════════════════════════════ #}
+
+{% call activitySection(2, "Key Questions", "chat-left-text") %}
+<p class="mb-3">
+  Expand each question and think about your answer before reading the response.
+</p>
+<div class="accordion" id="unit01-accordion">
+
+  {% call accordion("acc-01-a", "What is the main purpose of this activity type?") %}
+  <p>
+    Accordion reveals encourage learners to actively recall an answer before
+    reading the explanation. They work well for vocabulary, definitions, and
+    reflective questions.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-01-b", "When should you use a tab set instead of an accordion?") %}
+  <p>
+    Use tabs when the content options are roughly equal in length and the learner
+    should easily switch between them for comparison. Use accordions when the
+    items are sequential or when you want only one item visible at a time.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-01-c", "Can accordion items contain formatted content?") %}
+  <p>
+    Yes — the accordion body accepts any HTML. You can include lists, code
+    blocks, images, or even nested activity components.
+  </p>
+  <ul>
+    <li>Lists work fine</li>
+    <li>So does <strong>bold</strong> and <em>italic</em> text</li>
+  </ul>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Audio player ═══════════════════════════════════════ #}
+
+{% call activitySection(3, "Listening", "headphones") %}
+<p class="mb-3">
+  Listen to the audio and make notes on the key points raised.
+</p>
+{{ audioPlayer("/assets/audio/placeholder.mp3", "Tutor introduction — approx. 2 minutes") }}
+<div class="mt-3">
+  <p class="small" style="color:#e0e0e0;">
+    <i class="bi bi-info-circle"></i>
+    Replace the <code>src</code> path with the real audio file.
+    The second argument is the caption shown below the player.
+  </p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Multiple-choice quiz ══════════════════════════════ #}
+
+{% call activitySection(4, "Check Your Understanding", "patch-question") %}
+<p class="mb-3">Select the best answer for each question.</p>
+
+{% call quizMC("quiz-01-a", "Which component should you use for sequential Q&A reveals?", 1,
+   "Accordions are designed for sequential, one-at-a-time reveals. Tabs are better for parallel comparisons.") %}
+  <label class="quiz-option">
+    <input type="radio" name="quiz-01-a" value="0"> Tab set
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="quiz-01-a" value="1"> Accordion
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="quiz-01-a" value="2"> Audio player
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="quiz-01-a" value="3"> Video embed
+  </label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-01-b", "Where are the learning objectives defined for a unit page?", 0,
+   "Objectives are listed in the page frontmatter as a YAML array, so no HTML markup is needed in the unit file.") %}
+  <label class="quiz-option">
+    <input type="radio" name="quiz-01-b" value="0"> In the page frontmatter as a YAML list
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="quiz-01-b" value="1"> Hardcoded in the course-unit layout
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="quiz-01-b" value="2"> In a separate data file for each unit
+  </label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Tabbed content ════════════════════════════════════ #}
+
+{% set strategyTabs = [
+  {id: "why",      label: "Why"},
+  {id: "how",      label: "How"},
+  {id: "example",  label: "Example"}
+] %}
+
+{% call activitySection(5, "Approaches", "layout-text-sidebar") %}
+<p class="mb-3">
+  Tabs work well when presenting parallel views of the same topic — such as
+  why, how, and a worked example.
+</p>
+
+{% call tabSet("unit01-tabs", strategyTabs) %}
+  <div class="tab-pane fade show active" id="unit01-tabs-why" role="tabpanel">
+    <p>
+      Explain the <strong>purpose</strong> or motivation for the concept.
+      Why does it matter? What problem does it solve?
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit01-tabs-how" role="tabpanel">
+    <p>
+      Describe <strong>how</strong> it works — the steps, rules, or process
+      involved. Use numbered lists or code blocks where appropriate.
+    </p>
+    <ol>
+      <li>Step one</li>
+      <li>Step two</li>
+      <li>Step three</li>
+    </ol>
+  </div>
+  <div class="tab-pane fade" id="unit01-tabs-example" role="tabpanel">
+    <p>
+      Provide a <strong>concrete example</strong>. Show input and output,
+      or walk through the steps with real data.
+    </p>
+    <code>input → process → output</code>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Activity 6 — Video embed ════════════════════════════════════════ #}
+
+{% call activitySection(6, "Watch", "play-circle") %}
+<p class="mb-3">Watch the video and answer the reflection question below.</p>
+{{ videoEmbed("dQw4w9WgXcQ", "Replace this YouTube ID with the real video. Caption is optional.") }}
+<div class="mt-3 p-3" style="background:#333; border-radius:0.375rem;">
+  <p class="mb-1 fw-semibold">Reflection</p>
+  <p class="mb-0 small" style="color:#e0e0e0;">
+    After watching, write 2–3 sentences summarising the main point in your own words.
+  </p>
+</div>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>
+  Use this section for end-of-unit self-assessment. You can place additional
+  quiz components here, a summary accordion, or a reflective writing prompt.
+</p>
+
+<div class="accordion mt-3" id="unit01-review-accordion">
+  {% call accordion("rev-01-a", "Summary: What are the core activity types in this template?") %}
+  <ul>
+    <li><strong>Accordion</strong> — Q&amp;A reveals, definitions, guided reflection</li>
+    <li><strong>Audio player</strong> — listening tasks, tutor introductions</li>
+    <li><strong>Video embed</strong> — YouTube lectures or demonstrations</li>
+    <li><strong>Multiple-choice quiz</strong> — comprehension checks with instant feedback</li>
+    <li><strong>Tab set</strong> — parallel views (why / how / example)</li>
+  </ul>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-02') | url }}">Unit 2</a> when ready.
+</p>
+{% endcall %}

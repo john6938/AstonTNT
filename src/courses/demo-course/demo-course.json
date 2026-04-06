@@ -1,0 +1,24 @@
+{
+  "layout": "layouts/course-unit.njk",
+  "courseTitle": "Demo Course",
+  "courseBaseUrl": "/courses/demo-course",
+  "unitCount": 10,
+  "unitTitles": [
+    "Introduction",
+    "Core Concepts",
+    "Unit 3",
+    "Unit 4",
+    "Unit 5",
+    "Unit 6",
+    "Unit 7",
+    "Unit 8",
+    "Unit 9",
+    "Review & Synthesis"
+  ],
+  "quote": "&ldquo;An investment in knowledge pays the best interest.&rdquo; &mdash; Benjamin Franklin",
+  "courseTools": [
+    { "label": "Error Detector",   "url": "#", "icon": "search" },
+    { "label": "Move Visualizer",  "url": "#", "icon": "graph-up" },
+    { "label": "Tense Identifier", "url": "#", "icon": "clock-history" }
+  ]
+}

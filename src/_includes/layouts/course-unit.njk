@@ -1,0 +1,93 @@
+---
+layout: layouts/base.njk
+courseUnit: true
+---
+
+{# ── Page header ──────────────────────────────────────────────────────── #}
+<section class="page-header course-page-header">
+  <div class="container">
+    {% if courseBaseUrl %}
+    <a href="{{ courseBaseUrl | url }}" class="course-back-link">
+      <i class="bi bi-arrow-left"></i> {{ courseTitle }}
+    </a>
+    {% endif %}
+    <h1>Unit {{ unit }}: {{ unitTitle }}</h1>
+  </div>
+</section>
+
+{# ── Two-column layout ─────────────────────────────────────────────────── #}
+<div class="container py-4">
+  <div class="row g-4">
+
+    {# ── Main content ──────────────────────────────────────────────────── #}
+    <div class="col-lg-9 order-2 order-lg-1">
+
+      {# Learning objectives — driven by frontmatter #}
+      {% if objectives %}
+      <section class="course-objectives course-section mb-4">
+        <h2><i class="bi bi-bullseye"></i> Learning Objectives</h2>
+        <ul class="objectives-list">
+          {% for obj in objectives %}
+          <li>{{ obj }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
+      {# Activities and review — written in the unit page using macros #}
+      {{ content | safe }}
+
+    </div>
+
+    {# ── Sidebar ───────────────────────────────────────────────────────── #}
+    <div class="col-lg-3 order-1 order-lg-2">
+      <div class="course-sidebar sticky-top">
+
+        {# Unit navigation #}
+        <div class="card course-nav-card mb-3">
+          <div class="card-header">
+            <span class="fw-semibold">{{ courseTitle }}</span>
+          </div>
+          <div class="list-group list-group-flush course-unit-nav">
+            {% if courseBaseUrl %}
+            <a href="{{ courseBaseUrl | url }}"
+               class="list-group-item list-group-item-action course-nav-item {% if not unit %}active{% endif %}">
+              <i class="bi bi-house-fill me-1"></i> Overview
+            </a>
+            {% endif %}
+            {% for i in range(1, unitCount + 1) %}
+            <a href="{{ (courseBaseUrl + '/unit-' + (i | twoDigit)) | url }}"
+               class="list-group-item list-group-item-action course-nav-item {% if i == unit %}active{% endif %}">
+              <span class="course-nav-num">{{ i | twoDigit }}</span>
+              {% if unitTitles and unitTitles[i - 1] %}
+                {{ unitTitles[i - 1] }}
+              {% else %}
+                Unit {{ i }}
+              {% endif %}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+
+        {# Tools — override courseTools in frontmatter to customise #}
+        {% if courseTools %}
+        <div class="card course-tools-card">
+          <div class="card-header">
+            <span class="fw-semibold">Course Tools</span>
+          </div>
+          <div class="list-group list-group-flush">
+            {% for tool in courseTools %}
+            <a href="{{ tool.url }}" class="list-group-item list-group-item-action course-tool-item"
+               target="_blank" rel="noopener">
+              <i class="bi bi-{{ tool.icon | default('link-45deg') }} me-1"></i>{{ tool.label }}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+  </div>
+</div>

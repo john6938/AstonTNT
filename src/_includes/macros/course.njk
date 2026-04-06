@@ -1,0 +1,212 @@
+{#
+  macros/course.njk — Reusable activity components for course unit pages.
+
+  Usage in a unit page:
+    {% from "macros/course.njk" import activitySection, reviewSection,
+       accordion, audioPlayer, videoEmbed, quizMC, tabSet %}
+
+  Macros that wrap HTML content use Nunjucks caller():
+    {% call activitySection(1, "Introduction", "book") %}
+      <p>Content goes here.</p>
+    {% endcall %}
+#}
+
+
+{# ══════════════════════════════════════════════════════════════
+   STRUCTURAL WRAPPERS
+   ══════════════════════════════════════════════════════════════ #}
+
+{# Activity section — numbered card wrapping any content.
+   num:  activity number (shown in orange circle)
+   title: heading text
+   icon:  Bootstrap Icons name without "bi-" prefix (optional) #}
+{% macro activitySection(num, title, icon) %}
+<section class="course-activity course-section mb-4">
+  <div class="activity-header">
+    <span class="activity-num">{{ num }}</span>
+    {% if icon %}<i class="bi bi-{{ icon }}"></i>{% endif %}
+    <h2 class="activity-title-text">{{ title }}</h2>
+  </div>
+  {{ caller() }}
+</section>
+{% endmacro %}
+
+
+{# Review section — distinct end-of-unit wrapper.
+   Use {% call reviewSection() %} … {% endcall %} #}
+{% macro reviewSection() %}
+<section class="course-review course-section mb-4">
+  <h2><i class="bi bi-check-circle"></i> Review</h2>
+  {{ caller() }}
+</section>
+{% endmacro %}
+
+
+{# ══════════════════════════════════════════════════════════════
+   ACCORDION
+   ══════════════════════════════════════════════════════════════ #}
+
+{# Single accordion item — wrap multiple inside one <div class="accordion">.
+   id:       unique string used as the collapse target ID
+   question: button / header text
+   Body content provided via caller().
+
+   Example:
+     <div class="accordion mb-3" id="myAccordion">
+       {% call accordion("acc1", "What is tokenization?") %}
+         <p>Tokenization splits text into individual tokens.</p>
+       {% endcall %}
+       {% call accordion("acc2", "What is lemmatization?") %}
+         <p>Lemmatization reduces words to their base form.</p>
+       {% endcall %}
+     </div>
+#}
+{% macro accordion(id, question) %}
+<div class="accordion-item">
+  <h3 class="accordion-header">
+    <button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#{{ id }}"
+            aria-expanded="false"
+            aria-controls="{{ id }}">
+      {{ question }}
+    </button>
+  </h3>
+  <div id="{{ id }}" class="accordion-collapse collapse">
+    <div class="accordion-body">
+      {{ caller() }}
+    </div>
+  </div>
+</div>
+{% endmacro %}
+
+
+{# ══════════════════════════════════════════════════════════════
+   MEDIA
+   ══════════════════════════════════════════════════════════════ #}
+
+{# Audio player.
+   src:     path or URL to audio file
+   caption: optional text shown below the player #}
+{% macro audioPlayer(src, caption) %}
+<div class="course-audio-wrap">
+  <audio controls preload="none">
+    <source src="{{ src }}">
+    Your browser does not support the audio element.
+  </audio>
+  {% if caption %}
+  <p class="course-audio-caption">{{ caption }}</p>
+  {% endif %}
+</div>
+{% endmacro %}
+
+
+{# YouTube video embed.
+   youtubeId: the video ID from the YouTube URL (e.g. "dQw4w9WgXcQ")
+   caption:   optional text shown below the player #}
+{% macro videoEmbed(youtubeId, caption) %}
+<div class="course-video-wrap mb-1">
+  <iframe
+    src="https://www.youtube.com/embed/{{ youtubeId }}"
+    title="{{ caption | default('Video') }}"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+{% if caption %}
+<p class="course-video-caption">{{ caption }}</p>
+{% endif %}
+{% endmacro %}
+
+
+{# ══════════════════════════════════════════════════════════════
+   MULTIPLE-CHOICE QUIZ
+   ══════════════════════════════════════════════════════════════ #}
+
+{# Multiple-choice quiz.
+   id:           unique string (used as element ID)
+   question:     question text
+   correctIndex: 0-based index of the correct option
+   explanation:  text shown in both correct and incorrect feedback
+
+   Body (caller) should contain one <label class="quiz-option"> per option:
+     <label class="quiz-option">
+       <input type="radio" name="{{ id }}" value="0"> Option A
+     </label>
+     <label class="quiz-option">
+       <input type="radio" name="{{ id }}" value="1"> Option B
+     </label>
+     …
+
+   course.js handles checkQuiz() and resetQuiz().
+#}
+{% macro quizMC(id, question, correctIndex, explanation) %}
+<div class="course-quiz" id="{{ id }}" data-correct="{{ correctIndex }}">
+  <p class="quiz-question">{{ question }}</p>
+  <div class="quiz-options">
+    {{ caller() }}
+  </div>
+  <div class="mt-3 d-flex gap-2">
+    <button class="btn btn-sm course-btn quiz-check-btn" onclick="checkQuiz(this)">
+      Check Answer
+    </button>
+    <button class="btn btn-sm btn-outline-secondary" onclick="resetQuiz(this)">
+      Reset
+    </button>
+  </div>
+  <div class="quiz-feedback d-none mt-2">
+    <div class="quiz-correct d-none">
+      <i class="bi bi-check-circle-fill"></i> Correct! {{ explanation }}
+    </div>
+    <div class="quiz-incorrect d-none">
+      <i class="bi bi-x-circle-fill"></i> Not quite — review the material and try again. {{ explanation }}
+    </div>
+  </div>
+</div>
+{% endmacro %}
+
+
+{# ══════════════════════════════════════════════════════════════
+   TABBED CONTENT
+   ══════════════════════════════════════════════════════════════ #}
+
+{# Tab set wrapper — generates the tab nav from a list of {id, label} objects.
+   Body (caller) should contain one <div class="tab-pane …"> per tab.
+
+   tabItems format: array of objects, e.g.
+     {% set myTabs = [
+       {id: "approach", label: "Approach"},
+       {id: "example",  label: "Example"},
+       {id: "code",     label: "Code"}
+     ] %}
+
+   Example:
+     {% call tabSet("strategy-tabs", myTabs) %}
+       <div class="tab-pane fade show active" id="strategy-tabs-approach" role="tabpanel">
+         <p>Content for tab 1.</p>
+       </div>
+       <div class="tab-pane fade" id="strategy-tabs-example" role="tabpanel">
+         <p>Content for tab 2.</p>
+       </div>
+     {% endcall %}
+#}
+{% macro tabSet(id, tabItems) %}
+<ul class="nav nav-tabs course-tabs mb-0" id="{{ id }}" role="tablist">
+  {% for tab in tabItems %}
+  <li class="nav-item" role="presentation">
+    <button class="nav-link {% if loop.first %}active{% endif %}"
+            id="{{ id }}-{{ tab.id }}-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#{{ id }}-{{ tab.id }}"
+            type="button" role="tab"
+            aria-controls="{{ id }}-{{ tab.id }}"
+            aria-selected="{{ 'true' if loop.first else 'false' }}">
+      {{ tab.label }}
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+<div class="tab-content course-tab-content" id="{{ id }}-content">
+  {{ caller() }}
+</div>
+{% endmacro %}
