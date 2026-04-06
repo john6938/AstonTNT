@@ -16,8 +16,12 @@ module.exports = function() {
     return pub;
   });
 
-  // Newest first
-  pubs.sort((a, b) => new Date(b.date) - new Date(a.date));
+  // Newest first (treat missing/empty dates as oldest)
+  pubs.sort((a, b) => {
+    const da = a.date ? new Date(a.date) : new Date(0);
+    const db = b.date ? new Date(b.date) : new Date(0);
+    return db - da;
+  });
 
   return pubs;
 };
