@@ -19,11 +19,11 @@
       "given": "Evgeny"
     }
   ],
-  "year": 2025,
-  "date": "2025-01-01",
+  "year": "2025",
+  "date": "",
   "status": "published",
   "peer_reviewed": true,
-  "booktitle": "",
+  "booktitle": "Proceedings of the 17th International Conference on Multi-disciplinary Trends in Artificial Intelligent, Springer Lecture Notes in Artificial Intlligence",
   "editor": "C. Sombattheera, Weng, P. and Pang, J.",
   "pages": "89-101",
   "publisher": "Springer",

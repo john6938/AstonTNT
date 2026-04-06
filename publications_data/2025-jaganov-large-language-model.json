@@ -1,8 +1,8 @@
 {
   "id": "jaganov2025-large-language-model-2",
   "bibtex_key": "Jaganov2025LargeLanguageModel2",
-  "type": "conference",
-  "pure_category": "contribution_to_conference",
+  "type": "journal",
+  "pure_category": "contribution_to_journal_article",
   "title": "Large Language Model-Driven Dynamic Assessment of Grammatical Accuracy in English Language Learner Writing",
   "authors": [
     {
@@ -27,9 +27,12 @@
   "date": "2025-01-01",
   "status": "published",
   "peer_reviewed": true,
-  "venue": "(arXiv:2505.00931). arXiv preprint. [ arxiv | pdf ]",
-  "url": "https://arxiv.org/abs/2505.00931",
-  "pdf": "https://jb11.org/pdfs/jaganov2025large_arxiv.pdf",
-  "abstract": "",
+   "peer_reviewed": true,
+  "venue": "IEEE Access",
+  "volume": "13",
+  "pages": "151538-151550",
+  "doi": "10.1109/ACCESS.2025.3603191",
+  "pdf": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11142695",
+  "abstract": "This study investigates the potential for Large Language Models (LLMs) to scale-up Dynamic Assessment (DA). To facilitate such an investigation, we first developed DynaWrite—a modular, microservices-based grammatical tutoring application which supports multiple LLMs to generate dynamic feedback to learners of English. Initial testing of 21 LLMs, revealed GPT-4o and neural-chat to have the most potential to scale-up DA in the language learning classroom. Further testing of these two candidates found both models performed similarly in their ability to accurately identify grammatical errors in user sentences. However, GPT-4o consistently outperformed neural-chat in the quality of its DA by generating clear, consistent, and progressively explicit hints. Real-time responsiveness and system stability were also confirmed through detailed performance testing, with GPT-4o exhibiting sufficient speed and stability. This study shows that LLMs can be used to scale-up dynamic assessment and thus enable dynamic assessment to be delivered to larger groups than possible in traditional teacher-learner settings.",
   "tags": []
 }

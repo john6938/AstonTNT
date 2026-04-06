@@ -19,13 +19,13 @@
       "given": "J."
     }
   ],
-  "year": 2025,
-  "date": "2025-01-01",
+  "year": "2025",
+  "date": "",
   "status": "published",
   "peer_reviewed": false,
   "venue": "Proceedings of the Extended Abstracts of the Conference on Human Factors in Computing Systems, CHI 2025",
   "doi": "10.1145/3706599.3719877",
   "pdf": "https://jb11.org/pdfs/nassani2025adaptive.pdf",
-  "abstract": "",
+  "abstract": "We introduce a novel approach to language learning leveraging digital humans as adaptive tutors within immersive XR environments. Our system’s novelty lies in the use of biosignals, specifically real-time heart rate data, collected from a Samsung Watch 7, to dynamically adapt the learning experience. The digital human tutor adjusts its behavior, feedback, and the difficulty of the learning content based on the learner’s inferred cognitive and emotional state. We present the fully developed system architecture, which integrates a customizable digital human powered by ConvAI, LLM, an XR environments, and a data streaming pipeline. While human participant testing is planned, preliminary insights from the system’s development demonstrate the technical feasibility of this approach. This research has the potential to significantly enhance language learning outcomes, engagement, and motivation by creating more personalized, and engaging learning experiences, paving the way for a new generation of adaptive educational technologies.",
   "tags": []
 }
