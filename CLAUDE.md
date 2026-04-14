@@ -35,6 +35,7 @@ Academic website for showcasing research, recruiting graduate students, and shar
 - [x] Page content updated (supervision, research, tools, courses)
 
 ### To Do
+- [ ] Create landing page for the first course
 - [ ] Fill in `booktitle` for all book chapters in `publications_data/`
 - [ ] Add more tool links as new versions of tools are finalised
 - [ ] Add real content to Courses page (link to course materials)
