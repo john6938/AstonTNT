@@ -36,7 +36,7 @@ Academic website for showcasing research, recruiting graduate students, and shar
 
 ### To Do
 - [ ] Fill in `booktitle` for all book chapters in `publications_data/`
-- [ ] Add links to all tools (only New Pronunciation Scaffolder linked so far)
+- [ ] Add more tool links as new versions of tools are finalised
 - [ ] Add real content to Courses page (link to course materials)
 - [ ] Configure custom domain for GitHub Pages
 - [ ] Consider adding more NLP demos (language detection, etc.)
