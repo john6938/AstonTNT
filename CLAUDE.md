@@ -37,6 +37,7 @@ Academic website for showcasing research, recruiting graduate students, and shar
 ### To Do
 - [ ] Fill in `booktitle` for all book chapters in `publications_data/`
 - [ ] Add real content to Tools page (link to actual tools)
+- [ ] Add links to all tools (only New Pronunciation Scaffolder linked so far)
 - [ ] Add real content to Courses page (link to course materials)
 - [ ] Add contact information
 - [ ] Configure custom domain for GitHub Pages
