@@ -13,7 +13,6 @@
   ],
   "quote": "&ldquo;No one wants to read excessively long studies.&rdquo; &mdash; Faber (2017)",
   "courseTools": [
-    { "label": "Feature Visualizer", "url": "https://fv.rt247a.ddns.me/", "icon": "eye" },
-    { "label": "Tense Identifier",   "url": "#", "icon": "clock-history" }
+    { "label": "Error Detector", "url": "https://error-detector.herokuapp.com/", "icon": "search" }
   ]
 }
