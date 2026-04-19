@@ -40,6 +40,7 @@ Academic website for showcasing research, recruiting graduate students, and shar
 - [ ] Configure custom domain for GitHub Pages
 - [ ] Consider adding more NLP demos (language detection, etc.)
 - [ ] Update Error Detector tool URL in `src/courses/error-free/error-free.json` when new version is ready (currently pointing to https://error-detector.herokuapp.com/)
+- [ ] Proofread each unit of the Error-Free Research Writing course (units 1–6)
 
 ### Course Design Issues
 - [ ] Create bespoke landing pages for each course (currently the template only covers unit pages)
