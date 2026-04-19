@@ -1,0 +1,19 @@
+{
+  "layout": "layouts/course-unit.njk",
+  "courseTitle": "Error-Free Research Writing",
+  "courseBaseUrl": "/courses/error-free",
+  "unitCount": 6,
+  "unitTitles": [
+    "Five-Filters Approach",
+    "Accuracy Filter",
+    "Brevity Filter",
+    "Clarity Filter",
+    "Objectivity Filter",
+    "Formality Filter"
+  ],
+  "quote": "&ldquo;No one wants to read excessively long studies.&rdquo; &mdash; Faber (2017)",
+  "courseTools": [
+    { "label": "Feature Visualizer", "url": "https://fv.rt247a.ddns.me/", "icon": "eye" },
+    { "label": "Tense Identifier",   "url": "#", "icon": "clock-history" }
+  ]
+}
