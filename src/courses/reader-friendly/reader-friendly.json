@@ -1,0 +1,18 @@
+{
+  "layout": "layouts/course-unit.njk",
+  "courseTitle": "Reader-Friendly Writing",
+  "courseBaseUrl": "/courses/reader-friendly",
+  "unitCount": 6,
+  "unitTitles": [
+    "Course Overview",
+    "Writing Clearly",
+    "Writing Concisely",
+    "Writing Courteously",
+    "Writing Correctly",
+    "Writing Completely"
+  ],
+  "quote": "&ldquo;Write for the reader, not for yourself.&rdquo; &mdash; Unknown",
+  "courseTools": [
+    { "label": "Error Detector", "url": "https://error-detector.herokuapp.com/", "icon": "search" }
+  ]
+}

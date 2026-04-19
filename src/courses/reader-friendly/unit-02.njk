@@ -1,0 +1,137 @@
+---
+unit: 2
+unitTitle: Writing Clearly
+title: "Unit 2: Writing Clearly — Reader-Friendly Writing"
+courseUnit: true
+objectives:
+  - Understand the importance of writing with clarity
+  - Recognise writing that is vague
+  - Recognise writing that is ambiguous
+  - Be aware of words that are unclear
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, tabSet %}
+
+
+{# ══ Activity 1 — Identifying vague and ambiguous expressions ════════ #}
+
+{% call activitySection(1, "Identifying Vague and Ambiguous Expressions", "search") %}
+<p>Writing is clear when the reader understands exactly what the writer intended. This means that there is no confusion caused by vagueness or ambiguity in the message. Ambiguous messages are ones that could be interpreted in two different ways. Vague messages are ones in which there is insufficient information given. In this unit, we focus on including sufficient information and presenting information logically.</p>
+
+<p class="mt-3 mb-3">Each of the following statements is unclear. The statements contain expressions that are vague or ambiguous. Click each item to reveal the issue and a suggested revision.</p>
+
+<div class="accordion" id="unit02-vague">
+  {% call accordion("cl-01", "1. Mr Yamashita is due to arrive on 02/01.") %}
+  <p><strong>Ambiguous.</strong> The date format is unclear — is the month February (02/01) or is it the 2nd of January?</p>
+  <p><strong>Revision:</strong> State the month in words to remove ambiguity, e.g. <em>Mr Yamashita is due to arrive on 2 January</em> or <em>1 February</em>.</p>
+  {% endcall %}
+
+  {% call accordion("cl-02", "2. Thank you for your recent correspondence.") %}
+  <p><strong>Vague.</strong> "Recent correspondence" does not specify the type of communication being referred to.</p>
+  <p><strong>Revision:</strong> State the type of correspondence, e.g. <em>Thank you for your letter of 15 March</em> or <em>Thank you for your email.</em></p>
+  {% endcall %}
+
+  {% call accordion("cl-03", "3. Let's meet on the 1st floor near the escalator.") %}
+  <p><strong>Ambiguous.</strong> The term "1st floor" means different things in different countries — in Japan it is the ground floor, whereas in some other countries it is one floor above ground level.</p>
+  <p><strong>Revision:</strong> Name a specific landmark, or clarify which floor system is being used.</p>
+  {% endcall %}
+
+  {% call accordion("cl-04", "4. Would you please come to fix my computer next Monday?") %}
+  <p><strong>Ambiguous.</strong> People use "this" and "next" differently when referring to days of the week. Providing the date removes the ambiguity.</p>
+  <p><strong>Revision:</strong> Include both the day and the date, e.g. <em>Would you please come to fix my computer on Monday 14 April?</em></p>
+  {% endcall %}
+
+  {% call accordion("cl-05", "5. Subject line: Hi") %}
+  <p><strong>Vague.</strong> The subject line should state the content of the email. A vague subject line such as "Hi" may be filtered as spam and gives the reader no information about the content before opening.</p>
+  <p><strong>Revision:</strong> Use a descriptive subject line, e.g. <em>Request to reschedule meeting — 14 April</em>.</p>
+  {% endcall %}
+
+  {% call accordion("cl-06", "6. Please call me to arrange a meeting to discuss the problem.") %}
+  <p><strong>Vague.</strong> "The problem" assumes the reader knows which problem is being referred to. If there is any doubt, it should be stated explicitly.</p>
+  <p><strong>Revision:</strong> State the problem precisely, e.g. <em>...to discuss the budget shortfall in the Q2 report.</em></p>
+  {% endcall %}
+
+  {% call accordion("cl-07", "7. If you have any queries, please contact Ms Saito.") %}
+  <p><strong>Vague.</strong> The reader does not know who Ms Saito is or how to contact her.</p>
+  <p><strong>Revision:</strong> Include her role and contact details, e.g. <em>...please contact Ms Saito (Office Manager) at saito@company.com.</em></p>
+  {% endcall %}
+
+  {% call accordion("cl-08", "8. I have sent the replacement parts to you.") %}
+  <p><strong>Vague.</strong> The message does not specify which parts, how many, or how they were sent.</p>
+  <p><strong>Revision:</strong> e.g. <em>I have sent three replacement fan units to your Tokyo office by courier (tracking number: 12345).</em></p>
+  {% endcall %}
+
+  {% call accordion("cl-09", "9. I will come and see you sometime.") %}
+  <p><strong>Vague.</strong> "Sometime" gives no specific date or time. Either provide options or ask the reader to suggest a time.</p>
+  <p><strong>Revision:</strong> e.g. <em>I will come and see you on Wednesday or Thursday this week. Please let me know which suits you better.</em></p>
+  {% endcall %}
+
+  {% call accordion("cl-10", "10. Someone told me something about the thing.") %}
+  <p><strong>Vague.</strong> Every element of this sentence is unclear — who, what, and what. None of the reader's questions are answered.</p>
+  <p><strong>Revision:</strong> Replace each vague term with a specific referent.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — Writing clear sentences ════════════════════════════ #}
+
+{% call activitySection(2, "Writing Clear Sentences", "pencil") %}
+<p>Revise the sentences in Activity 1 by removing the ambiguous and vague expressions. Add details as necessary.</p>
+<p class="mt-2" style="color:#aaa; font-size:0.9rem;"><i class="bi bi-info-circle me-1"></i>Write your revised sentences in your notes or a document before comparing with the suggested revisions in Activity 1.</p>
+{% endcall %}
+
+
+{# ══ Activity 3 — Identifying ambiguous and vague expressions in an email ══ #}
+
+{% call activitySection(3, "Identifying Vague and Ambiguous Expressions in an Email", "envelope-open") %}
+<p class="mb-3">Read the email below and identify all instances of vagueness and ambiguity.</p>
+
+<div class="p-3 mb-3" style="background:#1e1e1e; border:1px solid #444; border-radius:6px; color:#ddd; font-size:0.9rem; line-height:1.8;">
+  <p><strong>To:</strong> Professor Blake</p>
+  <hr style="border-color:#444;">
+  <p>Dear Professor Blake</p>
+  <p>Thank you for the email that I opened this morning. I understand that you have a problem with the time. I am sorry that I did not provide a suitable time slot.</p>
+  <p>I will consider the appropriate time slots again and I will write back to you in the future. Thank you for considering my application.</p>
+  <p>I look forward to meeting you.</p>
+  <p>Best regards<br>Taro Sato (s12345678)</p>
+</div>
+
+<div class="accordion" id="unit02-email">
+  {% call accordion("em-01", "Show analysis of the email") %}
+  <ul style="line-height:2.2; color:#ddd;">
+    <li><strong>"the email that I opened this morning"</strong> — Vague. Which email? On what topic?</li>
+    <li><strong>"you have a problem with the time"</strong> — Vague. Which time? What kind of problem?</li>
+    <li><strong>"I will consider the appropriate time slots again"</strong> — Vague. Which time slots? When will the writer reconsider?</li>
+    <li><strong>"I will write back to you in the future"</strong> — Vague. When in the future? By what date?</li>
+    <li><strong>"Thank you for considering my application"</strong> — Vague. Which application?</li>
+    <li><strong>"I look forward to meeting you"</strong> — Assumes a meeting has been agreed when none has been confirmed.</li>
+  </ul>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Writing a clear email ══════════════════════════════ #}
+
+{% call activitySection(4, "Writing a Clear Email", "envelope-paper") %}
+<p>Your name is Taro Sato. You had emailed Professor Blake to arrange an appointment. In your first email you suggested two possible times to meet. The last email you received stated that the professor was not available at either of the suggested times.</p>
+<p class="mt-2">Rewrite the email in Activity 3 to Professor Blake. Remove all vague and ambiguous expressions and replace them with specific, clear information.</p>
+<p class="mt-2" style="color:#aaa; font-size:0.9rem;"><i class="bi bi-info-circle me-1"></i>Write your revised email in your notes or a document.</p>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Can you identify:</p>
+<ul>
+  <li>Ambiguous expressions?</li>
+  <li>Vague expressions?</li>
+</ul>
+<p>If you cannot, you should work on this before moving to the next unit.</p>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-03') | url }}">Unit 3: Writing Concisely</a> when ready.
+</p>
+{% endcall %}

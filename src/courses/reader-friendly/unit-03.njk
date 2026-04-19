@@ -1,0 +1,197 @@
+---
+unit: 3
+unitTitle: Writing Concisely
+title: "Unit 3: Writing Concisely — Reader-Friendly Writing"
+courseUnit: true
+objectives:
+  - Know the two types of verbosity — redundancy and repetition
+  - Be able to identify verbose expressions
+  - Have practised writing concisely
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, tabSet %}
+
+
+{# ══ Activity 1 — Repetition ═════════════════════════════════════════ #}
+
+{% call activitySection(1, "Repetition", "files") %}
+<p>Concise writing does not include any words that do not add to the meaning. Writing concisely is a skill that requires practice. The first step is to understand the two main causes of verbosity.</p>
+
+<p class="mt-3">Repetition is a common feature in all languages. Consider a simple introduction:</p>
+<blockquote class="p-3 mt-2 mb-3" style="background:#1e1e1e; border-left:3px solid #e67e22; border-radius:0 6px 6px 0; color:#ddd; font-style:italic;">
+  "I am Tommy. I am a student in the University of Aizu. I am currently in year 2."
+</blockquote>
+<p>As a spoken introduction this is just fine. However, in writing we need to reduce the repetition. Work through the steps below to see how this can be achieved.</p>
+
+{% set repTabs = [
+  {id: "rep-1", label: "Step 1"},
+  {id: "rep-2", label: "Step 2"},
+  {id: "rep-3", label: "Step 3"},
+  {id: "rep-4", label: "Step 4"},
+  {id: "rep-5", label: "Step 5"}
+] %}
+{% call tabSet("unit03-rep", repTabs) %}
+  <div class="tab-pane fade show active" id="unit03-rep-rep-1" role="tabpanel">
+    <p><strong>Original (18 words):</strong></p>
+    <p style="color:#f5c279;"><em>"I am Tommy. I am a student in the University of Aizu. I am currently in year 2."</em></p>
+    <p>Three separate sentences. The subject and verb <strong>"I am"</strong> are repeated three times.</p>
+  </div>
+  <div class="tab-pane fade" id="unit03-rep-rep-2" role="tabpanel">
+    <p><strong>Remove repeated subject and verb:</strong></p>
+    <p style="color:#f5c279;"><em>"I am Tommy, a student in the University of Aizu, currently in year 2."</em></p>
+    <p>The three sentences are combined into one. "I am" now appears only once.</p>
+  </div>
+  <div class="tab-pane fade" id="unit03-rep-rep-3" role="tabpanel">
+    <p><strong>Shorten "currently in year 2":</strong></p>
+    <p style="color:#f5c279;"><em>"I am Tommy, a second-year student in the University of Aizu."</em></p>
+    <p>"Currently in year 2" becomes the attributive adjective "second-year", reducing two words to one.</p>
+  </div>
+  <div class="tab-pane fade" id="unit03-rep-rep-4" role="tabpanel">
+    <p><strong>Use a single-word equivalent:</strong></p>
+    <p style="color:#f5c279;"><em>"I am Tommy, a sophomore in the University of Aizu."</em></p>
+    <p>"Second-year student" can be replaced by the single word "sophomore" (10 words total).</p>
+  </div>
+  <div class="tab-pane fade" id="unit03-rep-rep-5" role="tabpanel">
+    <p><strong>Result:</strong></p>
+    <p style="color:#2ecc71; font-weight:600;">"I am Tommy, a sophomore in the University of Aizu."</p>
+    <p>The original spoken version comprised three sentences and <strong>18 words</strong>. The concise written version comprises one sentence with <strong>10 words</strong>. With almost half the number of words, the same meaning is expressed.</p>
+  </div>
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 2 — Redundancy ══════════════════════════════════════════ #}
+
+{% call activitySection(2, "Redundancy", "dash-circle") %}
+<p>Redundancy is also a common feature in all languages. Redundancy is useful in spoken languages as it reduces the pressure on the listener to attend to every word. In written communication it adds unnecessary length. Read the email below and consider how it could be made more concise.</p>
+
+<div class="p-3 mt-3 mb-3" style="background:#1e1e1e; border:1px solid #444; border-radius:6px; color:#ddd; font-size:0.9rem; line-height:1.8;">
+  <p>It has recently been brought to the attention of management that some members of staff have been arriving at the university at 9:20 in the morning, while others have been arriving as late as 9:30 or even later. Each and every member of our staff should be reminded that they are definitely bound by university regulations to arrive at the university campus in a timely fashion, which means exactly at 9 o'clock in the morning.</p>
+</div>
+
+<p class="mb-2">Click each item below to see where redundancy occurs and why.</p>
+<div class="accordion" id="unit03-redundancy">
+  {% call accordion("red-01", "\"It has recently been brought to the attention of management\"") %}
+  <p>Overly indirect. "We have recently noticed" or "Management has recently noticed" is more direct and concise.</p>
+  {% endcall %}
+  {% call accordion("red-02", "\"at 9:20 in the morning\" / \"at 9:30 or even later\"") %}
+  <p>"In the morning" is redundant once a time is specified. "As late as 9:30" already implies lateness; "or even later" adds nothing new.</p>
+  {% endcall %}
+  {% call accordion("red-03", "\"Each and every member of our staff\"") %}
+  <p>"Each" and "every" are near-synonyms. Using both is redundant. "All staff" is more concise.</p>
+  {% endcall %}
+  {% call accordion("red-04", "\"should be reminded that they are definitely bound by university regulations\"") %}
+  <p>"Definitely bound" is unnecessarily emphatic. "Required" or "expected" is sufficient.</p>
+  {% endcall %}
+  {% call accordion("red-05", "\"to arrive at the university campus in a timely fashion, which means exactly at 9 o'clock in the morning\"") %}
+  <p>"In a timely fashion" is vague. The meaning is clarified by "at 9:00 am", making the first phrase redundant. "University campus" — if the context is already clear, "at work" suffices.</p>
+  {% endcall %}
+</div>
+
+<div class="mt-4 p-3" style="background:#1e1e1e; border:1px solid #2ecc71; border-radius:6px; color:#ddd; font-size:0.9rem; line-height:1.8;">
+  <p class="mb-1" style="color:#2ecc71; font-weight:600;">Revised version:</p>
+  <p>We have recently noticed that some employees have been arriving at university as late as 9:30 am. All staff should remember that they are required to arrive at work on time at 9:00 am.</p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Identifying verbose expressions ════════════════════ #}
+
+{% call activitySection(3, "Identifying Verbose Expressions", "scissors") %}
+<p class="mb-3">Identify how to make the following sentences more concise by reducing repetition and redundancy. Click each sentence to reveal the explanation.</p>
+
+<div class="accordion" id="unit03-verbose">
+  {% call accordion("vb-01", "1. Dr Smith will arrive at 10.00 am. Dr Jones will also arrive at 10.00 am.") %}
+  <p><strong>Repetition.</strong> Both sentences share the same predicate. They can be combined.</p>
+  <p><strong>Revision:</strong> Dr Smith and Dr Jones will arrive at 10:00 am.</p>
+  {% endcall %}
+
+  {% call accordion("vb-02", "2. As I am sure that you know, the vending machine is out of service.") %}
+  <p><strong>Redundancy.</strong> "As I am sure that you know" adds no information and is condescending — if the reader already knows, the sentence is unnecessary; if they do not, the preamble is false.</p>
+  <p><strong>Revision:</strong> The vending machine is out of service.</p>
+  {% endcall %}
+
+  {% call accordion("vb-03", "3. Please be advised that the programme will be launched later in mid-October this year.") %}
+  <p><strong>Redundancy.</strong> "Please be advised that" is a common but unnecessary preamble. "Later" is also redundant since "mid-October this year" already specifies the time.</p>
+  <p><strong>Revision:</strong> The programme will be launched in mid-October.</p>
+  {% endcall %}
+
+  {% call accordion("vb-04", "4. Would you please come to fix my computer next Friday that is Friday 28 August?") %}
+  <p><strong>Redundancy.</strong> Stating both "next Friday" and "Friday 28 August" is redundant — one is sufficient. The date is preferable as it is unambiguous.</p>
+  <p><strong>Revision:</strong> Would you please come to fix my computer on Friday 28 August?</p>
+  {% endcall %}
+
+  {% call accordion("vb-05", "5. I will bring the above-mentioned device to your office.") %}
+  <p><strong>Redundancy.</strong> "Above-mentioned" is a formal legalistic term. If only one device has been discussed, a pronoun or simple noun is clearer and more concise.</p>
+  <p><strong>Revision:</strong> I will bring it to your office. (or: I will bring the device to your office.)</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Rewriting ═══════════════════════════════════════════ #}
+
+{% call activitySection(4, "Rewriting", "pencil-square") %}
+<p>Rewrite a more concise version for each of the sentences in Activity 3.</p>
+<p class="mt-2" style="color:#aaa; font-size:0.9rem;"><i class="bi bi-info-circle me-1"></i>Write your revised sentences before checking the model answers in Activity 3. Remember there are many ways to improve the sentences, so your answer does not need to be exactly the same as the model answer.</p>
+{% endcall %}
+
+
+{# ══ Activity 5 — Revising a verbose email ═══════════════════════════ #}
+
+{% call activitySection(5, "Revising a Verbose Email", "envelope-open") %}
+<p>A supervisor has had problems with student behaviour in the lab and needs to email his lab students. Read the email and work to write a concise, easy-to-understand email containing the same information.</p>
+
+<div class="p-3 mt-3 mb-3" style="background:#1e1e1e; border:1px solid #444; border-radius:6px; color:#ddd; font-size:0.9rem; line-height:1.8;">
+  <p>It has come to my attention that some students (but not all) are treating our lab as their own room. This must stop. This is a list of some of the incidents reported to me. I expect your cooperation.</p>
+  <ul>
+    <li>Recently, few students are using the in/out magnets to show they are in the lab. This is problematic. Usage of a lab is a privilege not a right.</li>
+    <li>Although alcohol consumption is already prohibited in the university campus, we have found empty beer cans on multiple occasions on the desks in lab. Two points — please do not drink in the lab and put your rubbish in the bin yourself.</li>
+    <li>The lab is a workplace, not a bedroom. Therefore, you are not free to bring a futon, work in your pyjamas and then sleep in the lab.</li>
+  </ul>
+</div>
+<p style="color:#aaa; font-size:0.9rem;"><i class="bi bi-info-circle me-1"></i>Write your revised email before revealing the model answer below.</p>
+
+<div class="accordion mt-3" id="unit03-email-model">
+  {% call accordion("em-model", "Show model answer and commentary") %}
+
+  <div class="p-3 mb-3" style="background:#2a2a2a; border:1px solid #2ecc71; border-radius:6px; color:#ddd; font-size:0.9rem; line-height:1.8;">
+    <p class="mb-1" style="color:#2ecc71; font-weight:600;">Revised email:</p>
+    <p>All students entering the lab must:</p>
+    <ul>
+      <li>wear appropriate clothing, i.e. no pyjamas.</li>
+      <li>indicate their presence with the in/out magnet on the lab door.</li>
+      <li>tidy up after themselves.</li>
+      <li>NOT drink alcohol.</li>
+      <li>NOT sleep overnight.</li>
+    </ul>
+  </div>
+
+  <p><strong>What changed and why:</strong></p>
+  <ul style="line-height:2; color:#ddd;">
+    <li>Five bullet points — one per behaviour change.</li>
+    <li>Each bullet point starts with a verb (or NOT + verb) for parallel structure.</li>
+    <li>The NOT items are grouped together at the end.</li>
+    <li>Bullet points follow a logical (roughly chronological) order.</li>
+    <li>Non-essential opinions and descriptions were removed.</li>
+  </ul>
+  <p style="color:#aaa;">The revised version comprises <strong>33 words</strong> compared to the original <strong>136 words</strong>. Approximately 75% of the words have been removed.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Can you identify:</p>
+<ul>
+  <li>Repeated expressions?</li>
+  <li>Redundant expressions?</li>
+</ul>
+<p>If you cannot, you should work on this before moving to the next unit.</p>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-04') | url }}">Unit 4: Writing Courteously</a> when ready.
+</p>
+{% endcall %}

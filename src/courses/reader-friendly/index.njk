@@ -1,0 +1,501 @@
+---
+layout: layouts/base.njk
+title: Reader-Friendly Writing - John Blake
+quote: "&ldquo;Write for the reader, not for yourself.&rdquo; &mdash; Unknown"
+---
+
+<section class="page-header">
+  <div class="container">
+    <nav aria-label="breadcrumb" class="mb-2">
+      <ol class="breadcrumb mb-0" style="background:transparent; padding:0; font-size:0.875rem;">
+        <li class="breadcrumb-item"><a href="{{ '/courses/' | url }}" style="color:#ff8c00;">Courses</a></li>
+        <li class="breadcrumb-item active" style="color:#aaa;">Reader-Friendly Writing</li>
+      </ol>
+    </nav>
+    <h1>Reader-Friendly Writing</h1>
+    <p class="lead mb-0">Writing that is clear, concise, courteous, correct and complete</p>
+  </div>
+</section>
+
+<section class="container py-4">
+  <div class="row g-5">
+
+    <!-- Main column -->
+    <div class="col-lg-8">
+
+      <p class="lead" style="color:#ccc;">Reader-friendly writing reduces the burden on the reader. It communicates the intended message in the shortest time, with the least effort, without distortion, and in a positive manner. This course focuses on the five core Cs that every writer needs to master.</p>
+
+      <!-- 5 Cs legend -->
+      <div class="rfw-legend mt-4">
+        <h4>The Five Cs</h4>
+        <div class="row g-2">
+          <div class="col-sm-6 col-lg-12 col-xl-6">
+            <div class="rfw-legend-badge rfw-clear"><strong>Clear</strong><span>unambiguous meaning</span></div>
+          </div>
+          <div class="col-sm-6 col-lg-12 col-xl-6">
+            <div class="rfw-legend-badge rfw-concise"><strong>Concise</strong><span>minimum words</span></div>
+          </div>
+          <div class="col-sm-6 col-lg-12 col-xl-6">
+            <div class="rfw-legend-badge rfw-courteous"><strong>Courteous</strong><span>appropriately polite</span></div>
+          </div>
+          <div class="col-sm-6 col-lg-12 col-xl-6">
+            <div class="rfw-legend-badge rfw-correct"><strong>Correct</strong><span>no factual or language errors</span></div>
+          </div>
+          <div class="col-sm-6 col-lg-12 col-xl-6">
+            <div class="rfw-legend-badge rfw-complete"><strong>Complete</strong><span>all necessary information</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flashcard activity -->
+      <div class="rfw-flashcard-section mt-4">
+        <div class="rfw-fc-header">
+          <h3>Reader-Friendly or Not?</h3>
+          <p>Read each sentence and decide. One sentence represents each C. The answer is revealed when you choose.</p>
+          <div class="rfw-progress-bar-wrap">
+            <div class="rfw-progress-bar" id="rfw-progress-bar" style="width:0%"></div>
+          </div>
+          <div class="rfw-progress-label">
+            Card <span id="rfw-card-num">1</span> of 5 &nbsp;&bull;&nbsp; Score: <span id="rfw-score">0</span>
+          </div>
+        </div>
+
+        <!-- Card -->
+        <div class="rfw-card-wrap">
+          <div class="rfw-card" id="rfw-card">
+            <p class="rfw-sentence" id="rfw-sentence"></p>
+          </div>
+        </div>
+
+        <!-- Answer buttons -->
+        <div class="rfw-answer-buttons" id="rfw-answer-buttons">
+          <button class="rfw-btn-friendly" id="rfw-btn-yes" onclick="rfwAnswer(true)">
+            <i class="bi bi-hand-thumbs-up me-1"></i>Reader-Friendly
+          </button>
+          <button class="rfw-btn-unfriendly" id="rfw-btn-no" onclick="rfwAnswer(false)">
+            <i class="bi bi-hand-thumbs-down me-1"></i>Reader-Unfriendly
+          </button>
+        </div>
+
+        <!-- Feedback (hidden until answered) -->
+        <div class="rfw-feedback" id="rfw-feedback" style="display:none">
+          <div class="rfw-feedback-result" id="rfw-feedback-result"></div>
+          <div class="rfw-c-badge" id="rfw-c-badge"></div>
+          <p class="rfw-feedback-explanation" id="rfw-feedback-explanation"></p>
+          <button class="rfw-btn-next" id="rfw-btn-next" onclick="rfwNext()">Next card <i class="bi bi-arrow-right ms-1"></i></button>
+        </div>
+
+        <!-- Final screen (hidden until complete) -->
+        <div class="rfw-endscreen" id="rfw-endscreen" style="display:none">
+          <div class="rfw-endscreen-icon" id="rfw-endscreen-icon"></div>
+          <p class="rfw-endscreen-score">You scored <strong id="rfw-final-score"></strong> out of 5</p>
+          <p class="rfw-endscreen-msg" id="rfw-endscreen-msg"></p>
+          <div class="rfw-endscreen-buttons">
+            <a href="{{ '/courses/reader-friendly/unit-01/' | url }}" class="btn btn-primary">Start the course</a>
+            <button class="rfw-btn-restart" onclick="rfwRestart()">Try again</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-lg-4">
+      <div class="rfw-sidebar">
+        <h4>Course Units</h4>
+        <ol class="rfw-unit-list">
+          <li>Course Overview</li>
+          <li>Writing Clearly</li>
+          <li>Writing Concisely</li>
+          <li>Writing Courteously</li>
+          <li>Writing Correctly</li>
+          <li>Writing Completely</li>
+          <li class="rfw-unit-soon">Writing Coherently <span class="rfw-soon-badge">Soon</span></li>
+          <li class="rfw-unit-soon">Writing Cohesively <span class="rfw-soon-badge">Soon</span></li>
+          <li class="rfw-unit-soon">Practice <span class="rfw-soon-badge">Soon</span></li>
+          <li class="rfw-unit-soon">Review <span class="rfw-soon-badge">Soon</span></li>
+        </ol>
+        <div class="rfw-meta">10 units &bull; Self-paced &bull; Open access</div>
+        <a href="{{ '/courses/reader-friendly/unit-01/' | url }}" class="btn btn-primary w-100 mt-3">Start Unit 1</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ---- 5 Cs legend ---- */
+.rfw-legend h4 { color: #ff8c00; margin-bottom: 12px; }
+.rfw-legend-badge {
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.rfw-legend-badge strong { font-size: 0.85rem; }
+.rfw-legend-badge span   { color: #aaa; }
+.rfw-clear     { background: rgba(59,159,220,0.12);  border: 1px solid #3b9fdc; color: #90caf9; }
+.rfw-concise   { background: rgba(230,126,34,0.12);  border: 1px solid #e67e22; color: #f5c279; }
+.rfw-courteous { background: rgba(155,89,182,0.12);  border: 1px solid #9b59b6; color: #ce93d8; }
+.rfw-correct   { background: rgba(231,76,60,0.12);   border: 1px solid #e74c3c; color: #f5a39a; }
+.rfw-complete  { background: rgba(46,204,113,0.12);  border: 1px solid #2ecc71; color: #a8e6c3; }
+
+/* ---- Flashcard section ---- */
+.rfw-flashcard-section {
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.rfw-fc-header {
+  background: #1a1a1a;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid #333;
+}
+.rfw-fc-header h3 { color: #ff8c00; font-size: 1.2rem; margin-bottom: 4px; }
+.rfw-fc-header p  { color: #aaa; font-size: 0.88rem; margin-bottom: 10px; line-height: 1.5; }
+
+.rfw-progress-bar-wrap {
+  background: #333;
+  border-radius: 4px;
+  height: 5px;
+  margin-bottom: 6px;
+}
+.rfw-progress-bar {
+  background: #ff8c00;
+  height: 5px;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+.rfw-progress-label {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* ---- Card ---- */
+.rfw-card-wrap {
+  padding: 24px 24px 0;
+}
+.rfw-card {
+  background: #2a2a2a;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 24px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rfwFlipIn 0.35s ease;
+}
+@keyframes rfwFlipIn {
+  0%   { transform: rotateY(90deg); opacity: 0; }
+  100% { transform: rotateY(0deg);  opacity: 1; }
+}
+.rfw-card.rfw-flipping {
+  animation: rfwFlipOut 0.2s ease forwards;
+}
+@keyframes rfwFlipOut {
+  0%   { transform: rotateY(0deg);  opacity: 1; }
+  100% { transform: rotateY(90deg); opacity: 0; }
+}
+.rfw-sentence {
+  color: #e0e0e0;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+  text-align: center;
+}
+
+/* ---- Answer buttons ---- */
+.rfw-answer-buttons {
+  display: flex;
+  gap: 12px;
+  padding: 20px 24px 0;
+  justify-content: center;
+}
+.rfw-btn-friendly, .rfw-btn-unfriendly {
+  flex: 1;
+  max-width: 200px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.rfw-btn-friendly:hover, .rfw-btn-unfriendly:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+.rfw-btn-friendly   { background: #2ecc71; color: #111; }
+.rfw-btn-unfriendly { background: #e74c3c; color: #fff; }
+
+/* ---- Feedback ---- */
+.rfw-feedback {
+  padding: 20px 24px;
+  border-top: 1px solid #333;
+  margin-top: 20px;
+}
+.rfw-feedback-result {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.rfw-feedback-result.correct   { color: #2ecc71; }
+.rfw-feedback-result.incorrect { color: #e74c3c; }
+
+.rfw-c-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+.badge-clear     { background: #3b9fdc; color: #fff; }
+.badge-concise   { background: #e67e22; color: #fff; }
+.badge-courteous { background: #9b59b6; color: #fff; }
+.badge-correct   { background: #e74c3c; color: #fff; }
+.badge-complete  { background: #2ecc71; color: #111; }
+
+.rfw-feedback-explanation {
+  color: #ccc;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+.rfw-btn-next {
+  background: #ff8c00;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.rfw-btn-next:hover { background: #e67e00; }
+
+/* ---- Complete screen ---- */
+.rfw-endscreen {
+  padding: 32px 24px;
+  text-align: center;
+}
+.rfw-endscreen-icon { font-size: 2.5rem; margin-bottom: 10px; }
+.rfw-endscreen-score {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+.rfw-endscreen-score strong { color: #ff8c00; font-size: 1.3rem; }
+.rfw-endscreen-msg {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+.rfw-endscreen-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.rfw-btn-restart {
+  background: transparent;
+  border: 1px solid #555;
+  color: #ccc;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.rfw-btn-restart:hover { border-color: #ff8c00; color: #ff8c00; }
+
+/* ---- Sidebar ---- */
+.rfw-sidebar {
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 20px;
+  position: sticky;
+  top: 80px;
+}
+.rfw-sidebar h4 { color: #ff8c00; margin-bottom: 14px; }
+.rfw-unit-list {
+  padding-left: 20px;
+  color: #ccc;
+  line-height: 2.1;
+  margin-bottom: 0;
+}
+.rfw-unit-list a { color: #ff8c00; text-decoration: none; }
+.rfw-unit-list a:hover { text-decoration: underline; }
+.rfw-unit-soon { color: #666; }
+.rfw-soon-badge {
+  display: inline-block;
+  background: #333;
+  color: #777;
+  font-size: 0.65rem;
+  padding: 1px 6px;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-left: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.rfw-meta { color: #888; font-size: 0.82rem; margin-top: 12px; }
+</style>
+
+<script>
+(function () {
+
+  var cards = [
+    {
+      sentence: "I will contact you later about this.",
+      isFriendly: false,
+      c: "Not Clear",
+      cSlug: "clear",
+      explanation: "\"Later\" gives no timeframe, and \"this\" has no clear referent. The reader cannot act on this message without sending a follow-up to ask what, when, and how."
+    },
+    {
+      sentence: "The university has decided to approve a new program and this program will be launched on 1 April.",
+      isFriendly: false,
+      c: "Not Concise",
+      cSlug: "concise",
+      explanation: "\"Program\" is repeated unnecessarily. A more concise version: \"The university will launch a new program on 1 April.\""
+    },
+    {
+      sentence: "I am afraid that your score was below the pass mark. Please improve your assignment based on the feedback, and resubmit within 7 days.",
+      isFriendly: true,
+      c: "Courteous",
+      cSlug: "courteous",
+      explanation: "The message is politely worded, acknowledges the situation with \"I am afraid\", and gives a clear, actionable instruction with a specific timeframe."
+    },
+    {
+      sentence: "Students should not move furnitures in the lab.",
+      isFriendly: false,
+      c: "Not Correct",
+      cSlug: "correct",
+      explanation: "\"Furniture\" is an uncountable noun and cannot be pluralized. The correct form is \"furniture\"."
+    },
+    {
+      sentence: "I am afraid I cannot help so please contact Ms. Azuma instead.",
+      isFriendly: false,
+      c: "Not Complete",
+      cSlug: "complete",
+      explanation: "The message does not provide Ms. Azuma's contact details. Without them, the reader has no way to follow the instruction easily."
+    }
+  ];
+
+  var completeMsgs = [
+    "Keep practising — the course will help you sharpen your eye for all five Cs.",
+    "A good start. The units will help you develop further.",
+    "Solid. You already have a feel for reader-friendly writing.",
+    "Great work — you have a strong instinct for reader-friendly writing.",
+    "Perfect score! You are ready to refine the details in the course."
+  ];
+
+  var completeIcons = ["😕", "🙂", "😊", "👍", "🏆"];
+
+  var current = 0;
+  var score = 0;
+  var answered = false;
+
+  function loadCard(idx) {
+    document.getElementById('rfw-sentence').textContent = cards[idx].sentence;
+    document.getElementById('rfw-card-num').textContent = idx + 1;
+    document.getElementById('rfw-progress-bar').style.width = (idx / cards.length * 100) + '%';
+    document.getElementById('rfw-feedback').style.display = 'none';
+    document.getElementById('rfw-answer-buttons').style.display = 'flex';
+    answered = false;
+  }
+
+  window.rfwAnswer = function (userSaysFriendly) {
+    if (answered) return;
+    answered = true;
+
+    var card = cards[current];
+    var correct = (userSaysFriendly === card.isFriendly);
+    if (correct) score++;
+    document.getElementById('rfw-score').textContent = score;
+
+    // Flip card out, swap content, flip back in
+    var cardEl = document.getElementById('rfw-card');
+    cardEl.classList.add('rfw-flipping');
+
+    setTimeout(function () {
+      cardEl.classList.remove('rfw-flipping');
+      // Update card face to show the sentence with result colour
+      var resultClass = correct ? 'correct' : 'incorrect';
+      var resultText  = correct
+        ? (card.isFriendly ? '✓ Correct — this sentence is reader-friendly.' : '✓ Correct — this sentence is not reader-friendly.')
+        : (card.isFriendly ? '✗ Not quite — this sentence is actually reader-friendly.' : '✗ Not quite — this sentence is not reader-friendly.');
+
+      var resultEl = document.getElementById('rfw-feedback-result');
+      resultEl.textContent = resultText;
+      resultEl.className = 'rfw-feedback-result ' + resultClass;
+
+      var badgeEl = document.getElementById('rfw-c-badge');
+      badgeEl.textContent = card.c;
+      badgeEl.className = 'rfw-c-badge badge-' + card.cSlug;
+
+      document.getElementById('rfw-feedback-explanation').textContent = card.explanation;
+
+      document.getElementById('rfw-answer-buttons').style.display = 'none';
+      document.getElementById('rfw-feedback').style.display = 'block';
+
+      // Last card — change Next to Finish
+      if (current === cards.length - 1) {
+        document.getElementById('rfw-btn-next').innerHTML = 'See results <i class="bi bi-bar-chart ms-1"></i>';
+      }
+    }, 200);
+  };
+
+  window.rfwNext = function () {
+    current++;
+    if (current >= cards.length) {
+      showComplete();
+      return;
+    }
+    var cardEl = document.getElementById('rfw-card');
+    cardEl.classList.add('rfw-flipping');
+    setTimeout(function () {
+      cardEl.classList.remove('rfw-flipping');
+      loadCard(current);
+    }, 200);
+  };
+
+  function showComplete() {
+    document.getElementById('rfw-feedback').style.display = 'none';
+    document.getElementById('rfw-answer-buttons').style.display = 'none';
+    document.getElementById('rfw-card-wrap') && (document.getElementById('rfw-card-wrap').style.display = 'none');
+    document.getElementById('rfw-card').style.display = 'none';
+    document.getElementById('rfw-progress-bar').style.width = '100%';
+    document.getElementById('rfw-card-num').textContent = '5';
+
+    document.getElementById('rfw-final-score').textContent = score;
+    document.getElementById('rfw-endscreen-icon').textContent = completeIcons[score];
+    document.getElementById('rfw-endscreen-msg').textContent = completeMsgs[score];
+    document.getElementById('rfw-endscreen').style.display = 'block';
+  }
+
+  window.rfwRestart = function () {
+    current = 0;
+    score = 0;
+    document.getElementById('rfw-score').textContent = '0';
+    document.getElementById('rfw-endscreen').style.display = 'none';
+    document.getElementById('rfw-card').style.display = 'flex';
+    document.getElementById('rfw-btn-next').innerHTML = 'Next card <i class="bi bi-arrow-right ms-1"></i>';
+    loadCard(0);
+  };
+
+  // Init
+  loadCard(0);
+
+}());
+</script>

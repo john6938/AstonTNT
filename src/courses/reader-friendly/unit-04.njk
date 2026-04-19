@@ -1,0 +1,218 @@
+---
+unit: 4
+unitTitle: Writing Courteously
+title: "Unit 4: Writing Courteously — Reader-Friendly Writing"
+courseUnit: true
+objectives:
+  - Know the language needed to make courteous requests
+  - Know how to emphasize the benefit to the reader
+  - Have practised making a polite request
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Identifying more and less polite choices ═══════════ #}
+
+{% call activitySection(1, "Identifying More and Less Polite Choices", "hand-thumbs-up") %}
+<p>It is necessary to make language choices when writing emails. In this unit, we focus on selecting language that is more courteous. We will consider the scenario where a second-year undergraduate writes an email requesting a meeting with a potential supervisor.</p>
+<p class="mt-2 mb-4">For each pair of sentences below, decide which is more appropriate for use in an email to a potential supervisor.</p>
+
+{% call quizMC("quiz-04-a", "Pair 1: Which opening is more appropriate?", 1,
+   "\"Could\" is more polite than \"can\" when making requests. \"Can\" asks about ability, while \"could\" is more tentative and therefore more courteous.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="0"> Can I meet you to discuss joining the XXX lab?</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="1"> Could I meet you to discuss joining the XXX lab?</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-04-b", "Pair 2: Which request for an appointment is more appropriate?", 0,
+   "When requesting an appointment it is not a good idea to provide only one choice on the same day. A more effective strategy is to state the period of time you are available and let the supervisor select specific time slots. This shows flexibility and consideration for the other person's schedule.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="0"> I would be grateful if you could meet me some time this week.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="1"> I would be grateful if you could meet me at 2:00 pm today.</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-04-c", "Pair 3: Which expression of intent is more appropriate?", 1,
+   "When using \"want\" and \"would like\" to describe something you hope to do, both are grammatically correct. However, \"would like\" is more polite and is therefore more appropriate in a formal email to a potential supervisor.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-04-c" value="0"> I want to join the XXX lab.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-c" value="1"> I would like to join the XXX lab.</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-04-d", "Pair 4: Which version is more appropriate?", 1,
+   "Including the possessive \"your\" helps to personalize an email and shows that the writer has specifically chosen this lab rather than sending a generic request. Personalizing the email in this way is recommended when writing to a potential supervisor.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-04-d" value="0"> I would like to join XXX lab.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-d" value="1"> I would like to join your lab.</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — Polite requests ════════════════════════════════════ #}
+
+{% call activitySection(2, "Polite Requests", "chat-square-heart") %}
+<p>Read these orders and requests. They are placed in order of politeness. The first items are less courteous while the later items are more courteous.</p>
+
+{% set politeTabs = [
+  {id: "pol-1", label: "Level 1"},
+  {id: "pol-2", label: "Level 2"},
+  {id: "pol-3", label: "Level 3"},
+  {id: "pol-4", label: "Level 4"},
+  {id: "pol-5", label: "Level 5"},
+  {id: "pol-6", label: "Level 6"},
+  {id: "pol-7", label: "Level 7"}
+] %}
+{% call tabSet("unit04-polite", politeTabs) %}
+  <div class="tab-pane fade show active" id="unit04-polite-pol-1" role="tabpanel">
+    <p style="font-size:1.1rem; color:#f5a39a;"><em>"Do it."</em></p>
+    <p>A direct order. Appropriate only in emergencies or with very close relationships.</p>
+  </div>
+  <div class="tab-pane fade" id="unit04-polite-pol-2" role="tabpanel">
+    <p style="font-size:1.1rem; color:#f5c279;"><em>"Will you do it?"</em></p>
+    <p>Still quite direct, but phrased as a question.</p>
+  </div>
+  <div class="tab-pane fade" id="unit04-polite-pol-3" role="tabpanel">
+    <p style="font-size:1.1rem; color:#f5c279;"><em>"Can you do it?"</em></p>
+    <p>Asks about ability rather than giving an order. Informal but commonly used.</p>
+  </div>
+  <div class="tab-pane fade" id="unit04-polite-pol-4" role="tabpanel">
+    <p style="font-size:1.1rem; color:#f0d060;"><em>"Could you do it?"</em></p>
+    <p>"Could" is more tentative than "can" and therefore more polite. Suitable for most workplace requests.</p>
+  </div>
+  <div class="tab-pane fade" id="unit04-polite-pol-5" role="tabpanel">
+    <p style="font-size:1.1rem; color:#a8e6c3;"><em>"Would you please do it?"</em></p>
+    <p>Adding "please" increases courtesy. Suitable for most formal requests.</p>
+  </div>
+  <div class="tab-pane fade" id="unit04-polite-pol-6" role="tabpanel">
+    <p style="font-size:1.1rem; color:#90caf9;"><em>"I would be grateful if you could do it for me."</em></p>
+    <p>Expressing gratitude in advance is a courteous strategy. Suitable for requests that require effort from the reader.</p>
+  </div>
+  <div class="tab-pane fade" id="unit04-polite-pol-7" role="tabpanel">
+    <p style="font-size:1.1rem; color:#ce93d8;"><em>"May I ask a favour? Would you mind doing it for me?"</em></p>
+    <p>The most tentative form. Acknowledges that you are asking for something and gives the reader the option to decline. Appropriate for large or unusual requests.</p>
+  </div>
+{% endcall %}
+
+<p class="mt-3">As you can see, courteous requests are generally longer. There is therefore a trade-off between writing concisely and writing courteously. When deciding which form to use, consider the relationship and relative status between writer and reader, as well as the difficulty of the request.</p>
+{% endcall %}
+
+
+{# ══ Activity 3 — Writing polite requests ════════════════════════════ #}
+
+{% call activitySection(3, "Writing Polite Requests", "pencil") %}
+<p>Transform these orders into polite requests. Use a different polite request form in each case.</p>
+
+<div class="accordion mt-3" id="unit04-requests">
+  {% call accordion("req-01", "1. Arrive at 8:00 am tomorrow.") %}
+  <p><strong>Example revision:</strong> Please could you arrive at 8:00 am tomorrow?</p>
+  {% endcall %}
+  {% call accordion("req-02", "2. Tidy this lab.") %}
+  <p><strong>Example revision:</strong> Would you mind tidying the lab?</p>
+  {% endcall %}
+  {% call accordion("req-03", "3. Help me move this computer.") %}
+  <p><strong>Example revision:</strong> I would be grateful if you could help me move this computer.</p>
+  {% endcall %}
+  {% call accordion("req-04", "4. Explain how this code works.") %}
+  <p><strong>Example revision:</strong> Could you explain how this code works?</p>
+  {% endcall %}
+</div>
+<p class="mt-3" style="color:#aaa; font-size:0.9rem;"><i class="bi bi-info-circle me-1"></i>Write your own versions before revealing the examples. Many different forms are acceptable.</p>
+{% endcall %}
+
+
+{# ══ Activity 4 — Reader benefit ═════════════════════════════════════ #}
+
+{% call activitySection(4, "Reader Benefit", "gift") %}
+<p>Consider the following sentence:</p>
+<blockquote class="p-3 mt-2 mb-3" style="background:#1e1e1e; border-left:3px solid #e74c3c; border-radius:0 6px 6px 0; color:#ddd; font-style:italic;">
+  "If you don't pay, will we not send the goods to you."
+</blockquote>
+<p>The sentence appears rude. There is no benefit to the reader and there are two negatives (don't and not). It may be reworded to emphasize the reader benefit:</p>
+<blockquote class="p-3 mt-2 mb-3" style="background:#1e1e1e; border-left:3px solid #2ecc71; border-radius:0 6px 6px 0; color:#ddd; font-style:italic;">
+  "We will deliver the goods to you when we receive your payment."
+</blockquote>
+<p>The meaning is the same, but the benefit (getting the goods) is emphasized, and there are no negatives.</p>
+
+<p class="mt-3 mb-2">Rephrase these sentences, emphasizing the reader benefit and avoiding negatives. Click to reveal a suggested revision.</p>
+<div class="accordion" id="unit04-benefit">
+  {% call accordion("ben-01", "1. Don't be late otherwise you may not get a seat.") %}
+  <p><strong>Revision:</strong> Arrive on time to ensure you get a seat.</p>
+  {% endcall %}
+  {% call accordion("ben-02", "2. No money back unless there is a receipt.") %}
+  <p><strong>Revision:</strong> To receive a refund, please bring your receipt.</p>
+  {% endcall %}
+  {% call accordion("ben-03", "3. The global lounge is not available for use after 9:00 pm.") %}
+  <p><strong>Revision:</strong> The global lounge is available until 9:00 pm.</p>
+  {% endcall %}
+  {% call accordion("ben-04", "4. If you arrive late, you will not be admitted.") %}
+  <p><strong>Revision:</strong> Please arrive on time to ensure entry.</p>
+  {% endcall %}
+  {% call accordion("ben-05", "5. Do not smoke here.") %}
+  <p><strong>Revision:</strong> Thank you for not smoking in this area.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Improving an email ═════════════════════════════════ #}
+
+{% call activitySection(5, "Improving an Email", "envelope-open") %}
+<p class="mb-3">Read the email below and identify how to improve it by increasing courtesy and including reader benefit.</p>
+
+<div class="p-3 mb-3" style="background:#1e1e1e; border:1px solid #444; border-radius:6px; color:#ddd; font-size:0.9rem; line-height:1.8;">
+  <p>Dear John</p>
+  <p>I want to join your lab. It will help my research.</p>
+  <p>Can you meet me today? I cannot meet you tomorrow.</p>
+  <p>I have free time until 5:00 pm. I am busy playing football later.</p>
+  <p>I cannot speak English but I can write a little. I want you to teach me.</p>
+  <p>Taro Sato (s12345678)</p>
+</div>
+
+<div class="accordion" id="unit04-email-analysis">
+  {% call accordion("ea-01", "Show analysis") %}
+  <ul style="line-height:2.2; color:#ddd;">
+    <li><strong>"Dear John"</strong> — Too informal for a first email to a professor. Use "Dear Professor [Name]".</li>
+    <li><strong>"I want to join your lab"</strong> — "I want" is less courteous than "I would like". No reason for choosing this specific lab is given.</li>
+    <li><strong>"It will help my research"</strong> — This focuses on benefit to the writer. Frame it as a benefit to the lab.</li>
+    <li><strong>"Can you meet me today?"</strong> — Very short notice. Offering a range of times is more considerate.</li>
+    <li><strong>"I cannot meet you tomorrow"</strong> — Restricts the professor's options. Offer times across several days instead.</li>
+    <li><strong>"I am busy playing football later"</strong> — Irrelevant personal information that undermines professionalism.</li>
+    <li><strong>"I want you to teach me"</strong> — An order rather than a request, and focuses on what the writer wants rather than what they can offer.</li>
+    <li><strong>No closing salutation</strong> — A formal closing such as "Yours sincerely" or "Best regards" should be included.</li>
+  </ul>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Writing a courteous email ══════════════════════════ #}
+
+{% call activitySection(6, "Writing a Courteous Email", "envelope-paper") %}
+<p>Your name is Taro Sato. Email a professor to arrange an appointment. In your email:</p>
+<ol style="color:#ddd; line-height:2.2;">
+  <li>State the purpose of the email</li>
+  <li>Provide some details about yourself</li>
+  <li>State the reason for selecting this professor and lab</li>
+  <li>Make a polite request to meet</li>
+  <li>Include information about your availability</li>
+</ol>
+<p class="mt-2" style="color:#aaa; font-size:0.9rem;"><i class="bi bi-info-circle me-1"></i>Write your email in your notes or a document.</p>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Can you:</p>
+<ul>
+  <li>Select appropriately polite request forms for different situations?</li>
+  <li>Rephrase sentences to emphasize reader benefit and remove negatives?</li>
+</ul>
+<p>If you cannot, you should work on this before moving to the next unit.</p>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-05') | url }}">Unit 5: Writing Correctly</a> when ready.
+</p>
+{% endcall %}

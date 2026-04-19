@@ -1,0 +1,186 @@
+---
+unit: 1
+unitTitle: Course Overview
+title: "Unit 1: Course Overview — Reader-Friendly Writing"
+courseUnit: true
+objectives:
+  - Understand the importance of the five Cs of reader-friendly writing
+  - Be aware of the extra two Cs of reader-friendly writing
+  - Have practised identifying the five Cs
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Reader-friendly writing I ══════════════════════════ #}
+
+{% call activitySection(1, "Reader-Friendly Writing I", "chat-left-text") %}
+<p class="mb-3">Identify which of the following sentences are reader-friendly and which are reader-unfriendly.</p>
+
+<div class="accordion" id="unit01-acc-a">
+  {% call accordion("rfa-01-a", "Please click on the link below to check your result for assignment 1.") %}
+  <p><strong>Reader-friendly.</strong> The instruction is clear, specific, and politely worded. The assignment number removes any ambiguity about which result to check.</p>
+  {% endcall %}
+  {% call accordion("rfa-01-b", "Congratulations. You have passed assignment.") %}
+  <p><strong>Not fully reader-friendly.</strong> The congratulations are courteous, but the sentence is incomplete — it does not specify which assignment the reader has passed.</p>
+  {% endcall %}
+  {% call accordion("rfa-01-c", "Well done to those of you who passed. For those who did not pass, you have one more opportunity to submit.") %}
+  <p><strong>Partially reader-friendly.</strong> The information is complete and clear, but the tone may feel less courteous to students who did not pass, as they are addressed as a group rather than individually.</p>
+  {% endcall %}
+  {% call accordion("rfa-01-d", "I am afraid that your score was below the pass mark. Please improve your assignment based on the feedback, and resubmit within 7 days.") %}
+  <p><strong>Reader-friendly.</strong> The sentence is courteous (softened with "I am afraid"), clear, and complete — it specifies both the action required and the timeframe.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — Reader-friendly writing II ═════════════════════════ #}
+
+{% call activitySection(2, "Reader-Friendly Writing II", "book") %}
+<p>Reader-friendly writing aims to reduce the burden on the reader. This is achieved by writing in a way that helps the reader understand the message in the shortest time, with the least effort, without distortion and in a positive manner. To achieve this, the writer has to consider seven concepts — the seven Cs. All the Cs are important.</p>
+
+{% set cTabs = [
+  {id: "c-clear",     label: "Clear"},
+  {id: "c-concise",   label: "Concise"},
+  {id: "c-courteous", label: "Courteous"},
+  {id: "c-correct",   label: "Correct"},
+  {id: "c-complete",  label: "Complete"},
+  {id: "c-coherent",  label: "Coherent"},
+  {id: "c-cohesive",  label: "Cohesive"}
+] %}
+{% call tabSet("unit01-cs", cTabs) %}
+  <div class="tab-pane fade show active" id="unit01-cs-c-clear" role="tabpanel">
+    <p><strong>Clear</strong> — write so that the reader understands the intended meaning.</p>
+    <p>Avoid vague and ambiguous expressions. Ensure that every reference has a clear antecedent and that every timeframe is specific.</p>
+  </div>
+  <div class="tab-pane fade" id="unit01-cs-c-concise" role="tabpanel">
+    <p><strong>Concise</strong> — write using the minimum number of words.</p>
+    <p>Remove repeated and redundant words. Every word should add to the meaning; if it does not, remove it.</p>
+  </div>
+  <div class="tab-pane fade" id="unit01-cs-c-courteous" role="tabpanel">
+    <p><strong>Courteous</strong> — write appropriately politely for the situation.</p>
+    <p>Consider the relationship between the writer and the reader, the relative status of each, and the difficulty of the request being made.</p>
+  </div>
+  <div class="tab-pane fade" id="unit01-cs-c-correct" role="tabpanel">
+    <p><strong>Correct</strong> — write without factual or language errors.</p>
+    <p>Check facts carefully and proofread for spelling, grammar, vocabulary, and punctuation errors.</p>
+  </div>
+  <div class="tab-pane fade" id="unit01-cs-c-complete" role="tabpanel">
+    <p><strong>Complete</strong> — include all the relevant information.</p>
+    <p>Ensure the reader has everything they need to act on the message without sending a follow-up query.</p>
+  </div>
+  <div class="tab-pane fade" id="unit01-cs-c-coherent" role="tabpanel">
+    <p><strong>Coherent</strong> — check that the message does not have any contradictions.</p>
+    <p>The content of the message should be logically consistent throughout.</p>
+  </div>
+  <div class="tab-pane fade" id="unit01-cs-c-cohesive" role="tabpanel">
+    <p><strong>Cohesive</strong> — check that the parts of the message connect to each other.</p>
+    <p>Use linking words and references to ensure the message flows as a unified whole.</p>
+  </div>
+{% endcall %}
+
+<p class="mt-3">This course will focus on the first five Cs.</p>
+{% endcall %}
+
+
+{# ══ Activity 3 — Pre-test ═══════════════════════════════════════════ #}
+
+{% call activitySection(3, "Pre-Test", "patch-question") %}
+<p>Check your understanding of reader-friendly writing by deciding which of the following sentences are <strong>NOT clear</strong>, <strong>NOT concise</strong>, <strong>NOT courteous</strong>, <strong>NOT correct</strong> or <strong>NOT complete</strong>.</p>
+<p class="mb-3"><em>Note: Some sentences may have more than one issue.</em></p>
+<ol style="color:#ddd; line-height:2.2;">
+  <li>Students should not move furnitures in the lab.</li>
+  <li>I attach the application form, application essay and report for your review again and comments.</li>
+  <li>When you arrive, you must go directly to the reception desk immediately to register.</li>
+  <li>Some students do not complete the relevant expense claim form correctly.</li>
+  <li>I look forward to hearing from you two weeks later.</li>
+  <li>The university has decided to approve a new program and this program will be lauched on 1 April.</li>
+  <li>I will contact you later about this.</li>
+  <li>Students must not leave the lab door open otherwise they will be responsible for any missing items.</li>
+  <li>I am afraid I cannot help so please contact Ms. Azuma instead.</li>
+</ol>
+{% endcall %}
+
+
+{# ══ Activity 4 — Comparison and discussion ══════════════════════════ #}
+
+{% call activitySection(4, "Comparison and Discussion", "chat-left-dots") %}
+<p class="mb-3">Click each sentence to reveal the issue and a suggested revision.</p>
+
+<div class="accordion" id="unit01-pretest">
+  {% call accordion("pt-01", "1. Students should not move furnitures in the lab.") %}
+  <p><strong>Not correct.</strong> Furniture is an uncountable noun and cannot be pluralized.</p>
+  <p><strong>Revision:</strong> Students should not move furniture in the lab.</p>
+  {% endcall %}
+
+  {% call accordion("pt-02", "2. I attach the application form, application essay and report for your review again and comments.") %}
+  <p><strong>Not clear.</strong> It is unclear which items need reviewing and which need commenting on.</p>
+  <p><strong>Revision:</strong> Please could you review both the application and essay again, and comment on the report?</p>
+  {% endcall %}
+
+  {% call accordion("pt-03", "3. When you arrive, you must go directly to the reception desk immediately to register.") %}
+  <p><strong>Not courteous.</strong> The sentence is written as an order. It could be reworded as a polite request.</p>
+  <p><strong>Revision:</strong> Please register at the reception desk as soon as you arrive.</p>
+  {% endcall %}
+
+  {% call accordion("pt-04", "4. Some students do not complete the relevant expense claim form correctly.") %}
+  <p><strong>Not clear and not complete.</strong> The sentence does not specify what is being done incorrectly or which students are affected.</p>
+  <p><strong>Revision:</strong> Please remember to fill in page 2 of the form, and place your hanko on both page 1 and page 2.</p>
+  {% endcall %}
+
+  {% call accordion("pt-05", "5. I look forward to hearing from you two weeks later.") %}
+  <p><strong>Not correct.</strong> The expression "two weeks later" is not used correctly in this context.</p>
+  <p><strong>Revision:</strong> I look forward to hearing from you in two weeks. (Or: by [specific date].)</p>
+  {% endcall %}
+
+  {% call accordion("pt-06", "6. The university has decided to approve a new program and this program will be lauched on 1 April.") %}
+  <p><strong>Not concise.</strong> "This program" is a redundant repetition. Note also: "lauched" should be "launched".</p>
+  <p><strong>Revision:</strong> The university will launch a new program on 1 April.</p>
+  {% endcall %}
+
+  {% call accordion("pt-07", "7. I will contact you later about this.") %}
+  <p><strong>Not clear.</strong> "Later" gives no timeframe and "this" has no clear referent.</p>
+  <p><strong>Revision:</strong> I will contact you by email on Friday about order number 6938.</p>
+  {% endcall %}
+
+  {% call accordion("pt-08", "8. Students must not leave the lab door open otherwise they will be responsible for any missing items.") %}
+  <p><strong>Not courteous.</strong> The sentence is an order combined with a threat. It could be reworded to emphasize the reader benefit.</p>
+  <p><strong>Revision:</strong> To protect your belongings, please close the lab door.</p>
+  {% endcall %}
+
+  {% call accordion("pt-09", "9. I am afraid I cannot help so please contact Ms. Azuma instead.") %}
+  <p><strong>Not complete.</strong> The message does not provide Ms. Azuma's contact details.</p>
+  <p><strong>Revision:</strong> I am afraid that I cannot help, but if you email Ms. Azuma on azuma@myemail.com, she should be able to help you.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Can you explain the seven Cs of reader-friendly writing listed below?</p>
+
+<div class="accordion mt-3" id="unit01-review">
+  {% call accordion("rev-01-a", "The five core Cs") %}
+  <ol style="line-height:2;">
+    <li><strong>Clear</strong> — write so that the reader understands the intended meaning</li>
+    <li><strong>Concise</strong> — write using the minimum number of words</li>
+    <li><strong>Courteous</strong> — write appropriately politely for the situation</li>
+    <li><strong>Correct</strong> — write without factual or language errors</li>
+    <li><strong>Complete</strong> — include all the relevant information</li>
+  </ol>
+  {% endcall %}
+  {% call accordion("rev-01-b", "The additional two Cs") %}
+  <ol start="6" style="line-height:2;">
+    <li><strong>Coherent</strong> — check that the message does not have any contradictions</li>
+    <li><strong>Cohesive</strong> — check that the parts of the message connect to each other</li>
+  </ol>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-02') | url }}">Unit 2: Writing Clearly</a> when ready.
+</p>
+{% endcall %}

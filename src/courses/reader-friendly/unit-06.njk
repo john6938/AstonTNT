@@ -1,0 +1,71 @@
+---
+unit: 6
+unitTitle: Writing Completely
+title: "Unit 6: Writing Completely — Reader-Friendly Writing"
+courseUnit: true
+objectives:
+  - Know to provide all necessary details
+  - Include information directly in the message where possible
+  - Doublecheck that all the necessary details are present
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion %}
+
+
+{# ══ Activity 1 — Importance of completeness ══════════════════════════ #}
+
+{% call activitySection(1, "Importance of Completeness", "list-check") %}
+<p class="mb-3">Decide how each of the following messages could be improved. Click each message to reveal the analysis.</p>
+
+<div class="accordion" id="unit06-completeness">
+  {% call accordion("comp-01", "Message 1: Call me to confirm the time.") %}
+  <p>This message does not provide the necessary contact details. The reader cannot call without a phone number.</p>
+  {% endcall %}
+
+  {% call accordion("comp-02", "Message 2: I reserved Meeting Room 123 on Thursday.") %}
+  <p>This message includes the place and day, but not the time. The reader cannot attend without knowing when the meeting begins.</p>
+  {% endcall %}
+
+  {% call accordion("comp-03", "Message 3: I have attached the relevant files.") %}
+  <p>This message notes that some files are attached, but we do not know how many or which files. An improved version could be: <em>I attach two files (draft contract and price list).</em></p>
+  {% endcall %}
+
+  {% call accordion("comp-04", "Message 4: Please come to my office at 1:00 pm.") %}
+  <p>This message assumes that the reader knows the location of the office. Including the room number and/or directions makes it easier for the reader.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — Essential details ══════════════════════════════════ #}
+
+{% call activitySection(2, "Essential Details", "pencil") %}
+<p>You want to invite fellow students to watch a performance by the student acting club.</p>
+<p class="mt-2" style="color:#aaa; font-size:0.9rem;"><i class="bi bi-person me-1"></i>Work alone for 3 minutes. Decide which details you need to include in a message.</p>
+<p class="mt-2" style="color:#aaa; font-size:0.9rem;"><i class="bi bi-people me-1"></i>Work in pairs or small groups. Discuss your ideas.</p>
+{% endcall %}
+
+
+{# ══ Activity 3 — Specificity ═════════════════════════════════════════ #}
+
+{% call activitySection(3, "Specificity", "book") %}
+<p>Time, date, location, price and dress code are key details that ought to be given in invitations to events. Inviting a friend to come to a party without informing them that they need to pay money will result in a problem. Likewise, inviting a friend to a Halloween party, but forgetting to tell them that it is fancy dress may upset them.</p>
+<p class="mt-2">When communicating face-to-face, it is possible to get immediate clarification and add extra details based on the reaction of the other person. When writing emails, communication is less interactive and often asynchronous. This puts the emphasis on the writer to include all the specific details to avoid the need for the reader to write follow-up emails.</p>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Remember to include enough details so that the reader does not need to ask follow-up questions.</p>
+<ul>
+  <li>Does your message include all relevant details (who, what, when, where, how)?</li>
+  <li>Can the reader act on your message without needing to contact you for more information?</li>
+</ul>
+
+<div class="mt-4 p-3 text-center" style="background:#1a2a1a; border:1px solid #2ecc71; border-radius:8px;">
+  <p style="font-size:1.4rem; color:#2ecc71; font-weight:700; margin-bottom:0.5rem;">Course Complete</p>
+  <p style="color:#ddd;">You have completed the six core units of <strong>Reader-Friendly Writing</strong>. You should now be able to write more clearly, concisely, courteously, correctly, and completely.</p>
+  <a href="{{ (courseBaseUrl + '/') | url }}" class="btn btn-outline-success mt-3">Back to Course Overview</a>
+</div>
+{% endcall %}
