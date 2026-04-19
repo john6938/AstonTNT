@@ -1,0 +1,142 @@
+---
+unit: 3
+unitTitle: Brevity Filter
+title: "Unit 3: Brevity Filter — Error-Free Research Writing"
+courseUnit: true
+objectives:
+  - Know the three subcategories of brevity errors
+  - Understand the dilution effect of unnecessary words
+  - Have practised using the brevity filter
+  - Be ready to use the brevity filter on your draft papers
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, videoEmbed %}
+
+
+{# ══ Activity 1 — Introduction ═══════════════════════════════════════ #}
+
+{% call activitySection(1, "Introduction to the Brevity Filter", "scissors") %}
+<p>
+  Writing that is concise or brief contains no unnecessary words. Some people tend
+  to be verbose and use many words; others tend to be concise and use few. The aim
+  of this unit is to understand which types of words are unnecessary and how to
+  identify them.
+</p>
+<p>When checking your draft using the brevity filter, there are three error types to look out for:</p>
+<ol>
+  <li>Using multiple vague words</li>
+  <li>Repeated words</li>
+  <li>Redundant words</li>
+</ol>
+
+{{ videoEmbed("AraFXvwVzQM", "Introduction to the brevity filter") }}
+{% endcall %}
+
+
+{# ══ Activity 2 — Using multiple vague words ═════════════════════════ #}
+
+{% call activitySection(2, "Using Multiple Vague Words", "chat-square-text") %}
+<p><strong>Corpus example:</strong> <em>The concept that was chosen as the focus of this research is XXX.</em></p>
+<p>
+  Abstract nouns such as <em>concept</em> are rather vague. In this corpus example,
+  <em>concept</em> refers forward to XXX and adds no meaning of its own — the first
+  six words can simply be deleted, leaving:
+</p>
+<p><strong>Revised:</strong> <em>The research focuses on XXX.</em></p>
+<p>
+  Words that do not add substance to the meaning should be omitted. To quote
+  Faber (2017), <em>"no one wants to read excessively long studies."</em>
+</p>
+
+<div class="mt-4">
+{% call quizMC("quiz-03-a", "Which revision of 'The concept that was chosen as the focus of this research is XXX' best applies the brevity filter?", 2,
+   "The original sentence uses six words before reaching the actual subject. Removing the vague introductory phrase and stating the focus directly gives the most concise result.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-03-a" value="0"> The research concept of XXX was carefully chosen as the focus</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-a" value="1"> The concept chosen for this research is XXX</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-a" value="2"> The research focuses on XXX</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-a" value="3"> XXX is the concept that this research is focused upon</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Repeated words ════════════════════════════════════ #}
+
+{% call activitySection(3, "Repeated Words", "files") %}
+<p><strong>Corpus example:</strong> <em>We analyze XXX regarding the XXX qualities, XXX qualities and XXX qualities.</em></p>
+<p>
+  Introductory sentences for sections within a research article tend to list the
+  contents of the section. In the corpus example, the word <em>qualities</em> is
+  unnecessarily repeated three times. The sentence can be improved by using the
+  word <em>qualities</em> once as the head of a noun phrase, then listing the three
+  modifiers:
+</p>
+<p><strong>Revised:</strong> <em>We analyze XXX regarding the qualities of XXX, XXX and XXX.</em></p>
+
+<div class="mt-4">
+{% call quizMC("quiz-03-b", "In the revised sentence 'We analyze XXX regarding the qualities of XXX, XXX and XXX', how many times does the word 'qualities' appear?", 0,
+   "By restructuring the noun phrase so that 'qualities' heads the list, it only needs to appear once. The three modifiers then follow naturally, making the sentence more concise without losing any meaning.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-03-b" value="0"> Once</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-b" value="1"> Twice</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-b" value="2"> Three times</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-b" value="3"> It is removed entirely</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Redundant words ═══════════════════════════════════ #}
+
+{% call activitySection(4, "Redundant Words", "dash-circle") %}
+<p><strong>Corpus example:</strong> <em>On each and every occurrence, the XXX was noted.</em></p>
+<p>
+  The determiners <em>each</em> and <em>every</em> have similar but not identical
+  meanings. However, either one on its own is sufficient for scientific writing.
+  The pairing <em>each and every</em> is a <strong>legal doublet</strong> — a
+  convention from legal writing where near-synonyms are joined by a conjunction to
+  cover translation ambiguities. In scientific writing, such pairings are redundant
+  and should be reduced to a single term.
+</p>
+
+<p class="mt-3">The following corpus examples each contain a redundant expression. Click each item to reveal the correction.</p>
+<div class="accordion mt-2" id="unit03-redundant">
+  {% call accordion("red-a", "On each and every occurrence, the XXX was noted.") %}
+  <p><strong>Correction:</strong> <em>On <strong>each</strong> occurrence, the XXX was noted.</em> (or <em>every</em>)</p>
+  <p>Either <em>each</em> or <em>every</em> is sufficient. Using both is redundant.</p>
+  {% endcall %}
+  {% call accordion("red-b", "The end result of the experiment was XXX.") %}
+  <p><strong>Correction:</strong> <em>The <strong>result</strong> of the experiment was XXX.</em></p>
+  <p>A result is, by definition, an end point. The word <em>end</em> adds nothing.</p>
+  {% endcall %}
+  {% call accordion("red-c", "Future plans include extending the dataset.") %}
+  <p><strong>Correction:</strong> <em><strong>Plans</strong> include extending the dataset.</em></p>
+  <p>Plans are inherently about the future, so the word <em>future</em> is redundant.</p>
+  {% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-03-c", "Which word should be removed to apply the brevity filter to 'On each and every occurrence'?", 2,
+   "Both 'each' and 'every' convey essentially the same meaning in this context. Either one can be removed; using both is redundant. Option C is correct because removing 'and every' leaves the clearest, most concise phrasing.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-03-c" value="0"> on</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-c" value="1"> each</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-c" value="2"> and every</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-c" value="3"> occurrence</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Make sure that you check your writing for the following types of brevity errors:</p>
+<ol>
+  <li>Using multiple vague words</li>
+  <li>Repeated words</li>
+  <li>Redundant words</li>
+</ol>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-04') | url }}">Unit 4: Clarity Filter</a> when ready.
+</p>
+{% endcall %}

@@ -1,0 +1,252 @@
+---
+unit: 2
+unitTitle: Accuracy Filter
+title: "Unit 2: Accuracy Filter — Error-Free Research Writing"
+courseUnit: true
+objectives:
+  - Know the six subcategories of accuracy errors
+  - Understand the importance of avoiding factual errors
+  - Have practised using the accuracy filter
+  - Be ready to use the accuracy filter on your draft papers
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet, videoEmbed %}
+
+
+{# ══ Activity 1 — Introduction ═══════════════════════════════════════ #}
+
+{% call activitySection(1, "Introduction to the Accuracy Filter", "bullseye") %}
+<p>
+  Some of the errors in this category are likely to be considered the most serious
+  by reviewers. The core aim of academic and scientific writing is to convey data,
+  information and/or knowledge with <strong>zero distortion of meaning</strong>, and
+  so errors that cause degradation of meaning need to be avoided.
+</p>
+<p>When checking your draft using the accuracy filter, there are six error types to look out for:</p>
+<ol>
+  <li>Factual errors in world knowledge</li>
+  <li>Factual errors within the article</li>
+  <li>Overly bold claims</li>
+  <li>Overgeneralization errors</li>
+  <li>Statistical and numerical errors</li>
+  <li>Spelling and grammatical errors</li>
+</ol>
+
+{{ videoEmbed("yJwWwEZskes", "Introduction to the accuracy filter") }}
+{% endcall %}
+
+
+{# ══ Activity 2 — Factual errors in world knowledge ══════════════════ #}
+
+{% call activitySection(2, "Factual Errors in World Knowledge", "globe") %}
+<p><strong>Corpus example:</strong> <em>The population of Japan is 12,734,100.</em></p>
+<p>
+  In this example, the writer omitted the final zero when copying the figure,
+  making the population ten times smaller than the cited source. This type of
+  careless error can cause severe confusion. Readers may either believe the
+  incorrect figure or work out that it is wrong — either way, the writer's
+  credibility suffers.
+</p>
+<p>
+  Copying errors are easy to avoid by being systematic. When using copy-and-paste,
+  double-check that the first and last characters have been included. It is more
+  difficult to make selection errors when using arrow keys than a mouse, which
+  relies on fine motor skills. When copying onto paper, be aware that sixes and
+  zeros may be mistaken for each other, particularly when zeros are not exact ovals.
+</p>
+
+<div class="mt-4">
+{% call quizMC("quiz-02-a", "In the corpus example, the population figure is 12,734,100 instead of 127,341,000. What category of accuracy error is this?", 0,
+   "This is a factual error in world knowledge. The writer made a careless copying error that distorted an externally verifiable fact — the population of Japan. Such errors can severely undermine a reviewer's confidence in the research.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-02-a" value="0"> Factual error in world knowledge</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-a" value="1"> Statistical and numerical error</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-a" value="2"> Overly bold claim</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-a" value="3"> Spelling and grammatical error</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Factual errors within the article ══════════════════ #}
+
+{% call activitySection(3, "Factual Errors Within the Article", "file-earmark-text") %}
+<p><strong>Corpus example:</strong> <em>There are two types of.... First, .... Second, .... Third, ....</em></p>
+<p>
+  When writing a research article, the content of the draft may change significantly
+  due to changes decided by the writer, co-authors, reviewers, editors or proofreaders.
+  Mistakes in lists are commonplace. The number of items in the introductory sentence
+  should reflect the number of items that follow.
+</p>
+<p>
+  In the example above, the introductory sentence lists two items, but three items follow.
+  This appears obvious, but is easily missed by writers who are familiar with earlier
+  versions of the text. People who read the document for the first time will, however,
+  notice such errors immediately.
+</p>
+
+<div class="mt-4">
+{% call quizMC("quiz-02-b", "Why are factual errors within the article particularly easy for writers to miss?", 2,
+   "Because the writer has been through many versions of the draft, they may read what they expect to see rather than what is currently written — a phenomenon linked to screen-memory interference. A fresh reader with no knowledge of earlier versions will spot the inconsistency immediately.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-02-b" value="0"> Because they are rare and unexpected</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-b" value="1"> Because spell-checkers do not flag them</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-b" value="2"> Because writers are familiar with earlier versions and may read what they expect to see</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-b" value="3"> Because reviewers are not trained to spot them</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Overly bold claims ════════════════════════════════ #}
+
+{% call activitySection(4, "Overly Bold Claims", "megaphone") %}
+<p><strong>Corpus example:</strong> <em>XXX will play a key factor in the near future.</em></p>
+<p>
+  The modal verb <em>will</em> tends to be used to show certainty about a future action
+  or state. However, even simple events in the future may not happen due to unforeseen
+  circumstances. Claims that are overly bold can be hedged in three ways:
+</p>
+
+{% set hedgeTabs = [
+  {id: "hedge-modality", label: "Reduce certainty"},
+  {id: "hedge-scope",    label: "Limit scope"},
+  {id: "hedge-condition", label: "Add a condition"}
+] %}
+{% call tabSet("unit02-hedge", hedgeTabs) %}
+  <div class="tab-pane fade show active" id="unit02-hedge-hedge-modality" role="tabpanel">
+    <p>Use modal verbs that show <strong>probability rather than certainty</strong>:</p>
+    <ul>
+      <li><em>will</em> → <strong>could, may, might</strong></li>
+    </ul>
+    <p>Example: <em>XXX <strong>may</strong> play a key role in the near future.</em></p>
+  </div>
+  <div class="tab-pane fade" id="unit02-hedge-hedge-scope" role="tabpanel">
+    <p>Limit the claim to a scope you can be more certain about:</p>
+    <ul>
+      <li>Narrow the domain: <em>in the context of X...</em></li>
+      <li>Narrow the time: <em>in the short term...</em></li>
+    </ul>
+    <p>Example: <em>XXX will play a key role <strong>in the field of Y</strong>.</em></p>
+  </div>
+  <div class="tab-pane fade" id="unit02-hedge-hedge-condition" role="tabpanel">
+    <p>Attach a condition that makes the claim defensible:</p>
+    <ul>
+      <li><em>Assuming that... XXX will...</em></li>
+      <li><em>If current trends continue, XXX will...</em></li>
+    </ul>
+    <p>Example: <em><strong>If current trends continue</strong>, XXX will play a key role in the near future.</em></p>
+  </div>
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 5 — Overgeneralization ════════════════════════════════ #}
+
+{% call activitySection(5, "Overgeneralization Errors", "diagram-3") %}
+<p><strong>Corpus example:</strong> <em>All women...</em></p>
+<p>
+  Claims about a characteristic of <em>all</em> members of a particular group are
+  problematic. When making claims about groups, it is necessary to play devil's
+  advocate and identify whether it is possible to argue against the claim. If it
+  is, then consider adding modality, limiting the scope, or adding a conditional —
+  the same three strategies used to hedge overly bold claims.
+</p>
+<div class="mt-3">
+{% call quizMC("quiz-02-c", "Which of the following best addresses an overgeneralization in a research claim?", 1,
+   "Adding a hedging expression such as 'in most cases' limits the scope of the claim and makes it harder to dispute. Absolute claims about 'all' members of a group are rarely defensible.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-02-c" value="0"> Remove the claim entirely from the paper</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-c" value="1"> Add hedging language to limit the scope, e.g. "in most cases"</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-c" value="2"> Replace the claim with a rhetorical question</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-c" value="3"> Use a stronger modal verb such as "must"</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Statistical and numerical errors ═══════════════════ #}
+
+{% call activitySection(6, "Statistical and Numerical Errors", "calculator") %}
+<p><strong>Corpus example:</strong> <em>(p &gt; 0.5)</em></p>
+<p>
+  The probability value <em>p</em> shows the probability of finding equivalent or
+  more extreme results while assuming the null hypothesis is true. The smaller the
+  <em>p</em> value, the higher the statistical significance. Reported <em>p</em>
+  values typically need to be either <em>p</em> &lt; 0.05 or <em>p</em> &lt; 0.01
+  to claim statistical significance.
+</p>
+<p>
+  In the corpus example, a typographic error was not caught in proofreading. A
+  probability of 50% means the result is no better than chance — no significance
+  can be claimed, and the article would almost certainly be rejected.
+</p>
+
+<div class="mt-3">
+{% call quizMC("quiz-02-d", "A paper reports p > 0.5. What does this mean for the statistical claim?", 2,
+   "A p value greater than 0.5 means the result has a more than 50% probability of occurring by chance. This is not statistically significant. The intended value was almost certainly p < 0.05 — a typographic error that was not caught in proofreading.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-02-d" value="0"> The result is highly significant</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-d" value="1"> The result is marginally significant</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-d" value="2"> The result is not significant — the chance of it occurring randomly is over 50%</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-d" value="3"> The result is significant only for qualitative research</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 7 — Spelling and grammatical errors ════════════════════ #}
+
+{% call activitySection(7, "Spelling and Grammatical Errors", "spellcheck") %}
+<p><strong>Corpus example:</strong> <em>There are three form the first experiment that XXX.</em></p>
+<p>
+  Spell-checkers can miss errors when the misspelled word happens to be a different
+  valid word (e.g. <em>form</em> instead of <em>from</em>). A key problem for
+  LaTeX users is not using a spell-checker at all, since with many free LaTeX
+  editors, spellcheck is not enabled by default.
+</p>
+<p>
+  Checking spelling and grammar in one's own writing is also particularly difficult
+  due to <strong>screen-memory interference</strong> — writers may not necessarily
+  read what is currently written but may read what was previously written.
+</p>
+
+<p class="mt-3">The following corpus examples each contain a spelling or grammatical error. Click each item to reveal the correction.</p>
+<div class="accordion mt-2" id="unit02-spelling">
+  {% call accordion("sp-a", "...the tangential equation is expressed as follow:") %}
+  <p><strong>Correction:</strong> <em>...the tangential equation is expressed as <strong>follows</strong>:</em></p>
+  <p>The adverb "follows" requires the third-person singular -s.</p>
+  {% endcall %}
+  {% call accordion("sp-b", "These results suggest the followings:") %}
+  <p><strong>Correction:</strong> <em>These results suggest the <strong>following</strong>:</em></p>
+  <p>"Following" used as a determiner/adjective does not take a plural -s.</p>
+  {% endcall %}
+  {% call accordion("sp-c", "There have been several researches about asynchronous embedded processors.") %}
+  <p><strong>Correction:</strong> <em>There have been several <strong>studies</strong> on asynchronous embedded processors.</em></p>
+  <p>"Research" is an uncountable noun and cannot be pluralized. "Studies" is the appropriate countable alternative.</p>
+  {% endcall %}
+  {% call accordion("sp-d", "Minimax search is one of the algorithm using the game...") %}
+  <p><strong>Correction:</strong> <em>Minimax search is one of the <strong>algorithms</strong> using the game...</em></p>
+  <p>When "one of" is followed by a noun, the noun must be plural.</p>
+  {% endcall %}
+  {% call accordion("sp-e", "The function return the maximum value between a to z.") %}
+  <p><strong>Correction:</strong> <em>The function <strong>returns</strong> the maximum value between a <strong>and</strong> z.</em></p>
+  <p>Third-person singular subject requires -s on the verb; "between ... and" is the correct correlative preposition.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Make sure that you check your writing for the following types of accuracy errors:</p>
+<ol>
+  <li>Factual errors in world knowledge</li>
+  <li>Factual errors within the article</li>
+  <li>Overly bold claims</li>
+  <li>Overgeneralization errors</li>
+  <li>Statistical and numerical errors</li>
+  <li>Spelling and grammatical errors</li>
+</ol>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-03') | url }}">Unit 3: Brevity Filter</a> when ready.
+</p>
+{% endcall %}

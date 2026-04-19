@@ -1,0 +1,150 @@
+---
+unit: 5
+unitTitle: Objectivity Filter
+title: "Unit 5: Objectivity Filter — Error-Free Research Writing"
+courseUnit: true
+objectives:
+  - Understand the necessity for research writing to avoid appearing subjective
+  - Know the three subcategories of objectivity errors
+  - Have practised using the objectivity filter
+  - Be ready to use the objectivity filter on your draft papers
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet, videoEmbed %}
+
+
+{# ══ Activity 1 — Introduction ═══════════════════════════════════════ #}
+
+{% call activitySection(1, "Introduction to the Objectivity Filter", "person-check") %}
+<p>
+  Scientists, particularly computer scientists, strive to write research articles
+  that are objective. Although the goal of full objectivity may not be realized,
+  it is possible to draft research articles that <em>appear</em> objective. The
+  appearance of objectivity is obtained by avoiding any direct references to
+  subjective items.
+</p>
+<p>When checking your draft using the objectivity filter, there are three error types to look out for:</p>
+<ol>
+  <li>Focus on people and feelings rather than things and ideas</li>
+  <li>Emotive wording</li>
+  <li>Excessive personalization</li>
+</ol>
+
+{{ videoEmbed("nsQyceF2xoA", "Introduction to the objectivity filter") }}
+{% endcall %}
+
+
+{# ══ Activity 2 — People and feelings ═══════════════════════════════ #}
+
+{% call activitySection(2, "Focus on People and Feelings", "people") %}
+<p><strong>Corpus example:</strong> <em>I will describe the results of our research in section 2.</em></p>
+<p>
+  The first-person pronoun <em>I</em> and the possessive adjective <em>our</em>
+  direct attention to the people involved in the research rather than the research
+  itself. This is in contrast to the expectations of many scientific communities
+  of practice, particularly in computer science and the applied sciences, which
+  focus on things and ideas rather than people and feelings.
+</p>
+<p>
+  The corpus example can be depersonalized and written in just five words:
+  <strong><em>Section 2 describes the results.</em></strong>
+</p>
+
+<p class="mt-3">Click each corpus example to see the suggested revision.</p>
+<div class="accordion mt-2" id="unit05-people">
+  {% call accordion("pf-a", "...you should consider a lifting method...") %}
+  <p><strong>Revision:</strong> <em>...a lifting method <strong>should be considered</strong>...</em></p>
+  <p>Passive voice removes the second-person pronoun and focuses on the method rather than the reader.</p>
+  {% endcall %}
+  {% call accordion("pf-b", "I can understand intuitively the state of ...") %}
+  <p><strong>Revision:</strong> <em>The state of ... <strong>can be understood intuitively</strong>.</em></p>
+  {% endcall %}
+  {% call accordion("pf-c", "I examine the state to ... myself in this paper.") %}
+  <p><strong>Revision:</strong> <em>In this paper, the state to ... <strong>is examined</strong>.</em></p>
+  {% endcall %}
+  {% call accordion("pf-d", "...the user slides the photo with your finger...") %}
+  <p><strong>Revision:</strong> <em>...users slide photos with <strong>their</strong> fingertip...</em></p>
+  <p>Replacing the second-person possessive <em>your</em> with the third-person <em>their</em> also removes excessive personalization.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Emotive wording ═══════════════════════════════════ #}
+
+{% call activitySection(3, "Emotive Wording", "emoji-smile") %}
+<p><strong>Corpus example:</strong> <em>We are pleased to announce that the results show XXX.</em></p>
+<p>
+  The adjective <em>pleased</em> expresses happiness and, as such, focuses on
+  feelings rather than ideas. The writer may have been attempting to frame the
+  result positively, but in scientific writing this is inappropriate. The emotive
+  sentence stem can simply be omitted:
+</p>
+<p><strong>Revised:</strong> <em>Results show XXX.</em></p>
+
+<div class="mt-4">
+{% call quizMC("quiz-05-a", "Which revision of 'We are pleased to announce that the results show XXX' best applies the objectivity filter?", 2,
+   "Removing the entire emotive sentence stem 'We are pleased to announce that' eliminates both the personal pronoun and the emotional adjective in one step. The remaining sentence is concise and objective.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-05-a" value="0"> It is pleasing that the results show XXX</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-a" value="1"> The authors are pleased to report that results show XXX</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-a" value="2"> Results show XXX</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-a" value="3"> It can be announced with pleasure that the results show XXX</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Excessive personalization ══════════════════════════ #}
+
+{% call activitySection(4, "Excessive Personalization", "person-x") %}
+<p><strong>Corpus example:</strong> <em>...such as services to your XXX, to your XXX, and to XXX.</em></p>
+<p>
+  Excessive personalization refers to the overuse of personal pronouns or possessive
+  adjectives in a way that makes the research narrative appear subjective. Hyland (2002)
+  notes that teachers of writing tend to direct learners to depersonalize texts by
+  removing references to themselves.
+</p>
+<p>The corpus example can be revised in two steps:</p>
+
+{% set personTabs = [
+  {id: "per-step1", label: "Step 1 — Remove 'your'"},
+  {id: "per-step2", label: "Step 2 — Remove repetition"}
+] %}
+{% call tabSet("unit05-person", personTabs) %}
+  <div class="tab-pane fade show active" id="unit05-person-per-step1" role="tabpanel">
+    <p>Replace <em>your</em> with the neutral form:</p>
+    <p><em>...such as services to XXX, to XXX, and to XXX.</em></p>
+  </div>
+  <div class="tab-pane fade" id="unit05-person-per-step2" role="tabpanel">
+    <p>Apply the brevity filter to remove the repeated word <em>to</em>:</p>
+    <p><em>...such as services to XXX, XXX, and XXX.</em></p>
+    <p>This combines both the objectivity and brevity filters in a single revision.</p>
+  </div>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-05-b", "Which of these sentences is most appropriate for a computer science research article?", 3,
+   "Option D depersonalizes the research narrative by removing the first-person pronoun and using passive voice. This focuses attention on the action and results rather than the researcher, which meets the genre expectations of computer science writing.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-05-b" value="0"> I am excited to present my findings on XXX.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-b" value="1"> We believe our approach is the best solution available.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-b" value="2"> In my opinion, you should apply the proposed method to your dataset.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-b" value="3"> The proposed approach was evaluated on a dataset of 200 articles.</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Make sure that you check your writing for the following types of objectivity errors:</p>
+<ol>
+  <li>Focus on people and feelings rather than things and ideas</li>
+  <li>Emotive wording</li>
+  <li>Excessive personalization</li>
+</ol>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-06') | url }}">Unit 6: Formality Filter</a> when ready.
+</p>
+{% endcall %}

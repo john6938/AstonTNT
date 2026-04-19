@@ -1,0 +1,230 @@
+---
+unit: 6
+unitTitle: Formality Filter
+title: "Unit 6: Formality Filter — Error-Free Research Writing"
+courseUnit: true
+objectives:
+  - Understand the importance of maintaining formality in scientific writing
+  - Know the five subcategories of formality errors
+  - Have practised using the formality filter
+  - Be ready to use the formality filter on your draft papers
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet, videoEmbed %}
+
+
+{# ══ Activity 1 — Introduction ═══════════════════════════════════════ #}
+
+{% call activitySection(1, "Introduction to the Formality Filter", "suit-heart") %}
+<p>
+  The formality filter is arguably the easiest filter to use. Academic, research
+  and business writing uses a <strong>formal register</strong>. The belief is that
+  formal writing is trustworthy — this is also why newscasters use formal language
+  to read the news. Readers of research articles written using informal language
+  or slang may not trust the content of the research.
+</p>
+<p>
+  This view may be biased, but the convention is unlikely to change soon.
+  When checking your draft using the formality filter, there are five error types to look out for:
+</p>
+<ol>
+  <li>Apostrophes</li>
+  <li>Abbreviations</li>
+  <li>Slang</li>
+  <li>Informal terms</li>
+  <li>Rhetorical questions</li>
+</ol>
+
+{{ videoEmbed("313Rd4LNeto", "Introduction to the formality filter") }}
+{% endcall %}
+
+
+{# ══ Activity 2 — Apostrophes ════════════════════════════════════════ #}
+
+{% call activitySection(2, "Apostrophes", "quote") %}
+<p><strong>Corpus example:</strong> <em>To be more precise, XXX doesn't directly cause the effect (E).</em></p>
+<p>
+  There are two informal uses of apostrophes to avoid:
+</p>
+<ol>
+  <li><strong>Contractions</strong> — <em>doesn't</em> should be written as <em>does not</em>.</li>
+  <li><strong>Possessives</strong> — <em>the experiment's rate</em> should be rephrased as <em>the rate of the experiment</em>.</li>
+</ol>
+<p>
+  Users of non-Latin scripts should also note that some character sets (such as
+  Japanese) use a visually similar but technically different apostrophe character
+  (` vs. '), which may cause formatting issues.
+</p>
+
+<div class="mt-4">
+{% call quizMC("quiz-06-a", "Which revision of 'it's bulky' is correct for formal scientific writing?", 2,
+   "In formal writing, contractions should be expanded to their full forms. 'it's' (a contraction of 'it is') becomes 'it is'. Note: 'its' without an apostrophe is the possessive form, which is a different word.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-06-a" value="0"> its bulky</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-a" value="1"> it`s bulky</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-a" value="2"> it is bulky</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-a" value="3"> it has bulky</label>
+{% endcall %}
+</div>
+
+<p class="mt-4">Click each corpus example to see the suggested revision.</p>
+<div class="accordion mt-2" id="unit06-apostrophe">
+  {% call accordion("apos-a", "...audio activity is 6%. It's about five times as large...") %}
+  <p><strong>Revision:</strong> <em>...audio activity is 6%, which is about five times as large...</em></p>
+  <p>The contraction <em>It's</em> is replaced by expanding the sentence with a relative clause, which also improves cohesion.</p>
+  {% endcall %}
+  {% call accordion("apos-b", "...takes a time because it's bulky.") %}
+  <p><strong>Revision:</strong> <em>...takes time because of its bulk.</em></p>
+  <p>The contraction is expanded, and the phrasing is also made more concise and formal.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Abbreviations ══════════════════════════════════════ #}
+
+{% call activitySection(3, "Abbreviations", "alphabet") %}
+<p><strong>Corpus example:</strong> <em>This is the RQ of this paper.</em></p>
+<p>
+  Unknown or undefined abbreviations should be avoided. If the author introduces
+  an abbreviation in brackets after the full form (e.g. <em>research question (RQ)</em>),
+  then the abbreviation may be used later in the paper. However, if the abbreviation
+  is neither standard nor common within the field, it should be spelled out each time
+  or introduced at first use.
+</p>
+<p>
+  Note also that there is no need to introduce an abbreviation for a term that will
+  not be referred to again later in the paper.
+</p>
+
+<div class="mt-3">
+{% call quizMC("quiz-06-b", "When is it acceptable to use an abbreviation such as 'RQ' in a research article?", 1,
+   "An abbreviation is acceptable when it has been formally introduced at first use, i.e. the full term is written out in full followed by the abbreviation in brackets: 'research question (RQ)'. After that, RQ may be used throughout the article.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-06-b" value="0"> Whenever the writer assumes readers will know it</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-b" value="1"> After it has been formally introduced at first use with the full form</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-b" value="2"> Only in the abstract, not the body of the paper</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-b" value="3"> It is never acceptable to use abbreviations in research writing</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Slang ══════════════════════════════════════════════ #}
+
+{% call activitySection(4, "Slang", "chat-dots") %}
+<p><strong>Corpus example:</strong> <em>A bunch of IT engineers collaborated and launched…</em></p>
+<p>
+  Slang describes language used only in specific social circles, which may be
+  related to age or social status. It may creep into scientific writing through lack
+  of awareness of register or poor proofreading. Non-native English speakers who have
+  developed their English primarily through spoken communication may not realize that
+  certain lexical choices, such as <em>bunch</em>, are inappropriate in formal writing.
+</p>
+<p><strong>Revised:</strong> <em>A <strong>team</strong> of IT engineers collaborated and launched…</em></p>
+
+<div class="mt-3">
+{% call quizMC("quiz-06-c", "Which word in the corpus example is slang?", 0,
+   "'Bunch' is a colloquial/slang term for a group of people, common in informal spoken English. In scientific writing it should be replaced with a neutral, formal noun such as 'team', 'group', or 'cohort'.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-06-c" value="0"> bunch</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-c" value="1"> collaborated</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-c" value="2"> launched</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-c" value="3"> engineers</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Informal terms ════════════════════════════════════ #}
+
+{% call activitySection(5, "Informal Terms", "chat-left-quote") %}
+<p><strong>Corpus example:</strong> <em>They launched the website right after the earthquake...</em></p>
+<p>
+  Informal terms differ from slang in that their usage is more widespread. In the
+  corpus example, the informal adverb <em>right</em> is used to mean
+  <em>immediately</em>. Informal terms can be replaced with more formal equivalents:
+</p>
+
+{% set informalTabs = [
+  {id: "inf-a", label: "Revision a"},
+  {id: "inf-b", label: "Revision b"}
+] %}
+{% call tabSet("unit06-informal", informalTabs) %}
+  <div class="tab-pane fade show active" id="unit06-informal-inf-a" role="tabpanel">
+    <p><em>They launched the website <strong>immediately</strong> after the earthquake.</em></p>
+    <p>The informal <em>right</em> is replaced by the formal adverb <em>immediately</em>.</p>
+  </div>
+  <div class="tab-pane fade" id="unit06-informal-inf-b" role="tabpanel">
+    <p><em>The website was launched <strong>immediately</strong> after the earthquake.</em></p>
+    <p>Passive voice additionally removes the plural pronoun <em>they</em>, avoiding potential referential ambiguity.</p>
+  </div>
+{% endcall %}
+
+<p class="mt-3">Click each corpus example to see the suggested revision.</p>
+<div class="accordion mt-3" id="unit06-informal-acc">
+  {% call accordion("inf-c", "...system error becomes more and more big...") %}
+  <p><strong>Revision:</strong> <em>...system error becomes <strong>increasingly larger</strong>...</em></p>
+  {% endcall %}
+  {% call accordion("inf-d", "...mounting lots of actuators is problematic.") %}
+  <p><strong>Revision:</strong> <em>...mounting <strong>many</strong> actuators is problematic.</em></p>
+  {% endcall %}
+  {% call accordion("inf-e", "...we found it a bit difficult to find out...") %}
+  <p><strong>Revision:</strong> <em>...it was found to be <strong>somewhat</strong> difficult to <strong>determine</strong>...</em></p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Rhetorical questions ══════════════════════════════ #}
+
+{% call activitySection(6, "Rhetorical Questions", "patch-question-fill") %}
+<p><strong>Corpus example:</strong> <em>The key question to ask is: how can we XXX?</em></p>
+<p>
+  Rhetorical questions are frequently used in magazine articles and blogs as a way of
+  engaging the reader. However, they are less common in scientific research articles,
+  where they may be seen as a device for engaging with readers of a less formal genre.
+  Novice writers would be advised to avoid them.
+</p>
+<p>
+  Rather than posing a question, the author should state the answer or reformulate
+  it as a declarative sentence:
+</p>
+<p><strong>Revised:</strong> <em>XXX can be achieved by XXXX.</em></p>
+
+<div class="mt-4">
+{% call quizMC("quiz-06-d", "Why are rhetorical questions generally inappropriate in scientific research articles?", 1,
+   "Rhetorical questions are associated with informal genres such as blogs and magazines. In scientific writing, the convention is to state claims and findings directly as declarative sentences. Novice writers in particular are advised to avoid rhetorical questions.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-06-d" value="0"> They are too difficult for non-native speakers to write correctly</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-d" value="1"> They are associated with informal genres and do not meet the register expectations of scientific writing</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-d" value="2"> They cannot be translated accurately into other languages</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-d" value="3"> They make papers too long</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Make sure that you check your writing for the following types of formality errors:</p>
+<ol>
+  <li>Apostrophes (contractions and possessives)</li>
+  <li>Undefined or non-standard abbreviations</li>
+  <li>Slang</li>
+  <li>Informal terms</li>
+  <li>Rhetorical questions</li>
+</ol>
+
+<div class="mt-4 p-3" style="background:#2a2a2a; border-radius:0.375rem; border-left: 3px solid #ff8c00;">
+  <p class="mb-1 fw-semibold" style="color:#ff8c00;">Course complete</p>
+  <p class="mb-0 small" style="color:#e0e0e0;">
+    You have now worked through all five filters — Accuracy, Brevity, Clarity,
+    Objectivity, and Formality — and practised applying each one to real corpus
+    examples. Apply the five-filter approach to your own draft writing to minimize
+    the language errors that may impinge on publication success.
+  </p>
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-left-circle"></i>
+  Return to <a href="{{ (courseBaseUrl + '/') | url }}">course overview</a>.
+</p>
+{% endcall %}

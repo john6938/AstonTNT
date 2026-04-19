@@ -1,0 +1,202 @@
+---
+unit: 4
+unitTitle: Clarity Filter
+title: "Unit 4: Clarity Filter — Error-Free Research Writing"
+courseUnit: true
+objectives:
+  - Know the five subcategories of clarity errors
+  - Have practised using the clarity filter
+  - Be ready to use the clarity filter on your draft papers
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet, videoEmbed %}
+
+
+{# ══ Activity 1 — Introduction ═══════════════════════════════════════ #}
+
+{% call activitySection(1, "Introduction to the Clarity Filter", "eye") %}
+<p>
+  Errors in clarity affect the reader's understanding of the meaning. The meaning
+  may be lost completely, or the reader may not be able to understand exactly what
+  you mean. Errors of clarity are due to <strong>vague</strong> or
+  <strong>ambiguous</strong> language usage.
+</p>
+<p>When checking your draft using the clarity filter, there are five error types to look out for:</p>
+<ol>
+  <li>Use of vague expressions</li>
+  <li>Lexical ambiguity</li>
+  <li>Referential ambiguity</li>
+  <li>Syntactic ambiguity</li>
+  <li>Garden-path sentences</li>
+</ol>
+
+{{ videoEmbed("oPDh0TQ0GB8", "Introduction to the clarity filter") }}
+{% endcall %}
+
+
+{# ══ Activity 2 — Vague expressions ══════════════════════════════════ #}
+
+{% call activitySection(2, "Use of Vague Expressions", "question-circle") %}
+<p><strong>Corpus example:</strong> <em>This is something which is XXX from XXX.</em></p>
+<p>
+  The pronoun <em>something</em> is vague, as it can refer to so many different
+  items. Clarity in written English is determined by the specificity of the
+  terminology selected. Indefinite pronouns such as <em>something</em>,
+  <em>someone</em>, or <em>somewhere</em> limit their reference only to a type
+  (thing, person, place) and are rather obscure.
+</p>
+<p>
+  Items can be visualized on a cline from vague to specific:
+  <br><em>thing &rsaquo; animal &rsaquo; mammal &rsaquo; dog &rsaquo; poodle &rsaquo; toy poodle</em>
+</p>
+
+<p class="mt-3">Click each corpus example to see the suggested revision.</p>
+<div class="accordion mt-2" id="unit04-vague">
+  {% call accordion("vague-a", "We understood the following things about a system...") %}
+  <p><strong>Revision:</strong> <em>We understood the following <strong>aspects</strong> about a system...</em></p>
+  <p><em>Aspects</em> is more specific than <em>things</em> and appropriate for describing properties of a system.</p>
+  {% endcall %}
+  {% call accordion("vague-b", "Student point out something about the presentation...") %}
+  <p><strong>Revision:</strong> <em>Students point out <strong>problems</strong> in the presentation...</em></p>
+  <p>Replacing the vague pronoun with a specific noun clarifies what is being pointed out.</p>
+  {% endcall %}
+  {% call accordion("vague-c", "When we want to buy something and estimate its price...") %}
+  <p><strong>Revision:</strong> <em>When we want to buy a <strong>product</strong> and estimate its price...</em></p>
+  {% endcall %}
+  {% call accordion("vague-d", "Looking at Table 4, four things can be seen.") %}
+  <p><strong>Revision:</strong> <em>Looking at Table 4, four <strong>features</strong> can be seen.</em></p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Lexical ambiguity ══════════════════════════════════ #}
+
+{% call activitySection(3, "Lexical Ambiguity", "question-diamond") %}
+<p><strong>Corpus example:</strong> <em>It is really high for XXX.</em></p>
+<p>
+  The adverb <em>really</em> has two possible specific meanings: either "to a high
+  degree" (replaceable by <em>very</em>) or "in truth or fact" (replaceable by
+  <em>actually</em>). In the original context it was not possible to determine the
+  intended meaning — this is lexical ambiguity. Additionally, <em>really</em> is
+  rather informal and fails to meet the genre expectations for formality.
+</p>
+
+<div class="mt-4">
+{% call quizMC("quiz-04-a", "Which type of ambiguity arises when a single word has two possible meanings?", 1,
+   "Lexical ambiguity occurs when a word has more than one meaning and the context does not make clear which meaning is intended. Referential ambiguity arises from pronouns; syntactic ambiguity from sentence structure.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="0"> Referential ambiguity</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="1"> Lexical ambiguity</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="2"> Syntactic ambiguity</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="3"> Garden-path ambiguity</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Referential ambiguity ══════════════════════════════ #}
+
+{% call activitySection(4, "Referential Ambiguity", "person-lines-fill") %}
+<p><strong>Corpus example:</strong> <em>Referring to Smith [10], Jones notes that he...</em></p>
+<p>
+  The third-person pronoun <em>he</em> refers anaphorically to an earlier-mentioned
+  person. However, there are two candidate antecedents (Smith and Jones), which
+  creates confusion. This type of ambiguity also commonly occurs when pronouns
+  such as <em>it</em> and <em>this</em> are used anaphorically.
+</p>
+<p>This ambiguity can be resolved by avoiding the pronoun entirely:</p>
+<ul>
+  <li><em>Jones notes that Smith [10]...</em></li>
+  <li><em>Smith [10] notes that Jones...</em></li>
+</ul>
+
+<div class="mt-4">
+{% call quizMC("quiz-04-b", "In 'Referring to Smith [10], Jones notes that he...', what causes the ambiguity?", 2,
+   "The pronoun 'he' could refer to either Smith or Jones. This is referential ambiguity — the reader cannot determine which person the pronoun refers to without additional context. The solution is to replace the pronoun with the relevant proper name.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="0"> The word "referring" has two meanings</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="1"> The citation number [10] is vague</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="2"> The pronoun "he" could refer to either Smith or Jones</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="3"> The sentence structure forces a wrong initial reading</label>
+{% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Syntactic ambiguity ════════════════════════════════ #}
+
+{% call activitySection(5, "Syntactic Ambiguity", "code-square") %}
+<p><strong>Corpus example:</strong> <em>XXX found two AAA and one BBB, which CCC.</em></p>
+<p>
+  The relative clause <em>which CCC</em> may modify only <em>BBB</em>, or it could
+  modify both <em>AAA</em> and <em>BBB</em>. This ambiguity arises from placing a
+  modifier after noun phrases joined by a conjunction. Choose the revision that
+  matches your intended meaning:
+</p>
+
+{% set syntaxTabs = [
+  {id: "syn-one",  label: "Modifier applies to BBB only"},
+  {id: "syn-all",  label: "Modifier applies to both"}
+] %}
+{% call tabSet("unit04-syntax", syntaxTabs) %}
+  <div class="tab-pane fade show active" id="unit04-syntax-syn-one" role="tabpanel">
+    <p>Move <em>BBB</em> to the start of the series so the modifier immediately follows it:</p>
+    <p><em>XXX found <strong>one BBB, which CCC</strong>, and two AAA.</em></p>
+  </div>
+  <div class="tab-pane fade" id="unit04-syntax-syn-all" role="tabpanel">
+    <p>Use a distributive determiner (<em>all of which</em>) to make the scope explicit:</p>
+    <p><em>XXX found two AAA and one BBB, <strong>all of which</strong> CCC.</em></p>
+  </div>
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 6 — Garden-path sentences ═════════════════════════════ #}
+
+{% call activitySection(6, "Garden-Path Sentences", "signpost-split") %}
+<p><strong>Example:</strong> <em>The journal plans to publish your paper were just a rumour.</em></p>
+<p>
+  On reading this sentence, most readers will assume <em>plans</em> is a verb.
+  On reaching the finite verb <em>were</em>, they must backtrack and re-read,
+  re-categorizing <em>plans</em> as a noun. Garden-path sentences are not only
+  ambiguous, but the initially assumed meaning is not the intended one.
+</p>
+<p>
+  Garden-path sentences are difficult for writers to notice because the writer is
+  primed to focus on the intended meaning. Second readers and proofreaders can,
+  however, easily notice them because they need to backtrack to figure out the
+  meaning. The challenge is not fixing them once found, but initially identifying them.
+</p>
+
+<div class="accordion mt-3" id="unit04-garden">
+  {% call accordion("gp-a", "Read this sentence: 'The horse raced past the barn fell.' What is the intended meaning?") %}
+  <p>The sentence means: <em>The horse <strong>that was</strong> raced past the barn fell.</em></p>
+  <p>On first reading, most people parse "raced" as the main verb. Only on reaching "fell" does it become clear that "raced" is part of a reduced relative clause. This is a classic garden-path sentence.</p>
+  {% endcall %}
+  {% call accordion("gp-b", "How should garden-path sentences be revised?") %}
+  <p>Disambiguation is usually straightforward once identified. Common strategies include:</p>
+  <ul>
+    <li>Adding a relative pronoun: <em>The horse <strong>that was</strong> raced past the barn fell.</em></li>
+    <li>Reordering the sentence to avoid the ambiguous parse</li>
+    <li>Replacing a noun that can also function as a verb with a clearer noun</li>
+  </ul>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Make sure that you check your writing for the following types of clarity errors:</p>
+<ol>
+  <li>Use of vague expressions</li>
+  <li>Lexical ambiguity</li>
+  <li>Referential ambiguity</li>
+  <li>Syntactic ambiguity</li>
+  <li>Garden-path sentences</li>
+</ol>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-05') | url }}">Unit 5: Objectivity Filter</a> when ready.
+</p>
+{% endcall %}
