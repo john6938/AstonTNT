@@ -375,6 +375,18 @@
 }
 
 
+/* ── Bold text colour ───────────────────────────────────────── */
+
+/* On dark backgrounds, bold text uses pale yellow instead of white */
+.course-activity strong, .course-activity b,
+.course-review   strong, .course-review   b,
+.course-objectives strong, .course-objectives b,
+.course-tab-content strong, .course-tab-content b,
+.course-quiz strong, .course-quiz b {
+  color: #fffacd;  /* lemon chiffon — pale yellow, readable on dark bg */
+}
+
+
 /* ── Mobile adjustments ─────────────────────────────────────── */
 
 @media (max-width: 991.98px) {
