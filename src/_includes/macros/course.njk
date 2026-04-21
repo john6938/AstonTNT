@@ -32,6 +32,19 @@
 {% endmacro %}
 
 
+{# Tool section — highlighted card for the embedded JS tool.
+   title: tool name (optional, defaults to "Tool") #}
+{% macro toolSection(title) %}
+<section class="course-tool-section course-section mb-4">
+  <div class="activity-header">
+    <i class="bi bi-cpu"></i>
+    <h2 class="activity-title-text">{{ title | default("Tool") }}</h2>
+  </div>
+  {{ caller() }}
+</section>
+{% endmacro %}
+
+
 {# Review section — distinct end-of-unit wrapper.
    Use {% call reviewSection() %} … {% endcall %} #}
 {% macro reviewSection() %}

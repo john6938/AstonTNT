@@ -1,0 +1,218 @@
+---
+unit: 2
+unitTitle: Modal Verbs
+title: "Unit 2: Modal Verbs — iCALL Suite"
+description: "Understand how modal verbs change meaning across four key categories: possibility, ability, obligation, and permission."
+objectives:
+  - Identify the four main functions of modal verbs in English
+  - Distinguish between possibility, ability, obligation, and permission
+  - Use the tool to see how modals change a sentence across past, present, and future
+pageScripts:
+  - /assets/js/tools/tool2.js
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, quizMC, tabSet, toolSection %}
+
+
+{# ══ Activity 1 — Introduction ════════════════════════════════ #}
+
+{% call activitySection(1, "What Are Modal Verbs?", "book") %}
+<p>
+  Modal verbs are a special group of auxiliary verbs that express <strong>attitude</strong>
+  towards an action rather than describing the action itself. They do not change form
+  (no <em>-s</em>, <em>-ed</em>, or <em>-ing</em>) and are always followed by a bare infinitive.
+</p>
+<p>The core English modals are:</p>
+<p style="font-size:1.05rem; letter-spacing:0.05em; color:#ff8c00;">
+  can &bull; could &bull; may &bull; might &bull; shall &bull; should &bull; will &bull; would &bull; must
+</p>
+<p>
+  Each modal can express more than one meaning depending on context. In this unit we focus on
+  four key functions: <strong>possibility</strong>, <strong>ability</strong>,
+  <strong>obligation</strong>, and <strong>permission</strong>.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — The Four Functions ════════════════════════  #}
+
+{% call activitySection(2, "The Four Functions", "list-check") %}
+<p class="mb-3">Expand each function to see which modals are used and when.</p>
+
+<div class="accordion" id="unit02-functions">
+
+  {% call accordion("acc-02-a", "Possibility — something that might happen or be true") %}
+  <p><strong>Modals:</strong> <em>can, could, may, might</em></p>
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Time</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Past</td><td>She <strong>could</strong> have missed the bus.</td></tr>
+      <tr><td>Present</td><td>It <strong>may</strong> rain later.</td></tr>
+      <tr><td>Future</td><td>We <strong>might</strong> visit Tokyo next year.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-02-b", "Ability — what someone is capable of doing") %}
+  <p><strong>Modals:</strong> <em>can, could, be able to</em></p>
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Time</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Past</td><td>He <strong>could</strong> swim when he was five.</td></tr>
+      <tr><td>Present</td><td>She <strong>can</strong> speak three languages.</td></tr>
+      <tr><td>Future</td><td>They <strong>will be able to</strong> join us next week.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-02-c", "Obligation — what someone is required to do") %}
+  <p><strong>Modals:</strong> <em>must, should, shall, have to</em></p>
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Time</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Past</td><td>You <strong>should</strong> have called first.</td></tr>
+      <tr><td>Present</td><td>Students <strong>must</strong> submit their work by Friday.</td></tr>
+      <tr><td>Future</td><td>Everyone <strong>will have to</strong> register in advance.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-02-d", "Permission — what someone is allowed to do") %}
+  <p><strong>Modals:</strong> <em>can, could, may, might</em></p>
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Time</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Past</td><td>Students <strong>might</strong> use dictionaries in old exams.</td></tr>
+      <tr><td>Present</td><td>You <strong>may</strong> leave early today.</td></tr>
+      <tr><td>Future</td><td>Members <strong>may</strong> bring one guest next term.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Tool ════════════════════════════════════════ #}
+
+{% call toolSection("Tool: Modal Verb Transformer") %}
+<p class="mb-3">
+  Enter a simple sentence, then click a modal function to see the sentence rewritten
+  in the past, present, and future using the appropriate modal verb.
+</p>
+<p class="mb-3" style="font-size:0.875rem; color:#aaa;">
+  <i class="bi bi-info-circle"></i>
+  <strong>Try:</strong> <em>"She sings beautifully."</em> &nbsp;or&nbsp;
+  <em>"He reads quickly."</em>
+</p>
+
+<div class="mb-2">
+  <label class="tool-label" for="textInput">Your sentence</label>
+  <input type="text" id="textInput" class="tool-input"
+         placeholder="Enter a simple sentence…" aria-label="Sentence input">
+</div>
+
+<div class="d-flex flex-wrap gap-2 mb-3">
+  <button class="tool-btn" onclick="modifySentence('possibility')">
+    <i class="bi bi-question-circle"></i> Possibility
+  </button>
+  <button class="tool-btn" onclick="modifySentence('ability')">
+    <i class="bi bi-lightning"></i> Ability
+  </button>
+  <button class="tool-btn" onclick="modifySentence('obligation')">
+    <i class="bi bi-exclamation-circle"></i> Obligation
+  </button>
+  <button class="tool-btn" onclick="modifySentence('permission')">
+    <i class="bi bi-check-circle"></i> Permission
+  </button>
+</div>
+
+<div id="loading" style="display:none; color:#aaa; font-size:0.875rem; margin-bottom:0.5rem;">
+  <i class="bi bi-hourglass-split"></i> Processing…
+</div>
+
+<div class="tool-label">Result</div>
+<div id="output" class="tool-output" style="min-height:4rem;">
+  <span style="color:#666; font-style:italic;">Select a function above to see the transformation…</span>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Quiz ════════════════════════════════════════ #}
+
+{% call activitySection(4, "Check Your Understanding", "patch-question") %}
+
+{% call quizMC("quiz-02-a", "Which modal verb expresses present ABILITY?", 1,
+   "'Can' expresses present ability. 'Could' is used for past ability or polite requests. 'Must' expresses obligation.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-02-a" value="0"> Must</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-a" value="1"> Can</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-a" value="2"> Could</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-a" value="3"> Would</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-02-b", "'You must submit the report by Friday.' This sentence expresses…", 2,
+   "'Must' here expresses strong obligation — something that is required or necessary.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-02-b" value="0"> Possibility</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-b" value="1"> Permission</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-b" value="2"> Obligation</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-b" value="3"> Ability</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-02-c", "Which sentence asks for permission most politely?", 3,
+   "'May I' is the most formal and polite way to ask for permission in English.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-02-c" value="0"> Can I leave?</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-c" value="1"> Will I leave?</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-c" value="2"> Could I leave?</label>
+  <label class="quiz-option"><input type="radio" name="quiz-02-c" value="3"> May I leave?</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 5 — Video ═══════════════════════════════════════ #}
+
+{% call activitySection(5, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<div class="accordion mb-3" id="unit02-review">
+
+  {% call accordion("rev-02-a", "Summary: Which modals go with which function?") %}
+  <table class="table table-sm table-dark table-bordered" style="font-size:0.875rem;">
+    <thead><tr><th>Function</th><th>Common modals</th></tr></thead>
+    <tbody>
+      <tr><td>Possibility</td><td>might, may, could, can</td></tr>
+      <tr><td>Ability</td><td>can (present), could (past), will be able to (future)</td></tr>
+      <tr><td>Obligation</td><td>must, should, shall, will have to</td></tr>
+      <tr><td>Permission</td><td>may (formal), can (informal), could (polite)</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("rev-02-b", "Why does the tool only show three time frames?") %}
+  <p>
+    The tool simplifies modal usage into past, present, and future to make the patterns
+    visible. In real English, the relationship between modals and time is more nuanced —
+    for example, <em>could</em> can express past ability, present possibility, or polite
+    requests depending on context.
+  </p>
+  {% endcall %}
+
+</div>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-03') | url }}">Unit 3: Participle Clauses</a> when ready.
+</p>
+{% endcall %}

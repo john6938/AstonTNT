@@ -1,0 +1,207 @@
+---
+unit: 4
+unitTitle: Formal Language
+title: "Unit 4: Formal Language — iCALL Suite"
+description: "Understand how to convert informal English — including slang, contractions, and weak modals — into formal academic language."
+objectives:
+  - Recognise three types of informality: slang, contractions, and weak modals
+  - Convert informal sentences into formal equivalents
+  - Understand why formal language is important in academic and professional contexts
+pageScripts:
+  - /assets/js/tools/tool4.js
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, quizMC, tabSet, toolSection %}
+
+
+{# ══ Activity 1 — Introduction ════════════════════════════════ #}
+
+{% call activitySection(1, "What Is Formal Language?", "book") %}
+<p>
+  <strong>Formal language</strong> is used in academic writing, professional emails, official
+  reports, and public speeches. It avoids slang, contractions, and overly casual expressions
+  that are common in everyday spoken English.
+</p>
+<p>Informal English differs from formal English in three main ways:</p>
+<ul style="color:#e0e0e0;">
+  <li><strong>Slang</strong> — words like <em>wanna</em>, <em>gonna</em>, <em>cool</em></li>
+  <li><strong>Contractions</strong> — shortened forms like <em>I'm</em>, <em>you're</em>, <em>I've</em></li>
+  <li><strong>Weak modals</strong> — <em>Can</em> and <em>Will</em> replaced by <em>Could</em> and <em>Would</em> in formal requests</li>
+</ul>
+<p>
+  In academic writing, formal language signals credibility and professionalism. The tool in
+  this unit will help you identify which type of informality is present in a sentence.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Three Types of Informality ═════════════════ #}
+
+{% call activitySection(2, "Three Types of Informality", "list-check") %}
+<p class="mb-3">Expand each category to see examples and formal equivalents.</p>
+
+<div class="accordion" id="unit04-types">
+
+  {% call accordion("acc-04-a", "Slang — casual, non-standard vocabulary") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Informal</th><th>Formal</th></tr></thead>
+    <tbody>
+      <tr><td>wanna</td><td>want to</td></tr>
+      <tr><td>gonna</td><td>going to</td></tr>
+      <tr><td>yeah / yep</td><td>yes</td></tr>
+      <tr><td>cool</td><td>good / excellent</td></tr>
+      <tr><td>stuff</td><td>things / materials</td></tr>
+      <tr><td>dude / guy</td><td>person / individual</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-04-b", "Contractions — shortened verb forms") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Contraction</th><th>Formal form</th></tr></thead>
+    <tbody>
+      <tr><td>I'm</td><td>I am</td></tr>
+      <tr><td>I've</td><td>I have</td></tr>
+      <tr><td>I'll</td><td>I will</td></tr>
+      <tr><td>you're</td><td>you are</td></tr>
+      <tr><td>ain't</td><td>is not / am not</td></tr>
+      <tr><td>gotta</td><td>have to</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-04-c", "Weak modals — Can/Will → Could/Would") %}
+  <p>
+    In formal requests, <em>Can</em> and <em>Will</em> at the beginning of a sentence are
+    replaced by the more tentative and polite <em>Could</em> and <em>Would</em>.
+  </p>
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Informal</th><th>Formal</th></tr></thead>
+    <tbody>
+      <tr><td>Can you send me the file?</td><td>Could you send me the file?</td></tr>
+      <tr><td>Will you review this draft?</td><td>Would you review this draft?</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Tool ════════════════════════════════════════ #}
+
+{% call toolSection("Tool: Formal Language Converter") %}
+<p class="mb-3">
+  Enter an informal sentence. The tool will convert it to formal English and tell you
+  which type(s) of conversion were applied.
+</p>
+<p class="mb-3" style="font-size:0.875rem; color:#aaa;">
+  <i class="bi bi-info-circle"></i>
+  <strong>Try:</strong> <em>"I wanna talk to you about this stuff."</em>
+  &nbsp;or&nbsp; <em>"Can you send me the report?"</em>
+</p>
+
+<div class="mb-2">
+  <label class="tool-label" for="textInput">Informal sentence</label>
+  <input type="text" id="textInput" class="tool-input"
+         placeholder="Enter an informal sentence…" aria-label="Sentence input">
+</div>
+
+<div class="d-flex gap-2 mb-3">
+  <button class="tool-btn" onclick="convertToFormal()">
+    <i class="bi bi-arrow-up-circle"></i> Make Formal
+  </button>
+</div>
+
+<div id="loading" style="display:none; color:#aaa; font-size:0.875rem; margin-bottom:0.5rem;">
+  <i class="bi bi-hourglass-split"></i> Processing…
+</div>
+
+<div class="tool-label">Formal Version</div>
+<div id="output" class="tool-output mb-3" style="min-height:3rem;">
+  <span style="color:#666; font-style:italic;">The formal sentence will appear here…</span>
+</div>
+
+<div class="tool-label">Conversion Type</div>
+<div id="convertPattern" class="tool-output" style="min-height:2rem; color:#ff8c00;">
+  <span style="color:#666; font-style:italic;">The conversion type will appear here…</span>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Quiz ════════════════════════════════════════ #}
+
+{% call activitySection(4, "Check Your Understanding", "patch-question") %}
+
+{% call quizMC("quiz-04-a", "Which sentence uses the most formal language?", 3,
+   "'I would like to discuss' avoids contractions and uses a polite modal (would), making it the most formal option.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="0"> I wanna talk about this stuff.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="1"> I'm gonna discuss this topic.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="2"> Can you tell me more about it?</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="3"> I would like to discuss this matter further.</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-04-b", "'I've completed the analysis.' — What makes this informal?", 1,
+   "The contraction 'I've' is informal. In formal writing, contractions should be expanded: 'I have completed the analysis.'") %}
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="0"> The word 'completed'</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="1"> The contraction 'I've'</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="2"> The word 'analysis'</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="3"> Nothing — it is already formal</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-04-c", "Which modal change makes a request more formal?", 2,
+   "'Could' and 'Would' are more tentative and polite than 'Can' and 'Will'. Replacing them is a common formality marker.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-04-c" value="0"> Replacing 'should' with 'must'</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-c" value="1"> Replacing 'might' with 'may'</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-c" value="2"> Replacing 'can/will' with 'could/would'</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-c" value="3"> Replacing 'would' with 'will'</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 5 — Video ═══════════════════════════════════════ #}
+
+{% call activitySection(5, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<div class="accordion mb-3" id="unit04-review">
+
+  {% call accordion("rev-04-a", "Summary: Formal conversion types") %}
+  <table class="table table-sm table-dark table-bordered" style="font-size:0.875rem;">
+    <thead><tr><th>Type</th><th>Examples converted</th></tr></thead>
+    <tbody>
+      <tr><td>Slang</td><td>wanna → want to, yeah → yes, cool → good</td></tr>
+      <tr><td>Contractions</td><td>I'm → I am, I've → I have, ain't → is not</td></tr>
+      <tr><td>Modals</td><td>Can → Could, Will → Would (sentence-initial only)</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("rev-04-b", "When is formal language required?") %}
+  <p>
+    Formal language is expected in academic essays, research papers, cover letters, official
+    reports, and professional emails. Informal language may be acceptable in presentations
+    aimed at general audiences, but should be avoided in written academic work.
+  </p>
+  {% endcall %}
+
+</div>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-05') | url }}">Unit 5: Polite Requests</a> when ready.
+</p>
+{% endcall %}

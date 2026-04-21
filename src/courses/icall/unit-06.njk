@@ -1,0 +1,197 @@
+---
+unit: 6
+unitTitle: So & Neither
+title: "Unit 6: So & Neither — iCALL Suite"
+description: "Learn how to use 'so' and 'neither' to agree with positive and negative statements using the correct auxiliary verb."
+objectives:
+  - Understand when to use 'so' (positive) and 'neither' (negative) in responses
+  - Select the correct auxiliary verb to match the original statement
+  - Produce grammatically correct so/neither responses
+pageScripts:
+  - /assets/js/tools/tool6.js
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, quizMC, tabSet, toolSection %}
+
+
+{# ══ Activity 1 — Introduction ════════════════════════════════ #}
+
+{% call activitySection(1, "So and Neither", "book") %}
+<p>
+  <strong>So</strong> and <strong>neither</strong> (or <em>nor</em>) are used to show that
+  something is also true of another person or situation. They are a concise alternative
+  to repeating the full verb phrase.
+</p>
+<div class="p-3 mb-3" style="background:#1a1a1a; border-left:4px solid #ff8c00; border-radius:0 0.375rem 0.375rem 0;">
+  <p class="mb-1"><strong>Positive statement:</strong> <em>"I enjoy reading."</em></p>
+  <p class="mb-0"><strong>Agreement:</strong> <em>"<span style="color:#ff8c00;">So do I.</span>"</em></p>
+</div>
+<div class="p-3" style="background:#1a1a1a; border-left:4px solid #ff8c00; border-radius:0 0.375rem 0.375rem 0;">
+  <p class="mb-1"><strong>Negative statement:</strong> <em>"She doesn't like spicy food."</em></p>
+  <p class="mb-0"><strong>Agreement:</strong> <em>"<span style="color:#ff8c00;">Neither do I.</span>"</em></p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — Patterns ════════════════════════════════════ #}
+
+{% call activitySection(2, "Forming So/Neither Responses", "list-check") %}
+<p class="mb-3">The auxiliary verb in the response must match the tense of the original statement.</p>
+
+<div class="accordion" id="unit06-patterns">
+
+  {% call accordion("acc-06-a", "So + auxiliary + I (positive agreement)") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Statement</th><th>Response</th></tr></thead>
+    <tbody>
+      <tr><td>I am tired.</td><td>So am I.</td></tr>
+      <tr><td>She works hard.</td><td>So do I.</td></tr>
+      <tr><td>They have finished.</td><td>So have I.</td></tr>
+      <tr><td>He can swim.</td><td>So can I.</td></tr>
+      <tr><td>We will attend.</td><td>So will I.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-06-b", "Neither + auxiliary + I (negative agreement)") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Statement</th><th>Response</th></tr></thead>
+    <tbody>
+      <tr><td>I am not ready.</td><td>Neither am I.</td></tr>
+      <tr><td>She doesn't drive.</td><td>Neither do I.</td></tr>
+      <tr><td>They haven't replied.</td><td>Neither have I.</td></tr>
+      <tr><td>He can't swim.</td><td>Neither can I.</td></tr>
+      <tr><td>We won't be there.</td><td>Neither will I.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-06-c", "Key rule: match the auxiliary") %}
+  <p>
+    The auxiliary verb in <em>So/Neither</em> must match the one in the original sentence.
+    If the original uses <em>have</em>, so does the response. If it uses <em>did</em>, so
+    does the response. Never use a different auxiliary.
+  </p>
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Correct</th><th>Incorrect</th></tr></thead>
+    <tbody>
+      <tr><td>I worked hard. So did I. ✓</td><td>I worked hard. So do I. ✗</td></tr>
+      <tr><td>She has left. So has she. ✓</td><td>She has left. So did she. ✗</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Tool ════════════════════════════════════════ #}
+
+{% call toolSection("Tool: So/Neither Generator") %}
+<p class="mb-3">
+  Type a positive or negative statement. The tool will generate the correct
+  <em>So…</em> or <em>Neither…</em> response.
+</p>
+<p class="mb-3" style="font-size:0.875rem; color:#aaa;">
+  <i class="bi bi-info-circle"></i>
+  <strong>Try:</strong> <em>"I enjoy cooking."</em> &nbsp;or&nbsp; <em>"She can't drive."</em>
+</p>
+
+<div class="mb-2">
+  <label class="tool-label" for="text-input">Your statement</label>
+  <input type="text" id="text-input" class="tool-input"
+         placeholder="Enter a statement…" aria-label="Statement input"
+         oninput="changeInput(this.value)">
+</div>
+
+<div class="d-flex gap-2 mb-3">
+  <button class="tool-btn" id="button" onclick="generate()" disabled>
+    <i class="bi bi-arrow-right-circle"></i> Generate Response
+  </button>
+</div>
+
+<div class="tool-label">Response</div>
+<div id="result" class="tool-output" style="min-height:3rem;">
+  <span style="color:#666; font-style:italic;">The so/neither response will appear here…</span>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Quiz ════════════════════════════════════════ #}
+
+{% call activitySection(4, "Check Your Understanding", "patch-question") %}
+
+{% call quizMC("quiz-06-a", "Complete the response: 'She has finished her essay.' '___'", 2,
+   "'So have I' matches the auxiliary 'has' (present perfect) with 'have I', maintaining the same tense.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-06-a" value="0"> So do I.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-a" value="1"> So did I.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-a" value="2"> So have I.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-a" value="3"> So am I.</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-06-b", "'I can't play the piano.' Which response is correct?", 1,
+   "'Neither can I' matches the modal 'can' from the negative statement. 'Neither' is used because the original statement is negative.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-06-b" value="0"> So can I.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-b" value="1"> Neither can I.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-b" value="2"> Neither do I.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-b" value="3"> So do I.</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-06-c", "When do you use 'neither' instead of 'so'?", 0,
+   "'Neither' is used to agree with negative statements. 'So' is used to agree with positive ones.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-06-c" value="0"> When the original statement is negative</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-c" value="1"> When the original statement is in the past tense</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-c" value="2"> When you disagree with the statement</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-c" value="3"> When the subject is a third person</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 5 — Video ═══════════════════════════════════════ #}
+
+{% call activitySection(5, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<div class="accordion mb-3" id="unit06-review">
+
+  {% call accordion("rev-06-a", "Summary: So vs. Neither") %}
+  <table class="table table-sm table-dark table-bordered" style="font-size:0.875rem;">
+    <thead><tr><th>Statement type</th><th>Response word</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Positive</td><td>So</td><td>I like coffee. — So do I.</td></tr>
+      <tr><td>Negative</td><td>Neither / Nor</td><td>I don't like tea. — Neither do I.</td></tr>
+    </tbody>
+  </table>
+  <p class="mt-2 mb-0" style="font-size:0.875rem;">
+    Always match the auxiliary verb: <em>be, do, have,</em> or a modal.
+  </p>
+  {% endcall %}
+
+  {% call accordion("rev-06-b", "What does the tool output after generating?") %}
+  <p>
+    The tool clears the input and disables the button after generating a response, so
+    you are ready to enter a new sentence immediately. This prevents accidental duplicate
+    submissions.
+  </p>
+  {% endcall %}
+
+</div>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-07') | url }}">Unit 7: Short Answers</a> when ready.
+</p>
+{% endcall %}

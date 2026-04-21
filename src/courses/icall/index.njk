@@ -1,0 +1,82 @@
+---
+layout: layouts/base.njk
+title: "iCALL Suite — Interactive Language Learning Tools"
+description: "Ten interactive tools to help non-native English speakers understand and practise key grammar patterns."
+---
+
+<section class="page-header">
+  <div class="container">
+    <h1>iCALL Suite</h1>
+    <p class="lead" style="color: #e0e0e0;">
+      Ten interactive tools to help you understand and practise key patterns of English grammar.
+    </p>
+  </div>
+</section>
+
+<div class="container py-4">
+
+  <div class="row mb-5">
+    <div class="col-lg-8">
+      <h2>About This Course</h2>
+      <p>
+        The iCALL Suite (Intelligent Computer-Assisted Language Learning) is a collection of
+        ten grammar tools for non-native speakers of English. Each unit combines a short lesson
+        with a hands-on tool that analyses or transforms your own sentences, so you can see
+        grammar rules working on real examples you provide.
+      </p>
+      <p>
+        The tools use <a href="https://compromise.cool" target="_blank" rel="noopener">compromise NLP</a>
+        to parse and manipulate English text directly in your browser — no data is sent to any server.
+      </p>
+    </div>
+    <div class="col-lg-4">
+      <div class="card p-3">
+        <h3 class="fs-6 fw-bold mb-2" style="color:#000;">Quick facts</h3>
+        <ul class="mb-0" style="color:#000; font-size:0.9rem;">
+          <li>10 units, each with one embedded tool</li>
+          <li>Suitable for B1–C1 level learners</li>
+          <li>No login or registration required</li>
+          <li>Works entirely in your browser</li>
+          <li>Best used as a self-study supplement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mb-4">Units &amp; Tools</h2>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+
+    {% set unitData = [
+      { n: 1,  icon: "sort-alpha-down",  title: "Adjective Order",    blurb: "Discover the fixed order English uses when multiple adjectives modify a noun." },
+      { n: 2,  icon: "chat-square-text", title: "Modal Verbs",        blurb: "Explore how modal verbs change meaning — from possibility to obligation." },
+      { n: 3,  icon: "link-45deg",       title: "Participle Clauses", blurb: "See how participle clauses compress two ideas into one elegant structure." },
+      { n: 4,  icon: "briefcase",        title: "Formal Language",    blurb: "Convert informal or colloquial English into more formal, academic style." },
+      { n: 5,  icon: "hand-thumbs-up",   title: "Polite Requests",    blurb: "Transform direct requests into polite, indirect forms." },
+      { n: 6,  icon: "arrow-left-right", title: "So & Neither",       blurb: "Practise agreeing with positive and negative statements using so and neither." },
+      { n: 7,  icon: "check2-square",    title: "Short Answers",      blurb: "Generate correct short answers to yes/no questions automatically." },
+      { n: 8,  icon: "clock-history",    title: "Tense Parser",       blurb: "Identify and label the tenses used in any sentence you enter." },
+      { n: 9,  icon: "alphabet",         title: "Articles",           blurb: "Check whether a or an is correct before any word using phonetic rules." },
+      { n: 10, icon: "megaphone",        title: "Reported Speech",    blurb: "Transform direct speech into reported speech with automatic backshift." }
+    ] %}
+
+    {% for u in unitData %}
+    <div class="col">
+      <div class="card section-card h-100">
+        <div class="card-body">
+          <div class="card-icon">
+            <i class="bi bi-{{ u.icon }}"></i>
+          </div>
+          <p class="text-muted mb-1" style="font-size:0.75rem;">Unit {{ u.n | twoDigit }}</p>
+          <h3 class="card-title fs-6 fw-bold">{{ u.title }}</h3>
+          <p class="card-text" style="font-size:0.875rem; color:#333;">{{ u.blurb }}</p>
+          <a href="{{ ('/courses/icall/unit-' + (u.n | twoDigit)) | url }}" class="btn btn-sm">
+            Go to unit <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>

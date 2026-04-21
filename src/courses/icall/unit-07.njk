@@ -1,0 +1,204 @@
+---
+unit: 7
+unitTitle: Short Answers
+title: "Unit 7: Short Answers — iCALL Suite"
+description: "Learn how to produce grammatically correct short answers to yes/no questions in English."
+objectives:
+  - Form correct positive and negative short answers to yes/no questions
+  - Select the correct auxiliary verb to match the question
+  - Respond appropriately to questions with 'shall', 'be', and other auxiliaries
+pageScripts:
+  - /assets/js/tools/tool7.js
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, quizMC, tabSet, toolSection %}
+
+
+{# ══ Activity 1 — Introduction ════════════════════════════════ #}
+
+{% call activitySection(1, "What Are Short Answers?", "book") %}
+<p>
+  A <strong>short answer</strong> responds to a yes/no question using only the auxiliary verb —
+  not the full verb phrase. They sound natural and avoid unnecessary repetition.
+</p>
+<div class="p-3 mb-3" style="background:#1a1a1a; border-left:4px solid #ff8c00; border-radius:0 0.375rem 0.375rem 0;">
+  <p class="mb-1"><strong>Question:</strong> <em>"Do you speak English?"</em></p>
+  <p class="mb-1"><strong>Positive:</strong> <em>"<span style="color:#ff8c00;">Yes, I do.</span>"</em></p>
+  <p class="mb-0"><strong>Negative:</strong> <em>"<span style="color:#ff8c00;">No, I do not.</span>"</em></p>
+</div>
+<p>
+  The auxiliary in the short answer must always <strong>match the auxiliary in the question</strong>.
+  Short answers never use the main verb.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Patterns ════════════════════════════════════ #}
+
+{% call activitySection(2, "Short Answer Patterns", "list-check") %}
+<p class="mb-3">Expand each auxiliary type to see examples.</p>
+
+<div class="accordion" id="unit07-patterns">
+
+  {% call accordion("acc-07-a", "Do/Does/Did — action verbs") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Question</th><th>Positive</th><th>Negative</th></tr></thead>
+    <tbody>
+      <tr><td>Do you like coffee?</td><td>Yes, I do.</td><td>No, I do not.</td></tr>
+      <tr><td>Does she play tennis?</td><td>Yes, she does.</td><td>No, she does not.</td></tr>
+      <tr><td>Did they arrive on time?</td><td>Yes, they did.</td><td>No, they did not.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-07-b", "Am/Is/Are/Was/Were — be verbs") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Question</th><th>Positive</th><th>Negative</th></tr></thead>
+    <tbody>
+      <tr><td>Are you ready?</td><td>Yes, I am.</td><td>No, I am not.</td></tr>
+      <tr><td>Is he a student?</td><td>Yes, he is.</td><td>No, he is not.</td></tr>
+      <tr><td>Were they there?</td><td>Yes, they were.</td><td>No, they were not.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-07-c", "Have/Has/Had — perfect forms") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Question</th><th>Positive</th><th>Negative</th></tr></thead>
+    <tbody>
+      <tr><td>Have you finished?</td><td>Yes, I have.</td><td>No, I have not.</td></tr>
+      <tr><td>Has she called?</td><td>Yes, she has.</td><td>No, she has not.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-07-d", "Shall/Modal verbs") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Question</th><th>Positive</th><th>Negative</th></tr></thead>
+    <tbody>
+      <tr><td>Shall I open the window?</td><td>Yes, please.</td><td>No, thank you.</td></tr>
+      <tr><td>Can you swim?</td><td>Yes, I can.</td><td>No, I cannot.</td></tr>
+      <tr><td>Will you be there?</td><td>Yes, I will.</td><td>No, I will not.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Tool ════════════════════════════════════════ #}
+
+{% call toolSection("Tool: Short Answer Generator") %}
+<p class="mb-3">
+  Enter a yes/no question. Click <strong>Positive</strong> or <strong>Negative</strong>
+  to see the correct short answer.
+</p>
+<p class="mb-3" style="font-size:0.875rem; color:#aaa;">
+  <i class="bi bi-info-circle"></i>
+  <strong>Try:</strong> <em>"Do you enjoy learning English?"</em> &nbsp;or&nbsp;
+  <em>"Has she submitted her report?"</em>
+</p>
+
+<form name="smpl">
+  <div class="mb-2">
+    <label class="tool-label" for="word">Your yes/no question</label>
+    <input type="text" name="word" id="word" class="tool-input"
+           placeholder="Enter a yes/no question…" aria-label="Question input">
+  </div>
+</form>
+
+<div class="d-flex flex-wrap gap-2 mb-3">
+  <button class="tool-btn" onclick="displayAnswer('positive')">
+    <i class="bi bi-check-circle"></i> Positive Answer
+  </button>
+  <button class="tool-btn" onclick="displayAnswer('negative')" style="background:#555; color:#f0f0f0;">
+    <i class="bi bi-x-circle"></i> Negative Answer
+  </button>
+</div>
+
+<div class="tool-label">Short Answer</div>
+<div id="answerBox" class="tool-output" style="min-height:3rem;">
+  <span style="color:#666; font-style:italic;">The short answer will appear here…</span>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Quiz ════════════════════════════════════════ #}
+
+{% call activitySection(4, "Check Your Understanding", "patch-question") %}
+
+{% call quizMC("quiz-07-a", "'Has she received the package?' — What is the correct positive short answer?", 2,
+   "'Yes, she has.' — the auxiliary 'has' from the question is carried over directly into the short answer.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-07-a" value="0"> Yes, she does.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-a" value="1"> Yes, she did.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-a" value="2"> Yes, she has.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-a" value="3"> Yes, she is.</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-07-b", "Why do short answers not repeat the main verb?", 1,
+   "Short answers use only the auxiliary to avoid repetition. This makes spoken and written English more concise and natural.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-07-b" value="0"> Because it is grammatically incorrect to repeat the main verb</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-b" value="1"> To avoid unnecessary repetition — the context is already understood</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-b" value="2"> Because the main verb changes in the answer</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-b" value="3"> Because short answers always use 'do'</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-07-c", "'Shall we begin?' — What is the correct positive response?", 3,
+   "'Yes, please.' is the conventional positive response to a 'Shall I/we…?' offer or suggestion.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-07-c" value="0"> Yes, we do.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-c" value="1"> Yes, we shall.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-c" value="2"> Yes, we will.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-c" value="3"> Yes, please.</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 5 — Video ═══════════════════════════════════════ #}
+
+{% call activitySection(5, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<div class="accordion mb-3" id="unit07-review">
+
+  {% call accordion("rev-07-a", "Summary: Auxiliary matching in short answers") %}
+  <table class="table table-sm table-dark table-bordered" style="font-size:0.875rem;">
+    <thead><tr><th>Question auxiliary</th><th>Short answer uses</th></tr></thead>
+    <tbody>
+      <tr><td>Do / Does / Did</td><td>do / does / did</td></tr>
+      <tr><td>Am / Is / Are / Was / Were</td><td>am / is / are / was / were</td></tr>
+      <tr><td>Have / Has / Had</td><td>have / has / had</td></tr>
+      <tr><td>Can / Could / Will / Would / Should / May / Might</td><td>same modal</td></tr>
+      <tr><td>Shall I / Shall we</td><td>Yes, please. / No, thank you.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("rev-07-b", "Can the tool handle all question types?") %}
+  <p>
+    The tool handles the most common yes/no question types using standard auxiliaries.
+    Highly unusual or ambiguous phrasings may return "Sorry, I don't understand the question."
+    — this is expected. Try rephrasing with a clear auxiliary at the start.
+  </p>
+  {% endcall %}
+
+</div>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-08') | url }}">Unit 8: Tense Parser</a> when ready.
+</p>
+{% endcall %}

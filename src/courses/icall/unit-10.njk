@@ -1,0 +1,214 @@
+---
+unit: 10
+unitTitle: Reported Speech
+title: "Unit 10: Reported Speech — iCALL Suite"
+description: "Understand how to transform direct speech into reported speech, including tense backshift, pronoun changes, modal changes, and time expressions."
+objectives:
+  - Apply tense backshift rules when converting direct speech to reported speech
+  - Change pronouns, modals, and time expressions appropriately
+  - Use the tool to see a step-by-step breakdown of each transformation
+pageScripts:
+  - /assets/js/tools/tool10.js
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, quizMC, tabSet, toolSection %}
+
+
+{# ══ Activity 1 — Introduction ════════════════════════════════ #}
+
+{% call activitySection(1, "What Is Reported Speech?", "book") %}
+<p>
+  <strong>Reported speech</strong> (also called <em>indirect speech</em>) is used to convey
+  what someone said without quoting their exact words. The reporting verb — usually
+  <em>said</em> or <em>told</em> — is followed by <em>that</em> and the reported clause.
+</p>
+<div class="p-3 mb-3" style="background:#1a1a1a; border-left:4px solid #ff8c00; border-radius:0 0.375rem 0.375rem 0;">
+  <p class="mb-1"><strong>Direct speech:</strong> <em>"I will send the report tomorrow."</em></p>
+  <p class="mb-0"><strong>Reported speech:</strong> <em>You said that you would send the report the following day.</em></p>
+</div>
+<p>
+  Four types of changes are typically required: <strong>tense backshift</strong>,
+  <strong>pronoun changes</strong>, <strong>modal changes</strong>, and
+  <strong>time expression changes</strong>.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Four Changes ════════════════════════════════ #}
+
+{% call activitySection(2, "The Four Changes in Reported Speech", "list-check") %}
+<p class="mb-3">Expand each change to see the rule and examples.</p>
+
+<div class="accordion" id="unit10-changes">
+
+  {% call accordion("acc-10-a", "1. Tense Backshift — verbs move one step back in time") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Direct speech tense</th><th>Reported speech tense</th></tr></thead>
+    <tbody>
+      <tr><td>Present simple</td><td>Past simple</td></tr>
+      <tr><td>Present continuous</td><td>Past continuous</td></tr>
+      <tr><td>Present perfect</td><td>Past perfect</td></tr>
+      <tr><td>Past simple</td><td>Past perfect</td></tr>
+      <tr><td>Future (will)</td><td>Conditional (would)</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-10-b", "2. Pronoun Changes — first person → second person") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Direct speech</th><th>Reported speech</th></tr></thead>
+    <tbody>
+      <tr><td>I</td><td>you</td></tr>
+      <tr><td>me / my / mine</td><td>you / your / yours</td></tr>
+      <tr><td>we / our / us</td><td>you / your / you</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-10-c", "3. Modal Backshift — modals move to their past forms") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Direct</th><th>Reported</th></tr></thead>
+    <tbody>
+      <tr><td>will</td><td>would</td></tr>
+      <tr><td>can</td><td>could</td></tr>
+      <tr><td>may</td><td>might</td></tr>
+      <tr><td>shall</td><td>would</td></tr>
+      <tr><td>must</td><td>had to</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-10-d", "4. Time Expression Changes — time words shift perspective") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Direct</th><th>Reported</th></tr></thead>
+    <tbody>
+      <tr><td>now</td><td>then</td></tr>
+      <tr><td>today</td><td>that day</td></tr>
+      <tr><td>yesterday</td><td>the day before</td></tr>
+      <tr><td>tomorrow</td><td>the following day</td></tr>
+      <tr><td>here</td><td>there</td></tr>
+      <tr><td>this / these</td><td>that / those</td></tr>
+      <tr><td>last week / next week</td><td>the previous week / the following week</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Tool ════════════════════════════════════════ #}
+
+{% call toolSection("Tool: Reported Speech Converter") %}
+<p class="mb-3">
+  Enter a direct speech sentence (without quotation marks). The tool will convert it
+  to reported speech and show you each transformation step.
+</p>
+<p class="mb-3" style="font-size:0.875rem; color:#aaa;">
+  <i class="bi bi-info-circle"></i>
+  <strong>Try:</strong> <em>"I will call you tomorrow."</em> &nbsp;or&nbsp;
+  <em>"I can finish this today."</em>
+</p>
+
+<div class="mb-2">
+  <label class="tool-label" for="textInput">Direct speech (no quotes)</label>
+  <input type="text" id="textInput" class="tool-input"
+         placeholder="Enter the direct speech sentence…" aria-label="Direct speech input">
+</div>
+
+<div class="d-flex gap-2 mb-3">
+  <button class="tool-btn" onclick="convertToReported()">
+    <i class="bi bi-arrow-right-circle"></i> Convert
+  </button>
+</div>
+
+<div class="tool-label">Reported Speech</div>
+<div id="output" class="tool-output mb-3" style="min-height:3rem;">
+  <span style="color:#666; font-style:italic;">The reported speech sentence will appear here…</span>
+</div>
+
+<div class="tool-label">Transformation Steps</div>
+<div id="steps" class="tool-output" style="min-height:3rem;">
+  <span style="color:#666; font-style:italic;">Step-by-step changes will appear here…</span>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Quiz ════════════════════════════════════════ #}
+
+{% call activitySection(4, "Check Your Understanding", "patch-question") %}
+
+{% call quizMC("quiz-10-a", "'I can help you.' — What is the correct reported form?", 2,
+   "The modal 'can' backshifts to 'could' in reported speech. The pronoun 'I' changes to 'you' when reporting back to the speaker.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-10-a" value="0"> You said that you can help me.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-a" value="1"> You said that you will help me.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-a" value="2"> You said that you could help me.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-a" value="3"> You said that you should help me.</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-10-b", "What happens to 'tomorrow' in reported speech?", 3,
+   "'Tomorrow' becomes 'the following day' in reported speech because the time reference shifts — what was 'tomorrow' at the time of speaking is now 'the following day' from the reporting perspective.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-10-b" value="0"> It stays as 'tomorrow'</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-b" value="1"> It changes to 'today'</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-b" value="2"> It changes to 'the day before'</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-b" value="3"> It changes to 'the following day'</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-10-c", "'She worked hard.' — What is the correct tense backshift in reported speech?", 1,
+   "Past simple backshifts to past perfect in reported speech: 'had worked'.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-10-c" value="0"> She works hard.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-c" value="1"> She had worked hard.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-c" value="2"> She was working hard.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-c" value="3"> She would work hard.</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 5 — Video ═══════════════════════════════════════ #}
+
+{% call activitySection(5, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<div class="accordion mb-3" id="unit10-review">
+
+  {% call accordion("rev-10-a", "Summary: Four changes in reported speech") %}
+  <table class="table table-sm table-dark table-bordered" style="font-size:0.875rem;">
+    <thead><tr><th>Change type</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td>Tense backshift</td><td>Move one step back: present → past, past → past perfect</td></tr>
+      <tr><td>Pronoun change</td><td>I/me/my → you/your; we/us/our → you/your</td></tr>
+      <tr><td>Modal backshift</td><td>will → would, can → could, may → might, must → had to</td></tr>
+      <tr><td>Time expressions</td><td>now → then, today → that day, tomorrow → the following day</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("rev-10-b", "Are backshift rules always required?") %}
+  <p>
+    Tense backshift is <em>not</em> required when the reporting verb is in the present tense
+    (<em>"He says that…"</em>), or when the reported statement is a general truth
+    (<em>"She said that water boils at 100°C."</em>). In these cases, the original tense
+    may be retained.
+  </p>
+  {% endcall %}
+
+</div>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-check-circle" style="color:#ff8c00;"></i>
+  You have completed all 10 units of the iCALL Suite. Well done!
+</p>
+{% endcall %}

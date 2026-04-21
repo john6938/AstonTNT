@@ -1,0 +1,196 @@
+---
+unit: 3
+unitTitle: Participle Clauses
+title: "Unit 3: Participle Clauses — iCALL Suite"
+description: "Learn how to combine two sentences with the same subject into a single, more concise participle clause."
+objectives:
+  - Identify when two sentences can be combined using a participle clause
+  - Form active, passive, and perfect participle clauses
+  - Use the tool to convert sentence pairs into participle clauses
+pageScripts:
+  - /assets/js/tools/tool3.js
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, quizMC, tabSet, toolSection %}
+
+
+{# ══ Activity 1 — Introduction ════════════════════════════════ #}
+
+{% call activitySection(1, "What Are Participle Clauses?", "book") %}
+<p>
+  A <strong>participle clause</strong> is a reduced adverbial clause that uses a participle verb
+  form instead of a full finite verb. They make writing more concise and are common in
+  academic and formal English.
+</p>
+<p>Participle clauses can only be used when both clauses share the same subject:</p>
+<div class="p-3 mb-3" style="background:#1a1a1a; border-left:4px solid #ff8c00; border-radius:0 0.375rem 0.375rem 0;">
+  <p class="mb-1"><strong>Two sentences:</strong> <em>She finished her report. She submitted it online.</em></p>
+  <p class="mb-0"><strong>Participle clause:</strong> <em><span style="color:#ff8c00;">Having finished</span> her report, she submitted it online.</em></p>
+</div>
+<p>There are three main types: <strong>active</strong>, <strong>passive</strong>, and <strong>perfect</strong> participle clauses.</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Three Types ═════════════════════════════════ #}
+
+{% call activitySection(2, "Three Types of Participle Clauses", "list-check") %}
+<p class="mb-3">Expand each type to see the structure and examples.</p>
+
+<div class="accordion" id="unit03-types">
+
+  {% call accordion("acc-03-a", "Active Participle Clause — present participle (-ing)") %}
+  <p>Used when the first action happens at the same time as the second, in an active voice.</p>
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Structure</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Verb-ing + rest, subject + verb</td><td><strong>Walking</strong> home, she called her friend.</td></tr>
+      <tr><td>Verb-ing + rest, subject + verb</td><td><strong>Studying</strong> abroad, he improved his English quickly.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-03-b", "Passive Participle Clause — past participle (-ed/irregular)") %}
+  <p>Used when the subject of the first clause is the <em>receiver</em> of an action (passive meaning).</p>
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Structure</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Past participle + rest, subject + verb</td><td><strong>Written</strong> in 1851, the novel is still widely read.</td></tr>
+      <tr><td>Past participle + rest, subject + verb</td><td><strong>Approved</strong> by the board, the project began immediately.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-03-c", "Perfect Participle Clause — having + past participle") %}
+  <p>Used when the first action is completed <em>before</em> the second action begins.</p>
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Structure</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Having + past participle + rest, subject + verb</td><td><strong>Having read</strong> the instructions, she started the test.</td></tr>
+      <tr><td>Having been + past participle + rest, subject + verb</td><td><strong>Having been warned</strong> about the risk, he proceeded carefully.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Tool ════════════════════════════════════════ #}
+
+{% call toolSection("Tool: Participle Clause Converter") %}
+<p class="mb-3">
+  Enter <strong>two sentences</strong> with the same subject. The tool will combine them into a
+  participle clause and highlight the participle phrase in
+  <span style="color:#e74c3c; font-weight:600;">red</span> and
+  the subject in <span style="color:#3498db; font-weight:600;">blue</span>.
+</p>
+<p class="mb-3" style="font-size:0.875rem; color:#aaa;">
+  <i class="bi bi-info-circle"></i>
+  <strong>Try:</strong> <em>"She finished the report. She sent it to her supervisor."</em>
+</p>
+
+<div class="mb-2">
+  <label class="tool-label" for="textInput">Your two sentences</label>
+  <textarea id="textInput" class="tool-input" rows="3"
+            placeholder="Enter two sentences with the same subject…" aria-label="Sentence input"></textarea>
+</div>
+
+<div class="d-flex gap-2 mb-3">
+  <button class="tool-btn" onclick="convertToParticipleClause()">
+    <i class="bi bi-arrow-right-circle"></i> Convert
+  </button>
+</div>
+
+<div id="loading" style="display:none; color:#aaa; font-size:0.875rem; margin-bottom:0.5rem;">
+  <i class="bi bi-hourglass-split"></i> Processing…
+</div>
+
+<div class="tool-label">Input (colour-coded)</div>
+<div id="output-for-input" class="tool-output mb-3" style="min-height:2.5rem;">
+  <span style="color:#666; font-style:italic;">Your input sentence will appear here…</span>
+</div>
+
+<div class="tool-label">Participle Clause Result</div>
+<div id="output" class="tool-output" style="min-height:2.5rem;">
+  <span style="color:#666; font-style:italic;">The converted sentence will appear here…</span>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Quiz ════════════════════════════════════════ #}
+
+{% call activitySection(4, "Check Your Understanding", "patch-question") %}
+
+{% call quizMC("quiz-03-a", "Which sentence correctly uses an active participle clause?", 2,
+   "Active participle clauses use the -ing form of the main verb. 'Walking to class' is an active participle clause sharing the subject 'she'.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-03-a" value="0"> Written quickly, she sent the email.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-a" value="1"> Having arrived, the meeting was started.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-a" value="2"> Walking to class, she listened to music.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-a" value="3"> The report written, they celebrated.</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-03-b", "When can two sentences be combined into a participle clause?", 1,
+   "Participle clauses require the subject of both clauses to be the same. If subjects differ, a participle clause cannot be formed.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-03-b" value="0"> When they have different subjects</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-b" value="1"> When they share the same subject</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-b" value="2"> When one sentence is negative</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-b" value="3"> When both sentences are in the present tense</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-03-c", "'Having submitted the application, she waited for a reply.' This is a…", 0,
+   "'Having submitted' uses 'having + past participle', which is the structure of a perfect participle clause — showing the first action was completed before the second.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-03-c" value="0"> Perfect active participle clause</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-c" value="1"> Passive participle clause</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-c" value="2"> Active participle clause</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-c" value="3"> Perfect passive participle clause</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 5 — Video ═══════════════════════════════════════ #}
+
+{% call activitySection(5, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<div class="accordion mb-3" id="unit03-review">
+
+  {% call accordion("rev-03-a", "Summary: Three participle clause types") %}
+  <table class="table table-sm table-dark table-bordered" style="font-size:0.875rem;">
+    <thead><tr><th>Type</th><th>Form</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td>Active</td><td>-ing</td><td>Simultaneous or immediately preceding action</td></tr>
+      <tr><td>Passive</td><td>Past participle (-ed/irregular)</td><td>Subject receives the action</td></tr>
+      <tr><td>Perfect active</td><td>Having + past participle</td><td>First action completed before second</td></tr>
+      <tr><td>Perfect passive</td><td>Having been + past participle</td><td>Subject received action before second event</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("rev-03-b", "Why does the tool require exactly two sentences?") %}
+  <p>
+    A participle clause combines exactly two clauses with the same subject. The tool uses the
+    first sentence to generate the participle phrase and the second to provide the main clause.
+    Entering more or fewer sentences will produce an error message.
+  </p>
+  {% endcall %}
+
+</div>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-04') | url }}">Unit 4: Formal Language</a> when ready.
+</p>
+{% endcall %}

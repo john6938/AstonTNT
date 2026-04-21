@@ -1,0 +1,201 @@
+---
+unit: 9
+unitTitle: Articles
+title: "Unit 9: Articles — iCALL Suite"
+description: "Master the rules for using the English articles a, an, and the — or no article — with the help of a decision-tree tool."
+objectives:
+  - Understand the rules governing the use of a, an, the, and zero article
+  - Apply the correct article based on noun type, countability, and context
+  - Use the tool to check article choices using underscore placeholders
+pageScripts:
+  - /assets/js/tools/tool9.js
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, quizMC, tabSet, toolSection %}
+
+
+{# ══ Activity 1 — Introduction ════════════════════════════════ #}
+
+{% call activitySection(1, "Articles in English", "book") %}
+<p>
+  English has three articles: <strong>a</strong>, <strong>an</strong>, and <strong>the</strong>.
+  A fourth option — called the <strong>zero article</strong> — means no article is used at all.
+  Choosing the right article depends on several factors:
+</p>
+<ul style="color:#e0e0e0;">
+  <li>Is the noun <strong>countable</strong> or <strong>uncountable</strong>?</li>
+  <li>Is it <strong>singular</strong> or <strong>plural</strong>?</li>
+  <li>Has the noun been <strong>mentioned before</strong>?</li>
+  <li>Is it a <strong>proper noun</strong>?</li>
+  <li>Does it have a <strong>superlative</strong> adjective?</li>
+</ul>
+<p>
+  The tool in this unit uses a decision tree to determine the correct article automatically.
+  You mark where an article should go by typing an underscore (<code>_</code>) before the noun.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Article Rules ══════════════════════════════ #}
+
+{% call activitySection(2, "Article Decision Rules", "list-check") %}
+<p class="mb-3">Expand each rule to see how articles are selected.</p>
+
+<div class="accordion" id="unit09-rules">
+
+  {% call accordion("acc-09-a", "The — definite article") %}
+  <p>Use <strong>the</strong> when:</p>
+  <ul style="color:#e0e0e0; font-size:0.875rem;">
+    <li>The noun has already been mentioned (second reference)</li>
+    <li>The noun is unique in context (<em>the sun</em>, <em>the president</em>)</li>
+    <li>A superlative adjective is present (<em>the fastest</em>, <em>the best</em>)</li>
+    <li>The noun is a plural proper noun (<em>the Netherlands</em>, <em>the Alps</em>)</li>
+  </ul>
+  <div class="p-2 mt-2" style="background:#1a1a1a; border-radius:0.375rem; font-size:0.875rem;">
+    <em>I saw <strong>a</strong> dog. <strong>The</strong> dog was very friendly.</em>
+  </div>
+  {% endcall %}
+
+  {% call accordion("acc-09-b", "A / An — indefinite articles") %}
+  <p>Use <strong>a</strong> or <strong>an</strong> when the noun is:</p>
+  <ul style="color:#e0e0e0; font-size:0.875rem;">
+    <li>Countable and singular</li>
+    <li>Mentioned for the first time (first reference)</li>
+    <li>Not a proper noun</li>
+  </ul>
+  <p>Use <strong>an</strong> before a vowel sound; <strong>a</strong> before a consonant sound.</p>
+  <div class="p-2 mt-2" style="background:#1a1a1a; border-radius:0.375rem; font-size:0.875rem;">
+    <em><strong>An</strong> elephant. &nbsp; <strong>A</strong> university. &nbsp; <strong>An</strong> hour.</em>
+  </div>
+  {% endcall %}
+
+  {% call accordion("acc-09-c", "Zero article — no article") %}
+  <p>Use <strong>no article</strong> when the noun is:</p>
+  <ul style="color:#e0e0e0; font-size:0.875rem;">
+    <li>Uncountable (<em>water</em>, <em>information</em>, <em>advice</em>)</li>
+    <li>Plural and used in a general sense (<em>Dogs are loyal.</em>)</li>
+    <li>A singular proper noun (<em>Professor Smith</em>, <em>London</em>)</li>
+  </ul>
+  <div class="p-2 mt-2" style="background:#1a1a1a; border-radius:0.375rem; font-size:0.875rem;">
+    <em><strong>Ø</strong> Water is essential. &nbsp; <strong>Ø</strong> Professor Blake teaches here.</em>
+  </div>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Tool ════════════════════════════════════════ #}
+
+{% call toolSection("Tool: Article Checker") %}
+<p class="mb-3">
+  Type your sentence and place an underscore (<code>_</code>) wherever you want the tool
+  to insert an article. Click <strong>Parse</strong> to see the result.
+</p>
+<p class="mb-3" style="font-size:0.875rem; color:#aaa;">
+  <i class="bi bi-info-circle"></i>
+  <strong>Try:</strong> <em>"I saw _ dog in _ park. _ dog was barking at _ cat."</em>
+</p>
+
+<div class="mb-2">
+  <label class="tool-label" for="input_text">Your sentence with underscores</label>
+  <textarea id="input_text" class="tool-input" rows="4"
+            placeholder="Type your sentence and use _ where an article should go…"
+            aria-label="Input sentence"></textarea>
+</div>
+
+<div class="d-flex gap-2 mb-3">
+  <button class="tool-btn" id="parseButton">
+    <i class="bi bi-search"></i> Parse
+  </button>
+</div>
+
+<div class="tool-label">Article Result</div>
+<textarea id="result_text" class="tool-input" rows="4" readonly
+          placeholder="The corrected sentence will appear here…"
+          aria-label="Output sentence"
+          style="color:#f0f0f0; cursor:default;"></textarea>
+{% endcall %}
+
+
+{# ══ Activity 4 — Quiz ════════════════════════════════════════ #}
+
+{% call activitySection(4, "Check Your Understanding", "patch-question") %}
+
+{% call quizMC("quiz-09-a", "Which article is correct? '__ hour passed quickly.'", 1,
+   "'An' is correct because 'hour' begins with a vowel sound (the 'h' is silent). The rule is based on sound, not spelling.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-09-a" value="0"> A</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-a" value="1"> An</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-a" value="2"> The</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-a" value="3"> No article</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-09-b", "'__ information you provided was helpful.' Which article is correct?", 2,
+   "'The' is correct because 'information' is a specific piece of information that both speaker and listener know about. It is also uncountable, so 'a/an' is impossible.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-09-b" value="0"> A</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-b" value="1"> An</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-b" value="2"> The</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-b" value="3"> No article</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-09-c", "Why do we say 'a university' rather than 'an university'?", 0,
+   "'University' begins with a /j/ sound ('you-niversity'), which is a consonant sound. So 'a' is used, not 'an'.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-09-c" value="0"> Because 'university' begins with a consonant sound (/j/)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-c" value="1"> Because 'university' is a proper noun</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-c" value="2"> Because 'u' is a consonant letter</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-c" value="3"> Because 'university' is uncountable</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 5 — Video ═══════════════════════════════════════ #}
+
+{% call activitySection(5, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<div class="accordion mb-3" id="unit09-review">
+
+  {% call accordion("rev-09-a", "Summary: Article decision tree") %}
+  <table class="table table-sm table-dark table-bordered" style="font-size:0.875rem;">
+    <thead><tr><th>Condition</th><th>Article</th></tr></thead>
+    <tbody>
+      <tr><td>Superlative adjective present</td><td>the</td></tr>
+      <tr><td>Plural proper noun</td><td>the</td></tr>
+      <tr><td>Previously mentioned</td><td>the</td></tr>
+      <tr><td>Uncountable or plural (general)</td><td>∅ (none)</td></tr>
+      <tr><td>Singular proper noun</td><td>∅ (none)</td></tr>
+      <tr><td>Countable singular — vowel sound</td><td>an</td></tr>
+      <tr><td>Countable singular — consonant sound</td><td>a</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("rev-09-b", "How does the tool decide 'a' vs 'an'?") %}
+  <p>
+    The tool uses a vowel-sound heuristic rather than simply checking the first letter.
+    It recognises that words like <em>hour</em> and <em>honest</em> (silent h) take <em>an</em>,
+    while words like <em>university</em> and <em>European</em> (consonant /j/ or /w/ sound)
+    take <em>a</em>, despite beginning with vowel letters.
+  </p>
+  {% endcall %}
+
+</div>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-10') | url }}">Unit 10: Reported Speech</a> when ready.
+</p>
+{% endcall %}

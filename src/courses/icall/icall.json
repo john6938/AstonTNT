@@ -1,0 +1,31 @@
+{
+  "layout": "layouts/course-unit.njk",
+  "courseTitle": "iCALL Suite",
+  "courseBaseUrl": "/courses/icall",
+  "unitCount": 10,
+  "unitTitles": [
+    "Adjective Order",
+    "Modal Verbs",
+    "Participle Clauses",
+    "Formal Language",
+    "Polite Requests",
+    "So & Neither",
+    "Short Answers",
+    "Tense Parser",
+    "Articles",
+    "Reported Speech"
+  ],
+  "courseTools": [
+    { "label": "Adjective Order",    "url": "/courses/icall/unit-01", "icon": "sort-alpha-down" },
+    { "label": "Modal Verbs",        "url": "/courses/icall/unit-02", "icon": "chat-square-text" },
+    { "label": "Participle Clauses", "url": "/courses/icall/unit-03", "icon": "link-45deg" },
+    { "label": "Formal Language",    "url": "/courses/icall/unit-04", "icon": "briefcase" },
+    { "label": "Polite Requests",    "url": "/courses/icall/unit-05", "icon": "hand-thumbs-up" },
+    { "label": "So & Neither",       "url": "/courses/icall/unit-06", "icon": "arrow-left-right" },
+    { "label": "Short Answers",      "url": "/courses/icall/unit-07", "icon": "check2-square" },
+    { "label": "Tense Parser",       "url": "/courses/icall/unit-08", "icon": "clock-history" },
+    { "label": "Articles",           "url": "/courses/icall/unit-09", "icon": "alphabet" },
+    { "label": "Reported Speech",    "url": "/courses/icall/unit-10", "icon": "megaphone" }
+  ],
+  "quote": "&ldquo;Language is the road map of a culture.&rdquo; &mdash; Rita Mae Brown"
+}

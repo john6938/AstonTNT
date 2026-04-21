@@ -1,0 +1,199 @@
+---
+unit: 5
+unitTitle: Polite Requests
+title: "Unit 5: Polite Requests — iCALL Suite"
+description: "Explore six levels of politeness in English requests and learn how to make your language more appropriately polite."
+objectives:
+  - Identify six levels of politeness in English requests
+  - Transform a request to increase its level of politeness
+  - Understand which level of politeness is appropriate in different contexts
+pageScripts:
+  - /assets/js/tools/tool5.js
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, quizMC, tabSet, toolSection %}
+
+
+{# ══ Activity 1 — Introduction ════════════════════════════════ #}
+
+{% call activitySection(1, "What Are Polite Requests?", "book") %}
+<p>
+  A <strong>polite request</strong> asks someone to do something in a way that respects their
+  autonomy and feelings. English has a sliding scale of politeness — from direct commands to
+  very tentative, face-saving forms.
+</p>
+<p>
+  Choosing the right level of politeness depends on your relationship with the listener,
+  the context (work vs. friendship), and the size of the favour being requested.
+</p>
+<div class="p-3" style="background:#1a1a1a; border-left:4px solid #ff8c00; border-radius:0 0.375rem 0.375rem 0;">
+  <p class="mb-0">From most direct to most polite:
+    <strong>Command → Please → Can/Will → Can/Will Please → Could/Would → Could/Would Please</strong>
+  </p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — Six Levels ══════════════════════════════════ #}
+
+{% call activitySection(2, "The Six Levels of Politeness", "list-check") %}
+<p class="mb-3">Expand each level to see examples.</p>
+
+<div class="accordion" id="unit05-levels">
+
+  {% call accordion("acc-05-1", "Level 1 — Imperative (Direct command)") %}
+  <p>The most direct form. Appropriate between close friends or in urgent situations.</p>
+  <div class="p-2" style="background:#1a1a1a; border-radius:0.375rem;">
+    <em>"Send me the file." &nbsp; "Close the window."</em>
+  </div>
+  {% endcall %}
+
+  {% call accordion("acc-05-2", "Level 2 — Please + imperative") %}
+  <p>Adding <em>please</em> softens the command slightly without restructuring the sentence.</p>
+  <div class="p-2" style="background:#1a1a1a; border-radius:0.375rem;">
+    <em>"Please send me the file." &nbsp; "Close the window, please."</em>
+  </div>
+  {% endcall %}
+
+  {% call accordion("acc-05-3", "Level 3 — Can/Will + subject") %}
+  <p>Turns the request into a question. More polite because it gives the listener a choice.</p>
+  <div class="p-2" style="background:#1a1a1a; border-radius:0.375rem;">
+    <em>"Can you send me the file?" &nbsp; "Will you help me?"</em>
+  </div>
+  {% endcall %}
+
+  {% call accordion("acc-05-4", "Level 4 — Can/Will + subject + please") %}
+  <p>Combines a question form with <em>please</em> for a warmer, more considerate request.</p>
+  <div class="p-2" style="background:#1a1a1a; border-radius:0.375rem;">
+    <em>"Can you please send me the file?" &nbsp; "Will you please help me?"</em>
+  </div>
+  {% endcall %}
+
+  {% call accordion("acc-05-5", "Level 5 — Could/Would + subject") %}
+  <p>Using past-tense modals creates social distance, which reads as more polite and formal.</p>
+  <div class="p-2" style="background:#1a1a1a; border-radius:0.375rem;">
+    <em>"Could you send me the file?" &nbsp; "Would you help me?"</em>
+  </div>
+  {% endcall %}
+
+  {% call accordion("acc-05-6", "Level 6 — Could/Would + subject + please") %}
+  <p>The most polite standard form. Appropriate in formal, professional, or sensitive situations.</p>
+  <div class="p-2" style="background:#1a1a1a; border-radius:0.375rem;">
+    <em>"Could you please send me the file?" &nbsp; "Would you please help me?"</em>
+  </div>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Tool ════════════════════════════════════════ #}
+
+{% call toolSection("Tool: Polite Request Escalator") %}
+<p class="mb-3">
+  Enter a request or command at any level of politeness. The tool will show you all the
+  more polite alternatives, stepping up through the levels.
+</p>
+<p class="mb-3" style="font-size:0.875rem; color:#aaa;">
+  <i class="bi bi-info-circle"></i>
+  <strong>Try:</strong> <em>"Send the report."</em> &nbsp;or&nbsp; <em>"Can you help me?"</em>
+</p>
+
+<div class="mb-2">
+  <label class="tool-label" for="textInput">Your request</label>
+  <input type="text" id="textInput" class="tool-input"
+         placeholder="Enter a request or command…" aria-label="Request input">
+</div>
+
+<div class="d-flex gap-2 mb-3">
+  <button class="tool-btn" onclick="convertToPolite()">
+    <i class="bi bi-arrow-up-circle"></i> Make More Polite
+  </button>
+</div>
+
+<div class="tool-label">More Polite Alternatives</div>
+<div id="output" class="tool-output" style="min-height:6rem; white-space:pre-wrap;">
+  <span style="color:#666; font-style:italic;">Polite alternatives will appear here…</span>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Quiz ════════════════════════════════════════ #}
+
+{% call activitySection(4, "Check Your Understanding", "patch-question") %}
+
+{% call quizMC("quiz-05-a", "Which request is at Level 6 (most polite)?", 3,
+   "'Could you please' combines a past-tense modal with 'please', making it the most polite standard form.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-05-a" value="0"> Send the report now.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-a" value="1"> Can you send the report?</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-a" value="2"> Could you send the report?</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-a" value="3"> Could you please send the report?</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-05-b", "Why does using 'could' make a request more polite than 'can'?", 0,
+   "'Could' is the past tense of 'can'. Using a past tense modal creates social distance, which English speakers interpret as politeness and tentativeness.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-05-b" value="0"> It creates social distance through past-tense form</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-b" value="1"> It is shorter and faster to say</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-b" value="2"> It refers to past ability rather than present ability</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-b" value="3"> It is always used in formal writing</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-05-c", "In which context is Level 1 (command) most appropriate?", 2,
+   "Commands between close friends or in genuinely urgent situations are appropriate. In professional or formal contexts, higher levels of politeness are expected.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-05-c" value="0"> Writing a formal email to a senior manager</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-c" value="1"> Asking a stranger on the street for help</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-c" value="2"> Asking a close friend to pass the salt</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-c" value="3"> Requesting help from a customer service agent</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 5 — Video ═══════════════════════════════════════ #}
+
+{% call activitySection(5, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<div class="accordion mb-3" id="unit05-review">
+
+  {% call accordion("rev-05-a", "Summary: Six levels of politeness") %}
+  <table class="table table-sm table-dark table-bordered" style="font-size:0.875rem;">
+    <thead><tr><th>Level</th><th>Structure</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Imperative</td><td>Send the file.</td></tr>
+      <tr><td>2</td><td>Please + imperative</td><td>Please send the file.</td></tr>
+      <tr><td>3</td><td>Can/Will + subject</td><td>Can you send the file?</td></tr>
+      <tr><td>4</td><td>Can/Will + subject + please</td><td>Can you please send the file?</td></tr>
+      <tr><td>5</td><td>Could/Would + subject</td><td>Could you send the file?</td></tr>
+      <tr><td>6</td><td>Could/Would + subject + please</td><td>Could you please send the file?</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("rev-05-b", "Does the tool handle negative requests?") %}
+  <p>
+    Yes — the tool also processes negative requests (e.g., "Don't open the door") and
+    steps them up through polite negative forms (e.g., "Couldn't you please not open the door?").
+    The logic is the same but uses <em>not</em> and contracted negative modals.
+  </p>
+  {% endcall %}
+
+</div>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-06') | url }}">Unit 6: So &amp; Neither</a> when ready.
+</p>
+{% endcall %}

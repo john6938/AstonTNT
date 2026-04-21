@@ -1,0 +1,275 @@
+---
+unit: 1
+unitTitle: Adjective Order
+title: "Unit 1: Adjective Order — iCALL Suite"
+description: "Understand and practise the fixed order English uses when multiple adjectives precede a noun."
+objectives:
+  - Understand why English has a fixed order for multiple adjectives before a noun
+  - Identify the nine adjective categories — quantity, opinion, size, age, shape, colour, origin, material, purpose
+  - Use the tool to check and correct adjective order in your own sentences
+pageScripts:
+  - /assets/js/tools/tool1.js
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, videoEmbed, quizMC, tabSet, toolSection %}
+
+
+{# ══ Activity 1 — Introduction ═══════════════════════════════ #}
+
+{% call activitySection(1, "Why Does Adjective Order Matter?", "book") %}
+<p>
+  When we use more than one adjective before a noun in English, they must follow
+  a specific order. Native speakers follow this order automatically — it sounds
+  natural to them without any conscious effort.
+</p>
+<p>
+  For learners of English, however, getting the order wrong produces sentences
+  that native speakers find slightly jarring, even if the meaning is clear.
+  Compare these two phrases:
+</p>
+<ul>
+  <li><span style="color:#ea868f;">✗ a red new small car</span> — feels wrong to a native speaker</li>
+  <li><span style="color:#75b798;">✓ a small new red car</span> — sounds natural</li>
+</ul>
+<p>
+  The rule is straightforward once you learn the nine categories and their fixed sequence.
+  English always moves from <strong>general</strong> adjectives (opinion) towards
+  <strong>specific</strong> ones (purpose/material) as you approach the noun.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — The Nine Categories ════════════════════════ #}
+
+{% call activitySection(2, "The Nine Categories", "list-ol") %}
+<p class="mb-3">
+  Expand each category to see its definition and examples. Try to think of one
+  more example of your own before reading the list.
+</p>
+
+{% set tabs01 = [
+  {id: "order",    label: "The Order"},
+  {id: "tips",     label: "Tips"}
+] %}
+
+{% call tabSet("unit01-intro-tabs", tabs01) %}
+  <div class="tab-pane fade show active" id="unit01-intro-tabs-order" role="tabpanel">
+    <table class="table table-sm table-dark table-bordered mb-0" style="font-size:0.875rem;">
+      <thead>
+        <tr><th>#</th><th>Category</th><th>Examples</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><span class="quantity fw-bold">Quantity</span></td><td>one, two, many, several, few</td></tr>
+        <tr><td>2</td><td><span class="opinion fw-bold">Opinion</span></td><td>beautiful, lovely, ugly, interesting, boring</td></tr>
+        <tr><td>3</td><td><span class="size fw-bold">Size</span></td><td>big, small, large, tiny, tall</td></tr>
+        <tr><td>4</td><td><span class="age fw-bold">Age</span></td><td>old, young, new, ancient, modern</td></tr>
+        <tr><td>5</td><td><span class="shape fw-bold">Shape</span></td><td>round, square, flat, oval, triangular</td></tr>
+        <tr><td>6</td><td><span class="color fw-bold">Colour</span></td><td>red, blue, green, black, white</td></tr>
+        <tr><td>7</td><td><span class="origin fw-bold">Origin</span></td><td>American, Japanese, French, Italian</td></tr>
+        <tr><td>8</td><td><span class="material fw-bold">Material</span></td><td>wooden, metal, plastic, cotton, glass</td></tr>
+        <tr><td>9</td><td><span class="purpose fw-bold">Purpose</span></td><td>sleeping (bag), cooking (oil), writing (desk)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab-pane fade" id="unit01-intro-tabs-tips" role="tabpanel">
+    <ul class="mb-0">
+      <li class="mb-2">You rarely use more than two or three adjectives before a noun in natural speech. Long strings of adjectives sound formal or literary.</li>
+      <li class="mb-2">A useful memory aid: <strong>OSASCOMP</strong> — Opinion, Size, Age, Shape, Colour, Origin, Material, Purpose.</li>
+      <li class="mb-2">Quantity words (numbers, <em>many</em>, <em>few</em>) always come first, before opinion adjectives.</li>
+      <li class="mb-2">Purpose adjectives are often nouns being used attributively: <em>a sleeping bag</em>, <em>a writing desk</em>.</li>
+    </ul>
+  </div>
+{% endcall %}
+
+<div class="accordion mt-3" id="unit01-categories">
+
+  {% call accordion("acc-01-a", "1. Quantity — adjectives that say how many") %}
+  <p>Quantity adjectives come first — before all others.</p>
+  <p><strong>Examples:</strong> one, two, three, many, few, several, some, both, all, half</p>
+  <p><em>three beautiful old houses</em> — <em>several large modern buildings</em></p>
+  {% endcall %}
+
+  {% call accordion("acc-01-b", "2. Opinion — adjectives that express a judgement") %}
+  <p>Opinion adjectives reflect personal views and come directly after quantity words.</p>
+  <p><strong>Examples:</strong> beautiful, lovely, awful, interesting, boring, fantastic, ugly</p>
+  <p><em>a lovely small cottage</em> — <em>an interesting old document</em></p>
+  {% endcall %}
+
+  {% call accordion("acc-01-c", "3. Size — how big or small something is") %}
+  <p><strong>Examples:</strong> big, small, large, tiny, huge, tall, short, long, wide</p>
+  <p><em>a big new red car</em> — <em>a small round table</em></p>
+  {% endcall %}
+
+  {% call accordion("acc-01-d", "4 & 5. Age and Shape") %}
+  <p><strong>Age:</strong> old, young, new, ancient, modern, elderly, recent, vintage</p>
+  <p><strong>Shape:</strong> round, square, rectangular, oval, flat, curved, triangular</p>
+  <p><em>an ancient round coin</em> — <em>a modern rectangular screen</em></p>
+  {% endcall %}
+
+  {% call accordion("acc-01-e", "6, 7 & 8. Colour, Origin, Material") %}
+  <p><strong>Colour:</strong> red, blue, green, black, white, grey, brown, golden</p>
+  <p><strong>Origin:</strong> American, French, Japanese, Italian, British</p>
+  <p><strong>Material:</strong> wooden, metal, plastic, cotton, silk, glass, leather</p>
+  <p><em>a small red Japanese car</em> — <em>a beautiful old French wooden table</em></p>
+  {% endcall %}
+
+  {% call accordion("acc-01-f", "9. Purpose — what something is used for") %}
+  <p>Purpose adjectives (often gerunds or nouns used as modifiers) come last — closest to the noun.</p>
+  <p><strong>Examples:</strong> sleeping (bag), writing (desk), running (shoes), cooking (oil)</p>
+  <p><em>a large red sleeping bag</em> — <em>an old wooden writing desk</em></p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Tool ════════════════════════════════════════ #}
+
+{% call toolSection("Tool: Adjective Order Checker") %}
+<p class="mb-3">
+  Enter a sentence containing multiple adjectives before a noun. The tool will
+  identify each adjective's category and reorder them according to the rule.
+  Each category is colour-coded so you can see what was changed.
+</p>
+<p class="mb-3" style="font-size:0.875rem; color:#aaa;">
+  <i class="bi bi-info-circle"></i>
+  <strong>Try:</strong> <em>"The red new shiny car was parked."</em> &nbsp;or&nbsp;
+  <em>"She wore a cotton blue small jacket."</em>
+</p>
+
+<div class="mb-2">
+  <label class="tool-label" for="textInput">Your sentence</label>
+  <input type="text" id="textInput" class="tool-input"
+         placeholder="Enter a sentence with multiple adjectives…"
+         aria-label="Sentence input">
+</div>
+
+<div class="d-flex gap-2 mb-3">
+  <button class="tool-btn" onclick="convert()">
+    <i class="bi bi-arrow-repeat"></i> Check Order
+  </button>
+  <button class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('textInput').value=''; document.getElementById('output').innerHTML='';">
+    Clear
+  </button>
+</div>
+
+<div class="tool-label">Result</div>
+<div id="output" class="tool-output mb-3" style="min-height:3rem;">
+  <span style="color:#666; font-style:italic;">Output will appear here…</span>
+</div>
+
+<div class="adj-legend">
+  <span style="font-size:0.75rem; color:#aaa; margin-right:0.25rem;">Category colours:</span>
+  <span class="adj-legend-item"><span class="adj-legend-swatch" style="background:#e67e22;"></span><span class="quantity">Quantity</span></span>
+  <span class="adj-legend-item"><span class="adj-legend-swatch" style="background:#9b59b6;"></span><span class="opinion">Opinion</span></span>
+  <span class="adj-legend-item"><span class="adj-legend-swatch" style="background:#27ae60;"></span><span class="size">Size</span></span>
+  <span class="adj-legend-item"><span class="adj-legend-swatch" style="background:#f39c12;"></span><span class="age">Age</span></span>
+  <span class="adj-legend-item"><span class="adj-legend-swatch" style="background:#16a085;"></span><span class="shape">Shape</span></span>
+  <span class="adj-legend-item"><span class="adj-legend-swatch" style="background:#c0392b;"></span><span class="color">Colour</span></span>
+  <span class="adj-legend-item"><span class="adj-legend-swatch" style="background:#2980b9;"></span><span class="origin">Origin</span></span>
+  <span class="adj-legend-item"><span class="adj-legend-swatch" style="background:#7f8c8d;"></span><span class="material">Material</span></span>
+  <span class="adj-legend-item"><span class="adj-legend-swatch" style="background:#d35400;"></span><span class="purpose">Purpose</span></span>
+</div>
+
+<div class="mt-3 p-3" style="background:#333; border-radius:0.375rem; font-size:0.85rem; color:#ccc;">
+  <i class="bi bi-exclamation-triangle" style="color:#f39c12;"></i>
+  <strong>Note:</strong> The tool classifies adjectives using a dictionary of common words.
+  Unusual or context-dependent adjectives may be placed in the <span class="opinion">opinion</span> category by default.
+  Use it as a guide and apply your own judgement.
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Quiz ═══════════════════════════════════════ #}
+
+{% call activitySection(4, "Check Your Understanding", "patch-question") %}
+<p class="mb-3">Choose the sentence with the correct adjective order.</p>
+
+{% call quizMC("quiz-01-a", "Which sentence has the correct adjective order?", 1,
+   "Size comes before colour, which comes before origin. So 'small' → 'red' → 'Italian' is the correct order.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-01-a" value="0"> A beautiful red small Italian car</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-a" value="1"> A beautiful small red Italian car</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-a" value="2"> A small beautiful Italian red car</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-a" value="3"> A red beautiful small Italian car</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-01-b", "Where does an opinion adjective go relative to a size adjective?", 0,
+   "Opinion adjectives (e.g. 'lovely', 'awful') always come before size adjectives (e.g. 'big', 'small').") %}
+  <label class="quiz-option"><input type="radio" name="quiz-01-b" value="0"> Opinion comes before size</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-b" value="1"> Size comes before opinion</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-b" value="2"> Either order is acceptable</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-01-c", "Which of these is a PURPOSE adjective?", 2,
+   "'Sleeping' in 'sleeping bag' describes the purpose of the bag. It is a gerund used as a modifier and always sits immediately before the noun.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-01-c" value="0"> Wooden</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-c" value="1"> Ancient</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-c" value="2"> Sleeping (bag)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-c" value="3"> Enormous</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 5 — Video ══════════════════════════════════════ #}
+
+{% call activitySection(5, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+
+<div class="accordion mb-3" id="unit01-review">
+  {% call accordion("rev-01-a", "Summary: What is the adjective order in English?") %}
+  <p>English adjectives before a noun follow this sequence:</p>
+  <p>
+    <span class="quantity fw-bold">Quantity</span> →
+    <span class="opinion fw-bold">Opinion</span> →
+    <span class="size fw-bold">Size</span> →
+    <span class="age fw-bold">Age</span> →
+    <span class="shape fw-bold">Shape</span> →
+    <span class="color fw-bold">Colour</span> →
+    <span class="origin fw-bold">Origin</span> →
+    <span class="material fw-bold">Material</span> →
+    <span class="purpose fw-bold">Purpose</span> → <strong>NOUN</strong>
+  </p>
+  <p>Memory aid: <strong>Q-OSASCOMP</strong></p>
+  {% endcall %}
+
+  {% call accordion("rev-01-b", "Why do native speakers find wrong order jarring?") %}
+  <p>
+    Native speakers acquire adjective order implicitly during language development — they
+    never consciously learn the rule but internalise it as part of the grammar of English.
+    When the order is violated, it creates a processing mismatch that feels unnatural,
+    similar to hearing a sentence with the words in the wrong syntactic position.
+  </p>
+  {% endcall %}
+
+  {% call accordion("rev-01-c", "What are the limitations of the tool?") %}
+  <p>
+    The tool classifies adjectives using a fixed dictionary. This means:
+  </p>
+  <ul>
+    <li>Adjectives not in the list default to the <span class="opinion">opinion</span> category</li>
+    <li>Context-dependent adjectives (e.g. <em>light</em> — size or colour?) may be misclassified</li>
+    <li>It works best with simple noun phrases containing common adjectives</li>
+  </ul>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-02') | url }}">Unit 2: Modal Verbs</a> when ready.
+</p>
+{% endcall %}

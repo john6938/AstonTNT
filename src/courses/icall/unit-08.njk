@@ -1,0 +1,191 @@
+---
+unit: 8
+unitTitle: Tense Parser
+title: "Unit 8: Tense Parser — iCALL Suite"
+description: "Use the tense parser to identify the tense and aspect of every verb in a sentence, with colour-coded annotation."
+objectives:
+  - Identify the tense (past, present, future) of verbs in a sentence
+  - Recognise perfect, passive, and continuous aspects
+  - Read annotated verb tokens to understand tense marking in English
+pageScripts:
+  - /assets/js/tools/tool8.js
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, quizMC, tabSet, toolSection %}
+
+
+{# ══ Activity 1 — Introduction ════════════════════════════════ #}
+
+{% call activitySection(1, "Tense and Aspect in English", "book") %}
+<p>
+  English verb forms encode not just <strong>tense</strong> (when something happens) but also
+  <strong>aspect</strong> (how the action unfolds over time). Understanding both is essential
+  for accurate reading and writing.
+</p>
+<p>There are three main tenses combined with three aspects, producing twelve possible forms:</p>
+<div class="p-3" style="background:#1a1a1a; border-left:4px solid #ff8c00; border-radius:0 0.375rem 0.375rem 0;">
+  <strong>Tenses:</strong> Past &bull; Present &bull; Future<br>
+  <strong>Aspects:</strong> Simple &bull; Perfect &bull; Continuous (Progressive)
+</div>
+<p class="mt-3">
+  The tool in this unit colour-codes each verb in your sentence and labels it with its tense
+  and aspect combination.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Tense and Aspect Overview ═══════════════════ #}
+
+{% call activitySection(2, "Tense and Aspect Overview", "list-check") %}
+<p class="mb-3">Expand each aspect to see how it combines with tense.</p>
+
+<div class="accordion" id="unit08-aspects">
+
+  {% call accordion("acc-08-a", "Simple — basic tense forms") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Tense</th><th>Structure</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Past Simple</td><td>verb + -ed / irregular</td><td>She <strong>wrote</strong> the report.</td></tr>
+      <tr><td>Present Simple</td><td>verb (base form)</td><td>She <strong>writes</strong> every day.</td></tr>
+      <tr><td>Future Simple</td><td>will + infinitive</td><td>She <strong>will write</strong> tomorrow.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-08-b", "Perfect — completed action with current relevance") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Tense</th><th>Structure</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Past Perfect</td><td>had + past participle</td><td>She <strong>had written</strong> the report before he arrived.</td></tr>
+      <tr><td>Present Perfect</td><td>have/has + past participle</td><td>She <strong>has written</strong> three chapters.</td></tr>
+      <tr><td>Future Perfect</td><td>will have + past participle</td><td>She <strong>will have written</strong> it by Friday.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-08-c", "Continuous — ongoing or in-progress action") %}
+  <table class="table table-sm table-dark table-bordered mt-2" style="font-size:0.875rem;">
+    <thead><tr><th>Tense</th><th>Structure</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Past Continuous</td><td>was/were + -ing</td><td>She <strong>was writing</strong> when he called.</td></tr>
+      <tr><td>Present Continuous</td><td>am/is/are + -ing</td><td>She <strong>is writing</strong> now.</td></tr>
+      <tr><td>Future Continuous</td><td>will be + -ing</td><td>She <strong>will be writing</strong> all morning.</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Tool ════════════════════════════════════════ #}
+
+{% call toolSection("Tool: Tense Parser") %}
+<p class="mb-3">
+  Enter any English sentence. Click <strong>Analyse</strong> to see each verb colour-coded
+  with its tense and aspect label displayed above the word.
+</p>
+<p class="mb-3" style="font-size:0.875rem; color:#aaa;">
+  <i class="bi bi-info-circle"></i>
+  <strong>Try:</strong> <em>"She had been working for hours before she finally finished the report."</em>
+</p>
+
+<div class="mb-2">
+  <label class="tool-label" for="i">Your sentence</label>
+  <input type="text" id="i" class="tool-input"
+         placeholder="Enter a sentence to parse…" aria-label="Sentence input">
+</div>
+
+<div class="d-flex gap-2 mb-3">
+  <button class="tool-btn" id="analyze-btn">
+    <i class="bi bi-search"></i> Analyse
+  </button>
+</div>
+
+<div class="tool-label">Annotated Output</div>
+<div id="a" class="tool-output" style="min-height:4rem; display:flex; flex-wrap:wrap; align-items:flex-end; gap:0.25rem;">
+  <span style="color:#666; font-style:italic;">Annotated tokens will appear here…</span>
+</div>
+<p class="mt-2" style="font-size:0.8rem; color:#aaa;">
+  Verbs are highlighted in orange with their tense label shown above. Non-verb words appear without annotation.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 4 — Quiz ════════════════════════════════════════ #}
+
+{% call activitySection(4, "Check Your Understanding", "patch-question") %}
+
+{% call quizMC("quiz-08-a", "What tense and aspect is 'had finished'?", 2,
+   "'Had + past participle' is the Past Perfect. It describes an action completed before another past event.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-08-a" value="0"> Present Perfect</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-a" value="1"> Past Continuous</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-a" value="2"> Past Perfect</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-a" value="3"> Future Perfect</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-08-b", "Which sentence contains a Present Continuous verb?", 1,
+   "'Is writing' = am/is/are + -ing = Present Continuous. It describes an action happening right now.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-08-b" value="0"> She wrote the report.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-b" value="1"> She is writing the report.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-b" value="2"> She has written the report.</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-b" value="3"> She will write the report.</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("quiz-08-c", "What does 'aspect' refer to in English grammar?", 3,
+   "Aspect describes the internal structure of an event — whether it is ongoing (continuous), completed (perfect), or viewed as a simple whole (simple).") %}
+  <label class="quiz-option"><input type="radio" name="quiz-08-c" value="0"> The subject of the verb</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-c" value="1"> Whether the sentence is active or passive</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-c" value="2"> The tense of the verb</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-c" value="3"> How an action unfolds over time</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 5 — Video ═══════════════════════════════════════ #}
+
+{% call activitySection(5, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<div class="accordion mb-3" id="unit08-review">
+
+  {% call accordion("rev-08-a", "Summary: Twelve tense-aspect combinations") %}
+  <table class="table table-sm table-dark table-bordered" style="font-size:0.875rem;">
+    <thead><tr><th>Aspect</th><th>Past</th><th>Present</th><th>Future</th></tr></thead>
+    <tbody>
+      <tr><td>Simple</td><td>wrote</td><td>writes</td><td>will write</td></tr>
+      <tr><td>Perfect</td><td>had written</td><td>has written</td><td>will have written</td></tr>
+      <tr><td>Continuous</td><td>was writing</td><td>is writing</td><td>will be writing</td></tr>
+      <tr><td>Perfect continuous</td><td>had been writing</td><td>has been writing</td><td>will have been writing</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("rev-08-b", "How does the parser label passive voice?") %}
+  <p>
+    Passive constructions (e.g., <em>was written</em>, <em>has been approved</em>) are
+    labelled with "Passive" as a prefix: e.g., <em>Passive Past</em> or <em>Passive Present Perfect</em>.
+    The tool detects <em>been</em> and <em>being</em> as signals of passive voice.
+  </p>
+  {% endcall %}
+
+</div>
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-09') | url }}">Unit 9: Articles</a> when ready.
+</p>
+{% endcall %}

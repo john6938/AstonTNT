@@ -387,6 +387,202 @@
 }
 
 
+/* ── Tool section (iCALL Suite) ─────────────────────────────── */
+
+.course-tool-section {
+  background-color: #2a2a2a;
+  border: 2px solid #ff8c00;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.course-tool-section .activity-header {
+  border-bottom: 1px solid #ff8c00;
+  padding-bottom: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.course-tool-section strong,
+.course-tool-section b {
+  color: #fffacd;
+}
+
+/* Tool UI elements */
+.tool-input {
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  border: 1px solid #555;
+  border-radius: 0.375rem;
+  padding: 0.6rem 0.875rem;
+  font-size: 0.95rem;
+  resize: vertical;
+}
+
+.tool-input:focus {
+  outline: none;
+  border-color: #ff8c00;
+  box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25);
+}
+
+.tool-output {
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 0.375rem;
+  padding: 0.875rem;
+  color: #f0f0f0;
+  min-height: 3rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.tool-output .highlight {
+  color: #ff8c00;
+  font-weight: 600;
+}
+
+.tool-output .changed {
+  background-color: rgba(255, 140, 0, 0.15);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+.tool-btn {
+  background-color: #ff8c00;
+  border: none;
+  color: #000000;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.tool-btn:hover {
+  background-color: #e67e00;
+}
+
+.tool-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tool-label {
+  font-size: 0.8rem;
+  color: #aaaaaa;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* answer-box (tool7 — Short Answers) */
+.answer-box {
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 0.375rem;
+  padding: 0.875rem;
+  min-height: 3rem;
+  font-size: 0.95rem;
+  color: #f0f0f0;
+}
+
+.answer-box.positive { color: #75b798; }
+.answer-box.negative { color: #ea868f; }
+
+/* Tense parser (tool8) — custom elements */
+token {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.25rem 0.2rem;
+  vertical-align: bottom;
+}
+
+tense {
+  font-size: 0.65rem;
+  color: #ff8c00;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  min-height: 1.1em;
+  display: block;
+  text-align: center;
+}
+
+word {
+  display: block;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+}
+
+word.verb {
+  background-color: rgba(255, 140, 0, 0.2);
+  border: 1px solid #ff8c00;
+  color: #ff8c00;
+  font-weight: 600;
+}
+
+/* Reported speech (tool10) — step display */
+.step-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #3a3a3a;
+  font-size: 0.875rem;
+}
+
+.step-item:last-child { border-bottom: none; }
+
+.step-label {
+  color: #aaaaaa;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 14rem;
+}
+
+.step-value { color: #f0f0f0; }
+
+/* Adjective order (tool1) — category colours */
+span.quantity { color: #e67e22; }
+span.opinion  { color: #9b59b6; }
+span.size     { color: #27ae60; }
+span.age      { color: #f39c12; }
+span.shape    { color: #16a085; }
+span.color    { color: #c0392b; }
+span.origin   { color: #2980b9; }
+span.material { color: #7f8c8d; }
+span.purpose  { color: #d35400; }
+
+.adj-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  margin-top: 0.75rem;
+}
+
+.adj-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.adj-legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Participle clauses (tool3) */
+.w3-red  { color: #e74c3c; font-weight: 600; }
+.w3-blue { color: #3498db; font-weight: 600; }
+
+/* Polite requests (tool5) */
+.red-text { color: #ff8c00; font-weight: 600; }
+
+
 /* ── Mobile adjustments ─────────────────────────────────────── */
 
 @media (max-width: 991.98px) {
