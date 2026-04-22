@@ -1,0 +1,233 @@
+---
+tool: 2
+toolTitle: Randomizer
+title: "Tool 2: Randomizer — Teacher Utilities"
+description: "Randomly select a student or item from a list."
+---
+
+<div class="course-tool-section mb-4">
+
+  <div class="activity-header">
+    <span class="activity-num"><i class="bi bi-shuffle"></i></span>
+    <h2 class="activity-title-text">Randomizer</h2>
+  </div>
+
+  <p style="color:#ccc; margin-bottom:1.25rem;">
+    Enter names or items one per line, or upload a <code>.txt</code> file. Press <strong>Open Fullscreen</strong> to project to the class, then pick from there.
+  </p>
+
+  {# ── List editor ── #}
+  <div class="mb-2">
+    <label class="tool-label">Names / items</label>
+    <textarea id="rand-list" class="tool-input"
+              style="min-height:140px; font-size:0.9rem;"
+              placeholder="Alice&#10;Bob&#10;Carol&#10;David&#10;Emma"></textarea>
+  </div>
+
+  {# ── Toolbar ── #}
+  <div class="d-flex align-items-center gap-2 mb-4 flex-wrap">
+    <label class="btn btn-sm btn-outline-secondary mb-0" style="cursor:pointer;">
+      <i class="bi bi-upload"></i> Upload .txt
+      <input type="file" id="rand-file" accept=".txt" style="display:none;" onchange="randLoadFile(this)">
+    </label>
+    <span id="rand-file-name" style="color:#888; font-size:0.8rem;"></span>
+    <button class="btn btn-sm btn-outline-secondary" onclick="randClear()">
+      <i class="bi bi-trash"></i> Clear
+    </button>
+  </div>
+
+  {# ── Open fullscreen (primary action) ── #}
+  <div class="d-flex justify-content-center mb-4">
+    <button class="tool-btn" style="font-size:1.1rem; padding:0.75rem 2rem;"
+            onclick="randOpenFullscreen()">
+      <i class="bi bi-fullscreen"></i> Open Fullscreen &amp; Pick
+    </button>
+  </div>
+
+  {# ── Inline result (quick reference without fullscreen) ── #}
+  <div id="rand-result" class="tool-output text-center py-3" style="min-height:5rem;">
+    <span style="color:#555; font-style:italic;">Last pick will appear here</span>
+  </div>
+
+</div>
+
+{# ── Full-screen overlay ── #}
+<div id="rand-fs" style="display:none; position:fixed; inset:0; background:#111; z-index:9999;
+     flex-direction:column; align-items:center; justify-content:center;">
+
+  {# Name / animation area #}
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+              padding:1rem; text-align:center; width:100%;">
+    <div id="rand-fs-name"
+         style="font-size:min(30vw,14rem); font-weight:900; color:#ff8c00; line-height:1;
+                min-height:0.85em; word-break:break-word; max-width:90vw;
+                transition: transform 0.08s ease, opacity 0.08s ease;"></div>
+    <p id="rand-fs-sub"
+       style="color:#aaa; font-size:clamp(0.9rem,2.5vw,1.4rem); margin-top:0.75rem; min-height:1.5em;"></p>
+  </div>
+
+  {# Pick buttons (hidden during animation) #}
+  <div id="rand-fs-btns"
+       style="padding-bottom:2.5rem; display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
+    <button class="tool-btn" style="font-size:1.1rem; padding:0.7rem 1.8rem;"
+            onclick="randFsPick(false)">
+      <i class="bi bi-shuffle"></i> Pick (keep all)
+    </button>
+    <button class="tool-btn" style="font-size:1.1rem; padding:0.7rem 1.8rem; background:#5a4000;"
+            onclick="randFsPick(true)">
+      <i class="bi bi-person-dash"></i> Pick &amp; remove
+    </button>
+  </div>
+
+  {# Exit #}
+  <button onclick="randExitFullscreen()"
+          style="position:absolute; top:1.2rem; right:1.2rem; background:transparent;
+                 border:1px solid #555; color:#aaa; padding:0.5rem 1rem; cursor:pointer;
+                 border-radius:0.375rem; font-size:1rem;">
+    <i class="bi bi-fullscreen-exit"></i> Exit
+  </button>
+
+</div>
+
+<script>
+(function() {
+  var fsOpen    = false;
+  var animating = false;
+
+  function getList() {
+    return document.getElementById('rand-list').value
+      .split('\n').map(function(s){ return s.trim(); }).filter(function(s){ return s.length > 0; });
+  }
+
+  function setReady() {
+    var list = getList();
+    var nameEl = document.getElementById('rand-fs-name');
+    var subEl  = document.getElementById('rand-fs-sub');
+    nameEl.textContent = '';
+    subEl.textContent  = list.length + ' item' + (list.length !== 1 ? 's' : '') + ' loaded — ready to pick';
+    document.getElementById('rand-fs-btns').style.display = 'flex';
+  }
+
+  function openFs() {
+    var el = document.getElementById('rand-fs');
+    el.style.display = 'flex';
+    if (!fsOpen) {
+      fsOpen = true;
+      if (el.requestFullscreen) el.requestFullscreen().catch(function(){});
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    }
+  }
+
+  window.randOpenFullscreen = function() {
+    var list = getList();
+    if (list.length === 0) {
+      document.getElementById('rand-result').innerHTML =
+        '<span style="color:#888;font-style:italic;">Add some names first</span>';
+      return;
+    }
+    openFs();
+    setReady();
+  };
+
+  window.randFsPick = function(remove) {
+    if (animating) return;
+    var list = getList();
+    if (list.length === 0) {
+      document.getElementById('rand-fs-name').textContent  = '';
+      document.getElementById('rand-fs-sub').textContent   = 'List is empty';
+      return;
+    }
+    var idx    = Math.floor(Math.random() * list.length);
+    var chosen = list[idx];
+    if (remove) {
+      list.splice(idx, 1);
+      document.getElementById('rand-list').value = list.join('\n');
+    }
+    animate(chosen, list.length);
+  };
+
+  function animate(chosen, remaining) {
+    animating = true;
+    document.getElementById('rand-fs-btns').style.display = 'none';
+    document.getElementById('rand-fs-sub').textContent   = 'Picking\u2026';
+
+    var nameEl = document.getElementById('rand-fs-name');
+    var pool   = getList();
+    // Always include all items for visual variety; settled item is chosen
+    if (pool.length === 0) pool = [chosen];
+
+    // Delay schedule: fast → slow deceleration (ms per frame)
+    var delays = [];
+    var i;
+    for (i = 0; i < 10; i++) delays.push(35);
+    for (i = 0; i < 8;  i++) delays.push(60);
+    for (i = 0; i < 7;  i++) delays.push(95);
+    for (i = 0; i < 5;  i++) delays.push(155);
+    for (i = 0; i < 4;  i++) delays.push(260);
+    for (i = 0; i < 3;  i++) delays.push(420);
+    for (i = 0; i < 2;  i++) delays.push(600);
+
+    var cumDelay = 0;
+    var last = '';
+
+    delays.forEach(function(delay) {
+      setTimeout(function() {
+        var pick, tries = 0;
+        do {
+          pick = pool[Math.floor(Math.random() * pool.length)];
+          tries++;
+        } while (pick === last && pool.length > 1 && tries < 10);
+        last = pick;
+        nameEl.textContent = pick;
+      }, cumDelay);
+      cumDelay += delay;
+    });
+
+    // Final: show chosen name
+    setTimeout(function() {
+      animating = false;
+      nameEl.textContent = chosen;
+      var subText = remaining + ' item' + (remaining !== 1 ? 's' : '') + ' in list';
+      document.getElementById('rand-fs-sub').textContent = subText;
+      document.getElementById('rand-fs-btns').style.display = 'flex';
+
+      // Mirror to inline result
+      document.getElementById('rand-result').innerHTML =
+        '<p style="font-size:1.6rem;font-weight:700;color:#ff8c00;margin:0;">' + chosen + '</p>' +
+        '<p style="color:#aaa;font-size:0.8rem;margin:0.2rem 0 0;">' + subText + '</p>';
+    }, cumDelay + 200);
+  }
+
+  window.randExitFullscreen = function() {
+    document.getElementById('rand-fs').style.display = 'none';
+    fsOpen = false;
+    if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+  };
+
+  window.randClear = function() {
+    document.getElementById('rand-list').value = '';
+    document.getElementById('rand-file-name').textContent = '';
+    document.getElementById('rand-result').innerHTML =
+      '<span style="color:#555;font-style:italic;">Last pick will appear here</span>';
+  };
+
+  window.randLoadFile = function(input) {
+    var file = input.files[0];
+    if (!file) return;
+    document.getElementById('rand-file-name').textContent = file.name;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('rand-list').value = e.target.result.trim();
+    };
+    reader.readAsText(file);
+  };
+
+  document.addEventListener('fullscreenchange', function() {
+    if (!document.fullscreenElement && fsOpen) {
+      document.getElementById('rand-fs').style.display = 'none';
+      fsOpen = false;
+    }
+  });
+})();
+</script>

@@ -1,0 +1,61 @@
+---
+layout: layouts/base.njk
+toolPage: true
+---
+
+{# ── Page header ──────────────────────────────────────────────────────── #}
+<section class="page-header course-page-header">
+  <div class="container">
+    {% if suiteBaseUrl %}
+    <a href="{{ suiteBaseUrl | url }}" class="course-back-link">
+      <i class="bi bi-arrow-left"></i> {{ suiteTitle }}
+    </a>
+    {% endif %}
+    <h1>Tool {{ tool }}: {{ toolTitle }}</h1>
+  </div>
+</section>
+
+{# ── Two-column layout ─────────────────────────────────────────────────── #}
+<div class="container py-4">
+  <div class="row g-4">
+
+    {# ── Main content ──────────────────────────────────────────────────── #}
+    <div class="col-lg-9 order-2 order-lg-1">
+      {{ content | safe }}
+    </div>
+
+    {# ── Sidebar ───────────────────────────────────────────────────────── #}
+    <div class="col-lg-3 order-1 order-lg-2">
+      <div class="course-sidebar sticky-top">
+
+        {# Tool navigation #}
+        <div class="card course-nav-card mb-3">
+          <div class="card-header">
+            <span class="fw-semibold">{{ suiteTitle }}</span>
+          </div>
+          <div class="list-group list-group-flush course-unit-nav">
+            {% if suiteBaseUrl %}
+            <a href="{{ suiteBaseUrl | url }}"
+               class="list-group-item list-group-item-action course-nav-item {% if not tool %}active{% endif %}">
+              <i class="bi bi-house-fill me-1"></i> Overview
+            </a>
+            {% endif %}
+            {% for i in range(1, toolCount + 1) %}
+            <a href="{{ (suiteBaseUrl + '/tool-' + (i | twoDigit)) | url }}"
+               class="list-group-item list-group-item-action course-nav-item {% if i == tool %}active{% endif %}">
+              <span class="course-nav-num">{{ i | twoDigit }}</span>
+              {% if toolTitles and toolTitles[i - 1] %}
+                {{ toolTitles[i - 1] }}
+              {% else %}
+                Tool {{ i }}
+              {% endif %}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

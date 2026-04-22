@@ -1,0 +1,212 @@
+---
+tool: 1
+toolTitle: Timer
+title: "Tool 1: Timer — Teacher Utilities"
+description: "A flexible countdown timer for timed classroom activities."
+---
+
+<div class="course-tool-section mb-4" style="position:relative;">
+
+  <div class="activity-header">
+    <span class="activity-num"><i class="bi bi-clock"></i></span>
+    <h2 class="activity-title-text">Timer</h2>
+    <button onclick="timerFullscreen()" title="Full screen"
+            style="margin-left:auto; background:transparent; border:1px solid #555; color:#aaa;
+                   padding:0.3rem 0.7rem; border-radius:0.375rem; cursor:pointer; font-size:0.85rem;">
+      <i class="bi bi-fullscreen"></i> Full screen
+    </button>
+  </div>
+
+  <p style="color:#ccc; margin-bottom:1.5rem;">Set a countdown for any classroom activity.</p>
+
+  {# ── Clock display ── #}
+  <div class="text-center mb-3">
+    <div id="timer-display"
+         style="font-size:5.5rem; font-weight:700; color:#ff8c00; letter-spacing:0.05em;
+                font-variant-numeric:tabular-nums; line-height:1;">
+      00:00
+    </div>
+    <p id="timer-status" style="color:#aaa; font-size:0.9rem; min-height:1.4em; margin:0.4rem 0 0;"></p>
+  </div>
+
+  {# ── Progress bar ── #}
+  <div style="width:100%; height:42px; background:#d8d8d8; border-radius:7px; overflow:hidden; margin-bottom:1.5rem;">
+    <div id="timer-bar"
+         style="height:100%; width:0%; background:#ff8c00; border-radius:7px; transition:width 1s linear;"></div>
+  </div>
+
+  {# ── Time inputs ── #}
+  <div class="d-flex justify-content-center gap-2 flex-wrap mb-3">
+    <div class="input-group" style="max-width:160px;">
+      <span class="input-group-text" style="background:#444; color:#ccc; border-color:#555;">min</span>
+      <input type="number" id="input-minutes" class="form-control text-center"
+             style="background:#333; color:#fff; border-color:#555;" min="0" max="99" value="5">
+    </div>
+    <div class="input-group" style="max-width:160px;">
+      <span class="input-group-text" style="background:#444; color:#ccc; border-color:#555;">sec</span>
+      <input type="number" id="input-seconds" class="form-control text-center"
+             style="background:#333; color:#fff; border-color:#555;" min="0" max="59" value="0">
+    </div>
+  </div>
+
+  {# ── Presets ── #}
+  <div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
+    <button class="btn btn-sm btn-outline-secondary" onclick="timerPreset(1)">1 min</button>
+    <button class="btn btn-sm btn-outline-secondary" onclick="timerPreset(2)">2 min</button>
+    <button class="btn btn-sm btn-outline-secondary" onclick="timerPreset(3)">3 min</button>
+    <button class="btn btn-sm btn-outline-secondary" onclick="timerPreset(5)">5 min</button>
+    <button class="btn btn-sm btn-outline-secondary" onclick="timerPreset(10)">10 min</button>
+  </div>
+
+  {# ── Controls ── #}
+  <div class="d-flex justify-content-center gap-2 flex-wrap">
+    <button class="tool-btn" onclick="timerStart()">
+      <i class="bi bi-play-fill"></i> Start
+    </button>
+    <button class="btn btn-outline-secondary" onclick="timerPause()">
+      <i class="bi bi-pause-fill"></i> Pause
+    </button>
+    <button class="btn btn-outline-secondary" onclick="timerStop()">
+      <i class="bi bi-stop-fill"></i> Stop
+    </button>
+  </div>
+
+</div>
+
+{# ── Full-screen overlay ── #}
+<div id="timer-fs" style="display:none; position:fixed; inset:0; background:#000; z-index:9999;
+     flex-direction:column; align-items:center; justify-content:center;">
+  <div id="timer-fs-display"
+       style="font-size:22vw; font-weight:700; color:#ff8c00; font-variant-numeric:tabular-nums; line-height:1;">
+    00:00
+  </div>
+  <p id="timer-fs-status" style="color:#aaa; font-size:2.5vw; margin-top:0.5vw;"></p>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:60px; background:#333;">
+    <div id="timer-fs-bar"
+         style="height:100%; width:0%; background:#ff8c00; transition:width 1s linear;"></div>
+  </div>
+  <button onclick="timerExitFullscreen()"
+          style="position:absolute; top:1.2rem; right:1.2rem; background:transparent;
+                 border:1px solid #555; color:#aaa; padding:0.5rem 1rem; cursor:pointer;
+                 border-radius:0.375rem; font-size:1rem;">
+    <i class="bi bi-fullscreen-exit"></i> Exit
+  </button>
+</div>
+
+<script>
+(function() {
+  var interval = null;
+  var running  = false;
+  var remaining = 0;
+  var total    = 0;
+  var fs       = false;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function fmt(s) {
+    return pad(Math.floor(s / 60)) + ':' + pad(s % 60);
+  }
+
+  function updateAll() {
+    var t = fmt(remaining);
+    var pct = total > 0 ? ((total - remaining) / total * 100) : 0;
+    document.getElementById('timer-display').textContent = t;
+    document.getElementById('timer-fs-display').textContent = t;
+    document.getElementById('timer-bar').style.width = pct + '%';
+    document.getElementById('timer-fs-bar').style.width = pct + '%';
+  }
+
+  function setStatus(msg) {
+    document.getElementById('timer-status').textContent = msg;
+    document.getElementById('timer-fs-status').textContent = msg;
+  }
+
+  function setFinishedColour() {
+    document.getElementById('timer-display').style.color = '#ea868f';
+    document.getElementById('timer-fs-display').style.color = '#ea868f';
+  }
+
+  function setRunningColour() {
+    document.getElementById('timer-display').style.color = '#ff8c00';
+    document.getElementById('timer-fs-display').style.color = '#ff8c00';
+  }
+
+  window.timerPreset = function(minutes) {
+    window.timerStop();
+    document.getElementById('input-minutes').value = minutes;
+    document.getElementById('input-seconds').value = 0;
+  };
+
+  window.timerStart = function() {
+    if (running) return;
+    if (remaining === 0) {
+      var m = parseInt(document.getElementById('input-minutes').value) || 0;
+      var s = parseInt(document.getElementById('input-seconds').value) || 0;
+      total = m * 60 + s;
+      remaining = total;
+    }
+    if (remaining <= 0) return;
+    running = true;
+    setRunningColour();
+    setStatus('Running\u2026');
+    updateAll();
+    interval = setInterval(function() {
+      remaining--;
+      updateAll();
+      if (remaining <= 0) {
+        clearInterval(interval);
+        running = false;
+        setFinishedColour();
+        setStatus("Time\u2019s up!");
+      }
+    }, 1000);
+  };
+
+  window.timerPause = function() {
+    if (!running) return;
+    clearInterval(interval);
+    running = false;
+    setStatus('Paused');
+  };
+
+  window.timerStop = function() {
+    clearInterval(interval);
+    running = false;
+    remaining = 0;
+    total = 0;
+    setRunningColour();
+    setStatus('');
+    document.getElementById('timer-display').textContent = '00:00';
+    document.getElementById('timer-fs-display').textContent = '00:00';
+    document.getElementById('timer-bar').style.width = '0%';
+    document.getElementById('timer-fs-bar').style.width = '0%';
+  };
+
+  window.timerFullscreen = function() {
+    var el = document.getElementById('timer-fs');
+    el.style.display = 'flex';
+    fs = true;
+    if (el.requestFullscreen) el.requestFullscreen().catch(function(){});
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+  };
+
+  window.timerExitFullscreen = function() {
+    var el = document.getElementById('timer-fs');
+    el.style.display = 'none';
+    fs = false;
+    if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+  };
+
+  document.addEventListener('fullscreenchange', function() {
+    if (!document.fullscreenElement && fs) {
+      document.getElementById('timer-fs').style.display = 'none';
+      fs = false;
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && fs) window.timerExitFullscreen();
+  });
+})();
+</script>

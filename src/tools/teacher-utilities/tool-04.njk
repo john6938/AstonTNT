@@ -1,0 +1,256 @@
+---
+tool: 4
+toolTitle: Forgive or Fine
+title: "Tool 4: Forgive or Fine — Teacher Utilities"
+description: "A spin-the-wheel decision tool for minor rule-breaking in the classroom."
+---
+
+<div class="course-tool-section mb-4">
+
+  <div class="activity-header">
+    <span class="activity-num"><i class="bi bi-arrow-clockwise"></i></span>
+    <h2 class="activity-title-text">Forgive or Fine</h2>
+    <button onclick="fofFullscreen()" title="Full screen"
+            style="margin-left:auto; background:transparent; border:1px solid #555; color:#aaa;
+                   padding:0.3rem 0.7rem; border-radius:0.375rem; cursor:pointer; font-size:0.85rem;">
+      <i class="bi bi-fullscreen"></i> Full screen
+    </button>
+  </div>
+
+  <p style="color:#ccc; margin-bottom:1.25rem;">
+    Spin the wheel to decide the outcome fairly. Customise the labels and the probability of forgiveness.
+  </p>
+
+  {# ── Settings ── #}
+  <div class="row g-3 mb-4">
+    <div class="col-sm-6">
+      <label class="tool-label">Forgive label</label>
+      <input type="text" id="fof-forgive" class="tool-input"
+             style="color:#75b798; font-weight:600;" value="You're forgiven!">
+    </div>
+    <div class="col-sm-6">
+      <label class="tool-label">Fine label</label>
+      <input type="text" id="fof-fine" class="tool-input"
+             style="color:#ea868f; font-weight:600;" value="One demerit point">
+    </div>
+    <div class="col-12">
+      <label class="tool-label">
+        Chance of forgiveness: <span id="fof-prob-label">70%</span>
+      </label>
+      <input type="range" id="fof-prob" class="form-range" min="10" max="90" step="10" value="70"
+             oninput="fofProbChange()">
+    </div>
+  </div>
+
+  {# ── Wheel ── #}
+  <div class="text-center mb-4">
+    <canvas id="fof-canvas" width="280" height="280" style="display:block; margin:0 auto;"></canvas>
+  </div>
+
+  {# ── Spin button ── #}
+  <div class="d-flex justify-content-center">
+    <button id="fof-spin-btn" class="tool-btn" style="font-size:1.1rem; padding:0.7rem 2rem;"
+            onclick="fofSpin()">
+      <i class="bi bi-arrow-clockwise"></i> Spin
+    </button>
+  </div>
+
+  {# ── Result ── #}
+  <div id="fof-result" class="text-center mt-4" style="min-height:3.5rem;">
+    <span style="color:#555; font-style:italic;">Spin the wheel to decide</span>
+  </div>
+
+</div>
+
+{# ── Full-screen overlay ── #}
+<div id="fof-fs" style="display:none; position:fixed; inset:0; background:#111; z-index:9999;
+     flex-direction:column; align-items:center; justify-content:center; gap:1.5rem;">
+  <canvas id="fof-fs-canvas" style="display:block;"></canvas>
+  <div id="fof-fs-result" style="font-size:3rem; font-weight:700; text-align:center; min-height:4rem;"></div>
+  <button id="fof-fs-spin-btn" class="tool-btn" style="font-size:1.2rem; padding:0.75rem 2.5rem;"
+          onclick="fofSpin()">
+    <i class="bi bi-arrow-clockwise"></i> Spin
+  </button>
+  <button onclick="fofExitFullscreen()"
+          style="position:absolute; top:1.2rem; right:1.2rem; background:transparent;
+                 border:1px solid #555; color:#aaa; padding:0.5rem 1rem; cursor:pointer;
+                 border-radius:0.375rem; font-size:1rem;">
+    <i class="bi bi-fullscreen-exit"></i> Exit
+  </button>
+</div>
+
+<script>
+(function() {
+  var spinning  = false;
+  var angle     = 0;
+  var fsMode    = false;
+
+  var canvas   = document.getElementById('fof-canvas');
+  var ctx      = canvas.getContext('2d');
+  var fsCanvas = document.getElementById('fof-fs-canvas');
+  var fsCtx    = fsCanvas.getContext('2d');
+
+  function prob() {
+    return parseInt(document.getElementById('fof-prob').value) / 100;
+  }
+
+  function drawWheel(c, cx, cy, r, a) {
+    var p = prob();
+    c.clearRect(0, 0, cx * 2, cy * 2);
+
+    // Forgive slice
+    c.beginPath();
+    c.moveTo(cx, cy);
+    c.arc(cx, cy, r, a, a + Math.PI * 2 * p);
+    c.closePath();
+    c.fillStyle = '#1a5c35';
+    c.fill();
+
+    // Fine slice
+    c.beginPath();
+    c.moveTo(cx, cy);
+    c.arc(cx, cy, r, a + Math.PI * 2 * p, a + Math.PI * 2);
+    c.closePath();
+    c.fillStyle = '#7a1c1c';
+    c.fill();
+
+    // FORGIVE label
+    c.save();
+    c.translate(cx, cy);
+    c.rotate(a + Math.PI * p);
+    c.font = 'bold ' + Math.max(11, Math.round(r * 0.13)) + 'px sans-serif';
+    c.fillStyle = '#fff';
+    c.textAlign = 'center';
+    c.textBaseline = 'middle';
+    c.fillText('FORGIVE', r * 0.55, 0);
+    c.restore();
+
+    // FINE label
+    c.save();
+    c.translate(cx, cy);
+    c.rotate(a + Math.PI * 2 * p + Math.PI * (1 - p));
+    c.font = 'bold ' + Math.max(11, Math.round(r * 0.13)) + 'px sans-serif';
+    c.fillStyle = '#fff';
+    c.textAlign = 'center';
+    c.textBaseline = 'middle';
+    c.fillText('FINE', r * 0.55, 0);
+    c.restore();
+
+    // Pointer (pointing right = 0 rad)
+    c.beginPath();
+    c.moveTo(cx + r + 10, cy);
+    c.lineTo(cx + r - 14, cy - 10);
+    c.lineTo(cx + r - 14, cy + 10);
+    c.closePath();
+    c.fillStyle = '#ff8c00';
+    c.fill();
+
+    // Border
+    c.beginPath();
+    c.arc(cx, cy, r, 0, Math.PI * 2);
+    c.strokeStyle = '#555';
+    c.lineWidth = 2;
+    c.stroke();
+  }
+
+  function redraw() {
+    drawWheel(ctx,   140, 140, 130, angle);
+    if (fsMode) drawWheel(fsCtx, fsCanvas.width/2, fsCanvas.height/2, fsCanvas.width/2 - 14, angle);
+  }
+
+  redraw();
+
+  window.fofProbChange = function() {
+    document.getElementById('fof-prob-label').textContent =
+      document.getElementById('fof-prob').value + '%';
+    if (!spinning) redraw();
+  };
+
+  function setSpinBtns(disabled) {
+    document.getElementById('fof-spin-btn').disabled    = disabled;
+    document.getElementById('fof-fs-spin-btn').disabled = disabled;
+  }
+
+  function showResult(isForgiven) {
+    var label = isForgiven
+      ? (document.getElementById('fof-forgive').value || "You're forgiven!")
+      : (document.getElementById('fof-fine').value    || 'One demerit point');
+    var col = isForgiven ? '#75b798' : '#ea868f';
+    var html = '<p style="font-size:1.8rem;font-weight:700;color:' + col + ';margin:0;">' + label + '</p>';
+    document.getElementById('fof-result').innerHTML = html;
+    document.getElementById('fof-fs-result').innerHTML =
+      '<span style="color:' + col + ';">' + label + '</span>';
+  }
+
+  window.fofSpin = function() {
+    if (spinning) return;
+    spinning = true;
+    setSpinBtns(true);
+    document.getElementById('fof-result').innerHTML =
+      '<span style="color:#aaa;font-style:italic;">Spinning\u2026</span>';
+    document.getElementById('fof-fs-result').innerHTML = '';
+
+    // Random: 5–12 full revolutions + random partial (0–2π)
+    var fullRevs  = 5 + Math.floor(Math.random() * 8);
+    var partial   = Math.random() * Math.PI * 2;
+    var totalRot  = Math.PI * 2 * fullRevs + partial;
+    var duration  = 3000 + Math.random() * 1500;   // 3.0–4.5 s
+    var startA    = angle;
+    var startTime = null;
+
+    function ease(t) { return 1 - Math.pow(1 - t, 4); }   // quartic out
+
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var elapsed  = ts - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      angle = startA + totalRot * ease(progress);
+      redraw();
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        spinning = false;
+        setSpinBtns(false);
+        // Determine result: pointer sits at angle=0 (rightmost).
+        // The Forgive arc begins at `angle` and spans 2π*p.
+        // Normalise so we know which part of the wheel faces the pointer.
+        var norm = ((angle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+        // Pointer is at 0 on the canvas. The wheel has rotated by `norm`.
+        // Position of pointer relative to wheel start = (2π - norm) mod 2π
+        var pointerPos = (Math.PI * 2 - norm) % (Math.PI * 2);
+        showResult(pointerPos < Math.PI * 2 * prob());
+      }
+    }
+    requestAnimationFrame(step);
+  };
+
+  window.fofFullscreen = function() {
+    var el = document.getElementById('fof-fs');
+    // Size canvas to 80% of smallest viewport dimension
+    var size = Math.min(window.innerWidth, window.innerHeight) * 0.7;
+    fsCanvas.width  = size;
+    fsCanvas.height = size;
+    el.style.display = 'flex';
+    fsMode = true;
+    redraw();
+    if (el.requestFullscreen) el.requestFullscreen().catch(function(){});
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+  };
+
+  window.fofExitFullscreen = function() {
+    document.getElementById('fof-fs').style.display = 'none';
+    fsMode = false;
+    if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+  };
+
+  document.addEventListener('fullscreenchange', function() {
+    if (!document.fullscreenElement && fsMode) {
+      document.getElementById('fof-fs').style.display = 'none';
+      fsMode = false;
+    }
+  });
+
+  document.getElementById('fof-prob').addEventListener('input', window.fofProbChange);
+})();
+</script>

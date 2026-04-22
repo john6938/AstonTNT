@@ -1,0 +1,386 @@
+---
+tool: 6
+toolTitle: Score Counter
+title: "Tool 6: Score Counter — Teacher Utilities"
+description: "Track team scores in real time with customisable team names and score increments."
+---
+
+<style>
+.sc-grid {
+  display: grid;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  align-items: stretch;
+}
+.sc-col {
+  background: #1e1e1e;
+  border-radius: 0.5rem;
+  border-top-width: 7px;
+  border-top-style: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 0.6rem;
+  min-width: 110px;
+  gap: 0.35rem;
+}
+.sc-name-input {
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed rgba(255,255,255,0.25);
+  width: 100%;
+  padding: 0.2rem 0.1rem;
+  transition: border-color 0.15s;
+}
+.sc-name-input:focus { outline: none; border-bottom-style: solid; }
+.sc-score {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  padding: 0.5rem 0;
+  font-variant-numeric: tabular-nums;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.sc-btns { display: flex; gap: 0.4rem; width: 100%; }
+.sc-btn {
+  flex: 1;
+  padding: 0.5rem 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  color: #000;
+  min-height: 42px;
+  transition: filter 0.12s;
+}
+.sc-btn:hover  { filter: brightness(1.18); }
+.sc-btn:active { filter: brightness(0.82); }
+
+/* Fullscreen */
+#sc-fs {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  flex-direction: row;
+}
+.sc-fs-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(0.75rem,2vw,2rem) clamp(0.5rem,1.5vw,1.5rem);
+  min-width: 0;
+}
+.sc-fs-name {
+  font-size: clamp(1rem,2.5vw,2rem);
+  font-weight: 800;
+  color: #000;
+  text-align: center;
+  word-break: break-word;
+  width: 100%;
+}
+.sc-fs-score {
+  font-size: clamp(4rem,11vw,12rem);
+  font-weight: 900;
+  color: #000;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.sc-fs-btns { display: flex; gap: 0.4rem; width: 100%; }
+.sc-fs-btn {
+  flex: 1;
+  padding: clamp(0.4rem,1.2vw,0.9rem) 0.25rem;
+  font-size: clamp(0.9rem,2vw,1.5rem);
+  font-weight: 700;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background: rgba(0,0,0,0.22);
+  color: #000;
+  min-height: 44px;
+  transition: background 0.12s;
+}
+.sc-fs-btn:hover  { background: rgba(0,0,0,0.38); }
+.sc-fs-btn:active { background: rgba(0,0,0,0.55); }
+</style>
+
+<div class="course-tool-section mb-4">
+
+  <div class="activity-header">
+    <span class="activity-num"><i class="bi bi-bar-chart-line"></i></span>
+    <h2 class="activity-title-text">Score Counter</h2>
+    <button onclick="scFullscreen()" title="Full screen"
+            style="margin-left:auto; background:transparent; border:1px solid #555; color:#aaa;
+                   padding:0.3rem 0.7rem; border-radius:0.375rem; cursor:pointer; font-size:0.85rem;">
+      <i class="bi bi-fullscreen"></i> Full screen
+    </button>
+  </div>
+
+  {# ── Settings bar ── #}
+  <div class="d-flex align-items-center gap-3 flex-wrap mb-4 p-3"
+       style="background:#1a1a1a; border-radius:0.5rem; font-size:0.9rem;">
+
+    <div class="d-flex align-items-center gap-2 flex-wrap">
+      <span style="color:#aaa; white-space:nowrap;">Teams:</span>
+      <div class="d-flex gap-1" id="sc-team-btns">
+        {% for n in [2,3,4,5,6,7] %}
+        <button onclick="scSetCount({{ n }})"
+                id="sc-cnt-{{ n }}"
+                class="btn btn-sm btn-outline-secondary"
+                style="min-width:2rem;">{{ n }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <label style="color:#aaa; white-space:nowrap;" for="sc-start">Start:</label>
+      <input type="number" id="sc-start" value="0" min="-9999" max="9999"
+             style="width:70px; background:#333; color:#fff; border:1px solid #555;
+                    border-radius:0.375rem; padding:0.25rem 0.5rem; font-size:0.9rem;"
+             oninput="scUpdateStart()">
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <label style="color:#aaa; white-space:nowrap;" for="sc-step">Step:</label>
+      <input type="number" id="sc-step" value="1" min="1" max="9999"
+             style="width:70px; background:#333; color:#fff; border:1px solid #555;
+                    border-radius:0.375rem; padding:0.25rem 0.5rem; font-size:0.9rem;"
+             oninput="scUpdateStep()">
+    </div>
+
+    <button class="btn btn-sm btn-outline-secondary" onclick="scResetScores()">
+      <i class="bi bi-arrow-counterclockwise"></i> Reset scores
+    </button>
+  </div>
+
+  {# ── Scoreboard ── #}
+  <div id="sc-grid" class="sc-grid"></div>
+
+</div>
+
+{# ══ Full-screen scoreboard ══════════════════════════════════════ #}
+<div id="sc-fs">
+  <div id="sc-fs-inner" style="display:flex; flex-direction:row; width:100%; height:100%;"></div>
+  <button onclick="scExitFullscreen()"
+          style="position:absolute; top:1rem; right:1rem; z-index:10; background:rgba(0,0,0,0.35);
+                 border:1px solid rgba(0,0,0,0.4); color:#fff; padding:0.5rem 1rem;
+                 cursor:pointer; border-radius:0.375rem; font-size:1rem;">
+    <i class="bi bi-fullscreen-exit"></i> Exit
+  </button>
+</div>
+
+<script>
+(function() {
+
+  var NAMES  = ['Red','Blue','Orange','Green','Pink','Purple','Yellow'];
+  var COLORS = ['#e74c3c','#2980b9','#ff8c00','#27ae60','#e91e8c','#8e44ad','#f1c40f'];
+
+  var numTeams   = 2;
+  var startScore = 0;
+  var step       = 1;
+  var teamNames  = NAMES.slice();
+  var scores     = [0,0,0,0,0,0,0];
+  var fsOpen     = false;
+
+  /* ── Helpers ─────────────────────────────────────────────── */
+  function highlightCountBtn(n) {
+    for (var i = 2; i <= 7; i++) {
+      var btn = document.getElementById('sc-cnt-' + i);
+      if (!btn) continue;
+      var active = i === n;
+      btn.style.background  = active ? '#ff8c00' : '';
+      btn.style.color       = active ? '#000'    : '';
+      btn.style.borderColor = active ? '#ff8c00' : '';
+    }
+  }
+
+  /* ── Render standard grid ────────────────────────────────── */
+  function renderGrid() {
+    var grid = document.getElementById('sc-grid');
+    grid.style.gridTemplateColumns = 'repeat(' + numTeams + ', 1fr)';
+    grid.innerHTML = '';
+
+    for (var i = 0; i < numTeams; i++) {
+      (function(idx) {
+        var col = document.createElement('div');
+        col.className = 'sc-col';
+        col.style.borderTopColor = COLORS[idx];
+
+        /* Name input */
+        var inp = document.createElement('input');
+        inp.type      = 'text';
+        inp.className = 'sc-name-input';
+        inp.value     = teamNames[idx];
+        inp.style.color       = COLORS[idx];
+        inp.style.borderColor = COLORS[idx] + '66';
+        inp.addEventListener('input', function() {
+          teamNames[idx] = this.value;
+          var fsEl = document.getElementById('sc-fs-name-' + idx);
+          if (fsEl) fsEl.textContent = this.value;
+        });
+
+        /* Score display */
+        var sc = document.createElement('div');
+        sc.className   = 'sc-score';
+        sc.id          = 'sc-score-' + idx;
+        sc.textContent = scores[idx];
+
+        /* +/- buttons */
+        var btns  = document.createElement('div');
+        btns.className = 'sc-btns';
+
+        var minus = document.createElement('button');
+        minus.className   = 'sc-btn';
+        minus.textContent = '\u2212' + step;
+        minus.style.background = COLORS[idx];
+        minus.addEventListener('click', function() { scAdjust(idx, -1); });
+
+        var plus = document.createElement('button');
+        plus.className   = 'sc-btn';
+        plus.textContent = '+' + step;
+        plus.style.background = COLORS[idx];
+        plus.addEventListener('click', function() { scAdjust(idx, 1); });
+
+        btns.appendChild(minus);
+        btns.appendChild(plus);
+        col.appendChild(inp);
+        col.appendChild(sc);
+        col.appendChild(btns);
+        grid.appendChild(col);
+      })(i);
+    }
+  }
+
+  /* ── Render fullscreen board ─────────────────────────────── */
+  function renderFs() {
+    var inner = document.getElementById('sc-fs-inner');
+    inner.innerHTML = '';
+
+    for (var i = 0; i < numTeams; i++) {
+      (function(idx) {
+        var col = document.createElement('div');
+        col.className = 'sc-fs-col';
+        col.style.background = COLORS[idx];
+
+        var nm = document.createElement('div');
+        nm.className   = 'sc-fs-name';
+        nm.id          = 'sc-fs-name-' + idx;
+        nm.textContent = teamNames[idx];
+
+        var sc = document.createElement('div');
+        sc.className   = 'sc-fs-score';
+        sc.id          = 'sc-fs-score-' + idx;
+        sc.textContent = scores[idx];
+
+        var btns  = document.createElement('div');
+        btns.className = 'sc-fs-btns';
+
+        var minus = document.createElement('button');
+        minus.className   = 'sc-fs-btn';
+        minus.textContent = '\u2212' + step;
+        minus.addEventListener('click', function() { scAdjust(idx, -1); });
+
+        var plus = document.createElement('button');
+        plus.className   = 'sc-fs-btn';
+        plus.textContent = '+' + step;
+        plus.addEventListener('click', function() { scAdjust(idx, 1); });
+
+        btns.appendChild(minus);
+        btns.appendChild(plus);
+        col.appendChild(nm);
+        col.appendChild(sc);
+        col.appendChild(btns);
+        inner.appendChild(col);
+      })(i);
+    }
+  }
+
+  /* ── Score adjust (updates both views) ──────────────────── */
+  function scAdjust(idx, direction) {
+    scores[idx] += direction * step;
+    var el = document.getElementById('sc-score-' + idx);
+    if (el) el.textContent = scores[idx];
+    var fEl = document.getElementById('sc-fs-score-' + idx);
+    if (fEl) fEl.textContent = scores[idx];
+  }
+
+  /* ── Public API ──────────────────────────────────────────── */
+  window.scSetCount = function(n) {
+    numTeams = n;
+    highlightCountBtn(n);
+    renderGrid();
+    if (fsOpen) renderFs();
+  };
+
+  window.scUpdateStart = function() {
+    startScore = parseInt(document.getElementById('sc-start').value) || 0;
+  };
+
+  window.scUpdateStep = function() {
+    step = Math.max(1, parseInt(document.getElementById('sc-step').value) || 1);
+    document.querySelectorAll('#sc-grid .sc-btn').forEach(function(btn, i) {
+      btn.textContent = (i % 2 === 0 ? '\u2212' : '+') + step;
+    });
+    if (fsOpen) {
+      document.querySelectorAll('#sc-fs-inner .sc-fs-btn').forEach(function(btn, i) {
+        btn.textContent = (i % 2 === 0 ? '\u2212' : '+') + step;
+      });
+    }
+  };
+
+  window.scResetScores = function() {
+    for (var i = 0; i < numTeams; i++) {
+      scores[i] = startScore;
+      var el = document.getElementById('sc-score-' + i);
+      if (el) el.textContent = startScore;
+      var fEl = document.getElementById('sc-fs-score-' + i);
+      if (fEl) fEl.textContent = startScore;
+    }
+  };
+
+  window.scFullscreen = function() {
+    renderFs();
+    var el = document.getElementById('sc-fs');
+    el.style.display = 'flex';
+    fsOpen = true;
+    if (el.requestFullscreen) el.requestFullscreen().catch(function(){});
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+  };
+
+  window.scExitFullscreen = function() {
+    document.getElementById('sc-fs').style.display = 'none';
+    fsOpen = false;
+    if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+  };
+
+  document.addEventListener('fullscreenchange', function() {
+    if (!document.fullscreenElement && fsOpen) {
+      document.getElementById('sc-fs').style.display = 'none';
+      fsOpen = false;
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && fsOpen) window.scExitFullscreen();
+  });
+
+  /* ── Boot — MUST be last, after all functions defined ────── */
+  highlightCountBtn(2);
+  renderGrid();
+
+})();
+</script>

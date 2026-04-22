@@ -1,0 +1,354 @@
+---
+tool: 5
+toolTitle: Reward Generator
+title: "Tool 5: Reward Generator — Teacher Utilities"
+description: "Generate a random reward or praise phrase to recognise good work or behaviour."
+---
+
+<style>
+@keyframes cdPop {
+  0%   { transform: scale(3);   opacity: 0; }
+  55%  { transform: scale(0.88); opacity: 1; }
+  75%  { transform: scale(1.08); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+@keyframes rewardReveal {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+.cd-pop    { animation: cdPop       0.38s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.rwd-pop   { animation: rewardReveal 0.5s  cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+</style>
+
+<div class="course-tool-section mb-4">
+
+  <div class="activity-header">
+    <span class="activity-num"><i class="bi bi-trophy"></i></span>
+    <h2 class="activity-title-text">Reward Generator</h2>
+  </div>
+
+  <p style="color:#ccc; margin-bottom:1.25rem;">
+    Click Generate for a dramatic 3-2-1 countdown reveal. Use the built-in list, add your own rewards, or mix both.
+  </p>
+
+  {# ── Custom rewards ── #}
+  <div class="mb-3">
+    <label class="tool-label">
+      Custom rewards <span style="font-size:0.8rem;">(one per line — leave blank to use built-in list)</span>
+    </label>
+    <textarea id="reward-custom" class="tool-input"
+              style="min-height:100px; font-size:0.9rem;"
+              placeholder="e.g.&#10;Choose your seat for the next activity&#10;Skip one homework question&#10;First out the door"></textarea>
+  </div>
+
+  <div class="form-check mb-4">
+    <input class="form-check-input" type="checkbox" id="reward-mix" checked>
+    <label class="form-check-label" style="color:#ccc;" for="reward-mix">
+      Mix custom rewards with built-in list
+    </label>
+  </div>
+
+  {# ── Generate button — always enabled ── #}
+  <div class="d-flex justify-content-center mb-4">
+    <button class="tool-btn" style="font-size:1.15rem; padding:0.75rem 2.2rem;"
+            onclick="rewardGenerate()">
+      <i class="bi bi-stars"></i> Generate reward
+    </button>
+  </div>
+
+  {# ── Inline result ── #}
+  <div id="reward-result" class="tool-output text-center py-4" style="min-height:6rem;">
+    <span style="color:#555; font-style:italic;">Your reward will appear here after the reveal</span>
+  </div>
+
+</div>
+
+{# ══ Full-screen overlay ══════════════════════════════════════════════════ #}
+<div id="reward-fs" style="display:none; position:fixed; inset:0; background:#0a0a0a; z-index:9999;
+     flex-direction:column; align-items:center; justify-content:center; overflow:hidden;">
+
+  {# Particle canvas — behind everything #}
+  <canvas id="reward-canvas"
+          style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;"></canvas>
+
+  {# Countdown number #}
+  <div id="reward-cd" style="position:relative; z-index:2; display:flex; align-items:center;
+       justify-content:center; flex:1; width:100%;">
+    <span id="reward-cd-num"
+          style="font-size:min(55vw,30rem); font-weight:900; color:#ff8c00;
+                 line-height:1; display:block;"></span>
+  </div>
+
+  {# Reward text (hidden until after explosion) #}
+  <div id="reward-fs-text"
+       style="display:none; position:relative; z-index:2; text-align:center; padding:1.5rem;
+              font-size:min(9vw,5rem); font-weight:900; color:#ff8c00; line-height:1.2;
+              max-width:90vw; word-break:break-word;"></div>
+
+  {# Post-reveal buttons #}
+  <div id="reward-fs-btns" style="display:none; position:relative; z-index:2;
+       padding-bottom:2.5rem; margin-top:1rem; gap:1rem; flex-wrap:wrap; justify-content:center;">
+    <button class="tool-btn" style="font-size:1.1rem; padding:0.7rem 1.8rem;"
+            onclick="rewardGenerate()">
+      <i class="bi bi-stars"></i> Generate another
+    </button>
+  </div>
+
+  {# Exit — always visible #}
+  <button onclick="rewardExitFullscreen()"
+          style="position:absolute; top:1.2rem; right:1.2rem; z-index:10; background:transparent;
+                 border:1px solid #555; color:#aaa; padding:0.5rem 1rem; cursor:pointer;
+                 border-radius:0.375rem; font-size:1rem;">
+    <i class="bi bi-fullscreen-exit"></i> Exit
+  </button>
+</div>
+
+<script>
+(function() {
+
+  /* ── Built-in reward pool ───────────────────────────────────── */
+  var BUILT_IN = [
+    "Choose a partner for the next activity",
+    "Five minutes of free reading",
+    "Show your work to the class",
+    "Help the teacher for the day",
+    "Choose the next classroom activity",
+    "Sit wherever you like today",
+    "Skip one question on the next task",
+    "Extra computer time",
+    "Be the first to leave at the end",
+    "Get a sticker from the teacher",
+    "Choose the background music for the next activity",
+    "Lead the next warm-up",
+    "Share a fun fact with the class",
+    "Extra break time (1 minute)",
+    "Pick the next game",
+    "Read aloud to the class",
+    "Be the class helper today",
+    "Show a classmate something you're proud of",
+    "Choose a topic for the next discussion",
+    "Move to the front for the next lesson"
+  ];
+
+  var fsOpen = false;
+
+  /* ── Pool builder ───────────────────────────────────────────── */
+  function getPool() {
+    var custom = document.getElementById('reward-custom').value
+      .split('\n').map(function(s){ return s.trim(); }).filter(function(s){ return s.length > 0; });
+    var mix = document.getElementById('reward-mix').checked;
+    if (custom.length === 0) return BUILT_IN.slice();
+    return mix ? BUILT_IN.concat(custom) : custom;
+  }
+
+  /* ── Audio helpers ──────────────────────────────────────────── */
+  function beep(freq, dur) {
+    try {
+      var ctx  = new (window.AudioContext || window.webkitAudioContext)();
+      var osc  = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.55, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+      osc.start(); osc.stop(ctx.currentTime + dur);
+    } catch(e) {}
+  }
+
+  function boom() {
+    try {
+      var ctx = new (window.AudioContext || window.webkitAudioContext)();
+      var t   = ctx.currentTime;
+
+      /* White noise burst, low-pass filtered — the "explosion" thud */
+      var bufSize = Math.floor(ctx.sampleRate * 0.9);
+      var buf     = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      var data    = buf.getChannelData(0);
+      for (var i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+      var noise     = ctx.createBufferSource();
+      noise.buffer  = buf;
+      var lpf       = ctx.createBiquadFilter();
+      lpf.type      = 'lowpass';
+      lpf.frequency.value = 280;
+      var noiseGain = ctx.createGain();
+      noiseGain.gain.setValueAtTime(1.0, t);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, t + 0.9);
+      noise.connect(lpf); lpf.connect(noiseGain); noiseGain.connect(ctx.destination);
+      noise.start(t);
+
+      /* Rising sweep — the "fanfare" that follows the bang */
+      var osc     = ctx.createOscillator();
+      var oscGain = ctx.createGain();
+      osc.connect(oscGain); oscGain.connect(ctx.destination);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(120, t);
+      osc.frequency.exponentialRampToValueAtTime(1400, t + 0.55);
+      oscGain.gain.setValueAtTime(0.55, t);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, t + 0.9);
+      osc.start(t); osc.stop(t + 0.9);
+    } catch(e) {}
+  }
+
+  /* ── Particle explosion ─────────────────────────────────────── */
+  var COLOURS = ['#ff8c00','#FFD700','#FF4500','#FFFFFF','#FFFF00','#FF6B35','#FFA500','#FF3300'];
+
+  function explode() {
+    var canvas = document.getElementById('reward-canvas');
+    var ctx    = canvas.getContext('2d');
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    var cx = canvas.width  / 2;
+    var cy = canvas.height / 2;
+    var particles = [];
+
+    for (var i = 0; i < 180; i++) {
+      var angle = Math.random() * Math.PI * 2;
+      var speed = 7 + Math.random() * 22;
+      /* Mix of square chips and thin streamers */
+      var streamer = Math.random() > 0.55;
+      particles.push({
+        x: cx, y: cy,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 4,
+        gravity: 0.45 + Math.random() * 0.3,
+        drag:    0.97 + Math.random() * 0.01,
+        color:   COLOURS[Math.floor(Math.random() * COLOURS.length)],
+        w: streamer ? (2 + Math.random() * 3)  : (5  + Math.random() * 9),
+        h: streamer ? (10 + Math.random() * 18) : (5  + Math.random() * 9),
+        rot: Math.random() * Math.PI * 2,
+        rotV: (Math.random() - 0.5) * 0.3
+      });
+    }
+
+    var start = null;
+    var DURATION = 2400;
+
+    function frame(ts) {
+      if (!start) start = ts;
+      var elapsed = ts - start;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      var alive = false;
+      particles.forEach(function(p) {
+        p.x  += p.vx;  p.y  += p.vy;
+        p.vx *= p.drag; p.vy *= p.drag;
+        p.vy += p.gravity;
+        p.rot += p.rotV;
+        var alpha = Math.max(0, 1 - elapsed / DURATION);
+        if (alpha <= 0) return;
+        alive = true;
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle   = p.color;
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+
+      if (alive) requestAnimationFrame(frame);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ── Countdown + reveal sequence ───────────────────────────── */
+  function runSequence(reward) {
+    var cdEl   = document.getElementById('reward-cd');
+    var numEl  = document.getElementById('reward-cd-num');
+    var txtEl  = document.getElementById('reward-fs-text');
+    var btnsEl = document.getElementById('reward-fs-btns');
+    var fsEl   = document.getElementById('reward-fs');
+
+    /* Reset */
+    cdEl.style.display    = 'flex';
+    txtEl.style.display   = 'none';
+    btnsEl.style.display  = 'none';
+    txtEl.classList.remove('rwd-pop');
+    fsEl.style.background = '#0a0a0a';
+
+    /* Helper: pop in a countdown digit */
+    function showNum(n, freq) {
+      numEl.classList.remove('cd-pop');
+      void numEl.offsetWidth;          /* force reflow to restart animation */
+      numEl.textContent = n;
+      numEl.classList.add('cd-pop');
+      beep(freq, 0.28);
+    }
+
+    /* 3 … 2 … 1 … BOOM */
+    showNum('3', 330);
+
+    setTimeout(function() { showNum('2', 440); }, 900);
+
+    setTimeout(function() { showNum('1', 620); }, 1800);
+
+    setTimeout(function() {
+      /* Flash the background orange → black */
+      fsEl.style.transition = 'background 0.08s ease';
+      fsEl.style.background = '#ff8c00';
+      setTimeout(function() { fsEl.style.background = '#0a0a0a'; }, 120);
+
+      boom();
+      explode();
+
+      /* Hide countdown, reveal reward */
+      cdEl.style.display  = 'none';
+      txtEl.textContent   = reward;
+      txtEl.style.display = 'block';
+      void txtEl.offsetWidth;
+      txtEl.classList.add('rwd-pop');
+
+      setTimeout(function() {
+        btnsEl.style.display = 'flex';
+      }, 700);
+
+      /* Mirror to inline panel */
+      var pool = getPool();
+      document.getElementById('reward-result').innerHTML =
+        '<p style="font-size:1.6rem;font-weight:700;color:#ff8c00;margin:0 0 0.2rem;">' + reward + '</p>' +
+        '<p style="color:#aaa;font-size:0.8rem;margin:0;">(' + pool.length + ' reward' +
+        (pool.length !== 1 ? 's' : '') + ' in pool)</p>';
+
+    }, 2700);
+  }
+
+  /* ── Public: generate ───────────────────────────────────────── */
+  window.rewardGenerate = function() {
+    var pool   = getPool();
+    var reward = pool[Math.floor(Math.random() * pool.length)];
+
+    var el = document.getElementById('reward-fs');
+    el.style.display = 'flex';
+
+    if (!fsOpen) {
+      fsOpen = true;
+      if (el.requestFullscreen) el.requestFullscreen().catch(function(){});
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    }
+
+    runSequence(reward);
+  };
+
+  window.rewardExitFullscreen = function() {
+    document.getElementById('reward-fs').style.display = 'none';
+    fsOpen = false;
+    if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+  };
+
+  document.addEventListener('fullscreenchange', function() {
+    if (!document.fullscreenElement && fsOpen) {
+      document.getElementById('reward-fs').style.display = 'none';
+      fsOpen = false;
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && fsOpen) window.rewardExitFullscreen();
+  });
+})();
+</script>

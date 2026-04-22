@@ -1,0 +1,78 @@
+---
+layout: layouts/base.njk
+title: "Teacher Utilities — Classroom Tools"
+description: "Six interactive tools to help teachers manage classroom time, select students, and motivate learners."
+---
+
+<section class="page-header">
+  <div class="container">
+    <h1>Teacher Utilities</h1>
+    <p class="lead" style="color: #e0e0e0;">
+      Six interactive tools to support classroom management and student engagement.
+    </p>
+  </div>
+</section>
+
+<div class="container py-4">
+
+  <div class="row mb-5">
+    <div class="col-lg-8">
+      <h2>About This Suite</h2>
+      <p>
+        Teacher Utilities is a collection of five practical classroom tools designed for
+        teachers at all levels. Each tool runs entirely in your browser — no login,
+        no installation, and no data sent to any server.
+      </p>
+      <p>
+        Use them individually as needed: set a countdown timer for activities, randomly
+        select a student, grab the class's attention with a signal, decide how to respond
+        to rule-breaking, generate a reward for good work, or track team scores in real time.
+      </p>
+    </div>
+    <div class="col-lg-4">
+      <div class="card p-3">
+        <h3 class="fs-6 fw-bold mb-2" style="color:#000;">Quick facts</h3>
+        <ul class="mb-0" style="color:#000; font-size:0.9rem;">
+          <li>6 standalone classroom tools</li>
+          <li>No login or registration required</li>
+          <li>Works entirely in your browser</li>
+          <li>Suitable for any subject or age group</li>
+          <li>Use any tool independently</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mb-4">Tools</h2>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+
+    {% set toolData = [
+      { n: 1, icon: "clock",        title: "Timer",           blurb: "A flexible countdown timer for timed activities, pair work, tests, or any classroom task that needs a visible deadline." },
+      { n: 2, icon: "shuffle",      title: "Randomizer",      blurb: "Randomly select a student or item from a list. Fair, fast, and removes the pressure of volunteering." },
+      { n: 3, icon: "bell",         title: "Attention Getter", blurb: "A visual or audio signal to bring the class back to attention quickly without raising your voice." },
+      { n: 4, icon: "balance-scale", title: "Forgive or Fine", blurb: "A decision tool for minor rule-breaking: spin to decide whether the student is forgiven or receives a small consequence." },
+      { n: 5, icon: "trophy",       title: "Reward Generator",  blurb: "Generate a random reward or praise phrase to recognise good work, effort, or behaviour." },
+      { n: 6, icon: "bar-chart-line", title: "Score Counter",   blurb: "Track team scores in real time. Customise team names, starting score, and point increment. Rainbow team colours by default." }
+    ] %}
+
+    {% for t in toolData %}
+    <div class="col">
+      <div class="card section-card h-100">
+        <div class="card-body">
+          <div class="card-icon">
+            <i class="bi bi-{{ t.icon }}"></i>
+          </div>
+          <p class="text-muted mb-1" style="font-size:0.75rem;">Tool {{ t.n | twoDigit }}</p>
+          <h3 class="card-title fs-6 fw-bold">{{ t.title }}</h3>
+          <p class="card-text" style="font-size:0.875rem; color:#333;">{{ t.blurb }}</p>
+          <a href="{{ ('/tools/teacher-utilities/tool-' + (t.n | twoDigit)) | url }}" class="btn btn-sm">
+            Open tool <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>
