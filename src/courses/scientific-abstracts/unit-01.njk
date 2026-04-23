@@ -1,0 +1,214 @@
+---
+unit: 1
+unitTitle: Types of Abstracts
+title: "Unit 1: Types of Abstracts — Scientific Research Abstracts"
+courseUnit: true
+objectives:
+  - Know the main types of scientific research abstracts
+  - Understand how abstracts vary by domain, format, and publication type
+  - Decide which type of abstract is appropriate for your own target publication
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Introduction ═══════════════════════════════════════ #}
+
+{% call activitySection(1, "Introduction", "book") %}
+<p>
+  Research abstracts vary greatly. Abstracts in the humanities differ dramatically from those in the
+  sciences, and within any given field the conventions can shift depending on the publication type,
+  the research design, and the audience. This course focuses on research abstracts in the sciences,
+  and in particular those written for computer science and related disciplines.
+</p>
+<p>
+  The best way to understand the conventions of a target publication is to read many abstracts from
+  that same venue. However, it helps to start with a clear taxonomy of the main abstract types so
+  that you can identify what you are reading — and decide what you need to write.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Five Types ═════════════════════════════════════════ #}
+
+{% set typeTabs = [
+  {id: "traditional", label: "Traditional"},
+  {id: "structured",  label: "Structured"},
+  {id: "graphical",   label: "Graphical"},
+  {id: "promissory",  label: "Promissory"},
+  {id: "extended",    label: "Extended"}
+] %}
+
+{% call activitySection(2, "Five Types of Abstracts", "collection") %}
+<p>
+  Five broad types of abstract are commonly recognised. Select each tab to learn about its
+  characteristics, typical use, and distinguishing feature. All five types are described in prose below
+  the tabs for reference.
+</p>
+
+{% call tabSet("u01-types", typeTabs) %}
+
+  <div class="tab-pane fade show active" id="u01-types-traditional" role="tabpanel">
+    <p><strong>What it is:</strong> A continuous prose text, typically 150–250 words, with no headings.
+    The text flows from background through to conclusion as a single paragraph or short paragraphs.</p>
+    <p><strong>Where used:</strong> Computer science, linguistics, engineering, and most social sciences.
+    It is the default format in the majority of disciplines.</p>
+    <p><strong>Key feature:</strong> No prescribed structure — the writer chooses the move sequence.
+    This flexibility requires the writer to understand the rhetorical moves expected by the target venue.</p>
+  </div>
+
+  <div class="tab-pane fade" id="u01-types-structured" role="tabpanel">
+    <p><strong>What it is:</strong> An abstract that uses prescribed headings
+    (e.g., <em>Objective, Design, Setting, Participants, Results, Conclusion</em>). The headings may
+    be specified by the journal or conference.</p>
+    <p><strong>Where used:</strong> Medicine, health sciences, and psychology. Structured abstracts
+    are the default in journals such as <em>JAMA</em>, the <em>BMJ</em>, and <em>The Lancet</em>.</p>
+    <p><strong>Key feature:</strong> The prescribed headings remove ambiguity about content — each
+    section must address a specific aspect of the research. Longer than traditional abstracts as a result.</p>
+  </div>
+
+  <div class="tab-pane fade" id="u01-types-graphical" role="tabpanel">
+    <p><strong>What it is:</strong> A visual representation of the research — typically a diagram,
+    flowchart, or infographic — accompanied by brief explanatory text.</p>
+    <p><strong>Where used:</strong> Materials science, chemistry, and biology. Graphical abstracts are
+    increasingly required by journals in these fields alongside a traditional text abstract.</p>
+    <p><strong>Key feature:</strong> The visual element must communicate the research process or key
+    result at a glance. The accompanying text is minimal — the image does the primary work.</p>
+  </div>
+
+  <div class="tab-pane fade" id="u01-types-promissory" role="tabpanel">
+    <p><strong>What it is:</strong> An abstract describing research <em>to be conducted</em> rather than
+    completed research. The results section is replaced with a description of anticipated findings or
+    a promise that results will be presented.</p>
+    <p><strong>Where used:</strong> Common in humanities and linguistics for conference submissions,
+    where full papers are not required in advance. Less common in computer science, where full papers
+    are typically submitted before the conference.</p>
+    <p><strong>Key feature:</strong> The indicative nature of the abstract — describing intentions rather
+    than achievements. Phrases such as <em>"Preliminary results will be shared"</em> signal this type.</p>
+  </div>
+
+  <div class="tab-pane fade" id="u01-types-extended" role="tabpanel">
+    <p><strong>What it is:</strong> An abstract that is substantially longer than the standard format —
+    typically two to four pages rather than 200–300 words.</p>
+    <p><strong>Where used:</strong> Some computer science and engineering conferences have an
+    extended abstract track. In these venues, the extended abstract is treated as a short paper
+    and is subject to peer review.</p>
+    <p><strong>Key feature:</strong> The length allows for more detailed method description, related
+    work, and preliminary results. Some extended abstracts include figures and references.</p>
+  </div>
+
+{% endcall %}
+
+<p class="mt-3" style="color:#aaa; font-size:0.88rem;">
+  <i class="bi bi-info-circle me-1"></i>
+  In many subdomains of computer science, the <strong>traditional abstract</strong> of around 200 words
+  is the standard. When in doubt, check the submission guidelines and read published abstracts from
+  your target venue.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 3 — Check Understanding ════════════════════════════════ #}
+
+{% call activitySection(3, "Check Your Understanding", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u01-q1",
+  "Which type of abstract uses prescribed headings specified by the target publication?",
+  1,
+  "Structured abstracts use headings — such as Objective, Methods, Results, and Conclusion — that are often required by the journal or conference. They are the default format in medical journals.") %}
+  <label class="quiz-option"><input type="radio" name="u01-q1" value="0"> Traditional</label>
+  <label class="quiz-option"><input type="radio" name="u01-q1" value="1"> Structured</label>
+  <label class="quiz-option"><input type="radio" name="u01-q1" value="2"> Graphical</label>
+  <label class="quiz-option"><input type="radio" name="u01-q1" value="3"> Extended</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u01-q2",
+  "A conference in linguistics asks authors to submit a 300-word abstract before the research is complete, with a note that findings will be presented at the conference. Which type is this?",
+  2,
+  "This is a promissory abstract — it describes research to be conducted and promises that results will be shared at the event. Promissory abstracts are common in humanities and linguistics but rare in computer science, where full papers are typically required.") %}
+  <label class="quiz-option"><input type="radio" name="u01-q2" value="0"> Extended</label>
+  <label class="quiz-option"><input type="radio" name="u01-q2" value="1"> Graphical</label>
+  <label class="quiz-option"><input type="radio" name="u01-q2" value="2"> Promissory</label>
+  <label class="quiz-option"><input type="radio" name="u01-q2" value="3"> Structured</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Activity 4 — Target Abstract ════════════════════════════════════ #}
+
+{% call activitySection(4, "Identify Your Target Abstract", "crosshair") %}
+<p>
+  Before writing your abstract, it is useful to clarify what type you are aiming for. Work through
+  the decisions below. If you are uncertain about any dimension, look at published abstracts from
+  your target venue for guidance.
+</p>
+<ol style="color:#ddd; line-height:2.2;">
+  <li><strong>Publication type:</strong> Journal article / Conference proceedings / Thesis or dissertation</li>
+  <li><strong>Length:</strong> Regular (150–300 words) / Extended (1–4 pages)</li>
+  <li><strong>Format:</strong> Traditional (prose) / Structured (headings) / Graphical</li>
+  <li><strong>Timing:</strong> Post hoc (research complete) / A priori (research in progress — promissory)</li>
+  <li><strong>Audience:</strong> Specialist / Interdisciplinary / General public</li>
+  <li><strong>Discipline:</strong> Your specific subfield (e.g., natural language processing, software engineering)</li>
+</ol>
+<p>
+  Once you have worked through these dimensions, you will have a clear picture of the conventions
+  you need to follow. The remaining units in this course will help you apply those conventions at
+  the level of content, structure, and language.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 5 — Getting to Know the Genre ══════════════════════════ #}
+
+{% call activitySection(5, "Getting to Know the Genre", "binoculars") %}
+<p>
+  The single most effective preparation for writing an abstract is reading a large number of abstracts
+  from your target venue. This is called <strong>genre immersion</strong>. As you read, pay attention to:
+</p>
+<ul style="color:#ddd; line-height:2.2;">
+  <li>The typical length of abstracts in that venue</li>
+  <li>Which rhetorical moves appear (introduction, purpose, method, results, discussion)</li>
+  <li>The order in which moves appear</li>
+  <li>The level of technical detail in the method section</li>
+  <li>Whether results are quantified with numbers and statistics</li>
+  <li>Whether limitations or future work are mentioned</li>
+</ul>
+<p>
+  For conference papers, check the proceedings of the same conference from previous years.
+  For journal articles, search recent issues of your target journal. For a thesis, consult your
+  university library's repository.
+</p>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Test your recall of the five abstract types. Expand each item to check your understanding.</p>
+
+<div class="accordion mt-3" id="u01-review">
+  {% call accordion("rev-u01-a", "Traditional — what is the key feature?") %}
+  <p>A continuous prose abstract with no headings, typically 150–250 words. The writer chooses the move sequence. It is the most common type in computer science and related disciplines.</p>
+  {% endcall %}
+  {% call accordion("rev-u01-b", "Structured — what is the key feature?") %}
+  <p>Uses prescribed headings (e.g., Objective, Methods, Results, Conclusion) that may be specified by the journal. It is the default in medicine and health sciences and tends to be longer than a traditional abstract.</p>
+  {% endcall %}
+  {% call accordion("rev-u01-c", "Graphical — what is the key feature?") %}
+  <p>Communicates the research through a visual element (diagram, flowchart, infographic) with minimal text. Common in materials science, chemistry, and biology.</p>
+  {% endcall %}
+  {% call accordion("rev-u01-d", "Promissory — what is the key feature?") %}
+  <p>Describes research that is not yet complete. The results section is replaced by anticipated findings or a promise that results will be shared. Common in humanities and linguistics conferences.</p>
+  {% endcall %}
+  {% call accordion("rev-u01-e", "Extended — what is the key feature?") %}
+  <p>Substantially longer than a standard abstract — typically 2–4 pages. Allows for detailed method description, related work, and preliminary results. Used in some computer science and engineering conference tracks.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-02') | url }}">Unit 2: Example Abstract</a> when ready.
+</p>
+{% endcall %}

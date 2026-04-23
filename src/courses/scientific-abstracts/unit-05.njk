@@ -1,0 +1,252 @@
+---
+unit: 5
+unitTitle: Tips for Writers
+title: "Unit 5: Tips for Writers — Scientific Research Abstracts"
+courseUnit: true
+objectives:
+  - Understand how to plan, draft, and edit a research abstract systematically
+  - Apply the five-filters approach to proofread an abstract for common language errors
+  - Use a reader test to verify that the abstract communicates the key contribution
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Planning and Drafting ══════════════════════════════ #}
+
+{% call activitySection(1, "Planning and Drafting", "pencil-square") %}
+<p>
+  Writing a strong abstract is rarely a one-step process. The tips below are organised into four
+  stages: planning, drafting, editing, and final checks. Expand each tip to read the full guidance
+  and see an example of it applied.
+</p>
+
+<h5 class="mt-3 mb-2" style="color:#ff8c00; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em;">Stage 1 — Planning</h5>
+<div class="accordion mb-4" id="u05-planning">
+  {% call accordion("u05-t1", "Tip 1 — Write the abstract last (if possible)") %}
+  <p>Writing the abstract before the full paper forces you to speculate about the final findings and structure. Writing it last — after the paper is complete — means you can extract exact sentences from the body of the paper and are certain of what you have actually found.</p>
+  <p><strong>Exception:</strong> Some conferences require a submission of the abstract before the full paper is due. In this case, treat the abstract as a draft and revise it once the paper is complete.</p>
+  {% endcall %}
+
+  {% call accordion("u05-t2", "Tip 2 — Cut and paste from your paper to create a first draft") %}
+  <p>The summary sentence at the end of your introduction, the opening sentence of your method section, your primary result sentence, and the conclusion of your discussion section are often the best candidates for inclusion in the abstract. Assemble these into a draft, then refine the connections between them.</p>
+  <p>This approach ensures that the abstract is consistent with the paper — a common problem when the abstract is written from memory rather than from the text itself.</p>
+  {% endcall %}
+
+  {% call accordion("u05-t3", "Tip 3 — Use headings to structure your first draft") %}
+  <p>Even if you are writing a traditional (headingless) abstract, begin by using the headings <em>Introduction, Purpose, Method, Results,</em> and <em>Discussion</em> as scaffolding. Using headings makes it easy to see the balance of the abstract — whether any section is disproportionately long or short.</p>
+  <p>Once you are satisfied with the content, remove the headings (unless you are writing a structured abstract) and refine the prose to flow naturally.</p>
+  {% endcall %}
+
+  {% call accordion("u05-t4", "Tip 4 — Consider relative section length") %}
+  <p>The sections that deserve the most emphasis should be the longest. In computer science, the Method and Results sections are typically the most important and therefore the longest. An abstract that spends 60% of its words on introduction and only 10% on results sends the wrong signal to reviewers.</p>
+  {% endcall %}
+</div>
+
+<h5 class="mb-2" style="color:#ff8c00; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em;">Stage 2 — Content</h5>
+<div class="accordion mb-4" id="u05-content">
+  {% call accordion("u05-t5", "Tip 5 — Tailor section headings to your research") %}
+  <p>If you are using a structured format, consider tailoring the headings to better reflect your research rather than using generic labels. For example, instead of <em>Method</em>, you might write <em>Problem Breakdown</em>, <em>System Architecture</em>, or <em>Evaluation Protocol</em>. More specific headings signal domain expertise.</p>
+  {% endcall %}
+
+  {% call accordion("u05-t6", "Tip 6 — Make the novelty explicit") %}
+  <p>Do not assume reviewers will identify what is new about your work. State it explicitly. Common signals include:</p>
+  <ul>
+    <li><em>"We are the first to…"</em></li>
+    <li><em>"Unlike previous approaches, our method…"</em></li>
+    <li><em>"To address the gap in X, we propose Y…"</em></li>
+  </ul>
+  <p>Even if the novelty feels obvious to you, a reviewer skimming dozens of abstracts needs it stated clearly.</p>
+  {% endcall %}
+
+  {% call accordion("u05-t7", "Tip 7 — State why the research is needed") %}
+  <p>If the significance of your work is not self-evident, state it. This is particularly important for applied research that addresses a real-world problem. Phrases like <em>"with direct implications for…"</em> or <em>"providing a practical tool for…"</em> help reviewers understand the value of the contribution beyond the technical result.</p>
+  {% endcall %}
+
+  {% call accordion("u05-t8", "Tip 8 — Try multiple move sequences") %}
+  <p>Write the abstract two or three times using different move patterns (IMRD, IPMRD, RM) and compare the results. The version that communicates the contribution most clearly and compellingly — using the fewest words — is usually the best choice.</p>
+  {% endcall %}
+</div>
+
+<h5 class="mb-2" style="color:#ff8c00; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em;">Stage 3 — Editing</h5>
+<div class="accordion mb-4" id="u05-editing">
+  {% call accordion("u05-t9", "Tip 9 — Remove unnecessary words") %}
+  <p>Abstract verbosity is a common problem. Every word in an abstract should carry meaning. Common sources of unnecessary words include:</p>
+  <ul>
+    <li>Hedges that add nothing: <em>"it is worth noting that…"</em></li>
+    <li>Meta-commentary: <em>"this paper presents a study which investigates…"</em> → <em>"we investigate…"</em></li>
+    <li>Redundant pairs: <em>"analyse and examine"</em> → <em>"examine"</em></li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("u05-t10", "Tip 10 — Remove headings (for traditional abstracts)") %}
+  <p>Once you are satisfied with the content and structure, remove the scaffold headings and ensure the abstract reads as fluent prose. Use transitional phrases to connect the moves: <em>"To this end,…"</em>, <em>"Our results show that…"</em>, <em>"These findings suggest…"</em></p>
+  {% endcall %}
+
+  {% call accordion("u05-t11", "Tip 11 — Use the five filters to proofread") %}
+  <p>Apply the five-filter approach from the Error-Free Research Writing course to check for common language errors in your abstract:</p>
+  <ol>
+    <li><strong>Accuracy:</strong> Are all facts, numbers, and claims correct and consistent with the paper?</li>
+    <li><strong>Brevity:</strong> Are there redundant words or phrases that can be removed?</li>
+    <li><strong>Clarity:</strong> Is every term specific and unambiguous?</li>
+    <li><strong>Objectivity:</strong> Is the writing depersonalised and free of emotive language?</li>
+    <li><strong>Formality:</strong> Is the register formal and consistent with the target venue?</li>
+  </ol>
+  {% endcall %}
+</div>
+
+<h5 class="mb-2" style="color:#ff8c00; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em;">Stage 4 — Final Checks</h5>
+<div class="accordion mb-4" id="u05-final">
+  {% call accordion("u05-t12", "Tip 12 — Test with a non-specialist reader") %}
+  <p>Ask a colleague who is not closely involved in your research to read your abstract. Immediately after reading, ask them: <em>"What was the main point of this research?"</em> and <em>"What did the researchers find?"</em> If they cannot answer these questions, the abstract needs revision.</p>
+  <p>This test is the single most effective way to check whether the abstract communicates its key contribution clearly.</p>
+  {% endcall %}
+
+  {% call accordion("u05-t13", "Tip 13 — Check the title is an abstract of the abstract") %}
+  <p>The title should summarise the most important content of the abstract — which is itself a summary of the paper. A good title names the key method, result, or contribution without being so specific that it excludes readers. Vague titles like <em>"A Study of Machine Learning"</em> are less effective than specific titles like <em>"Curriculum Learning Improves Medical Text Summarisation by 23%"</em>.</p>
+  {% endcall %}
+
+  {% call accordion("u05-t14", "Tip 14 — Check submission guidelines for length and format") %}
+  <p>Many conferences and journals specify a maximum word count, a required structure, or specific headings for abstracts. Before finalising, verify that your abstract adheres to the submission guidelines. Non-compliance may result in desk rejection — the paper being returned without review.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — Five Filters Crosslink ═════════════════════════════ #}
+
+{% set filterTabs = [
+  {id: "acc", label: "Accuracy"},
+  {id: "brev", label: "Brevity"},
+  {id: "clar", label: "Clarity"},
+  {id: "obj", label: "Objectivity"},
+  {id: "form", label: "Formality"}
+] %}
+
+{% call activitySection(2, "The Five Filters Applied to Abstracts", "funnel") %}
+<p>
+  The five-filter approach — covered in full in the
+  <a href="{{ '/courses/error-free/' | url }}" style="color:#ff8c00;">Error-Free Research Writing</a> course —
+  is particularly useful for proofreading abstracts, where every word counts.
+  Select each tab to see how each filter applies specifically to abstract writing.
+</p>
+
+{% call tabSet("u05-filters", filterTabs) %}
+
+  <div class="tab-pane fade show active" id="u05-filters-acc" role="tabpanel">
+    <p><strong>Accuracy</strong> errors are the most serious in an abstract. Because the abstract is a summary, a factual error here will directly misrepresent the paper.</p>
+    <p><strong>Common accuracy errors in abstracts:</strong></p>
+    <ul>
+      <li>Reporting a different sample size in the abstract than in the paper (<em>"N = 40"</em> vs <em>"N = 42"</em>)</li>
+      <li>Overstating the result: <em>"our method outperforms all existing approaches"</em> when the comparison was limited to two baselines</li>
+      <li>Using a p-value or metric that differs from the one in the results section</li>
+    </ul>
+    <p><strong>Check:</strong> Read every number and claim in the abstract against the corresponding passage in the paper.</p>
+  </div>
+
+  <div class="tab-pane fade" id="u05-filters-brev" role="tabpanel">
+    <p><strong>Brevity</strong> errors are particularly costly in abstracts, which typically have strict word limits. Every redundant word displaces content that could demonstrate novelty, rigour, or significance.</p>
+    <p><strong>Common brevity errors in abstracts:</strong></p>
+    <ul>
+      <li>Meta-commentary: <em>"In this paper, we present a study that investigates…"</em> → <em>"We investigate…"</em></li>
+      <li>Redundant pairs: <em>"we developed and implemented"</em> → <em>"we implemented"</em></li>
+      <li>Filler phrases: <em>"it is important to note that"</em>, <em>"as mentioned above"</em></li>
+    </ul>
+    <p><strong>Check:</strong> Read each sentence and ask: <em>can any word be removed without changing the meaning?</em></p>
+  </div>
+
+  <div class="tab-pane fade" id="u05-filters-clar" role="tabpanel">
+    <p><strong>Clarity</strong> errors make it difficult for readers to understand precisely what was done or found. In abstracts, vague language is particularly damaging because there is no space for elaboration.</p>
+    <p><strong>Common clarity errors in abstracts:</strong></p>
+    <ul>
+      <li>Vague quantifiers: <em>"some participants"</em>, <em>"many studies"</em> → use numbers</li>
+      <li>Ambiguous pronouns: <em>"this improved it"</em> → specify both referents</li>
+      <li>Undefined acronyms: define abbreviations on first use, even in the abstract</li>
+    </ul>
+    <p><strong>Check:</strong> Could a reader from an adjacent field misunderstand any term or reference in the abstract?</p>
+  </div>
+
+  <div class="tab-pane fade" id="u05-filters-obj" role="tabpanel">
+    <p><strong>Objectivity</strong> errors make writing appear subjective or emotional — which can undermine readers' trust in the research.</p>
+    <p><strong>Common objectivity errors in abstracts:</strong></p>
+    <ul>
+      <li>Excessive personalization: <em>"I believe our system is superior"</em> → <em>"The results indicate that the system outperforms…"</em></li>
+      <li>Emotive language: <em>"remarkable", "exciting", "impressive"</em> — let the numbers speak</li>
+      <li>Overly strong claims: <em>"revolutionary", "groundbreaking"</em> — use precise comparative language instead</li>
+    </ul>
+    <p><strong>Check:</strong> Replace all evaluative adjectives with quantified comparisons wherever possible.</p>
+  </div>
+
+  <div class="tab-pane fade" id="u05-filters-form" role="tabpanel">
+    <p><strong>Formality</strong> errors signal a lack of familiarity with the conventions of scientific writing, which can create a negative first impression.</p>
+    <p><strong>Common formality errors in abstracts:</strong></p>
+    <ul>
+      <li>Contractions: <em>"we didn't"</em> → <em>"we did not"</em></li>
+      <li>Informal terms: <em>"a lot of data"</em> → <em>"a large dataset"</em>; <em>"a good result"</em> → <em>"a competitive result"</em></li>
+      <li>Rhetorical questions: avoid questions in abstracts — use declarative statements instead</li>
+    </ul>
+    <p><strong>Check:</strong> Read the abstract aloud. If a phrase sounds like informal speech, revise it.</p>
+  </div>
+
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 3 — Quiz ════════════════════════════════════════════════ #}
+
+{% call activitySection(3, "Check Your Understanding", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u05-q1",
+  "You ask a colleague to read your abstract and then explain the key finding in their own words. They summarise the wrong aspect of the research. What should you do?",
+  1,
+  "The reader test reveals that the abstract is not communicating the key contribution clearly enough. If the most important finding is not the first thing a non-specialist remembers, the abstract needs structural revision — not just proofreading.") %}
+  <label class="quiz-option"><input type="radio" name="u05-q1" value="0"> Choose a more specialist reader for the test</label>
+  <label class="quiz-option"><input type="radio" name="u05-q1" value="1"> Revise the abstract so that the key finding is clearer and more prominent</label>
+  <label class="quiz-option"><input type="radio" name="u05-q1" value="2"> Accept the result — non-specialists are not the target audience</label>
+  <label class="quiz-option"><input type="radio" name="u05-q1" value="3"> Expand the introduction to provide more background context</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u05-q2",
+  "Which of the following is the best representation of Tip 13 about the title?",
+  2,
+  "Tip 13 says that the title should be an abstract of the abstract — it should capture the most important content of the abstract (itself a summary of the paper). A specific, informative title outperforms a generic one.") %}
+  <label class="quiz-option"><input type="radio" name="u05-q2" value="0"> The title should repeat the first sentence of the abstract verbatim</label>
+  <label class="quiz-option"><input type="radio" name="u05-q2" value="1"> The title should be as broad as possible to attract a wide audience</label>
+  <label class="quiz-option"><input type="radio" name="u05-q2" value="2"> The title should summarise the key method, result, or contribution of the paper</label>
+  <label class="quiz-option"><input type="radio" name="u05-q2" value="3"> The title should be written before the abstract to guide the writing process</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>
+  Use the checklist below to self-assess your abstract before submission.
+  All items should be ticked before you finalise.
+</p>
+<ul style="color:#ddd; line-height:2.2;">
+  <li>Written <em>after</em> the full paper (or revised to match the final paper)</li>
+  <li>First draft assembled from key sentences in the paper</li>
+  <li>Move structure checked against the discipline-specific default</li>
+  <li>Novelty stated explicitly</li>
+  <li>Significance stated or clearly implied</li>
+  <li>Results quantified with specific numbers and metrics</li>
+  <li>Method described with enough detail to establish rigour</li>
+  <li>Unnecessary words removed (brevity filter applied)</li>
+  <li>All acronyms defined on first use</li>
+  <li>No contractions, informal terms, or rhetorical questions (formality filter)</li>
+  <li>All numbers checked against the paper (accuracy filter)</li>
+  <li>Reader test passed — non-specialist can identify the key finding</li>
+  <li>Title reflects the most important content of the abstract</li>
+  <li>Length and format comply with submission guidelines</li>
+</ul>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-06') | url }}">Unit 6: Practice Activities</a> when ready.
+</p>
+{% endcall %}

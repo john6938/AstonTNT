@@ -1,0 +1,256 @@
+---
+unit: 2
+unitTitle: Example Abstract
+title: "Unit 2: Example Abstract — Scientific Research Abstracts"
+courseUnit: true
+objectives:
+  - Understand the difference between structured and traditional abstracts through a worked example
+  - Know the four criteria that readers and reviewers use to evaluate abstracts
+  - Apply those criteria to identify strengths and weaknesses in a sample abstract
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — The Santa Claus Abstract ═══════════════════════════ #}
+
+{% call activitySection(1, "An Unexpected Example", "newspaper") %}
+<p>
+  Although it seems an unlikely topic for a top-tier medical journal, the following structured abstract
+  was published in the <em>British Medical Journal</em> (Park et al., 2016) — one of the world's leading
+  peer-reviewed journals. Read it to understand the general meaning before moving to the activities below.
+</p>
+
+<div class="sra-abstract-card mt-3">
+  <div class="sra-abstract-title">Determinants of Santa Claus's sleigh route: an observational study</div>
+  <dl class="sra-structured">
+    <dt>Objective</dt>
+    <dd>To determine which factors influence whether Santa Claus will visit children in hospital on Christmas Day.</dd>
+
+    <dt>Design</dt>
+    <dd>Retrospective observational study.</dd>
+
+    <dt>Setting</dt>
+    <dd>Paediatric wards in England, Northern Ireland, Scotland, and Wales.</dd>
+
+    <dt>Participants</dt>
+    <dd>186 members of staff who worked on the paediatric wards (n = 186) during Christmas 2015.</dd>
+
+    <dt>Main outcome measures</dt>
+    <dd>Presence or absence of Santa Claus on the paediatric ward during Christmas 2015. This was correlated with rates of absenteeism from primary school, conviction rates in young people (aged 10–17 years), distance from hospital to North Pole, and contextual socioeconomic deprivation.</dd>
+
+    <dt>Results</dt>
+    <dd>Santa Claus visited most paediatric wards in all four countries: 89% in England, 100% in Northern Ireland, 93% in Scotland, and 92% in Wales. The odds of him not visiting were significantly higher for wards in areas of higher socioeconomic deprivation in England (odds ratio 1.31, 95% CI 1.04 to 1.71). There was no correlation with school absenteeism, conviction rates, or distance to the North Pole.</dd>
+
+    <dt>Conclusion</dt>
+    <dd>The results dispel the traditional belief that Santa Claus rewards children based on how nice or naughty they have been in the previous year. Santa Claus is less likely to visit children in the most deprived areas. Potential solutions include a review of Santa&rsquo;s contract or employment of local Santas in poorly represented regions.</dd>
+  </dl>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — Comprehension ══════════════════════════════════════ #}
+
+{% call activitySection(2, "Comprehension Questions", "chat-square-text") %}
+<p>
+  Think about your answer to each question, then expand to check. All answers can be found in the abstract above.
+</p>
+
+<div class="accordion" id="u02-comprehension">
+  {% call accordion("u02-ca", "What is the purpose of the research?") %}
+  <p>To determine which factors influence whether Santa Claus visits children in hospital on Christmas Day. The researchers wanted to find out whether socioeconomic deprivation, school absenteeism, conviction rates in young people, or distance from the North Pole predicted Santa&rsquo;s visits.</p>
+  {% endcall %}
+
+  {% call accordion("u02-cb", "How did the researchers collect and analyse the data?") %}
+  <p>They conducted a retrospective observational study across paediatric wards in England, Northern Ireland, Scotland, and Wales. Data were collected from 186 members of staff who worked on wards during Christmas 2015, and outcomes were correlated with socioeconomic and behavioural variables.</p>
+  {% endcall %}
+
+  {% call accordion("u02-cc", "What did they discover?") %}
+  <p>Santa visited the majority of paediatric wards in all four countries (89–100%). The odds of him not visiting were significantly higher in areas of higher socioeconomic deprivation in England (odds ratio 1.31). No correlation was found with school absenteeism, conviction rates, or distance to the North Pole.</p>
+  {% endcall %}
+
+  {% call accordion("u02-cd", "Is Santa less likely to visit naughty children?") %}
+  <p>No. The results dispel this traditional belief. There was no correlation between conviction rates in young people and the likelihood of Santa&rsquo;s visit. Children&rsquo;s behaviour did not predict whether Santa visited their ward.</p>
+  {% endcall %}
+
+  {% call accordion("u02-ce", "Is Santa more likely to visit children in deprived (poor) areas?") %}
+  <p>No — the opposite. Santa was significantly <em>less</em> likely to visit paediatric wards in areas of higher socioeconomic deprivation. This was a statistically significant finding (odds ratio 1.31, 95% CI 1.04 to 1.71 in England).</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Three Versions ══════════════════════════════════ #}
+
+{% set versionTabs = [
+  {id: "full",      label: "Full Structured"},
+  {id: "short",     label: "Shorter Structured"},
+  {id: "trad",      label: "Traditional"}
+] %}
+
+{% call activitySection(3, "Three Versions of the Same Abstract", "files") %}
+<p>
+  The same research can be presented in different formats. Switch between the tabs to compare the
+  full structured version, a condensed structured version, and a traditional prose version.
+  Notice how the content is identical but the presentation differs.
+</p>
+
+{% call tabSet("u02-versions", versionTabs) %}
+
+  <div class="tab-pane fade show active" id="u02-versions-full" role="tabpanel">
+    <p><em>The original published abstract uses six distinct headings, each addressing a specific aspect of the study. The granularity of information under each heading is high.</em></p>
+    <p><strong>Objective</strong> — <strong>Design</strong> — <strong>Setting</strong> — <strong>Participants</strong> — <strong>Main outcome measures</strong> — <strong>Results</strong> — <strong>Conclusion</strong></p>
+    <p>Advantages: readers can locate any component at a glance; reviewers can check each criterion independently. Disadvantage: longer word count; mechanical feel if content does not fit neatly into prescribed headings.</p>
+  </div>
+
+  <div class="tab-pane fade" id="u02-versions-short" role="tabpanel">
+    <p><em>A condensed version uses four headings: Purpose, Method, Results, and Discussion. Multiple headings from the full version are merged under Method.</em></p>
+    <p><strong>Purpose:</strong> To determine which factors influence whether Santa Claus will visit children in hospital on Christmas Day.</p>
+    <p><strong>Method:</strong> Retrospective observational study conducted across paediatric wards in the United Kingdom with 186 members of staff (n = 186) during Christmas 2015.</p>
+    <p><strong>Results:</strong> Santa visited most wards: 89% in England, 100% in Northern Ireland, 93% in Scotland, and 92% in Wales. Odds of not visiting were significantly higher in deprived areas in England (odds ratio 1.31, 95% CI 1.04 to 1.71). No correlation with absenteeism, conviction rates, or distance to the North Pole.</p>
+    <p><strong>Discussion:</strong> Results dispel the belief that Santa rewards children based on behaviour. Santa is less likely to visit deprived areas. Solutions include a contract review or employment of local Santas.</p>
+    <p><em>Advantage:</em> More concise; aligns with the four-move IMRD structure. <em>Disadvantage:</em> Some detail is compressed or lost.</p>
+  </div>
+
+  <div class="tab-pane fade" id="u02-versions-trad" role="tabpanel">
+    <p><em>The headings are removed. The abstract becomes continuous prose — the most common format in computer science.</em></p>
+    <p>This research aims to determine which factors influence whether Santa Claus visits children in hospital on Christmas Day. A retrospective observational study was conducted in paediatric wards in the United Kingdom with 186 staff members (n = 186) during Christmas 2015. We found that Santa Claus visited most wards in all four countries: 89% in England, 100% in Northern Ireland, 93% in Scotland, and 92% in Wales. The odds of him not visiting were significantly higher in areas of higher socioeconomic deprivation in England (odds ratio 1.31, 95% CI 1.04 to 1.71). In contrast, no correlation was found with school absenteeism, conviction rates, or distance to the North Pole. These results dispel the traditional belief that Santa rewards children based on behaviour. Santa is less likely to visit children in the most deprived areas, and potential solutions include a review of his contract or employment of local Santas in poorly represented regions.</p>
+    <p><em>Advantage:</em> Reads as natural prose; flexible move order. <em>Disadvantage:</em> Readers must scan the entire text to locate specific information.</p>
+  </div>
+
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 4 — Evaluation Criteria ════════════════════════════════ #}
+
+{% set criteriaTabs = [
+  {id: "novelty",      label: "Novelty"},
+  {id: "significance", label: "Significance"},
+  {id: "substance",    label: "Substance"},
+  {id: "rigour",       label: "Rigour"}
+] %}
+
+{% call activitySection(4, "Four Criteria for Evaluating Abstracts", "star") %}
+<p>
+  Readers and reviewers evaluate abstracts using four broad criteria. Select each tab to learn what
+  each criterion means and how it appears in the Santa Claus abstract.
+</p>
+
+{% call tabSet("u02-criteria", criteriaTabs) %}
+
+  <div class="tab-pane fade show active" id="u02-criteria-novelty" role="tabpanel">
+    <p><strong>Novelty</strong> means that the research offers something new — a finding, method, dataset, or perspective that has not been published before.</p>
+    <p><strong>In the Santa Claus abstract:</strong> The novelty lies in the empirical approach. No previous study had systematically investigated the correlates of Santa&rsquo;s hospital visits using observational methods. The research gap is implicit — this type of study had not been done before in this population.</p>
+    <p><strong>What to ask yourself:</strong> What is different about my research compared to existing published work? Is that difference stated explicitly in the abstract?</p>
+  </div>
+
+  <div class="tab-pane fade" id="u02-criteria-significance" role="tabpanel">
+    <p><strong>Significance</strong> means that the research matters — it addresses a problem of practical, social, or scientific importance.</p>
+    <p><strong>In the Santa Claus abstract:</strong> The significance is the equity finding: socioeconomic deprivation predicts whether children receive a visit. This has real implications for hospital policy. The conclusion makes the significance explicit by proposing practical solutions.</p>
+    <p><strong>What to ask yourself:</strong> Why does this research matter? Who benefits from these findings, and how? Have I made this clear in the abstract?</p>
+  </div>
+
+  <div class="tab-pane fade" id="u02-criteria-substance" role="tabpanel">
+    <p><strong>Substance</strong> means that the research is non-trivial — it required sustained effort, a substantial dataset, or a complex procedure that could not be completed in a few hours.</p>
+    <p><strong>In the Santa Claus abstract:</strong> Substance is demonstrated by the national scope (all four UK countries), the sample of 186 staff, and the multiple variables measured. The retrospective observational design adds credibility — this was a real study conducted at scale.</p>
+    <p><strong>What to ask yourself:</strong> Does my abstract show that this research represents a genuine intellectual effort? Are the scale, complexity, and outputs visible?</p>
+  </div>
+
+  <div class="tab-pane fade" id="u02-criteria-rigour" role="tabpanel">
+    <p><strong>Rigour</strong> means that the method is sound — that the procedure was carefully designed, potential weaknesses were addressed, and results can be trusted.</p>
+    <p><strong>In the Santa Claus abstract:</strong> Rigour is shown through the named design (retrospective observational study), the specific sample size (n = 186), the four countries covered, and the reporting of odds ratios with 95% confidence intervals — a standard statistical precision measure in medicine.</p>
+    <p><strong>What to ask yourself:</strong> Does my abstract give readers enough detail about the method to assess whether the results are trustworthy?</p>
+  </div>
+
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 5 — Quiz ════════════════════════════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u02-q1",
+  "Which of the following is NOT one of the four abstract evaluation criteria covered in this unit?",
+  3,
+  "The four criteria are Novelty, Significance, Substance, and Rigour. Clarity is an important quality for all scientific writing, but it is not one of the four evaluative criteria used to assess the contribution of an abstract.") %}
+  <label class="quiz-option"><input type="radio" name="u02-q1" value="0"> Novelty</label>
+  <label class="quiz-option"><input type="radio" name="u02-q1" value="1"> Significance</label>
+  <label class="quiz-option"><input type="radio" name="u02-q1" value="2"> Rigour</label>
+  <label class="quiz-option"><input type="radio" name="u02-q1" value="3"> Clarity</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u02-q2",
+  "In the Santa Claus abstract, what detail most clearly demonstrates rigour?",
+  1,
+  "Reporting odds ratios with 95% confidence intervals is a standard statistical practice in medical research that quantifies uncertainty and allows readers to assess the reliability of the finding. This is a hallmark of methodological rigour.") %}
+  <label class="quiz-option"><input type="radio" name="u02-q2" value="0"> The use of six structured headings</label>
+  <label class="quiz-option"><input type="radio" name="u02-q2" value="1"> Reporting odds ratios with 95% confidence intervals</label>
+  <label class="quiz-option"><input type="radio" name="u02-q2" value="2"> The choice of a Christmas-themed research topic</label>
+  <label class="quiz-option"><input type="radio" name="u02-q2" value="3"> The national scope covering all four UK countries</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>When you read abstracts, check whether the four criteria are met. Expand each item to recall the definition.</p>
+
+<div class="accordion mt-3" id="u02-review">
+  {% call accordion("rev-u02-a", "Novelty — what is the key question?") %}
+  <p>What is different about this research compared to what has been published before? Novelty can come from a new method, a new dataset, a new context, or a new theoretical insight. It should be stated explicitly, not left for readers to infer.</p>
+  {% endcall %}
+  {% call accordion("rev-u02-b", "Significance — what is the key question?") %}
+  <p>Why does this research matter? Who benefits from the findings, and how? Significance connects the technical work to its real-world or scientific value. The conclusion or discussion move is typically where significance is stated.</p>
+  {% endcall %}
+  {% call accordion("rev-u02-c", "Substance — what is the key question?") %}
+  <p>Does the abstract show that the research required non-trivial effort? Substance is demonstrated by the scale of the dataset, the complexity of the method, the duration of the work, or the depth of analysis. Vague or minimal details suggest low substance.</p>
+  {% endcall %}
+  {% call accordion("rev-u02-d", "Rigour — what is the key question?") %}
+  <p>Does the abstract give readers enough information about the method to assess whether the results are trustworthy? Rigour is shown through named methods, sample sizes, statistical measures, and acknowledgement of limitations.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-03') | url }}">Unit 3: Content of Abstracts</a> when ready.
+</p>
+{% endcall %}
+
+<style>
+.sra-abstract-card {
+  background: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 20px 24px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #ddd;
+}
+.sra-abstract-title {
+  font-style: italic;
+  font-weight: 600;
+  color: #ff8c00;
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+}
+.sra-structured { margin: 0; }
+.sra-structured dt {
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  margin-top: 12px;
+  margin-bottom: 2px;
+}
+.sra-structured dd {
+  margin-left: 0;
+  color: #ddd;
+}
+</style>

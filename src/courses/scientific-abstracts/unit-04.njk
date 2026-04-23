@@ -1,0 +1,230 @@
+---
+unit: 4
+unitTitle: Structure of Abstracts
+title: "Unit 4: Structure of Abstracts — Scientific Research Abstracts"
+courseUnit: true
+objectives:
+  - Understand the default IMRD move pattern and when to deviate from it
+  - Know four common move patterns and the contexts in which each is used
+  - Apply sequencing principles to choose a move order for your own abstract
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Include or Omit? ════════════════════════════════════ #}
+
+{% call activitySection(1, "Quick Guide: Include or Omit Each Move?", "filter") %}
+<p>
+  Before sequencing the rhetorical moves, decide which ones to include. The following rules of thumb
+  help you make that decision. Expand each move for the guiding principle.
+</p>
+
+<div class="accordion mt-3" id="u04-include">
+  {% call accordion("u04-i1", "Introduction — when to include or omit") %}
+  <p><strong>Include if:</strong> the research area is not widely known to your audience; or if you need to establish a research gap before stating your purpose.</p>
+  <p><strong>Omit if:</strong> the research addresses a well-known problem and readers will immediately understand the motivation without contextualisation.</p>
+  <p><em>In computer science:</em> Introduction moves are often very brief (one sentence) or absent, particularly in short papers.</p>
+  {% endcall %}
+
+  {% call accordion("u04-i2", "Purpose — when to include or omit") %}
+  <p><strong>Include if:</strong> the aim, hypothesis, or research question is not immediately obvious from the results; or if a precise statement of purpose strengthens the abstract.</p>
+  <p><strong>Omit if:</strong> the purpose is identical to — or entirely predictable from — the result. Stating both creates redundancy and wastes word count.</p>
+  {% endcall %}
+
+  {% call accordion("u04-i3", "Method — when to include or omit") %}
+  <p><strong>Include if:</strong> the method is the key contribution of the paper; or if readers need to know how the result was obtained in order to trust it.</p>
+  <p><strong>Omit if:</strong> the method is universally known and adds no new information (<em>"we used linear regression"</em> in a context where everyone does).</p>
+  <p><em>In practice:</em> The method is rarely omitted in empirical computer science abstracts. It is essential for rigour.</p>
+  {% endcall %}
+
+  {% call accordion("u04-i4", "Results — when to include or omit") %}
+  <p><strong>Include in:</strong> almost all informative abstracts. The result is often the primary reason a reader will read the full paper.</p>
+  <p><strong>Omit in:</strong> some promissory abstracts where results are not yet available. In computer science, omitting results is strongly discouraged.</p>
+  {% endcall %}
+
+  {% call accordion("u04-i5", "Discussion — when to include or omit") %}
+  <p><strong>Include if:</strong> the implication of the result is not self-evident; or if you want to make the significance of the contribution explicit.</p>
+  <p><strong>Omit if:</strong> the result speaks for itself and you are at the word limit. In short papers (e.g., four-page conference papers), the discussion move may be absent.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — Default IMRD ════════════════════════════════════════ #}
+
+{% call activitySection(2, "The Default IMRD Sequence", "sort-numeric-down") %}
+<p>
+  The default order of moves is <strong>Introduction → Method → Results → Discussion</strong> (IMRD).
+  This mirrors the standard structure of a full research article and is the safest starting point
+  when you have no specific guidelines from the target venue.
+</p>
+<p>
+  IMRD is linear: it moves from background through procedure to findings and interpretation.
+  This order matches reader expectations in most scientific disciplines and is easy to follow.
+  However, it is not the only option — and in some contexts it is not the best option.
+</p>
+<p>
+  The remaining activities in this unit explain when and how to deviate from the IMRD default.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 3 — Four Patterns ═══════════════════════════════════════ #}
+
+{% set patternTabs = [
+  {id: "imrd",    label: "IMRD"},
+  {id: "ipmrd",   label: "IPMRD"},
+  {id: "ipmrmrd", label: "IPMRMRD"},
+  {id: "rm",      label: "RM"}
+] %}
+
+{% call activitySection(3, "Four Common Move Patterns", "grid-3x3-gap") %}
+<p>
+  A study of 1,000 scientific research abstracts (100 abstracts each from 10 disciplines) found over
+  200 distinct move patterns (Blake, 2021). Four of the most common patterns are described below.
+  Select each tab to learn when to use it and see a structural schematic.
+</p>
+
+{% call tabSet("u04-patterns", patternTabs) %}
+
+  <div class="tab-pane fade show active" id="u04-patterns-imrd" role="tabpanel">
+    <p class="sra-pattern-label">Introduction &rarr; Method &rarr; Results &rarr; Discussion</p>
+    <p><strong>When to use:</strong> When you have no specific guidelines and want a safe, conventional starting point. IMRD mirrors the structure of the research article and is familiar to readers across disciplines.</p>
+    <p><strong>Best for:</strong> Empirical and experimental research where the procedure and findings are both important and where the significance of the result needs contextualisation.</p>
+    <p><strong>Typical disciplines:</strong> Biology, psychology, medicine, linguistics, social sciences.</p>
+  </div>
+
+  <div class="tab-pane fade" id="u04-patterns-ipmrd" role="tabpanel">
+    <p class="sra-pattern-label">Introduction &rarr; Purpose &rarr; Method &rarr; Results &rarr; Discussion</p>
+    <p><strong>When to use:</strong> When the research question or hypothesis is the central contribution — or when the aim needs to be made explicit because it is not immediately obvious from the results.</p>
+    <p><strong>Best for:</strong> Research with a clearly stated hypothesis or research question; interdisciplinary work where readers from different fields need a precise statement of aim.</p>
+    <p><strong>Example signal:</strong> <em>"This study aims to determine whether…"</em> or <em>"We investigate the following research question:…"</em></p>
+  </div>
+
+  <div class="tab-pane fade" id="u04-patterns-ipmrmrd" role="tabpanel">
+    <p class="sra-pattern-label">Introduction &rarr; Purpose &rarr; Method &rarr; Results &rarr; Method &rarr; Results &rarr; Discussion</p>
+    <p><strong>When to use:</strong> When the research involves two distinct phases — typically a <em>development</em> phase and an <em>evaluation</em> phase. The method and result pair appears twice to reflect this two-stage design.</p>
+    <p><strong>Best for:</strong> Software engineering and systems research where a novel system or algorithm is first built (Method 1, Result 1) and then tested against a benchmark (Method 2, Result 2).</p>
+    <p><strong>Example:</strong> A paper that develops a new neural architecture and then evaluates it on a standard dataset might use this structure: <em>build → performance on dev set → evaluate → performance on test benchmark</em>.</p>
+  </div>
+
+  <div class="tab-pane fade" id="u04-patterns-rm" role="tabpanel">
+    <p class="sra-pattern-label">Results &rarr; Method</p>
+    <p><strong>When to use:</strong> When space is severely limited (e.g., a four-page short paper) and the research area is well established. The most important information — the result — is placed first to maximise impact.</p>
+    <p><strong>Best for:</strong> Short communications and letters in established research areas where readers will immediately recognise the significance of the result without contextual framing.</p>
+    <p><strong>Caution:</strong> Placing results first is a deliberate rhetorical choice. Use it when the result is striking and the method is straightforward. It is not suitable when the method itself is the contribution.</p>
+  </div>
+
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 4 — Sequencing Principles ══════════════════════════════ #}
+
+{% call activitySection(4, "Principles for Sequencing Moves", "shuffle") %}
+<p>
+  Choosing the order of moves is not arbitrary. The following principles can guide your sequencing
+  decisions. Expand each principle to see the reasoning and an example of when it applies.
+</p>
+
+<div class="accordion mt-3" id="u04-sequencing">
+  {% call accordion("u04-s1", "Follow your discipline-specific default first") %}
+  <p>Read five to ten abstracts from your target venue and identify the most common pattern. This is your discipline-specific default. Only deviate from it when you have a strong reason — deviating without justification may confuse reviewers familiar with the convention.</p>
+  {% endcall %}
+
+  {% call accordion("u04-s2", "Lead with the most novel move") %}
+  <p>The move that contains the most original contribution — usually the Method or the Result — can be placed first to create an immediate strong impression. This works particularly well in the RM pattern or when the result is so striking that it sells the paper on its own.</p>
+  {% endcall %}
+
+  {% call accordion("u04-s3", "Omit moves that are obvious to your audience") %}
+  <p>If readers will immediately understand why the research matters — because it addresses a well-known open problem — the introduction move adds no value. Omitting it saves words and avoids redundancy. Conversely, if the area is niche or interdisciplinary, an introduction is essential.</p>
+  {% endcall %}
+
+  {% call accordion("u04-s4", "Prioritise moves that show novelty, significance, substance, and rigour") %}
+  <p>Every move in the abstract should serve one of the four evaluation criteria. If a move does not contribute to novelty (Introduction), purpose (Purpose), rigour (Method), substance (Results), or significance (Discussion), consider removing or compressing it.</p>
+  {% endcall %}
+
+  {% call accordion("u04-s5", "Place the Result before the Method if the Result is more important") %}
+  <p>When the what (the finding or artefact) is more important than the how (the procedure), placing the Result first is justified. This is common in engineering venues where a breakthrough result is the primary claim, and the method is secondary scaffolding.</p>
+  {% endcall %}
+
+  {% call accordion("u04-s6", "Define essential terminology just before first use") %}
+  <p>If a technical term is essential but readers may not know it, explain or paraphrase it immediately before its first use in the abstract. Do not assume specialist knowledge if your audience is interdisciplinary.</p>
+  {% endcall %}
+
+  {% call accordion("u04-s7", "Try multiple sequences before committing") %}
+  <p>Write a version of the abstract for each of the four main patterns (IMRD, IPMRD, IPMRMRD, RM) and compare them. The pattern that communicates the contribution most clearly — with the fewest words — is usually the right choice.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Quiz ════════════════════════════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u04-q1",
+  "A software engineering paper develops a novel graph-based algorithm (Method 1), measures its runtime on synthetic benchmarks (Results 1), then evaluates its accuracy on a real-world dataset (Method 2, Results 2). Which pattern best fits this paper?",
+  2,
+  "The IPMRMRD pattern is designed precisely for two-phase research: development followed by evaluation. The method-result pair appears twice, reflecting the two stages. The Introduction sets context, the Purpose states the aim, and the Discussion interprets the combined findings.") %}
+  <label class="quiz-option"><input type="radio" name="u04-q1" value="0"> IMRD</label>
+  <label class="quiz-option"><input type="radio" name="u04-q1" value="1"> IPMRD</label>
+  <label class="quiz-option"><input type="radio" name="u04-q1" value="2"> IPMRMRD</label>
+  <label class="quiz-option"><input type="radio" name="u04-q1" value="3"> RM</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u04-q2",
+  "A four-page short paper reports a single striking result in a well-established area of computer vision. Space is limited and the audience is expert. Which pattern would you recommend?",
+  3,
+  "The RM (Results → Method) pattern is ideal for short papers with striking results in established areas. Placing the result first maximises impact in limited space. Expert readers do not need an introductory framing and will recognise the significance of the result immediately.") %}
+  <label class="quiz-option"><input type="radio" name="u04-q2" value="0"> IPMRD</label>
+  <label class="quiz-option"><input type="radio" name="u04-q2" value="1"> IMRD</label>
+  <label class="quiz-option"><input type="radio" name="u04-q2" value="2"> IPMRMRD</label>
+  <label class="quiz-option"><input type="radio" name="u04-q2" value="3"> RM</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Make sure you know when to use each of the four patterns. Expand each item to recall the key use case.</p>
+
+<div class="accordion mt-3" id="u04-review">
+  {% call accordion("rev-u04-a", "IMRD — when is this the right choice?") %}
+  <p>Use IMRD as your default when you have no specific guidelines and want a safe, conventional structure. It mirrors the research article format and is universally familiar. Start with IMRD as your first draft and revise if a different pattern serves the content better.</p>
+  {% endcall %}
+  {% call accordion("rev-u04-b", "IPMRD — when does the Purpose move add value?") %}
+  <p>Add the Purpose move when the research question or hypothesis needs to be stated explicitly — for example, in interdisciplinary research where the aim may not be obvious to readers from adjacent fields, or when the hypothesis is the intellectual contribution.</p>
+  {% endcall %}
+  {% call accordion("rev-u04-c", "IPMRMRD — when does research have two phases?") %}
+  <p>Use IPMRMRD when the paper has a development phase and an evaluation phase — common in systems and software engineering research. The two Method–Result pairs reflect the two stages of the research process.</p>
+  {% endcall %}
+  {% call accordion("rev-u04-d", "RM — when should the Result come first?") %}
+  <p>Use RM in short papers with a striking result in a well-established area. Placing the result first maximises impact in limited space and signals confidence in the finding. It is not appropriate when the method is the primary contribution or when the area is unfamiliar to readers.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-05') | url }}">Unit 5: Tips for Writers</a> when ready.
+</p>
+{% endcall %}
+
+<style>
+.sra-pattern-label {
+  font-family: monospace;
+  font-size: 0.95rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 8px 14px;
+  color: #ff8c00;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+</style>

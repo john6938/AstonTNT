@@ -1,0 +1,200 @@
+---
+unit: 3
+unitTitle: Content of Abstracts
+title: "Unit 3: Content of Abstracts — Scientific Research Abstracts"
+courseUnit: true
+objectives:
+  - Know the difference between indicative and informative abstracts
+  - Understand the five common rhetorical moves used in abstracts
+  - Know the four sub-moves commonly used within the introduction move
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Indicative vs Informative ═══════════════════════════ #}
+
+{% set infoTabs = [
+  {id: "indicative",  label: "Indicative"},
+  {id: "informative", label: "Informative"},
+  {id: "compare",     label: "Side by Side"}
+] %}
+
+{% call activitySection(1, "Indicative and Informative Abstracts", "toggle-on") %}
+<p>
+  Abstracts may be broadly grouped into two types based on how much detail they provide.
+  Select each tab to understand the characteristics of each type and see an example.
+</p>
+
+{% call tabSet("u03-types", infoTabs) %}
+
+  <div class="tab-pane fade show active" id="u03-types-indicative" role="tabpanel">
+    <p><strong>Indicative abstracts</strong> provide enough information to indicate what the research is about, but do not give full details of the findings. They aim to interest curious readers and encourage them to attend the presentation or read the full paper.</p>
+    <p><strong>Common in:</strong> Promissory conference submissions (particularly in humanities and linguistics), some social science venues, and review articles where the scope rather than the findings is the primary contribution.</p>
+    <p><strong>Typical signals:</strong></p>
+    <ul>
+      <li><em>"This paper discusses…"</em></li>
+      <li><em>"The study examines…"</em></li>
+      <li><em>"Preliminary results will be presented…"</em></li>
+    </ul>
+    <p><strong>Limitation:</strong> Reviewers who expect quantified findings may perceive an indicative abstract as incomplete or evasive.</p>
+  </div>
+
+  <div class="tab-pane fade" id="u03-types-informative" role="tabpanel">
+    <p><strong>Informative abstracts</strong> provide full details of the method and the results. They give readers a complete summary of the research — readers do not need to read the full paper to know what was found.</p>
+    <p><strong>Common in:</strong> Computer science, engineering, medicine, and natural sciences. Informative abstracts are the expected norm at major venues such as ACM, IEEE, and Springer journals.</p>
+    <p><strong>Typical signals:</strong></p>
+    <ul>
+      <li><em>"We trained a model on 50,000 samples and achieved 94.2% accuracy…"</em></li>
+      <li><em>"Results showed a significant difference (p &lt; .001)…"</em></li>
+      <li><em>"The proposed algorithm reduces computational cost by 38%…"</em></li>
+    </ul>
+    <p><strong>Advantage:</strong> Readers can quickly assess whether the paper is relevant to their work. Reviewers can evaluate the quality of the findings without reading the full text first.</p>
+  </div>
+
+  <div class="tab-pane fade" id="u03-types-compare" role="tabpanel">
+    <p>The same study presented in each style:</p>
+    <div class="sra-compare-block">
+      <div class="sra-compare-label" style="color:#ff8c00;">Indicative version</div>
+      <p>"This paper examines the use of biosignals to detect foreign language anxiety in a VR conversation system. The study compares native and foreign language conditions and discusses implications for adaptive language learning technology."</p>
+    </div>
+    <div class="sra-compare-block">
+      <div class="sra-compare-label" style="color:#ff8c00;">Informative version</div>
+      <p>"In a within-subjects study (N = 40), L2 conversation elicited significantly higher state anxiety than L1 (p &lt; .001). Six physiological measures — BPM, MeanNN, LF, LF/HF, SampEn, and Saccade Amplitude — showed significant L1&ndash;L2 differences, providing usable biosignal proxies for cognitive load and stress in VR language learning contexts."</p>
+    </div>
+    <p class="mt-2" style="color:#aaa; font-size:0.88rem;">Notice how the informative version gives readers specific numbers and named measures. The indicative version only tells readers what the paper is <em>about</em>.</p>
+  </div>
+
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 2 — Rhetorical Moves ═══════════════════════════════════ #}
+
+{% call activitySection(2, "The Five Rhetorical Moves", "diagram-3") %}
+<p>
+  Researchers across disciplines have identified a set of recurring rhetorical moves — conventional
+  sections that serve a predictable communicative purpose — in research abstracts. Five moves and
+  four sub-moves are commonly recognised. Expand each item to learn about the move.
+</p>
+
+<div class="accordion mt-3" id="u03-moves">
+  {% call accordion("u03-m1", "Move 1 — Introduction: Why do this research?") %}
+  <p>The introduction move contextualises the research. It may include up to four sub-moves:</p>
+  <ul>
+    <li><strong>Problem:</strong> A problem in the real world or in the research field that needs to be addressed (<em>"Access to speaking partners is limited in many contexts…"</em>)</li>
+    <li><strong>Research gap:</strong> A gap in the existing literature — something not yet studied or resolved (<em>"No previous work has examined biosignal signatures of FLA in VR systems…"</em>)</li>
+    <li><strong>Research niche:</strong> The specific angle the current research takes to fill that gap (<em>"We focus on consumer-grade PPG and eye-tracking sensors…"</em>)</li>
+    <li><strong>Overview:</strong> A brief preview of what the paper covers (<em>"This paper presents a VR system and a within-subjects study…"</em>)</li>
+  </ul>
+  <p>Not all four sub-moves are required. In computer science, introductions are often very brief or omitted entirely if the research area is well established.</p>
+  {% endcall %}
+
+  {% call accordion("u03-m2", "Move 2 — Purpose: What is the aim of the research?") %}
+  <p>The purpose move states the aim, research question, or hypothesis explicitly. It answers the question <em>"What did you set out to do?"</em></p>
+  <p><strong>Example:</strong> <em>"We present a VR system in which participants converse with an EVA and examine how native (L1) versus foreign (L2) conversation differentially affects self-reported anxiety, sense of presence, and physiological arousal."</em></p>
+  <p>A clear purpose move helps reviewers assess whether the results match the aim. If the purpose is obvious from the result, the purpose move may be omitted — but when in doubt, include it.</p>
+  {% endcall %}
+
+  {% call accordion("u03-m3", "Move 3 — Method: How were the results obtained?") %}
+  <p>The method move describes the procedure, dataset, or design used to produce the results. It answers the question <em>"How did you do it?"</em></p>
+  <p><strong>Example:</strong> <em>"A pre-study focus group with three experienced language educators informed EVA design and task selection. In a within-subjects study (N = 40), participants completed conversational tasks while physiological data were recorded."</em></p>
+  <p>The method move is where rigour is demonstrated. It should include enough detail for readers to assess whether the results are trustworthy. In a short traditional abstract, the method is often compressed; in a structured abstract, it may occupy multiple headings.</p>
+  {% endcall %}
+
+  {% call accordion("u03-m4", "Move 4 — Results: What was found or produced?") %}
+  <p>The results move reports the findings or the artefact produced. It answers the question <em>"What did you find or create?"</em></p>
+  <p><strong>Example:</strong> <em>"L2 conversation elicited significantly higher state anxiety than L1 (p &lt; .001). Six physiological measures showed significant L1&ndash;L2 differences consistent with heightened stress."</em></p>
+  <p>The results move is where substance is demonstrated. Results should be quantified wherever possible. In informative abstracts, this is the most important move. Omitting results is only acceptable in promissory or indicative abstracts.</p>
+  {% endcall %}
+
+  {% call accordion("u03-m5", "Move 5 — Discussion: So what?") %}
+  <p>The discussion move interprets the results and states their implications. It answers the question <em>"What do these results mean?"</em></p>
+  <p><strong>Example:</strong> <em>"These findings establish: 1) EVA conversation in VR offers a viable paradigm for studying FLA and 2) consumer-grade PPG and eye tracking sensors provide usable proxies for cognitive load and stress."</em></p>
+  <p>The discussion move is where significance is demonstrated. It is included when readers might not immediately understand the implications of the results. In short papers, the discussion may be minimal or merged with the results.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Classify the Move ══════════════════════════════════ #}
+
+{% call activitySection(3, "Classify the Move", "patch-question") %}
+<p>Read each sentence and identify the rhetorical move it belongs to.</p>
+
+<div class="mb-4">
+{% call quizMC("u03-q1",
+  "\"We collected a corpus of 500 academic abstracts from ten disciplines and annotated them for rhetorical moves using a validated coding scheme.\"",
+  2,
+  "This sentence describes the data collection and annotation procedure — it tells readers how the research was conducted. This is the Method move. The reference to a validated coding scheme also signals rigour.") %}
+  <label class="quiz-option"><input type="radio" name="u03-q1" value="0"> Introduction</label>
+  <label class="quiz-option"><input type="radio" name="u03-q1" value="1"> Purpose</label>
+  <label class="quiz-option"><input type="radio" name="u03-q1" value="2"> Method</label>
+  <label class="quiz-option"><input type="radio" name="u03-q1" value="3"> Discussion</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u03-q2",
+  "\"Despite the growing adoption of large language models in education, their effect on learner writing quality in L2 contexts remains understudied.\"",
+  0,
+  "This sentence identifies a gap in the existing literature — something that has not been adequately studied. Identifying a research gap is a sub-move of the Introduction move. It answers the question: why is this research needed?") %}
+  <label class="quiz-option"><input type="radio" name="u03-q2" value="0"> Introduction (research gap sub-move)</label>
+  <label class="quiz-option"><input type="radio" name="u03-q2" value="1"> Purpose</label>
+  <label class="quiz-option"><input type="radio" name="u03-q2" value="2"> Results</label>
+  <label class="quiz-option"><input type="radio" name="u03-q2" value="3"> Discussion</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>
+  Before writing your abstract, decide which moves to include. Expand each move below and ask yourself:
+  <em>should I include this in my abstract?</em>
+</p>
+
+<div class="accordion mt-3" id="u03-review">
+  {% call accordion("rev-u03-a", "Introduction — should I include it?") %}
+  <p>Include it if: the research area is not widely known to your audience, or if you need to motivate the research. Omit it if: the area is well established and your audience will immediately understand why the research matters. In computer science, short or absent introductions are common.</p>
+  {% endcall %}
+  {% call accordion("rev-u03-b", "Purpose — should I include it?") %}
+  <p>Include it if: the aim is not immediately obvious from the results, or if a clear research question strengthens the abstract. Omit it if: the result and the purpose are essentially the same statement — stating both creates redundancy.</p>
+  {% endcall %}
+  {% call accordion("rev-u03-c", "Method — should I include it?") %}
+  <p>Almost always include it. Omit it only if: the method is universally known to your audience and adds no value. For experimental and empirical work, the method move is essential for establishing rigour.</p>
+  {% endcall %}
+  {% call accordion("rev-u03-d", "Results — should I include it?") %}
+  <p>Always include it for informative abstracts. Omit it only in promissory or indicative abstracts where results are not yet available. For computer science articles, the results move is the most important move in the abstract.</p>
+  {% endcall %}
+  {% call accordion("rev-u03-e", "Discussion — should I include it?") %}
+  <p>Include it if: readers might not understand the implications of the results without guidance, or if you want to make the significance of the work explicit. Omit it if: the implication is self-evident and the abstract is already at its length limit.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-04') | url }}">Unit 4: Structure of Abstracts</a> when ready.
+</p>
+{% endcall %}
+
+<style>
+.sra-compare-block {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  color: #ddd;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.sra-compare-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  margin-bottom: 6px;
+}
+</style>

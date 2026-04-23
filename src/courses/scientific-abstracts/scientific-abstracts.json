@@ -1,0 +1,15 @@
+{
+  "layout": "layouts/course-unit.njk",
+  "courseTitle": "Scientific Research Abstracts",
+  "courseBaseUrl": "/courses/scientific-abstracts",
+  "unitCount": 6,
+  "unitTitles": [
+    "Types of Abstracts",
+    "Example Abstract",
+    "Content of Abstracts",
+    "Structure of Abstracts",
+    "Tips for Writers",
+    "Practice Activities"
+  ],
+  "quote": "&ldquo;The abstract is often the only part of a paper that is read.&rdquo; &mdash; Day &amp; Gastel (2006)"
+}

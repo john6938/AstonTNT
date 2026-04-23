@@ -1,0 +1,203 @@
+---
+unit: 6
+unitTitle: Practice Activities
+title: "Unit 6: Practice Activities — Scientific Research Abstracts"
+courseUnit: true
+objectives:
+  - Identify rhetorical moves in a real research abstract
+  - Classify sentences by their move type using the criteria from Units 3 and 4
+  - Identify ways to improve a partially written abstract
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Analyse a Real Abstract ════════════════════════════ #}
+
+{% call activitySection(1, "Analyse a Real Abstract", "search") %}
+<p>
+  The abstract below is the model abstract used on the course landing page. It describes a study
+  investigating foreign language anxiety using a virtual reality conversation system. Read it carefully,
+  then use the accordion below to check your identification of each rhetorical move.
+</p>
+
+<div class="sra-abstract-card mt-3 mb-3">
+  <p>Conversational practice is essential for language fluency, yet in many contexts access to speaking partners remains limited. An embodied virtual agent (EVA) in virtual reality (VR) offers an on-demand alternative. However, adapting these systems to learner affect requires understanding the biosignal signatures of foreign language anxiety (FLA). We present a VR system in which participants converse with an EVA and examine how native (L1) versus foreign (L2) conversation differentially affects self-reported anxiety, sense of presence, and physiological arousal measured via photoplethysmography (PPG) and eye tracking. A pre-study focus group with three experienced language educators informed EVA design and task selection. In a within-subjects study (N = 40), L2 conversation elicited significantly higher state anxiety than L1 (p &lt; .001), while sense of presence remained comparable across conditions. Across windowed HRV and eye tracking, six physiological measures showed significant L1&ndash;L2 differences in directions consistent with heightened L2 stress (BPM, MeanNN, LF, LF/HF, SampEn, and Saccade Amplitude). Participants valued the EVA&rsquo;s conversational initiative and perceived L2 conversation as authentic practice, though speech-recognition accuracy for L2 speech and text-to-speech naturalness in L1 remain areas for improvement. These findings establish: 1) EVA conversation in VR offers a viable paradigm for studying FLA and 2) consumer-grade PPG and eye tracking sensors provide usable proxies for cognitive load and stress.</p>
+</div>
+
+<p>Before expanding the answers, try to identify:</p>
+<ol style="color:#ddd; line-height:2.2;">
+  <li>Where does the Introduction move begin and end?</li>
+  <li>Which sentence states the Purpose?</li>
+  <li>Which sentences describe the Method?</li>
+  <li>Which sentences report the Results?</li>
+  <li>Which sentences form the Discussion?</li>
+  <li>Which overall pattern does this abstract follow? (IMRD / IPMRD / IPMRMRD / RM)</li>
+</ol>
+
+<div class="accordion mt-3" id="u06-analysis">
+  {% call accordion("u06-a1", "Introduction move — which sentences?") %}
+  <p><strong>Sentences 1–3:</strong> <em>"Conversational practice is essential… An embodied virtual agent… However, adapting these systems…"</em></p>
+  <p>These three sentences establish the research gap through two sub-moves: <strong>Problem</strong> (access to speaking partners is limited) and <strong>Research gap</strong> (biosignal signatures of FLA in VR systems are not understood). No overview or research niche sub-move is included — the move goes directly to the gap.</p>
+  {% endcall %}
+
+  {% call accordion("u06-a2", "Purpose move — which sentence?") %}
+  <p><strong>Sentence 4:</strong> <em>"We present a VR system in which participants converse with an EVA and examine how native (L1) versus foreign (L2) conversation differentially affects…"</em></p>
+  <p>This sentence states the purpose of the research precisely — what was built (the VR system) and what was investigated (differential effects of L1 vs L2 conversation on anxiety, presence, and arousal).</p>
+  {% endcall %}
+
+  {% call accordion("u06-a3", "Method move — which sentences?") %}
+  <p><strong>Sentences 5–6:</strong> <em>"A pre-study focus group with three experienced language educators… In a within-subjects study (N = 40)…"</em></p>
+  <p>The method move covers two phases: the EVA design stage (focus group with educators) and the main study design (within-subjects, N = 40). Both phases are necessary for rigour — readers can assess the credibility of the design.</p>
+  {% endcall %}
+
+  {% call accordion("u06-a4", "Results move — which sentences?") %}
+  <p><strong>Sentences 6–7:</strong> <em>"…L2 conversation elicited significantly higher state anxiety… Across windowed HRV and eye tracking, six physiological measures showed…"</em></p>
+  <p>Note that the results begin within the same sentence as the method (sentence 6) — the within-subjects study clause leads directly into the first result. This is common in traditional abstracts and is not a structural error; it is an efficient use of words.</p>
+  <p>The six named measures (BPM, MeanNN, LF, LF/HF, SampEn, Saccade Amplitude) demonstrate substance by showing the depth and breadth of the analysis.</p>
+  {% endcall %}
+
+  {% call accordion("u06-a5", "Discussion move — which sentences?") %}
+  <p><strong>Sentences 8–9:</strong> <em>"Participants valued the EVA&rsquo;s conversational initiative… These findings establish…"</em></p>
+  <p>The discussion move serves two functions here: acknowledging a limitation (speech-recognition accuracy and TTS naturalness), and then stating two explicit takeaways — the significance of the findings for language anxiety research and for biosignal measurement.</p>
+  {% endcall %}
+
+  {% call accordion("u06-a6", "Overall pattern — IMRD, IPMRD, IPMRMRD, or RM?") %}
+  <p><strong>IPMRD</strong> — Introduction → Purpose → Method → Results → Discussion.</p>
+  <p>The pattern includes an explicit Purpose move (sentence 4) separating the Introduction from the Method. This is appropriate because the purpose (examining L1 vs L2 differences using a novel VR system) is both the framing and the justification for the complex method that follows.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — Classify the Sentence ════════════════════════════ #}
+
+{% call activitySection(2, "Classify the Move", "tag") %}
+<p>
+  Read each sentence below and identify which rhetorical move it belongs to.
+  These sentences come from different research abstracts in computer science and related fields.
+</p>
+
+<div class="mb-4">
+{% call quizMC("u06-q1",
+  "\"Our transformer-based model achieves 91.3% F1 on the MeQSum benchmark, outperforming the previous state-of-the-art by 7.2 percentage points.\"",
+  2,
+  "This sentence reports a quantified finding — a specific metric (91.3% F1) compared to a baseline (previous state-of-the-art) with a precise improvement margin (7.2 pp). This is a Results move. The quantified comparison also demonstrates substance.") %}
+  <label class="quiz-option"><input type="radio" name="u06-q1" value="0"> Introduction</label>
+  <label class="quiz-option"><input type="radio" name="u06-q1" value="1"> Method</label>
+  <label class="quiz-option"><input type="radio" name="u06-q1" value="2"> Results</label>
+  <label class="quiz-option"><input type="radio" name="u06-q1" value="3"> Discussion</label>
+{% endcall %}
+</div>
+
+<div class="mb-4">
+{% call quizMC("u06-q2",
+  "\"Despite rapid advances in automated essay scoring, existing systems struggle to generalise across writing prompts not seen during training.\"",
+  0,
+  "This sentence identifies a research gap — a known limitation of existing approaches that the current work will address. Identifying a gap is a sub-move of the Introduction move. Notice the contrast signal 'despite' which sets up the gap.") %}
+  <label class="quiz-option"><input type="radio" name="u06-q2" value="0"> Introduction (research gap sub-move)</label>
+  <label class="quiz-option"><input type="radio" name="u06-q2" value="1"> Purpose</label>
+  <label class="quiz-option"><input type="radio" name="u06-q2" value="2"> Results</label>
+  <label class="quiz-option"><input type="radio" name="u06-q2" value="3"> Discussion</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u06-q3",
+  "\"These findings suggest that domain-specific fine-tuning with curriculum learning substantially improves summarisation quality in high-stakes medical settings, with direct implications for clinical decision support.\"",
+  3,
+  "This sentence interprets the results and states their real-world implications (clinical decision support). This is a Discussion move. The phrase 'these findings suggest that' is a classic Discussion signal, and 'direct implications for' marks the significance of the contribution.") %}
+  <label class="quiz-option"><input type="radio" name="u06-q3" value="0"> Introduction</label>
+  <label class="quiz-option"><input type="radio" name="u06-q3" value="1"> Method</label>
+  <label class="quiz-option"><input type="radio" name="u06-q3" value="2"> Results</label>
+  <label class="quiz-option"><input type="radio" name="u06-q3" value="3"> Discussion</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Activity 3 — Improve the Abstract ═══════════════════════════════ #}
+
+{% call activitySection(3, "Improve a Partial Abstract", "tools") %}
+<p>
+  The abstract below is a partial draft from a hypothetical paper on automated misinformation
+  detection in social media. Four of the five moves are present, but each has a specific weakness.
+  Read the draft, identify the weakness in each move, then expand each accordion item to check
+  your analysis and see a revised version.
+</p>
+
+<div class="sra-abstract-card mt-3 mb-3">
+  <p>Social media has changed how science reaches the public. Misinformation spreads quickly. We built a classifier for social media posts. It was trained on some data. The results were good. This could help fact-checkers.</p>
+</div>
+
+<div class="accordion mt-3" id="u06-improve">
+
+  {% call accordion("u06-i1", "Introduction — what is wrong and how to fix it?") %}
+  <p><strong>Problem:</strong> "Social media has changed how science reaches the public. Misinformation spreads quickly." — These two sentences are vague and generic. They name the broad area but do not identify a specific research gap or problem that this study addresses.</p>
+  <p><strong>Revised version:</strong> <em>"Social media platforms have transformed how scientific findings reach the general public. However, health misinformation spreads significantly faster than corrections, creating documented risks for vaccine uptake and treatment adherence."</em></p>
+  <p>The revised version specifies the problem domain (health misinformation), the mechanism (faster spread than corrections), and the consequence (measurable public health risk) — making the need for the research concrete.</p>
+  {% endcall %}
+
+  {% call accordion("u06-i2", "Method — what is wrong and how to fix it?") %}
+  <p><strong>Problem:</strong> "We built a classifier for social media posts. It was trained on some data." — The type of classifier is unnamed, the platform is unspecified, and "some data" provides no basis for assessing the quality or scale of the training set.</p>
+  <p><strong>Revised version:</strong> <em>"We fine-tuned a BERT-based binary classifier on a manually annotated corpus of 80,000 tweets (40,000 misinformation, 40,000 factual) published during 2020–2022 on the topic of vaccine safety."</em></p>
+  <p>The revised version names the model architecture (BERT-based), the task (binary classification), the dataset size (80,000 tweets), the balance (40k/40k), the source (Twitter), the time frame (2020–2022), and the topic domain — all of which contribute to rigour.</p>
+  {% endcall %}
+
+  {% call accordion("u06-i3", "Results — what is wrong and how to fix it?") %}
+  <p><strong>Problem:</strong> "The results were good." — This is not a result. It is an unsubstantiated claim with no metric, no comparison baseline, and no indication of what "good" means in this context.</p>
+  <p><strong>Revised version:</strong> <em>"The classifier achieved 91.3% accuracy and 89.7% F1 on the held-out test set, outperforming the previous state-of-the-art by 4.2 percentage points on the same benchmark."</em></p>
+  <p>The revised version gives two metrics (accuracy and F1), a test context (held-out test set), a quantified improvement (4.2 pp), and a reference point (previous state-of-the-art) — demonstrating both substance and novelty.</p>
+  {% endcall %}
+
+  {% call accordion("u06-i4", "Discussion — what is wrong and how to fix it?") %}
+  <p><strong>Problem:</strong> "This could help fact-checkers." — The significance is stated but too vaguely. "Could help" signals uncertainty rather than confidence. No specific mechanism or deployment context is given.</p>
+  <p><strong>Revised version:</strong> <em>"These results demonstrate that automated classification at this accuracy level can meaningfully reduce the manual review workload for fact-checking organisations handling high-volume information streams, while remaining transparent enough for human oversight."</em></p>
+  <p>The revised version specifies the beneficiary (fact-checking organisations), the benefit (reduced workload), the context (high-volume streams), and a constraint that makes deployment realistic (transparency for oversight).</p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>
+  The skills you have practised in this unit — analysing moves, classifying sentences, and diagnosing
+  weaknesses — are the same skills you need to write and revise your own abstract. Continue to build
+  them by:
+</p>
+
+<div class="accordion mt-3" id="u06-review">
+  {% call accordion("rev-u06-a", "Read more abstracts analytically") %}
+  <p>Whenever you read a research paper, spend two minutes reading the abstract and identifying each rhetorical move. Ask yourself: what pattern does this use? Is every move justified? Are the four criteria (novelty, significance, substance, rigour) all present?</p>
+  {% endcall %}
+  {% call accordion("rev-u06-b", "Annotate abstracts as a revision activity") %}
+  <p>Take an abstract from your own field and annotate it in the margins with the move labels. Then assess whether the structure serves the contribution effectively. If you were the author, would you make a different structural choice?</p>
+  {% endcall %}
+  {% call accordion("rev-u06-c", "Draft your own abstract using the course framework") %}
+  <p>Using Tip 3 from Unit 5 — begin with headings (Introduction, Purpose, Method, Results, Discussion) and fill in content under each. Then revise the structure, apply the five filters, conduct the reader test, and check the title and submission guidelines.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-4" style="color:#e0e0e0;">
+  <i class="bi bi-check2-circle me-1" style="color:#ff8c00;"></i>
+  You have completed <strong>Scientific Research Abstracts</strong>. Return to the
+  <a href="{{ courseBaseUrl | url }}" style="color:#ff8c00;">course overview</a> or explore the
+  <a href="{{ '/courses/error-free/' | url }}" style="color:#ff8c00;">Error-Free Research Writing</a> course
+  to develop your proofreading skills further.
+</p>
+{% endcall %}
+
+<style>
+.sra-abstract-card {
+  background: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 20px 24px;
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: #ddd;
+}
+.sra-abstract-card p { margin: 0; }
+</style>
