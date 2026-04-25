@@ -1,0 +1,735 @@
+---
+tool: 7
+toolTitle: Virtual Board
+title: "Tool 7: Virtual Board — Teacher Utilities"
+description: "A virtual classroom board with speech-to-text, customisable background, and voice-controlled font colours."
+---
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+
+/* ── Container ───────────────────────────────────────────────── */
+.wb-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 4px solid #2a5a2a;
+  background: #1c3d1c;
+  position: relative;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+/* ── Toolbar ─────────────────────────────────────────────────── */
+.wb-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  padding: 0.45rem 0.7rem;
+  background: rgba(0,0,0,0.38);
+  border-bottom: 1px solid rgba(255,255,255,0.09);
+  flex-shrink: 0;
+  transition: background 0.25s;
+}
+.wb-btn {
+  padding: 0.22rem 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.07);
+  color: #ccc;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+.wb-btn:hover { background: rgba(255,255,255,0.15); }
+.wb-lt .wb-btn { border-color: #bbb; background: #fff; color: #333; }
+.wb-lt .wb-btn:hover { background: #eee; }
+
+.wb-mic-btn {
+  border-color: #ff8c00 !important;
+  color: #ff8c00 !important;
+  background: rgba(255,140,0,0.12) !important;
+  font-weight: 600;
+}
+.wb-mic-btn.wb-on {
+  background: #ff8c00 !important;
+  color: #000 !important;
+  animation: wbPulse 1.4s ease-in-out infinite;
+}
+@keyframes wbPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.5); }
+  50%      { box-shadow: 0 0 0 8px rgba(255,140,0,0); }
+}
+
+.wb-sep {
+  align-self: stretch;
+  width: 1px;
+  background: rgba(255,255,255,0.13);
+  margin: 0;
+}
+.wb-lt .wb-sep { background: #ccc; }
+
+.wb-status { font-size: 0.75rem; color: #ff8c00; min-width: 5rem; }
+.wb-lt .wb-status { color: #cc7700; }
+
+.wb-lang {
+  font-size: 0.78rem;
+  padding: 0.18rem 0.3rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.07);
+  color: #ccc;
+  cursor: pointer;
+  max-width: 88px;
+}
+.wb-lt .wb-lang { border-color: #bbb; background: #fff; color: #333; }
+
+/* ── Theme group ─────────────────────────────────────────────── */
+.wb-theme-group { display: flex; gap: 0.18rem; }
+.wb-theme-opt {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.78rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: #aaa;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+.wb-theme-opt:hover { background: rgba(255,255,255,0.13); color: #ddd; }
+.wb-theme-opt.wb-act { border-color: #ff8c00; color: #ff8c00; background: rgba(255,140,0,0.12); }
+.wb-lt .wb-theme-opt { border-color: #bbb; background: #fff; color: #555; }
+.wb-lt .wb-theme-opt:hover { background: #eee; color: #333; }
+.wb-lt .wb-theme-opt.wb-act { border-color: #cc7700; color: #cc7700; background: rgba(204,119,0,0.08); }
+
+.wb-tdot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* ── Colour palette ──────────────────────────────────────────── */
+.wb-palette { display: flex; align-items: center; gap: 0.22rem; }
+.wb-swatch {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.18);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: transform 0.12s, border-color 0.12s;
+}
+.wb-swatch:hover { transform: scale(1.28); }
+.wb-swatch.wb-act { border-color: #fff !important; box-shadow: 0 0 0 1px rgba(0,0,0,0.5); }
+.wb-lt .wb-swatch.wb-act { border-color: #333 !important; }
+.wb-cpick {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.22);
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  background: none;
+  flex-shrink: 0;
+}
+.wb-lt .wb-cpick { border-color: #bbb; }
+
+/* ── Colour preview dot next to palette ─────────────────────── */
+.wb-color-preview {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.3);
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* ── Interim speech bar ──────────────────────────────────────── */
+.wb-interim {
+  padding: 0.28rem 1rem;
+  background: rgba(255,140,0,0.08);
+  border-bottom: 1px solid rgba(255,140,0,0.2);
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  color: rgba(255,185,70,0.8);
+  font-style: italic;
+  flex-shrink: 0;
+  display: none;
+  min-height: 1.8rem;
+  line-height: 1.5;
+}
+
+/* ── Board (contenteditable) ─────────────────────────────────── */
+.wb-board {
+  flex: 1;
+  width: 100%;
+  min-height: 380px;
+  padding: 1.2rem 1.5rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Caveat', cursive;
+  line-height: 1.6;
+  box-sizing: border-box;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  cursor: text;
+}
+/* Placeholder via CSS */
+.wb-board:empty::before {
+  content: attr(data-ph);
+  color: rgba(200,200,200,0.25);
+  font-style: italic;
+  pointer-events: none;
+}
+.wb-lt .wb-board:empty::before { color: rgba(0,0,0,0.2); }
+
+/* ── Toast ───────────────────────────────────────────────────── */
+.wb-toast {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.72);
+  color: #fff;
+  padding: 0.35rem 1.1rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 20;
+  display: none;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ── Full-screen overlay ─────────────────────────────────────── */
+#wb-fs {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  flex-direction: column;
+}
+#wb-fs .wb-container {
+  height: 100%;
+  border-radius: 0;
+  border: none !important;
+}
+#wb-fs .wb-board { font-size: 3.5rem; }
+</style>
+
+<div class="course-tool-section mb-4" style="position:relative;">
+
+  <div class="activity-header">
+    <span class="activity-num"><i class="bi bi-easel2"></i></span>
+    <h2 class="activity-title-text">Virtual Board</h2>
+  </div>
+
+  <p style="color:#ccc; margin-bottom:1.2rem;">
+    Speak to transcribe text, or type directly. Use <strong>Full screen</strong> for projector display.
+    <span style="color:#aaa;">Voice colour command: say <em>"change colour to red"</em> (or any colour name) — the phrase won't appear on the board.</span>
+  </p>
+
+  {# ── Normal board ─────────────────────────────────────────── #}
+  <div class="wb-container" id="wb-main" style="min-height:460px;">
+    <div class="wb-toolbar" id="wb-bar">
+
+      <button class="wb-btn wb-mic-btn" id="wb-mic" onclick="wbToggleMic()">
+        <i class="bi bi-mic"></i> Listen
+      </button>
+      <span class="wb-status" id="wb-status"></span>
+
+      <span class="wb-sep"></span>
+
+      <select class="wb-lang" id="wb-lang" onchange="wbSetLang(this.value)" title="Speech language">
+        <option value="en-GB">EN-GB</option>
+        <option value="en-US">EN-US</option>
+        <option value="ja-JP">日本語</option>
+        <option value="zh-CN">中文</option>
+        <option value="th-TH">ภาษาไทย</option>
+        <option value="ar-SA">العربية</option>
+        <option value="de-DE">Deutsch</option>
+        <option value="es-ES">Español</option>
+        <option value="fr-FR">Français</option>
+        <option value="ko-KR">한국어</option>
+        <option value="pt-BR">Português</option>
+      </select>
+
+      <span class="wb-sep"></span>
+
+      <button class="wb-btn" onclick="wbFontDown()" title="Smaller text">A−</button>
+      <button class="wb-btn" onclick="wbFontUp()" title="Larger text">A+</button>
+
+      <span class="wb-sep"></span>
+
+      <div class="wb-theme-group">
+        <button class="wb-theme-opt wb-act" data-theme="black" onclick="wbSetTheme('black')">
+          <span class="wb-tdot" style="background:#111; border-color:#444;"></span> Black
+        </button>
+        <button class="wb-theme-opt" data-theme="green" onclick="wbSetTheme('green')">
+          <span class="wb-tdot" style="background:#1c3d1c; border-color:#2a5a2a;"></span> Green
+        </button>
+        <button class="wb-theme-opt" data-theme="white" onclick="wbSetTheme('white')">
+          <span class="wb-tdot" style="background:#f5f5f0; border-color:#bbb;"></span> White
+        </button>
+      </div>
+
+      <span class="wb-sep"></span>
+
+      <span class="wb-color-preview" id="wb-color-dot"></span>
+      <div class="wb-palette">
+        <button class="wb-swatch" data-color="#f0ede0" style="background:#f0ede0;" onclick="wbSetColor('#f0ede0')" title="Chalk"></button>
+        <button class="wb-swatch wb-act" data-color="#ffffff" style="background:#ffffff;" onclick="wbSetColor('#ffffff')" title="White"></button>
+        <button class="wb-swatch" data-color="#ffd700" style="background:#ffd700;" onclick="wbSetColor('#ffd700')" title="Yellow"></button>
+        <button class="wb-swatch" data-color="#ff8c00" style="background:#ff8c00;" onclick="wbSetColor('#ff8c00')" title="Orange"></button>
+        <button class="wb-swatch" data-color="#ff4444" style="background:#ff4444;" onclick="wbSetColor('#ff4444')" title="Red"></button>
+        <button class="wb-swatch" data-color="#55ee88" style="background:#55ee88;" onclick="wbSetColor('#55ee88')" title="Green"></button>
+        <button class="wb-swatch" data-color="#44ccff" style="background:#44ccff;" onclick="wbSetColor('#44ccff')" title="Blue"></button>
+        <button class="wb-swatch" data-color="#ff88cc" style="background:#ff88cc;" onclick="wbSetColor('#ff88cc')" title="Pink"></button>
+        <button class="wb-swatch" data-color="#111111" style="background:#111111;" onclick="wbSetColor('#111111')" title="Black"></button>
+        <input class="wb-cpick" type="color" id="wb-cpick" value="#f0ede0"
+               oninput="wbSetColor(this.value)" title="Custom colour" value="#ffffff">
+      </div>
+
+      <span class="wb-sep"></span>
+
+      <button class="wb-btn" onclick="wbClear()" style="color:#f88; border-color:rgba(255,100,100,0.35);">
+        <i class="bi bi-eraser"></i> Clear
+      </button>
+      <button class="wb-btn" onclick="wbOpenFs()" style="margin-left:auto;">
+        <i class="bi bi-fullscreen"></i> Full screen
+      </button>
+    </div>
+
+    <div class="wb-interim" id="wb-interim">
+      <i class="bi bi-soundwave"></i> <span id="wb-interim-text"></span>
+    </div>
+
+    <div class="wb-board" id="wb-board" contenteditable="true" spellcheck="false"
+         data-ph="Start typing here, or click Listen to transcribe your speech…"></div>
+
+    <div class="wb-toast" id="wb-toast"></div>
+  </div>
+
+  <p style="color:#888; font-size:0.8rem; margin-top:0.6rem;">
+    <i class="bi bi-info-circle"></i>
+    Voice input uses the Web Speech API — works best in Chrome or Edge.
+    <span id="wb-no-speech" style="display:none; color:#f88;">
+      Speech recognition is not supported in this browser.
+    </span>
+  </p>
+
+</div>
+
+{# ═══ Full-screen overlay ══════════════════════════════════════════════════ #}
+<div id="wb-fs">
+  <div class="wb-container" id="wb-fs-main">
+    <div class="wb-toolbar" id="wb-fs-bar">
+
+      <button class="wb-btn wb-mic-btn" id="wb-fs-mic" onclick="wbToggleMic()">
+        <i class="bi bi-mic"></i> Listen
+      </button>
+      <span class="wb-status" id="wb-fs-status"></span>
+
+      <span class="wb-sep"></span>
+
+      <select class="wb-lang" id="wb-fs-lang" onchange="wbSetLang(this.value)" title="Speech language">
+        <option value="en-GB">EN-GB</option>
+        <option value="en-US">EN-US</option>
+        <option value="ja-JP">日本語</option>
+        <option value="zh-CN">中文</option>
+        <option value="th-TH">ภาษาไทย</option>
+        <option value="ar-SA">العربية</option>
+        <option value="de-DE">Deutsch</option>
+        <option value="es-ES">Español</option>
+        <option value="fr-FR">Français</option>
+        <option value="ko-KR">한국어</option>
+        <option value="pt-BR">Português</option>
+      </select>
+
+      <span class="wb-sep"></span>
+
+      <button class="wb-btn" onclick="wbFontDown()" title="Smaller text">A−</button>
+      <button class="wb-btn" onclick="wbFontUp()" title="Larger text">A+</button>
+
+      <span class="wb-sep"></span>
+
+      <div class="wb-theme-group">
+        <button class="wb-theme-opt wb-act" data-theme="black" onclick="wbSetTheme('black')">
+          <span class="wb-tdot" style="background:#111; border-color:#444;"></span> Black
+        </button>
+        <button class="wb-theme-opt" data-theme="green" onclick="wbSetTheme('green')">
+          <span class="wb-tdot" style="background:#1c3d1c; border-color:#2a5a2a;"></span> Green
+        </button>
+        <button class="wb-theme-opt" data-theme="white" onclick="wbSetTheme('white')">
+          <span class="wb-tdot" style="background:#f5f5f0; border-color:#bbb;"></span> White
+        </button>
+      </div>
+
+      <span class="wb-sep"></span>
+
+      <span class="wb-color-preview" id="wb-fs-color-dot"></span>
+      <div class="wb-palette">
+        <button class="wb-swatch" data-color="#f0ede0" style="background:#f0ede0;" onclick="wbSetColor('#f0ede0')" title="Chalk"></button>
+        <button class="wb-swatch wb-act" data-color="#ffffff" style="background:#ffffff;" onclick="wbSetColor('#ffffff')" title="White"></button>
+        <button class="wb-swatch" data-color="#ffd700" style="background:#ffd700;" onclick="wbSetColor('#ffd700')" title="Yellow"></button>
+        <button class="wb-swatch" data-color="#ff8c00" style="background:#ff8c00;" onclick="wbSetColor('#ff8c00')" title="Orange"></button>
+        <button class="wb-swatch" data-color="#ff4444" style="background:#ff4444;" onclick="wbSetColor('#ff4444')" title="Red"></button>
+        <button class="wb-swatch" data-color="#55ee88" style="background:#55ee88;" onclick="wbSetColor('#55ee88')" title="Green"></button>
+        <button class="wb-swatch" data-color="#44ccff" style="background:#44ccff;" onclick="wbSetColor('#44ccff')" title="Blue"></button>
+        <button class="wb-swatch" data-color="#ff88cc" style="background:#ff88cc;" onclick="wbSetColor('#ff88cc')" title="Pink"></button>
+        <button class="wb-swatch" data-color="#111111" style="background:#111111;" onclick="wbSetColor('#111111')" title="Black"></button>
+        <input class="wb-cpick" type="color" id="wb-fs-cpick" value="#f0ede0"
+               oninput="wbSetColor(this.value)" title="Custom colour" value="#ffffff">
+      </div>
+
+      <span class="wb-sep"></span>
+
+      <button class="wb-btn" onclick="wbClear()" style="color:#f88; border-color:rgba(255,100,100,0.35);">
+        <i class="bi bi-eraser"></i> Clear
+      </button>
+      <button class="wb-btn" onclick="wbCloseFs()" style="margin-left:auto;">
+        <i class="bi bi-fullscreen-exit"></i> Exit full screen
+      </button>
+    </div>
+
+    <div class="wb-interim" id="wb-fs-interim">
+      <i class="bi bi-soundwave"></i> <span id="wb-fs-interim-text"></span>
+    </div>
+
+    <div class="wb-board" id="wb-fs-board" contenteditable="true" spellcheck="false"
+         data-ph="Start typing here, or click Listen to transcribe your speech…"></div>
+
+    <div class="wb-toast" id="wb-fs-toast"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+
+  // ── Data ──────────────────────────────────────────────────────────────────
+  var VOICE_COLORS = {
+    white: '#ffffff', chalk: '#f0ede0', cream: '#f0ede0',
+    yellow: '#ffd700', gold: '#ffd700',
+    orange: '#ff8c00', amber: '#ff8c00',
+    red: '#ff4444', scarlet: '#ff4444',
+    green: '#55ee88', lime: '#55ee88',
+    blue: '#44ccff', cyan: '#44ccff', aqua: '#44ccff',
+    pink: '#ff88cc', magenta: '#ff88cc',
+    purple: '#cc66ff', violet: '#cc66ff',
+    black: '#111111', dark: '#111111',
+    grey: '#aaaaaa', gray: '#aaaaaa', silver: '#aaaaaa'
+  };
+
+  var THEMES = {
+    green: { bg: '#1c3d1c', border: '#2a5a2a', barBg: 'rgba(0,0,0,0.38)',
+             barBorder: 'rgba(255,255,255,0.09)', light: false, defaultFont: '#f0ede0' },
+    black: { bg: '#111111', border: '#333333', barBg: 'rgba(0,0,0,0.5)',
+             barBorder: 'rgba(255,255,255,0.09)', light: false, defaultFont: '#ffffff' },
+    white: { bg: '#f5f5f0', border: '#cccccc', barBg: '#dddddd',
+             barBorder: '#bbbbbb',              light: true,  defaultFont: '#111111' }
+  };
+
+  // ── State ────────────────────────────────────────────────────────────────
+  var fontSize   = 2;
+  var fsFontSize = 3.5;
+  var theme      = 'black';
+  var fontColor  = '#ffffff';
+  var listening  = false;
+  var fsOpen     = false;
+  var lang       = 'en-GB';
+  var recognition = null;
+  var toastTimer  = null;
+
+  // ── DOM refs ──────────────────────────────────────────────────────────────
+  var board     = document.getElementById('wb-board');
+  var fsBoard   = document.getElementById('wb-fs-board');
+  var mainWrap  = document.getElementById('wb-main');
+  var fsMain    = document.getElementById('wb-fs-main');
+  var fsOverlay = document.getElementById('wb-fs');
+
+  // ── Helpers: insert coloured span into a contenteditable board ────────────
+  // Appends a new <span style="color:…"> to the board at the end.
+  function appendText(el, text, color) {
+    var span = document.createElement('span');
+    span.style.color = color;
+    span.textContent = text;
+    el.appendChild(span);
+    el.scrollTop = el.scrollHeight;
+  }
+
+  // After changing colour, prime the cursor in the active board so the next
+  // keystroke arrives in the new colour (uses execCommand as the standard
+  // rich-text mechanism for contenteditable).
+  function primeTypingColor(color) {
+    var active = fsOpen ? fsBoard : board;
+    // Ensure cursor is in the board
+    active.focus();
+    // Move selection to end if nothing is selected
+    var sel = window.getSelection();
+    if (!sel.rangeCount || !active.contains(sel.anchorNode)) {
+      var range = document.createRange();
+      range.selectNodeContents(active);
+      range.collapse(false);
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+    document.execCommand('foreColor', false, color);
+  }
+
+  // ── Speech recognition ────────────────────────────────────────────────────
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    document.getElementById('wb-mic').disabled    = true;
+    document.getElementById('wb-fs-mic').disabled = true;
+    document.getElementById('wb-no-speech').style.display = 'inline';
+  } else {
+    recognition = new SR();
+    recognition.continuous     = true;
+    recognition.interimResults = true;
+    recognition.lang           = lang;
+
+    recognition.onresult = function (e) {
+      var interim = '';
+      for (var i = e.resultIndex; i < e.results.length; i++) {
+        if (e.results[i].isFinal) {
+          var raw   = e.results[i][0].transcript;
+          var color = parseColorCommand(raw);
+          if (color) {
+            wbSetColor(color);
+            showToast('Font \u2192 ' + raw.trim().replace(/^.*\bto\s+/i, ''));
+          } else {
+            // Append coloured span to both boards simultaneously
+            appendText(board,   raw + ' ', fontColor);
+            appendText(fsBoard, raw + ' ', fontColor);
+          }
+        } else {
+          interim += e.results[i][0].transcript;
+        }
+      }
+      setInterim(interim);
+    };
+
+    recognition.onend = function () {
+      if (listening) {
+        try { recognition.start(); } catch (ex) {}
+      } else {
+        setInterim('');
+      }
+    };
+
+    recognition.onerror = function (e) {
+      if (e.error === 'no-speech') return;
+      setStatus(e.error === 'not-allowed' ? 'Mic blocked' : 'Error: ' + e.error);
+      listening = false;
+      updateMicUI();
+    };
+  }
+
+  // ── Voice colour command parser ───────────────────────────────────────────
+  // Only matches: "change colour/color to <name>"
+  //           or: "change the colour/color to <name>"
+  function parseColorCommand(text) {
+    var t = text.trim().toLowerCase().replace(/[.,!?]+$/, '');
+    var m = t.match(/^change\s+(?:the\s+)?colou?r\s+to\s+(\w+)$/);
+    if (m && VOICE_COLORS[m[1]]) return VOICE_COLORS[m[1]];
+    return null;
+  }
+
+  // ── UI helpers ────────────────────────────────────────────────────────────
+  function setInterim(txt) {
+    var show = !!txt;
+    document.getElementById('wb-interim').style.display    = show ? 'block' : 'none';
+    document.getElementById('wb-fs-interim').style.display = show ? 'block' : 'none';
+    document.getElementById('wb-interim-text').textContent    = txt;
+    document.getElementById('wb-fs-interim-text').textContent = txt;
+  }
+
+  function setStatus(msg) {
+    document.getElementById('wb-status').textContent    = msg;
+    document.getElementById('wb-fs-status').textContent = msg;
+  }
+
+  function updateMicUI() {
+    var label = listening
+      ? '<i class="bi bi-mic-fill"></i> Stop'
+      : '<i class="bi bi-mic"></i> Listen';
+    ['wb-mic', 'wb-fs-mic'].forEach(function (id) {
+      var btn = document.getElementById(id);
+      btn.innerHTML = label;
+      btn.classList.toggle('wb-on', listening);
+    });
+    setStatus(listening ? 'Listening\u2026' : '');
+    if (!listening) setInterim('');
+  }
+
+  function isLightColor(hex) {
+    var r = parseInt(hex.slice(1,3), 16);
+    var g = parseInt(hex.slice(3,5), 16);
+    var b = parseInt(hex.slice(5,7), 16);
+    return (r * 0.299 + g * 0.587 + b * 0.114) > 150;
+  }
+
+  function applyTheme(name) {
+    var t = THEMES[name];
+    // Auto-adjust font colour when switching to avoid invisible text
+    if (t.light && isLightColor(fontColor)) {
+      fontColor = '#111111';
+    } else if (!t.light && !isLightColor(fontColor)) {
+      fontColor = '#f0ede0';
+    }
+    [mainWrap, fsMain].forEach(function (el) {
+      el.style.background  = t.bg;
+      el.style.borderColor = t.border;
+      if (t.light) el.classList.add('wb-lt');
+      else         el.classList.remove('wb-lt');
+    });
+    fsOverlay.style.background = t.bg;
+    [document.getElementById('wb-bar'), document.getElementById('wb-fs-bar')].forEach(function (el) {
+      el.style.background   = t.barBg;
+      el.style.borderColor  = t.barBorder;
+    });
+    document.querySelectorAll('.wb-theme-opt').forEach(function (btn) {
+      btn.classList.toggle('wb-act', btn.getAttribute('data-theme') === name);
+    });
+    applyColorUI();
+  }
+
+  function applyColorUI() {
+    // Update preview dot
+    document.getElementById('wb-color-dot').style.background    = fontColor;
+    document.getElementById('wb-fs-color-dot').style.background = fontColor;
+    // Update colour pickers
+    document.getElementById('wb-cpick').value    = fontColor;
+    document.getElementById('wb-fs-cpick').value = fontColor;
+    // Update active swatch ring
+    document.querySelectorAll('.wb-swatch').forEach(function (sw) {
+      sw.classList.toggle('wb-act', sw.getAttribute('data-color') === fontColor);
+    });
+  }
+
+  function showToast(msg) {
+    ['wb-toast', 'wb-fs-toast'].forEach(function (id) {
+      var el = document.getElementById(id);
+      el.textContent   = msg;
+      el.style.display = 'block';
+    });
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      ['wb-toast', 'wb-fs-toast'].forEach(function (id) {
+        document.getElementById(id).style.display = 'none';
+      });
+    }, 1800);
+  }
+
+  function syncLang(val) {
+    document.getElementById('wb-lang').value    = val;
+    document.getElementById('wb-fs-lang').value = val;
+  }
+
+  // ── Public API ────────────────────────────────────────────────────────────
+  window.wbToggleMic = function () {
+    if (!SR) return;
+    listening = !listening;
+    if (listening) { recognition.lang = lang; recognition.start(); }
+    else           { recognition.stop(); }
+    updateMicUI();
+  };
+
+  window.wbSetLang = function (val) {
+    lang = val;
+    syncLang(val);
+    if (recognition) recognition.lang = val;
+    if (listening) recognition.stop();
+  };
+
+  window.wbFontUp = function () {
+    fontSize   = Math.min(fontSize   + 0.4, 7);
+    fsFontSize = Math.min(fsFontSize + 0.6, 10);
+    board.style.fontSize   = fontSize   + 'rem';
+    fsBoard.style.fontSize = fsFontSize + 'rem';
+  };
+
+  window.wbFontDown = function () {
+    fontSize   = Math.max(fontSize   - 0.4, 0.8);
+    fsFontSize = Math.max(fsFontSize - 0.6, 1.2);
+    board.style.fontSize   = fontSize   + 'rem';
+    fsBoard.style.fontSize = fsFontSize + 'rem';
+  };
+
+  window.wbSetTheme = function (name) {
+    theme = name;
+    applyTheme(name);
+    primeTypingColor(fontColor);
+  };
+
+  window.wbSetColor = function (hex) {
+    fontColor = hex;
+    applyColorUI();
+    primeTypingColor(hex);
+  };
+
+  window.wbClear = function () {
+    if ((board.innerHTML.trim() || fsBoard.innerHTML.trim()) && !confirm('Clear the board?')) return;
+    board.innerHTML   = '';
+    fsBoard.innerHTML = '';
+    (fsOpen ? fsBoard : board).focus();
+    primeTypingColor(fontColor);
+  };
+
+  window.wbOpenFs = function () {
+    fsBoard.innerHTML = board.innerHTML;
+    fsOverlay.style.display = 'flex';
+    fsOpen = true;
+    if (fsOverlay.requestFullscreen)
+      fsOverlay.requestFullscreen().catch(function () {});
+    else if (fsOverlay.webkitRequestFullscreen)
+      fsOverlay.webkitRequestFullscreen();
+    setTimeout(function () {
+      fsBoard.focus();
+      fsBoard.scrollTop = fsBoard.scrollHeight;
+      primeTypingColor(fontColor);
+    }, 80);
+  };
+
+  window.wbCloseFs = function () {
+    board.innerHTML = fsBoard.innerHTML;
+    fsOverlay.style.display = 'none';
+    fsOpen = false;
+    if (document.exitFullscreen)
+      document.exitFullscreen().catch(function () {});
+    else if (document.webkitExitFullscreen)
+      document.webkitExitFullscreen();
+    board.focus();
+    primeTypingColor(fontColor);
+  };
+
+  document.addEventListener('fullscreenchange', function () {
+    if (!document.fullscreenElement && fsOpen) {
+      board.innerHTML = fsBoard.innerHTML;
+      fsOverlay.style.display = 'none';
+      fsOpen = false;
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && fsOpen) window.wbCloseFs();
+  });
+
+  // ── Boot ──────────────────────────────────────────────────────────────────
+  board.style.fontSize   = fontSize   + 'rem';
+  fsBoard.style.fontSize = fsFontSize + 'rem';
+  applyTheme('black');
+  board.focus();
+  primeTypingColor(fontColor);
+
+})();
+</script>
