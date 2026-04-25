@@ -33,7 +33,9 @@ Academic website for showcasing research, recruiting graduate students, and shar
   - All book chapters have `booktitle` and `editor` fields (content to be filled)
 - [x] Footer quotes added
 - [x] Page content updated (supervision, research, tools, courses)
-- [x] Teacher Utilities suite (`/tools/teacher-utilities/`, 6 tools)
+- [x] Move Visualizer added to tools page (links to https://john6938.github.io/move-visualizer/)
+- [x] Teacher Utilities suite (`/tools/teacher-utilities/`, 7 tools)
+  - Tool 7: Virtual Board — contenteditable board with speech-to-text, per-segment font colours, three background themes (black default, green, white), colour palette + custom picker, voice colour command ("change colour to X"), language selector (EN-GB default), full-screen mode
 - [x] iCALL Suite course integrated (10 units, `/courses/icall/`)
 - [x] Error-Free Research Writing course (6 units, `/courses/error-free/`)
   - Bespoke landing page with interactive "spot the 5 errors" hover demo
@@ -110,7 +112,7 @@ aston_site/
     ├── supervision/index.njk
     ├── tools/
     │   ├── index.njk
-    │   └── teacher-utilities/    # 6 classroom tools (tool-01 … tool-06)
+    │   └── teacher-utilities/    # 7 classroom tools (tool-01 … tool-07)
     └── courses/
         ├── index.njk             # Courses listing page
         ├── demo-course/          # Template demo (1 unit)
