@@ -1,0 +1,663 @@
+---
+layout: layouts/base.njk
+title: "Applied Logic — Courses"
+description: "Can you tell good reasoning from bad? Explore the Wason Selection Task and discover the difference between formal and informal logic."
+---
+
+<style>
+/* ── Applied Logic landing page ── prefix: al- ──────────────── */
+
+.al-accent {
+  display: inline-block;
+  background: #ff8c00;
+  height: 4px; width: 50px;
+  border-radius: 2px;
+  margin-bottom: 0.9rem;
+}
+
+/* ── Progress dots ───────────────────────────────────────────── */
+.al-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+.al-dot {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: #444;
+  border: 2px solid #555;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  cursor: default;
+}
+.al-dot.al-done  { background: #ff8c00; border-color: #ff8c00; }
+.al-dot.al-cur   { background: transparent; border-color: #ff8c00; transform: scale(1.3); }
+.al-dot.al-perfect { background: #2ecc71; border-color: #2ecc71; }
+.al-prog-line {
+  flex: 1;
+  height: 2px;
+  background: #333;
+  border-radius: 1px;
+  position: relative;
+  overflow: hidden;
+}
+.al-prog-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: #ff8c00;
+  border-radius: 1px;
+  transition: width 0.4s ease;
+}
+.al-version-lbl {
+  font-size: 0.78rem;
+  color: #666;
+  margin-bottom: 1.2rem;
+}
+.al-version-lbl span { color: #ff8c00; font-weight: 700; }
+
+/* ── Badge ───────────────────────────────────────────────────── */
+.al-badge {
+  display: inline-block;
+  padding: 0.18rem 0.65rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.al-badge-abstract { background: rgba(74,144,217,0.15); color: #4a90d9; border: 1px solid rgba(74,144,217,0.35); }
+.al-badge-thematic { background: rgba(155,89,182,0.15); color: #b07fd4; border: 1px solid rgba(155,89,182,0.35); }
+
+/* ── Task panel ──────────────────────────────────────────────── */
+.al-task-panel {
+  background: #222;
+  border-radius: 12px;
+  padding: 1.8rem;
+  border: 1px solid #333;
+  animation: alSlideIn 0.35s ease;
+  max-width: 680px;
+  margin: 0 auto;
+}
+@keyframes alSlideIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.al-rule {
+  font-style: italic;
+  color: #e8e8e8;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  padding: 0.7rem 1rem;
+  background: rgba(255,140,0,0.07);
+  border-left: 3px solid #ff8c00;
+  border-radius: 0 6px 6px 0;
+  line-height: 1.6;
+}
+.al-instruction {
+  font-size: 0.82rem;
+  color: #777;
+  margin-bottom: 1.1rem;
+}
+
+/* ── Wason cards ─────────────────────────────────────────────── */
+.al-cards-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+  justify-content: center;
+}
+.al-card {
+  width: 120px;
+  aspect-ratio: 2 / 3;
+  background: #2a2a2a;
+  border: 2px solid #444;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.14s, background 0.14s, transform 0.13s, box-shadow 0.14s;
+  user-select: none;
+  padding: 0.5rem 0.3rem;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+.al-card:hover {
+  border-color: #ff8c00;
+  background: #2e2e2e;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+.al-card.al-sel {
+  border-color: #ff8c00;
+  background: rgba(255,140,0,0.1);
+  box-shadow: 0 0 0 3px rgba(255,140,0,0.3), 0 6px 18px rgba(0,0,0,0.4);
+  transform: translateY(-4px);
+}
+.al-card.al-hit  { border-color: #27ae60; background: rgba(39,174,96,0.12);  cursor: default; transform: none; box-shadow: none; }
+.al-card.al-miss { border-color: #e74c3c; background: rgba(231,76,60,0.12);  cursor: default; transform: none; box-shadow: none; }
+.al-card.al-skip { border-color: #f39c12; background: rgba(243,156,18,0.09); cursor: default; transform: none; box-shadow: none; }
+.al-card.al-fine { border-color: #383838; background: #212121; cursor: default; transform: none; box-shadow: none; opacity: 0.5; }
+
+.al-card-face {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  line-height: 1.1;
+}
+.al-card-face.al-sm { font-size: 0.9rem; font-weight: 700; line-height: 1.35; }
+.al-card-icon { font-size: 1.1rem; min-height: 1.4rem; text-align: center; }
+.al-card-exp {
+  display: none;
+  font-size: 0.65rem;
+  color: #bbb;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 0.2rem;
+}
+
+/* ── Insight ─────────────────────────────────────────────────── */
+.al-insight {
+  display: none;
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  background: rgba(255,140,0,0.05);
+  border: 1px solid rgba(255,140,0,0.2);
+  border-radius: 8px;
+  font-size: 0.84rem;
+  color: #ccc;
+  line-height: 1.65;
+}
+.al-insight strong { color: #ff8c00; }
+.al-insight em { color: #ddd; }
+
+/* ── Score ───────────────────────────────────────────────────── */
+.al-score {
+  display: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 0.6rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 5px;
+}
+.al-score.al-perfect { background: rgba(39,174,96,0.14);  color: #2ecc71; }
+.al-score.al-partial { background: rgba(243,156,18,0.14); color: #f39c12; }
+.al-score.al-wrong   { background: rgba(231,76,60,0.14);  color: #e74c3c; }
+
+/* ── Actions ─────────────────────────────────────────────────── */
+.al-actions { display: flex; gap: 0.6rem; margin-top: 1.2rem; flex-wrap: wrap; align-items: center; }
+
+/* ── Completion screen ───────────────────────────────────────── */
+.al-complete {
+  display: none;
+  background: #222;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  border: 1px solid #333;
+  text-align: center;
+  animation: alSlideIn 0.4s ease;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.al-complete h3 { color: #ff8c00; font-size: 1.6rem; margin-bottom: 0.5rem; }
+.al-stars { font-size: 2rem; letter-spacing: 0.2rem; margin: 0.75rem 0; }
+.al-final-msg { color: #ccc; font-size: 0.92rem; line-height: 1.7; margin-bottom: 1.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+.al-result-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.al-result-chip {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid;
+}
+
+/* ── About cards ─────────────────────────────────────────────── */
+.al-about-card {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1.2rem;
+  height: 100%;
+}
+</style>
+
+{# ── Page header ──────────────────────────────────────────────── #}
+<section class="page-header">
+  <div class="container">
+    <a href="{{ '/courses/' | url }}" class="course-back-link">
+      <i class="bi bi-arrow-left"></i> Courses
+    </a>
+    <h1>Applied Logic</h1>
+    <p class="lead" style="color:#e0e0e0;">
+      Can you tell good reasoning from bad? Discover why the same logical puzzle is almost
+      impossible in the abstract — and almost trivial in the right context.
+    </p>
+  </div>
+</section>
+
+<div class="container py-4">
+
+  {# ── Intro ──────────────────────────────────────────────────── #}
+  <div class="row mb-5 g-4">
+    <div class="col-lg-7">
+      <div class="al-accent"></div>
+      <h2>The Wason Selection Task</h2>
+      <p>
+        Devised by psychologist Peter Wason in 1966, the selection task is one of the most
+        replicated and debated experiments in the psychology of reasoning. You are shown four
+        cards and a conditional rule of the form <em>"If P, then Q."</em>
+        Your task: select the minimum set of cards to turn over in order to test whether
+        the rule could be false.
+      </p>
+      <p>
+        It sounds straightforward. But decades of research show that most people — including
+        highly educated adults — choose the wrong cards when the problem is stated in abstract
+        terms. Present the same logical structure in a familiar real-world scenario and
+        performance jumps dramatically. This is the <strong style="color:#ff8c00;">content effect</strong>,
+        and it is the central puzzle this course investigates.
+      </p>
+    </div>
+    <div class="col-lg-5">
+      <div class="card p-4" style="background:#1e1e1e; border-color:#333; height:100%;">
+        <h3 class="fs-6 fw-bold mb-3" style="color:#ff8c00;">
+          <i class="bi bi-controller me-2"></i>How to play
+        </h3>
+        <ol style="color:#ccc; font-size:0.87rem; line-height:2.1; margin:0; padding-left:1.2rem;">
+          <li>Read the conditional rule.</li>
+          <li>Click the cards you think must be turned over.</li>
+          <li>Press <strong style="color:#fff;">Check</strong> to see if you are right.</li>
+          <li>Read the explanation, then move to the next version.</li>
+        </ol>
+        <hr style="border-color:#333; margin:1rem 0;">
+        <p style="color:#888; font-size:0.8rem; margin:0;">
+          <i class="bi bi-lightbulb me-1" style="color:#ff8c00;"></i>
+          The key question is always: <em>which cards could prove the rule false?</em>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {# ── Interactive section ────────────────────────────────────── #}
+  <div class="mb-5" style="max-width:680px; margin-left:auto; margin-right:auto;">
+
+    <h2 class="mb-3 text-center">Try it yourself</h2>
+
+    {# Progress #}
+    <div class="al-progress" id="al-progress">
+      <span class="al-dot al-cur" id="al-d0"></span>
+      <div class="al-prog-line"><div class="al-prog-fill" id="al-fill" style="width:0%"></div></div>
+      <span class="al-dot" id="al-d1"></span>
+      <div class="al-prog-line"><div class="al-prog-fill" id="al-fill2" style="width:0%"></div></div>
+      <span class="al-dot" id="al-d2"></span>
+      <div class="al-prog-line"><div class="al-prog-fill" id="al-fill3" style="width:0%"></div></div>
+      <span class="al-dot" id="al-d3"></span>
+    </div>
+    <p class="al-version-lbl">
+      Version <span id="al-cur-num">1</span> of 4 &mdash; <span id="al-type-lbl"></span>
+    </p>
+
+    {# Task display #}
+    <div id="al-task-area"></div>
+
+    {# Completion screen #}
+    <div class="al-complete" id="al-complete">
+      <h3 id="al-complete-title">All done!</h3>
+      <div class="al-stars" id="al-stars"></div>
+      <p class="al-final-msg" id="al-final-msg"></p>
+      <div class="al-result-row" id="al-result-row"></div>
+      <div class="mt-2" style="color:#888; font-size:0.82rem; max-width:460px; margin:0 auto 1.5rem;">
+        <strong style="color:#ff8c00;">The key insight:</strong>
+        The abstract and thematic tasks are logically identical — yet most people do far
+        better on the thematic versions. This gap between <em>formal</em> correctness and
+        <em>intuitive</em> reasoning is what this course is all about.
+      </div>
+      <button class="tool-btn" onclick="alRestart()">
+        <i class="bi bi-arrow-repeat me-1"></i> Play again
+      </button>
+    </div>
+
+  </div>
+
+  {# ── About the course ───────────────────────────────────────── #}
+  <div class="row g-4 mb-5">
+    <div class="col-lg-8">
+      <h2>About This Course</h2>
+      <p>
+        <em>Applied Logic</em> introduces the fundamental tools of both formal and informal
+        reasoning. Starting from the Wason Selection Task — one of the most studied problems
+        in cognitive science — the course builds progressively from conditional logic and
+        truth tables through to informal fallacies, argument structure, and real-world
+        critical thinking. The aim is not just to understand logic abstractly, but to
+        apply it: to recognise good arguments, expose bad ones, and reason more clearly
+        in academic, professional, and everyday contexts.
+      </p>
+      <div class="row g-3 mt-1">
+        <div class="col-sm-6">
+          <div class="al-about-card">
+            <div style="color:#4a90d9; font-size:1.4rem; margin-bottom:0.5rem;">
+              <i class="bi bi-grid-3x3"></i>
+            </div>
+            <h3 class="fs-6 fw-bold" style="color:#4a90d9;">Formal Logic</h3>
+            <p style="color:#aaa; font-size:0.84rem; margin:0;">
+              Conditional statements, truth tables, validity and soundness,
+              propositional logic — the rigorous tools for evaluating arguments.
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="al-about-card">
+            <div style="color:#b07fd4; font-size:1.4rem; margin-bottom:0.5rem;">
+              <i class="bi bi-people"></i>
+            </div>
+            <h3 class="fs-6 fw-bold" style="color:#b07fd4;">Informal Logic</h3>
+            <p style="color:#aaa; font-size:0.84rem; margin:0;">
+              Fallacies, argument mapping, cognitive bias, and the role of context —
+              the practical tools for reasoning in the real world.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card p-4 h-100" style="background:#1e1e1e; border-color:#444;">
+        <h3 class="fs-6 fw-bold mb-2">Course Units</h3>
+        <p style="color:#aaa; font-size:0.84rem; margin-bottom:0.75rem;">
+          Units are currently in development. The course will cover:
+        </p>
+        <ul style="color:#ccc; font-size:0.84rem; line-height:2; padding-left:1.2rem; margin:0;">
+          <li>Conditional statements — If P then Q</li>
+          <li>The Wason Selection Task × 4</li>
+          <li>Falsification vs confirmation</li>
+          <li>Truth tables and validity</li>
+          <li>Social contract and context</li>
+          <li>Informal fallacies</li>
+          <li>Argument mapping</li>
+          <li>Applied reasoning in context</li>
+        </ul>
+        <div class="mt-3">
+          <span class="badge" style="background:rgba(255,140,0,0.12); color:#ff8c00;
+                border:1px solid rgba(255,140,0,0.3); font-size:0.75rem; padding:0.4rem 0.8rem;">
+            <i class="bi bi-tools me-1"></i> Under Construction
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+
+  // ── Task data (cards pre-shuffled so correct positions vary per task) ─────
+  //   Correct positions: Task1=(1,2)  Task2=(0,3)  Task3=(1,3)  Task4=(0,2)
+  var TASKS = [
+    {
+      id: 't1', type: 'abstract', label: 'Abstract',
+      rule: 'If a card has a vowel on one side, then it has an even number on the other side.',
+      cards: [
+        { face: 'K',  sm: false, flip: false,
+          hit:  'Correct — leave K. The rule only constrains vowels; a consonant can have any number on the back.',
+          miss: 'K does not need to be flipped. The rule only applies to vowels — whatever is on the back is irrelevant.' },
+        { face: 'E',  sm: false, flip: true,
+          hit:  'Correct — flip E. A vowel is showing; the rule requires an even number on the back.',
+          miss: 'You should flip E. It shows a vowel — you need to verify the back is even.' },
+        { face: '7',  sm: false, flip: true,
+          hit:  'Correct — flip 7. An odd number is showing; if there is a vowel on the back, the rule is violated.',
+          miss: 'You should flip 7. If a vowel is hiding on the back, the rule is broken. This is the card most people overlook.' },
+        { face: '4',  sm: false, flip: false,
+          hit:  'Correct — leave 4. Even numbers can appear behind consonants without breaking the rule.',
+          miss: '4 does not need to be flipped. The rule says vowels must pair with even numbers — not that even numbers must pair with vowels. Flipping 4 confirms but cannot falsify.' }
+      ],
+      insight: 'The correct answer is <strong>E and 7</strong> — positions 2 and 3. Most people choose <strong>E and 4</strong>. Selecting 4 feels right, but it can only confirm the rule, never break it. Selecting 7 is the logical move: an odd number paired with a vowel would be the fatal counterexample. The bias toward confirmation over falsification is one of the most robust findings in cognitive psychology.'
+    },
+    {
+      id: 't2', type: 'abstract', label: 'Abstract',
+      rule: 'If a card shows a circle on one side, then it shows red on the other side.',
+      cards: [
+        { face: '○',    sm: false, flip: true,
+          hit:  'Correct — flip the circle. The rule requires red on the back; you need to check this holds.',
+          miss: 'You should flip the circle. The rule requires red on the back of every circle.' },
+        { face: 'RED',  sm: true,  flip: false,
+          hit:  'Correct — leave the red card. Red can appear behind a square without breaking the rule.',
+          miss: 'The red card does not need to be flipped. Red paired with a square is fine — the rule says circles must be red, not that red must be circles.' },
+        { face: '□',    sm: false, flip: false,
+          hit:  'Correct — leave the square. The rule says nothing about what colour squares must have on the back.',
+          miss: 'The square does not need to be flipped. The rule only constrains circles.' },
+        { face: 'BLUE', sm: true,  flip: true,
+          hit:  'Correct — flip the blue card. If a circle is on the back, the rule is violated.',
+          miss: 'You should flip blue. If a circle is hiding on the back, the rule is broken. This is the not-Q card that logic demands.' }
+      ],
+      insight: 'The correct answer is the <strong>circle and the blue card</strong> — the same logical structure as the vowel–number task. The circle is the P-card and blue is the not-Q card. Many people still choose red instead of blue, repeating the same confirmation error. Recognising that "not-Q" is the critical falsifier — not Q itself — is the core insight of conditional logic.'
+    },
+    {
+      id: 't3', type: 'thematic', label: 'Thematic',
+      rule: 'If a person is drinking beer, then they must be 18 years of age or over.',
+      cards: [
+        { face: 'Cola', sm: true,  flip: false,
+          hit:  'Correct — no need to check the cola drinker. The rule only restricts beer consumption.',
+          miss: 'The cola drinker does not need to be checked. Someone under 18 is perfectly allowed to drink cola.' },
+        { face: 'Beer', sm: true,  flip: true,
+          hit:  'Correct — check the beer drinker\'s age. If they are under 18, the rule is violated.',
+          miss: 'You should check the beer drinker to confirm they are old enough.' },
+        { face: '22',   sm: false, flip: false,
+          hit:  'Correct — no need to check the 22-year-old. They are old enough to drink anything.',
+          miss: 'No need to check the 22-year-old. Whatever they are drinking is within the rules.' },
+        { face: '16',   sm: false, flip: true,
+          hit:  'Correct — check what the 16-year-old is drinking. If it is beer, the rule is violated.',
+          miss: 'You should check the 16-year-old. If they are drinking beer, the rule is broken.' }
+      ],
+      insight: 'Most people find this version <strong>easy</strong> — they immediately identify beer and 16 as the critical cards. Yet the logical structure is <em>identical</em> to the abstract tasks you just tried. The social context (a rule we recognise and enforce in everyday life) makes the correct answer feel obvious. This dramatic difference in performance is called the <strong>content effect</strong>.'
+    },
+    {
+      id: 't4', type: 'thematic', label: 'Thematic',
+      rule: 'If a letter is sealed, then it must carry a first-class stamp.',
+      cards: [
+        { face: '2nd',    sm: true, flip: true,
+          hit:  'Correct — check the second-class stamp. If the envelope on the back is sealed, the rule is violated.',
+          miss: 'You should check the second-class stamp. If it is on a sealed letter, the rule is broken.' },
+        { face: 'Open',   sm: true, flip: false,
+          hit:  'Correct — no need to check the open letter. The rule only applies to sealed envelopes.',
+          miss: 'Open letters are not covered by the rule — whatever stamp they carry is irrelevant.' },
+        { face: 'Sealed', sm: true, flip: true,
+          hit:  'Correct — check the sealed letter. It must have a first-class stamp; if not, the rule is violated.',
+          miss: 'You should check the sealed letter to confirm it has the correct stamp.' },
+        { face: '1st',    sm: true, flip: false,
+          hit:  'Correct — no need to check the first-class stamp. It is fine on either sealed or open letters.',
+          miss: 'No need to check the first-class stamp. A first-class stamp on an open letter does not break the rule.' }
+      ],
+      insight: 'Based on Wason\'s own postal-rule study (1972), most people correctly choose <strong>2nd class</strong> and <strong>Sealed</strong>. Familiar institutional rules unlock the logic that abstract symbols obscure. The course asks: is this because familiarity reduces cognitive load, or because certain rule types — <em>social contracts</em>, obligations, permissions — activate a dedicated reasoning module in the brain?'
+    }
+  ];
+
+  // ── State ─────────────────────────────────────────────────────────────────
+  var cur      = 0;
+  var selected = [];
+  var checked  = false;
+  var perfects = [false, false, false, false];
+
+  // ── Render current task ───────────────────────────────────────────────────
+  function render() {
+    var t   = TASKS[cur];
+    selected = [];
+    checked  = false;
+
+    // Update progress dots
+    for (var i = 0; i < 4; i++) {
+      var d = document.getElementById('al-d' + i);
+      d.className = 'al-dot';
+      if (i < cur)  d.classList.add(perfects[i] ? 'al-perfect' : 'al-done');
+      if (i === cur) d.classList.add('al-cur');
+    }
+    // Progress fills (fill segment before current dot)
+    ['al-fill','al-fill2','al-fill3'].forEach(function(id, idx) {
+      document.getElementById(id).style.width = cur > idx ? '100%' : '0%';
+    });
+
+    document.getElementById('al-cur-num').textContent = cur + 1;
+    document.getElementById('al-type-lbl').textContent = t.label + ' version';
+
+    var bc = t.type === 'abstract' ? 'al-badge-abstract' : 'al-badge-thematic';
+    var cardsHTML = t.cards.map(function(c, i) {
+      var fc = c.sm ? 'al-card-face al-sm' : 'al-card-face';
+      return '<div class="al-card" id="alc-' + i + '" onclick="alToggle(' + i + ')">'
+        + '<div class="' + fc + '">' + c.face + '</div>'
+        + '<div class="al-card-icon" id="alci-' + i + '"></div>'
+        + '<div class="al-card-exp" id="alce-' + i + '"></div>'
+        + '</div>';
+    }).join('');
+
+    var html = '<div class="al-task-panel">'
+      + '<span class="al-badge ' + bc + '">' + t.label + '</span>'
+      + '<div class="al-rule">&ldquo;' + t.rule + '&rdquo;</div>'
+      + '<p class="al-instruction">Select every card that must be turned over to test this rule, then press Check.</p>'
+      + '<div class="al-cards-row">' + cardsHTML + '</div>'
+      + '<div class="al-score" id="al-score"></div>'
+      + '<div class="al-insight" id="al-insight">' + t.insight + '</div>'
+      + '<div class="al-actions">'
+      + '<button class="tool-btn" id="al-check-btn" onclick="alCheck()" style="font-size:0.88rem; padding:0.4rem 1.2rem;">Check</button>'
+      + '<button class="btn btn-outline-secondary btn-sm" id="al-retry-btn" onclick="alRetry()" style="display:none; font-size:0.82rem;">Try again</button>'
+      + (cur < 3
+          ? '<button class="btn btn-sm" id="al-next-btn" onclick="alNext()" style="display:none; background:#ff8c00; color:#000; font-weight:600; font-size:0.88rem; padding:0.4rem 1.2rem; margin-left:auto;">Next version <i class=\'bi bi-arrow-right ms-1\'></i></button>'
+          : '<button class="btn btn-sm" id="al-next-btn" onclick="alFinish()" style="display:none; background:#ff8c00; color:#000; font-weight:600; font-size:0.88rem; padding:0.4rem 1.2rem; margin-left:auto;">See results <i class=\'bi bi-flag ms-1\'></i></button>')
+      + '</div>'
+      + '</div>';
+
+    document.getElementById('al-task-area').innerHTML = html;
+  }
+
+  // ── Toggle card selection ─────────────────────────────────────────────────
+  window.alToggle = function(idx) {
+    if (checked) return;
+    var pos = selected.indexOf(idx);
+    if (pos === -1) selected.push(idx); else selected.splice(pos, 1);
+    document.getElementById('alc-' + idx).classList.toggle('al-sel', selected.indexOf(idx) !== -1);
+  };
+
+  // ── Check ─────────────────────────────────────────────────────────────────
+  window.alCheck = function() {
+    checked = true;
+    var t = TASKS[cur];
+    var hits = 0, totalFlip = 0, wrongSel = 0;
+
+    t.cards.forEach(function(c, i) {
+      var wasSel = selected.indexOf(i) !== -1;
+      var card = document.getElementById('alc-' + i);
+      var icon = document.getElementById('alci-' + i);
+      var exp  = document.getElementById('alce-' + i);
+      card.classList.remove('al-sel');
+      exp.style.display = 'block';
+      if (c.flip) totalFlip++;
+
+      if (c.flip && wasSel) {
+        card.classList.add('al-hit');
+        icon.innerHTML = '<span style="color:#2ecc71;font-size:1.2rem;">&#10003;</span>';
+        exp.textContent = c.hit;
+        hits++;
+      } else if (!c.flip && wasSel) {
+        card.classList.add('al-miss');
+        icon.innerHTML = '<span style="color:#e74c3c;font-size:1.2rem;">&#10007;</span>';
+        exp.textContent = c.miss;
+        wrongSel++;
+      } else if (c.flip && !wasSel) {
+        card.classList.add('al-skip');
+        icon.innerHTML = '<span style="color:#f39c12;font-size:1rem;">!</span>';
+        exp.textContent = c.miss;
+      } else {
+        card.classList.add('al-fine');
+        exp.textContent = c.hit;
+      }
+    });
+
+    var perfect = (hits === totalFlip && wrongSel === 0);
+    perfects[cur] = perfect;
+
+    var scoreEl = document.getElementById('al-score');
+    if (perfect) {
+      scoreEl.className   = 'al-score al-perfect';
+      scoreEl.textContent = '✓ Perfect — you found exactly the right cards.';
+    } else if (hits > 0 && wrongSel === 0) {
+      scoreEl.className   = 'al-score al-partial';
+      scoreEl.textContent = 'Partially correct — you found ' + hits + ' of ' + totalFlip + ' cards, with no wrong choices.';
+    } else {
+      scoreEl.className   = 'al-score al-wrong';
+      scoreEl.textContent = 'Not quite — see the explanation for each card below.';
+    }
+    scoreEl.style.display = 'block';
+    document.getElementById('al-insight').style.display = 'block';
+    document.getElementById('al-check-btn').style.display = 'none';
+    document.getElementById('al-retry-btn').style.display = 'inline-block';
+    document.getElementById('al-next-btn').style.display  = 'inline-block';
+  };
+
+  // ── Retry current task ────────────────────────────────────────────────────
+  window.alRetry = function() { render(); };
+
+  // ── Next task ─────────────────────────────────────────────────────────────
+  window.alNext = function() {
+    cur++;
+    render();
+    document.getElementById('al-task-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  // ── Show completion screen ────────────────────────────────────────────────
+  window.alFinish = function() {
+    var count = perfects.filter(Boolean).length;
+    var stars = ['','⭐','⭐⭐','⭐⭐⭐','⭐⭐⭐⭐'][count] || '';
+
+    var msgs = [
+      'The tasks are designed to be hard — particularly the abstract versions. Read the insights and try again to sharpen your reasoning.',
+      'You got one perfect. The abstract versions catch almost everyone. Try again and focus on the not-Q card.',
+      'Two perfects — solid reasoning. Can you spot the pattern across all four versions?',
+      'Three perfects — excellent. One more and you have mastered the selection task.',
+      'Four out of four — outstanding. You reasoned like a logician on every version.'
+    ];
+
+    document.getElementById('al-complete-title').textContent =
+      count === 4 ? 'Flawless reasoning!' : count >= 2 ? 'Well done!' : 'Good effort!';
+    document.getElementById('al-stars').textContent = stars;
+    document.getElementById('al-final-msg').textContent = msgs[count];
+
+    // Per-task chips
+    var chips = TASKS.map(function(t, i) {
+      var ok = perfects[i];
+      return '<span class="al-result-chip" style="background:' + (ok ? 'rgba(39,174,96,0.12)' : 'rgba(80,80,80,0.2)') + '; color:' + (ok ? '#2ecc71' : '#888') + '; border-color:' + (ok ? '#27ae60' : '#444') + ';">'
+        + (ok ? '✓ ' : '') + t.label + ' ' + (i + 1)
+        + '</span>';
+    }).join('');
+    document.getElementById('al-result-row').innerHTML = chips;
+
+    // Update final dot
+    var last = document.getElementById('al-d3');
+    last.className = 'al-dot ' + (perfects[3] ? 'al-perfect' : 'al-done');
+    document.getElementById('al-fill3').style.width = '100%';
+
+    document.getElementById('al-task-area').style.display = 'none';
+    document.getElementById('al-complete').style.display  = 'block';
+    document.getElementById('al-complete').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  // ── Restart ───────────────────────────────────────────────────────────────
+  window.alRestart = function() {
+    cur = 0;
+    perfects = [false, false, false, false];
+    document.getElementById('al-complete').style.display  = 'none';
+    document.getElementById('al-task-area').style.display = 'block';
+    render();
+  };
+
+  // ── Boot ──────────────────────────────────────────────────────────────────
+  render();
+
+})();
+</script>
