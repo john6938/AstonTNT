@@ -13,6 +13,6 @@
   ],
   "quote": "&ldquo;No one wants to read excessively long studies.&rdquo; &mdash; Faber (2017)",
   "courseTools": [
-    { "label": "Error Detector", "url": "https://error-detector.herokuapp.com/", "icon": "search" }
+    { "label": "Error Detector", "url": "https://john6938.github.io/error-detector-compsci/", "icon": "search" }
   ]
 }
