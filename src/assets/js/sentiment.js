@@ -7,7 +7,10 @@ let isLoading = false;
 // DOM elements
 const inputEl = document.getElementById('demo-input');
 const analyzeBtn = document.getElementById('analyze-btn');
+const sampleBtn = document.getElementById('sample-btn');
 const resultContainer = document.getElementById('result-container');
+
+const SAMPLE_TEXT = "Learning natural language processing opens incredible opportunities for students and society alike. It empowers people to build tools that break down language barriers, improve communication, and make information more accessible to everyone. The skills gained are genuinely exciting and deeply rewarding.";
 
 // Initialize on first interaction
 async function initModel() {
@@ -130,6 +133,11 @@ function updateUI(state, data) {
 
 // Event listeners
 analyzeBtn.addEventListener('click', analyze);
+
+sampleBtn.addEventListener('click', () => {
+  inputEl.value = SAMPLE_TEXT;
+  updateUI('ready', '');
+});
 
 // Allow Enter key to trigger analysis (Shift+Enter for new line)
 inputEl.addEventListener('keydown', (e) => {
