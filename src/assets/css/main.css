@@ -69,6 +69,14 @@ body {
   opacity: 0.9;
 }
 
+/* Word Cloud */
+.wordcloud-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  color: #3B3B3B;
+}
+
 /* Sentiment Demo */
 .demo-card {
   background: #808080;
