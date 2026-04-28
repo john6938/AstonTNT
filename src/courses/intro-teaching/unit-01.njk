@@ -1,0 +1,233 @@
+---
+unit: 1
+unitTitle: Focus on Learners
+title: "Unit 1: Focus on Learners — Introduction to University Teaching"
+courseUnit: true
+objectives:
+  - Apply adult learning principles to university teaching contexts
+  - Identify and respond to diverse learner characteristics and needs
+  - Recognise cultural expectations and communication preferences in your classroom
+  - Design activities that accommodate different learning preferences
+  - Select appropriate motivation and engagement strategies for adult learners
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Overview ═══════════════════════════════════════════ #}
+
+{% call activitySection(1, "Course Welcome & Context", "book") %}
+<p>This course introduces evidence-based university teaching principles designed for new university teachers across all disciplines. Whether you teach sciences, humanities, social sciences, or professional subjects, understanding your learners is fundamental to effective teaching.</p>
+<p>The course emphasises practical applications and interactive learning. You will explore real teaching scenarios, develop learner-responsive strategies, and create inclusive learning environments. This unit focuses specifically on understanding the diverse learners you will encounter in university settings.</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Adult Learner Characteristics ══════════════════════ #}
+
+{% call activitySection(2, "1.1 Adult Learner Characteristics", "people") %}
+<p>Adult learners arrive with extensive life and professional experience, a strong need for relevance, and a preference for self-directed study. They value practical application of concepts, expect clear goals, and appreciate opportunities to reflect on how new learning integrates with existing knowledge. Recognising these traits enables instructors to design activities that leverage learners' backgrounds and promote intrinsic motivation.</p>
+
+<div class="accordion mt-3" id="u01-acc-2">
+  {% call accordion("u01-2a", "What is andragogy?") %}
+  <p>Andragogy is the theory of adult learning developed by Malcolm Knowles. It holds that adults are self-directed, bring prior experience to learning, need to see the relevance of what they learn, and are motivated by internal goals. It contrasts with <em>pedagogy</em>, which describes teacher-directed, content-focused approaches suited to children.</p>
+  {% endcall %}
+  {% call accordion("u01-2b", "How does andragogy change classroom practice?") %}
+  <p>In practice, andragogical principles mean: linking new content to learners' existing knowledge, explaining why each topic matters, offering some choice in how tasks are completed, and using problem-based tasks rooted in real professional scenarios rather than abstract exercises.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-3"><strong>Scenario:</strong> A learner asks, "Why do we need to study this theory — can't we just go straight to practice?" What is the best response?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-primary btn-sm" onclick="u01showResp('r2','theory')">Explain the theory first</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u01showResp('r2','connect')">Connect theory to their practice</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u01showResp('r2','skip')">Skip theory and proceed</button>
+</div>
+<div id="r2" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Learner Differences ═══════════════════════════════ #}
+
+{% call activitySection(3, "1.2 Learner Differences", "diagram-2") %}
+<p>Every classroom comprises individuals with distinct cognitive abilities, cultural backgrounds, and affective needs. Cognitive differences may manifest as varied processing speeds or problem-solving approaches, while affective factors include confidence and anxiety. Culturally, learners hold diverse communication norms and expectations. Effective teaching anticipates these differences and incorporates flexible strategies — such as differentiated tasks and inclusive language — to ensure equitable participation.</p>
+
+<div class="accordion mt-3" id="u01-acc-3">
+  {% call accordion("u01-3a", "Cognitive differences") %}
+  <p>Learners vary in processing speed, working memory capacity, prior knowledge, and preferred problem-solving strategies. Support strategies include: providing worked examples before independent tasks, allowing extra time for written responses, and using visual organisers alongside verbal explanation.</p>
+  {% endcall %}
+  {% call accordion("u01-3b", "Affective differences") %}
+  <p>Anxiety, confidence, and motivation affect learning. High-anxiety learners benefit from low-stakes practice opportunities, clear expectations, and feedback that emphasises progress. Building psychological safety in the classroom encourages risk-taking and honest participation.</p>
+  {% endcall %}
+  {% call accordion("u01-3c", "Cultural differences") %}
+  <p>Communication norms vary significantly across cultures. Some learners prefer to speak only when directly invited; others expect open, spontaneous debate. Providing a range of participation modes (written responses, small-group discussion, whole-class sharing) accommodates diverse preferences.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Cultural Profiles ══════════════════════════════════ #}
+
+{% set cultureTabs = [
+  {id: "hc", label: "High-context cultures"},
+  {id: "lc", label: "Low-context cultures"},
+  {id: "strategies", label: "Inclusive strategies"}
+] %}
+
+{% call activitySection(4, "1.3 Learner Profiles & Cultural Expectations", "globe") %}
+<p>In high-context cultures such as Japan or Korea, learners often exhibit high respect for instructors, group-oriented behaviours, and a preference for structured guidance. They may hesitate to speak up without explicit invitation. Learners from more individualistic cultures may expect open debate and critical discussion. Understanding such profiles helps instructors frame activities and set clear participation norms.</p>
+
+{% call tabSet("u01-culture-tabs", cultureTabs) %}
+  <div class="tab-pane fade show active" id="u01-culture-tabs-hc" role="tabpanel">
+    <ul>
+      <li>Indirect communication; face-saving is important</li>
+      <li>Wait for explicit invitation before speaking</li>
+      <li>Written reflection before discussion aids participation</li>
+      <li>Hierarchical relationships respected; address instructor formally</li>
+    </ul>
+    <p class="small" style="color:#aaa;">Examples: Japan, Korea, China</p>
+  </div>
+  <div class="tab-pane fade" id="u01-culture-tabs-lc" role="tabpanel">
+    <ul>
+      <li>Direct, low-context communication is the norm</li>
+      <li>Immediate engagement and spontaneous debate expected</li>
+      <li>Individual contribution is valued and encouraged</li>
+      <li>Questioning authority is acceptable and encouraged</li>
+    </ul>
+    <p class="small" style="color:#aaa;">Examples: USA, UK, Australia</p>
+  </div>
+  <div class="tab-pane fade" id="u01-culture-tabs-strategies" role="tabpanel">
+    <ul>
+      <li>Offer multiple participation modes (written, paired, whole-class)</li>
+      <li>Provide think time before calling on individuals</li>
+      <li>Use think-pair-share to build confidence before class sharing</li>
+      <li>Explicitly invite participation rather than waiting for volunteers</li>
+    </ul>
+  </div>
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 5 — Learning Preferences ══════════════════════════════ #}
+
+{% set varkTabs = [
+  {id: "visual", label: "Visual"},
+  {id: "auditory", label: "Auditory"},
+  {id: "kinesthetic", label: "Kinesthetic"},
+  {id: "readwrite", label: "Read/Write"}
+] %}
+
+{% call activitySection(5, "1.4 Learning Preferences & Styles", "palette") %}
+<p>Learners differ in how they best absorb information — visual, auditory, or kinaesthetic modes — though recent research cautions against rigid "style" labelling. A balanced instructional design employs a mix of presentations, discussions, hands-on tasks, and multimedia. By varying input channels and allowing choice, instructors accommodate preferences while reinforcing content through multiple pathways.</p>
+
+{% call tabSet("u01-vark-tabs", varkTabs) %}
+  <div class="tab-pane fade show active" id="u01-vark-tabs-visual" role="tabpanel">
+    <p><strong>Visual learners</strong> benefit from diagrams, flowcharts, concept maps, colour coding, and structured visual layouts. Present key frameworks as a diagram before explaining verbally.</p>
+  </div>
+  <div class="tab-pane fade" id="u01-vark-tabs-auditory" role="tabpanel">
+    <p><strong>Auditory learners</strong> engage through verbal explanation, discussion, debate, and listening to examples. Use paired discussion and verbal recap to reinforce content.</p>
+  </div>
+  <div class="tab-pane fade" id="u01-vark-tabs-kinesthetic" role="tabpanel">
+    <p><strong>Kinaesthetic learners</strong> prefer hands-on tasks, role-play, simulation, and learning through doing. Build in practical activities and case studies alongside theoretical input.</p>
+  </div>
+  <div class="tab-pane fade" id="u01-vark-tabs-readwrite" role="tabpanel">
+    <p><strong>Read/write learners</strong> prefer written notes, essays, reading, and lists. Provide reading materials, note-taking frameworks, and written reflection tasks.</p>
+  </div>
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 6 — Motivation & Engagement ═══════════════════════════ #}
+
+{% call activitySection(6, "1.5 Learner Motivation & Engagement Strategies", "rocket") %}
+<p>Motivation derives from both intrinsic interests (mastery, personal growth) and extrinsic factors (grades, career advancement). To foster engagement, instructors can connect material to real-world challenges, offer autonomy in project topics, and provide timely, constructive feedback. Establishing a supportive environment and recognising achievements helps sustain learners' commitment to rigorous study.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> You notice several students checking their phones during your lecture. What is your best approach?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-primary btn-sm" onclick="u01showResp('r6','direct')">Address it directly</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u01showResp('r6','interactive')">Make content interactive</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u01showResp('r6','relevance')">Connect to real-world</button>
+</div>
+<div id="r6" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Test your understanding of learner-focused teaching.</p>
+
+{% call quizMC("u01-q1", "What is a key characteristic of adult learners according to andragogy?", 1,
+   "Adult learners need to see the relevance of what they are learning. They are self-directed and motivated by practical application, not passive reception of content.") %}
+  <label class="quiz-option"><input type="radio" name="u01-q1" value="0"> They prefer teacher-directed learning</label>
+  <label class="quiz-option"><input type="radio" name="u01-q1" value="1"> They need to see relevance in their learning</label>
+  <label class="quiz-option"><input type="radio" name="u01-q1" value="2"> They learn best through memorisation</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("u01-q2", "Which factor is most important when addressing learner differences?", 1,
+   "Flexible strategies accommodate the full range of cognitive, affective, and cultural differences in a diverse cohort.") %}
+  <label class="quiz-option"><input type="radio" name="u01-q2" value="0"> Treating all students exactly the same</label>
+  <label class="quiz-option"><input type="radio" name="u01-q2" value="1"> Using flexible strategies for diverse needs</label>
+  <label class="quiz-option"><input type="radio" name="u01-q2" value="2"> Focusing only on cognitive differences</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u01-q3", "In high-context cultures like Japan, learners often prefer:", 1,
+   "High-context culture learners typically need an explicit invitation to speak rather than volunteering spontaneously in public.") %}
+  <label class="quiz-option"><input type="radio" name="u01-q3" value="0"> Immediate verbal participation</label>
+  <label class="quiz-option"><input type="radio" name="u01-q3" value="1"> Explicit invitation before speaking</label>
+  <label class="quiz-option"><input type="radio" name="u01-q3" value="2"> Individual competitive activities</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u01-q4", "What is the best approach to accommodate different learning preferences?", 1,
+   "Using multiple modalities ensures all learners can access content through their preferred channel while reinforcing learning across different pathways.") %}
+  <label class="quiz-option"><input type="radio" name="u01-q4" value="0"> Focus on one preferred learning style</label>
+  <label class="quiz-option"><input type="radio" name="u01-q4" value="1"> Use multiple modalities in instruction</label>
+  <label class="quiz-option"><input type="radio" name="u01-q4" value="2"> Ask students to adapt to your style</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u01-q5", "Which motivation strategy is most effective for adult learners?", 1,
+   "Connecting learning to real-world applications provides intrinsic motivation by showing practical relevance — the most powerful driver for adult learners.") %}
+  <label class="quiz-option"><input type="radio" name="u01-q5" value="0"> External rewards and penalties</label>
+  <label class="quiz-option"><input type="radio" name="u01-q5" value="1"> Connecting learning to real-world applications</label>
+  <label class="quiz-option"><input type="radio" name="u01-q5" value="2"> Competitive rankings among learners</label>
+{% endcall %}
+</div>
+
+<p class="mt-4 small" style="color:#aaa;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-02') | url }}">Unit 2: Teachers and Context</a> when ready.
+</p>
+{% endcall %}
+
+
+{% block scripts %}
+<script>
+(function () {
+  var RESP = {
+    r2: {
+      theory: '<strong>Explain the theory first:</strong> A brief explanation helps, but connecting it to practice is more persuasive for adult learners who are motivated by relevance.',
+      connect: '<strong>Connect theory to their practice:</strong> Excellent approach. Show how the theory explains something from their own experience, then demonstrate its practical value. This is the most effective strategy for adult learners.',
+      skip: '<strong>Skip theory and proceed:</strong> This misses an opportunity to build understanding. Practice without conceptual grounding tends to produce shallow learning.'
+    },
+    r6: {
+      direct: '<strong>Direct approach:</strong> Can be effective for serious disruption, but risks confrontation. Better as a last resort after other strategies have been tried.',
+      interactive: '<strong>Interactive approach:</strong> Strong choice. Switching to think-pair-share or a quick question re-engages students through active participation and addresses the root cause.',
+      relevance: '<strong>Real-world connection:</strong> Excellent. Explicitly connecting content to students\u2019 goals is one of the most powerful motivational tools for adult learners.'
+    }
+  };
+  window.u01showResp = function (id, key) {
+    var el = document.getElementById(id);
+    if (el && RESP[id] && RESP[id][key]) {
+      el.innerHTML = '<p class="mb-0">' + RESP[id][key] + '</p>';
+      el.style.display = 'block';
+    }
+  };
+}());
+</script>
+{% endblock %}

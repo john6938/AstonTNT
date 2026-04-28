@@ -1,0 +1,243 @@
+---
+unit: 5
+unitTitle: Aims, Objectives and Outcomes
+title: "Unit 5: Aims, Objectives and Outcomes — Introduction to University Teaching"
+courseUnit: true
+objectives:
+  - Distinguish between aims, objectives, and learning outcomes
+  - Apply Bloom's taxonomy to select appropriate action verbs
+  - Write SMART objectives that are specific, measurable, and achievable
+  - Align learning outcomes with activities and assessments
+  - Communicate objectives effectively to learners
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Overview ═══════════════════════════════════════════ #}
+
+{% call activitySection(1, "Aims, Objectives and Outcomes Overview", "book") %}
+<p>Clear aims, objectives, and outcomes form the blueprint for successful learning experiences. These elements work together to create coherent courses: aims provide the big picture vision, objectives specify measurable learner actions, and outcomes describe what students will demonstrate upon completion.</p>
+<p>This unit focuses on crafting precise, actionable learning goals that guide both instruction and assessment. You will learn to use established frameworks like Bloom's taxonomy, write objectives that meet SMART criteria, and ensure constructive alignment between what you teach, how students practise, and what you assess.</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Aims vs Objectives vs Outcomes ═════════════════════ #}
+
+{% call activitySection(2, "5.1 Defining Aims vs. Objectives vs. Outcomes", "search") %}
+<p>Aims articulate broad instructional intentions (e.g., "Introduce algorithmic complexity"), objectives specify measurable learner actions ("Explain Big-O notation"), and outcomes state what learners will demonstrate ("Students will calculate time complexity for sample algorithms"). Clear distinctions ensure coherent planning and assessment.</p>
+
+<div class="accordion mt-3" id="u05-acc-2">
+  {% call accordion("u05-2a", "What is an aim?") %}
+  <p>An aim is a broad statement of intent — it describes the general purpose of a lesson or course. Aims are instructor-centred: "To introduce students to regression analysis." They do not specify exactly what students will do or how success will be measured.</p>
+  {% endcall %}
+  {% call accordion("u05-2b", "What is an objective?") %}
+  <p>An objective specifies a measurable learner action: "Students will define qualitative and quantitative research approaches." Objectives use action verbs (from Bloom's taxonomy) and are the building blocks of assessable learning.</p>
+  {% endcall %}
+  {% call accordion("u05-2c", "What is a learning outcome?") %}
+  <p>An outcome describes observable demonstration of achievement: "Students will design a valid research proposal." Outcomes are evaluated against assessment criteria and confirm that objectives have been met.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-3"><strong>Scenario:</strong> Which objective best meets the criteria for a learning objective (not an aim or outcome)?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u05showResp('r2','aim')">"Explore machine learning concepts"</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u05showResp('r2','objective')">"Compare supervised and unsupervised learning"</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u05showResp('r2','outcome')">"Students will implement a classification algorithm"</button>
+</div>
+<div id="r2" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Bloom's Taxonomy ═══════════════════════════════════ #}
+
+{% set bloomTabs = [
+  {id: "remember", label: "Remember"},
+  {id: "understand", label: "Understand"},
+  {id: "apply", label: "Apply"},
+  {id: "analyze", label: "Analyze"},
+  {id: "evaluate", label: "Evaluate"},
+  {id: "create", label: "Create"}
+] %}
+
+{% call activitySection(3, "5.2 Bloom's Taxonomy & Action-Verb Selection", "stack") %}
+<p>Bloom's framework classifies cognitive skills from lower-order (remembering, understanding) to higher-order (analysing, creating). Selecting precise verbs — "define," "compare," "design" — aligns activities with targeted thinking processes and facilitates objective measurement of learner achievement.</p>
+
+{% call tabSet("u05-bloom-tabs", bloomTabs) %}
+  <div class="tab-pane fade show active" id="u05-bloom-tabs-remember" role="tabpanel">
+    <p><strong>Remember</strong> — Recall information from memory.</p>
+    <p>Verbs: <em>list, define, identify, recall, name, state, recognise</em></p>
+    <p>Example objective: "Students will list the six levels of Bloom's taxonomy."</p>
+  </div>
+  <div class="tab-pane fade" id="u05-bloom-tabs-understand" role="tabpanel">
+    <p><strong>Understand</strong> — Comprehend meaning and explain ideas.</p>
+    <p>Verbs: <em>explain, summarise, paraphrase, classify, describe, interpret</em></p>
+    <p>Example objective: "Students will explain the difference between correlation and causation."</p>
+  </div>
+  <div class="tab-pane fade" id="u05-bloom-tabs-apply" role="tabpanel">
+    <p><strong>Apply</strong> — Use knowledge in new situations.</p>
+    <p>Verbs: <em>implement, solve, use, demonstrate, execute, carry out</em></p>
+    <p>Example objective: "Students will implement a binary search algorithm in Python."</p>
+  </div>
+  <div class="tab-pane fade" id="u05-bloom-tabs-analyze" role="tabpanel">
+    <p><strong>Analyze</strong> — Break down and examine components.</p>
+    <p>Verbs: <em>compare, differentiate, examine, categorise, attribute, distinguish</em></p>
+    <p>Example objective: "Students will compare the time complexity of three sorting algorithms."</p>
+  </div>
+  <div class="tab-pane fade" id="u05-bloom-tabs-evaluate" role="tabpanel">
+    <p><strong>Evaluate</strong> — Judge and critique based on criteria.</p>
+    <p>Verbs: <em>assess, critique, justify, argue, defend, recommend</em></p>
+    <p>Example objective: "Students will justify their choice of data structure for a given problem."</p>
+  </div>
+  <div class="tab-pane fade" id="u05-bloom-tabs-create" role="tabpanel">
+    <p><strong>Create</strong> — Generate new ideas or products. (Highest cognitive level.)</p>
+    <p>Verbs: <em>design, construct, produce, compose, formulate, plan</em></p>
+    <p>Example objective: "Students will design an original algorithm to solve a novel optimisation problem."</p>
+  </div>
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 4 — SMART Objectives ═══════════════════════════════════ #}
+
+{% call activitySection(4, "5.3 Writing SMART Objectives", "pencil-square") %}
+<p>SMART objectives are Specific, Measurable, Achievable, Relevant, and Time-bound. For example: "By the end of this session, learners will accurately classify sorting algorithms as stable or unstable in a short quiz." This clarity guides both instruction and learner expectations.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> Which objective best meets all SMART criteria?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u05showResp('r4','vague')">"Learn about databases"</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u05showResp('r4','better')">"Write SQL queries to retrieve data"</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u05showResp('r4','smart')">"By week's end, write 3 SQL queries solving given problems with 90% accuracy"</button>
+</div>
+<div id="r4" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Constructive Alignment ═════════════════════════════ #}
+
+{% set alignTabs = [
+  {id: "outcomes", label: "Learning Outcomes"},
+  {id: "activities", label: "Learning Activities"},
+  {id: "assessments", label: "Assessments"}
+] %}
+
+{% call activitySection(5, "5.4 Aligning Outcomes with Activities & Assessments", "link-45deg") %}
+<p>Constructive alignment ensures that outcomes shape both learning activities and assessment tasks. If an outcome requires critical analysis, instructors must design activities (e.g., case studies) and assessments (e.g., reflective essays) that directly elicit those analytic skills.</p>
+
+{% call tabSet("u05-align-tabs", alignTabs) %}
+  <div class="tab-pane fade show active" id="u05-align-tabs-outcomes" role="tabpanel">
+    <p>Outcomes define what students will <em>demonstrate</em> by the end. They use high-level verbs: "Students will <strong>analyse</strong> case studies to identify key factors."</p>
+    <p>Outcomes must be observable and assessable — if you cannot evaluate it, it is not a useful outcome.</p>
+  </div>
+  <div class="tab-pane fade" id="u05-align-tabs-activities" role="tabpanel">
+    <p>Activities must give students <em>practice</em> at the thinking demanded by the outcome. An analysis outcome requires activities that involve analysing: case study discussions, data interpretation exercises, comparative tasks.</p>
+    <p>If your outcome says "design" but your activities only involve memorising, the alignment is broken.</p>
+  </div>
+  <div class="tab-pane fade" id="u05-align-tabs-assessments" role="tabpanel">
+    <p>Assessments verify that the outcome has been achieved. They should directly measure what the outcome specifies: an analysis outcome calls for a critical analysis essay or comparative report — not a recall quiz.</p>
+    <p>Alignment checklist: for each outcome, ask "Does my assessment actually require this skill?" and "Does my activity prepare students for this assessment?"</p>
+  </div>
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 6 — Communicating Objectives ═══════════════════════════ #}
+
+{% call activitySection(6, "5.5 Communicating Objectives to Learners", "megaphone") %}
+<p>Sharing aims and objectives at the outset — orally and in writing — frames the session and focuses learners' attention. Periodic references back to stated objectives ("Recall our goal: comparing algorithms") reinforce relevance and allow learners to self-monitor progress.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> It is 20 minutes into your lesson and students seem unfocused. What is the best way to re-engage them with the learning objectives?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u05showResp('r6','reread')">Re-read the objectives aloud</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u05showResp('r6','connect')">Connect current task to objectives</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u05showResp('r6','progress')">Show progress toward objectives</button>
+</div>
+<div id="r6" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Test your understanding of learning design principles.</p>
+
+{% call quizMC("u05-q1", "What distinguishes a learning objective from a learning outcome?", 1,
+   "Objectives specify measurable actions learners will perform, while outcomes describe observable demonstrations of achievement. Both are more specific than aims, but serve different design functions.") %}
+  <label class="quiz-option"><input type="radio" name="u05-q1" value="0"> Objectives are broader; outcomes are more specific</label>
+  <label class="quiz-option"><input type="radio" name="u05-q1" value="1"> Objectives specify measurable actions; outcomes describe demonstrations</label>
+  <label class="quiz-option"><input type="radio" name="u05-q1" value="2"> There is no meaningful distinction between them</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("u05-q2", "According to Bloom's taxonomy, which verb represents the highest cognitive level?", 2,
+   "'Create' is the highest level in Bloom's taxonomy — it involves generating new ideas, designs, or products. Evaluate and Analyze are both higher-order but fall below Create.") %}
+  <label class="quiz-option"><input type="radio" name="u05-q2" value="0"> Analyze</label>
+  <label class="quiz-option"><input type="radio" name="u05-q2" value="1"> Evaluate</label>
+  <label class="quiz-option"><input type="radio" name="u05-q2" value="2"> Create</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u05-q3", "Which objective best meets SMART criteria?", 1,
+   "SMART objectives are Specific, Measurable, Achievable, Relevant, and Time-bound. 'By session end, implement a basic classification algorithm with 80% accuracy' satisfies all five criteria.") %}
+  <label class="quiz-option"><input type="radio" name="u05-q3" value="0"> "Understand machine learning concepts"</label>
+  <label class="quiz-option"><input type="radio" name="u05-q3" value="1"> "By session end, implement a basic classification algorithm with 80% accuracy"</label>
+  <label class="quiz-option"><input type="radio" name="u05-q3" value="2"> "Learn about algorithms and data structures"</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u05-q4", "Constructive alignment means:", 1,
+   "Constructive alignment (Biggs) requires that learning outcomes, learning activities, and assessments are designed to work together. Each element should demand and support the same cognitive level.") %}
+  <label class="quiz-option"><input type="radio" name="u05-q4" value="0"> Activities should be fun and engaging</label>
+  <label class="quiz-option"><input type="radio" name="u05-q4" value="1"> Outcomes, activities, and assessments should align</label>
+  <label class="quiz-option"><input type="radio" name="u05-q4" value="2"> Students should construct their own knowledge</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u05-q5", "When should learning objectives be communicated to students?", 1,
+   "Objectives should be shared at the start — framing the session — and revisited periodically during the lesson. This enables students to self-monitor progress and understand the purpose of each activity.") %}
+  <label class="quiz-option"><input type="radio" name="u05-q5" value="0"> Only at the beginning of the session</label>
+  <label class="quiz-option"><input type="radio" name="u05-q5" value="1"> At the beginning with periodic references throughout</label>
+  <label class="quiz-option"><input type="radio" name="u05-q5" value="2"> Only when students ask questions</label>
+{% endcall %}
+</div>
+
+<p class="mt-4 small" style="color:#aaa;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-06') | url }}">Unit 6: Lesson Planning and Staging Models</a> when ready.
+</p>
+{% endcall %}
+
+
+{% block scripts %}
+<script>
+(function () {
+  var RESP = {
+    r2: {
+      aim: '<strong>Aim:</strong> "Explore machine learning concepts" is too broad — it describes instructor intent rather than a measurable learner action. Aims are useful for framing a course but not for guiding assessment.',
+      objective: '<strong>Objective:</strong> Correct. "Compare supervised and unsupervised learning" uses a specific action verb (compare) and is measurable. It specifies what students will <em>do</em>.',
+      outcome: '<strong>Outcome:</strong> "Students will implement a classification algorithm" is a learning outcome — it describes an observable demonstration of achievement, typically assessed at unit or course level.'
+    },
+    r4: {
+      vague: '<strong>Too vague:</strong> "Learn about databases" lacks specificity, measurability, and a time boundary. Students cannot tell what they are expected to achieve or how success will be measured.',
+      better: '<strong>Better but incomplete:</strong> "Write SQL queries" is more specific and measurable, but still lacks a time boundary, achievement level, and clear relevance context.',
+      smart: '<strong>Excellent SMART objective!</strong> This meets all five criteria: Specific (3 SQL queries), Measurable (90% accuracy), Achievable (given problems), Relevant (practical SQL skill), Time-bound (by week\'s end).'
+    },
+    r6: {
+      reread: '<strong>Re-reading objectives:</strong> This may briefly refocus attention, but students may tune out repeated information. More active engagement is usually more effective.',
+      connect: '<strong>Connect current task:</strong> Excellent! "Remember our goal to analyse case studies? This exercise directly builds that skill." Linking the immediate activity to the larger objective is highly effective.',
+      progress: '<strong>Show progress:</strong> Very effective. "We\'ve covered X — now we\'re moving to Y, our final objective." Showing where students are in the journey motivates through a sense of achievement.'
+    }
+  };
+  window.u05showResp = function (id, key) {
+    var el = document.getElementById(id);
+    if (el && RESP[id] && RESP[id][key]) {
+      el.innerHTML = '<p class="mb-0">' + RESP[id][key] + '</p>';
+      el.style.display = 'block';
+    }
+  };
+}());
+</script>
+{% endblock %}

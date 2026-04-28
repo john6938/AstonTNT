@@ -1,0 +1,217 @@
+---
+unit: 6
+unitTitle: Lesson Planning and Staging Models
+title: "Unit 6: Lesson Planning and Staging Models — Introduction to University Teaching"
+courseUnit: true
+objectives:
+  - Apply the PPP (Presentation–Practice–Production) model to university contexts
+  - Design lessons using ESA (Engage–Study–Activate) and Task-Based Learning cycles
+  - Implement guided discovery and flipped-classroom approaches
+  - Create comprehensive session plans with timings, materials, and roles
+  - Conduct micro-teaching rehearsals with effective peer review
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Overview ═══════════════════════════════════════════ #}
+
+{% call activitySection(1, "Lesson Planning and Staging Models Overview", "book") %}
+<p>Effective lesson planning transforms learning objectives into structured, engaging experiences. University teaching benefits from established frameworks that guide the flow from introduction through practice to application, ensuring students progress systematically through new concepts and skills.</p>
+<p>This unit introduces proven staging models including PPP, ESA, and Task-Based Learning. You will learn to sequence activities logically, manage time effectively, create detailed session plans, and refine your teaching through micro-teaching practice and peer feedback.</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — PPP ════════════════════════════════════════════════ #}
+
+{% call activitySection(2, "6.1 PPP (Presentation–Practice–Production) in HE Contexts", "arrow-right-circle") %}
+<p>The PPP model begins with instructor-led input (Presentation), transitions to controlled practice of new concepts, and culminates in authentic production tasks. In higher education, presentations should integrate discipline-specific examples, while production stages can involve mini-projects or peer-teaching to deepen application.</p>
+
+<div class="accordion mt-3" id="u06-acc-2">
+  {% call accordion("u06-2a", "Presentation stage") %}
+  <p>The instructor introduces new concepts through explanation, demonstration, or worked examples. Focus: ensuring comprehension before students attempt tasks independently. Duration typically 20–30% of session time. Example: demonstrating algorithm complexity with annotated code.</p>
+  {% endcall %}
+  {% call accordion("u06-2b", "Practice stage") %}
+  <p>Students practise under guidance with immediate feedback available. Tasks are controlled — structured to reduce error while building confidence. Example: guided Big-O notation exercises with answer keys. Duration typically 30–40% of session time.</p>
+  {% endcall %}
+  {% call accordion("u06-2c", "Production stage") %}
+  <p>Students apply concepts authentically and independently — the instructor steps back. Example: students design an efficient algorithm and present their analysis to peers. Duration typically 30–40% of session time for skill-based courses.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-3"><strong>Scenario:</strong> You have 90 minutes for a programming fundamentals class. Which time allocation best reflects PPP principles?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u06showResp('r2','equal')">30–30–30 minutes (equal)</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u06showResp('r2','production')">20–30–40 minutes (more production)</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u06showResp('r2','practice')">25–45–20 minutes (more practice)</button>
+</div>
+<div id="r2" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 3 — ESA & TBL ══════════════════════════════════════════ #}
+
+{% set frameworkTabs = [
+  {id: "ppp", label: "PPP"},
+  {id: "esa", label: "ESA"},
+  {id: "tbl", label: "Task-Based Learning"}
+] %}
+
+{% call activitySection(3, "6.2 ESA (Engage–Study–Activate) and Task-Based Learning Cycles", "recycle") %}
+<p>ESA starts by engaging learners' interest, moves into focused study of language or concepts, and finishes with activation through communicative tasks. Task-Based Learning emphasises real-world tasks as the core, with language study nested within task preparation and follow-up. Both frameworks complement PPP by varying the focus on form and meaning.</p>
+
+{% call tabSet("u06-framework-tabs", frameworkTabs) %}
+  <div class="tab-pane fade show active" id="u06-framework-tabs-ppp" role="tabpanel">
+    <p><strong>Presentation–Practice–Production:</strong> Systematic progression from input to output. Best for new concepts requiring controlled practice before independent use.</p>
+    <p>Strengths: clear structure, predictable progression, effective for novice learners.<br>
+    Typical contexts: introducing new algorithms, grammar rules, statistical procedures.</p>
+  </div>
+  <div class="tab-pane fade" id="u06-framework-tabs-esa" role="tabpanel">
+    <p><strong>Engage–Study–Activate:</strong> Motivation-focused with flexible sequencing. The Engage phase hooks student interest first — then study deepens understanding — then activation applies it.</p>
+    <p>Strengths: intrinsic motivation, student-driven exploration, flexible sequencing.<br>
+    Typical contexts: motivating students to explore research methods, creative problem-solving seminars.</p>
+  </div>
+  <div class="tab-pane fade" id="u06-framework-tabs-tbl" role="tabpanel">
+    <p><strong>Task-Based Learning:</strong> Real-world tasks drive the entire learning cycle. Students attempt the task first, then study the language/concepts that emerged from their attempts.</p>
+    <p>Strengths: authentic purpose, deep engagement, language/skills emerge from genuine need.<br>
+    Typical contexts: project proposals, case study analysis, collaborative research tasks.</p>
+  </div>
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 4 — Guided Discovery & Flipped ═════════════════════════ #}
+
+{% call activitySection(4, "6.3 Guided Discovery & Flipped-Classroom Approaches", "lightbulb") %}
+<p>Guided discovery invites learners to infer rules or patterns through targeted questioning and data analysis. Flipped classrooms invert content delivery — students review lectures or readings in advance and engage in interactive problem-solving during contact time — maximising active learning and instructor coaching.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> For a statistics course, what should students do <em>before</em> class in a flipped model?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u06showResp('r4','watch')">Watch recorded lectures only</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u06showResp('r4','read')">Read textbook chapters only</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u06showResp('r4','combined')">Watch short videos + guided notes</button>
+</div>
+<div id="r4" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Session Planning ═══════════════════════════════════ #}
+
+{% call activitySection(5, "6.4 Session-Plan Templates: Timings, Materials, Roles", "clipboard") %}
+<p>A robust session plan outlines each stage's duration, required resources, and the roles of instructor and learners. Templates typically include columns for stage name, aims, activity description, interaction pattern (e.g., pair work), materials, and timing. This structure supports seamless delivery and adaptation.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> Your introduction ran 15 minutes over. You still have a practice section and wrap-up to complete. What is your best adaptation?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u06showResp('r5','reduce')">Reduce practice time sharply</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u06showResp('r5','combine')">Combine practice and production</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u06showResp('r5','homework')">Move production to homework</button>
+</div>
+<div id="r5" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Micro-Teaching ════════════════════════════════════ #}
+
+{% call activitySection(6, "6.5 Micro-Teaching Rehearsal & Peer Review", "camera-video") %}
+<p>Rehearsing segments of a lesson in micro-teaching sessions allows instructors to refine pacing, instructions, and materials before full implementation. Peer observers use checklists to provide targeted feedback, enabling iterative improvement and confidence building.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> After receiving peer feedback, what should be your first priority for improvement?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u06showResp('r6','major')">Address the major weakness immediately</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u06showResp('r6','strength')">Build further on the major strength</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u06showResp('r6','specific')">Focus on one concrete suggestion</button>
+</div>
+<div id="r6" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Test your understanding of lesson planning and staging models.</p>
+
+{% call quizMC("u06-q1", "In the PPP model, what characterises the 'Production' stage?", 2,
+   "The Production stage involves students using language or concepts authentically and independently — the instructor steps back. Presentation is instructor-led input; Practice is controlled and guided.") %}
+  <label class="quiz-option"><input type="radio" name="u06-q1" value="0"> Instructor presents new information</label>
+  <label class="quiz-option"><input type="radio" name="u06-q1" value="1"> Students practise with guidance</label>
+  <label class="quiz-option"><input type="radio" name="u06-q1" value="2"> Students use language/concepts authentically</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("u06-q2", "ESA framework is particularly effective when:", 1,
+   "ESA is designed to motivate and engage first (Engage phase), then move to study and activation. It is especially useful when student motivation or interest needs to be activated before content input.") %}
+  <label class="quiz-option"><input type="radio" name="u06-q2" value="0"> Students need systematic skill-building from scratch</label>
+  <label class="quiz-option"><input type="radio" name="u06-q2" value="1"> You want to motivate and engage students first</label>
+  <label class="quiz-option"><input type="radio" name="u06-q2" value="2"> Content is highly technical and procedural</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u06-q3", "Guided discovery learning works best when:", 0,
+   "Guided discovery is most effective when students have sufficient prior knowledge to infer patterns from examples with targeted questions. It is less effective when the concept is entirely new or time is very short.") %}
+  <label class="quiz-option"><input type="radio" name="u06-q3" value="0"> Students can infer patterns from examples</label>
+  <label class="quiz-option"><input type="radio" name="u06-q3" value="1"> Complex procedures must be memorised exactly</label>
+  <label class="quiz-option"><input type="radio" name="u06-q3" value="2"> Session time is extremely limited</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u06-q4", "A comprehensive session plan should include:", 1,
+   "A full session plan specifies aims, activities, interaction patterns (individual/pair/group), required materials, and precise timing for each stage. This structure enables both effective delivery and flexible adaptation.") %}
+  <label class="quiz-option"><input type="radio" name="u06-q4" value="0"> Only the main activities and overall timing</label>
+  <label class="quiz-option"><input type="radio" name="u06-q4" value="1"> Aims, activities, interaction patterns, materials, and timing</label>
+  <label class="quiz-option"><input type="radio" name="u06-q4" value="2"> Detailed scripts for every moment of the lesson</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u06-q5", "The main benefit of micro-teaching is:", 1,
+   "Micro-teaching allows instructors to practise and refine specific, discrete skills in a low-stakes context before full implementation. Targeted practice with immediate peer feedback accelerates professional development.") %}
+  <label class="quiz-option"><input type="radio" name="u06-q5" value="0"> Learning to deliver full-length lessons</label>
+  <label class="quiz-option"><input type="radio" name="u06-q5" value="1"> Practising and refining specific teaching skills</label>
+  <label class="quiz-option"><input type="radio" name="u06-q5" value="2"> Avoiding the need for further peer feedback</label>
+{% endcall %}
+</div>
+
+<p class="mt-4 small" style="color:#aaa;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-07') | url }}">Unit 7: Materials and Resources</a> when ready.
+</p>
+{% endcall %}
+
+
+{% block scripts %}
+<script>
+(function () {
+  var RESP = {
+    r2: {
+      equal: '<strong>Equal time:</strong> Safe but may not optimise learning. For programming, students typically benefit from more production (doing) than input.',
+      production: '<strong>More production time:</strong> Excellent for skill-based courses. Programming benefits from extensive hands-on practice and authentic application. Less presentation, more doing.',
+      practice: '<strong>More practice time:</strong> Good for complex skills. However, ensure production time is sufficient for students to demonstrate independent mastery, not just guided practice.'
+    },
+    r4: {
+      watch: '<strong>Watch lectures only:</strong> A start, but passive viewing risks disengagement. Add comprehension checks or guided questions to ensure active processing before class.',
+      read: '<strong>Read chapters only:</strong> Traditional approach, but students may skip or skim. Combine with pre-reading questions to ensure preparation is focused and verifiable.',
+      combined: '<strong>Videos + guided notes:</strong> Excellent! Short videos are accessible, and guided notes ensure active engagement with content. Students arrive prepared for problem-solving in class.'
+    },
+    r5: {
+      reduce: '<strong>Reduce practice sharply:</strong> Risky — students need adequate practice. Consider simplifying the practice task rather than drastically cutting time.',
+      combine: '<strong>Combine practice and production:</strong> Smart adaptation. Students practise through authentic tasks simultaneously, maintaining both elements efficiently in the reduced time.',
+      homework: '<strong>Move to homework:</strong> Practical, but ensure students have enough in-class support before independent work. Provide clear guidance and check at the next session.'
+    },
+    r6: {
+      major: '<strong>Address major weakness:</strong> Important, but can feel overwhelming. Break the weakness into small, manageable steps. Trying to fix everything at once rarely succeeds.',
+      strength: '<strong>Build on strength:</strong> Positive approach that builds confidence. However, strengths also require balance with growth areas for comprehensive development.',
+      specific: '<strong>Focus on one concrete suggestion:</strong> Excellent strategy. Concrete, actionable suggestions are easy to implement and measure. Success with one change builds momentum for further improvement.'
+    }
+  };
+  window.u06showResp = function (id, key) {
+    var el = document.getElementById(id);
+    if (el && RESP[id] && RESP[id][key]) {
+      el.innerHTML = '<p class="mb-0">' + RESP[id][key] + '</p>';
+      el.style.display = 'block';
+    }
+  };
+}());
+</script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{
+  "layout": "layouts/course-unit.njk",
+  "courseTitle": "Introduction to University Teaching",
+  "courseBaseUrl": "/courses/intro-teaching",
+  "unitCount": 10,
+  "unitTitles": [
+    "Focus on Learners",
+    "Teachers and Context",
+    "Classroom Management",
+    "Instructions and Interactions",
+    "Aims, Objectives and Outcomes",
+    "Lesson Planning and Staging Models",
+    "Materials and Resources",
+    "Assessments and Assignments",
+    "Peer Observation",
+    "Teaching Practice"
+  ],
+  "quote": "\"The art of teaching is the art of assisting discovery.\" \u2014 Mark Van Doren",
+  "courseTools": []
+}

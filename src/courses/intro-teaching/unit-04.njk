@@ -1,0 +1,215 @@
+---
+unit: 4
+unitTitle: Instructions and Interactions
+title: "Unit 4: Instructions and Interactions — Introduction to University Teaching"
+courseUnit: true
+objectives:
+  - Deliver clear, structured instructions using appropriate sequencing and language
+  - Design effective concept-checking and instruction-checking questions
+  - Apply elicitation techniques to engage learners and build on prior knowledge
+  - Balance open and closed questioning strategies including Socratic dialogue
+  - Provide effective feedback using praise, correction, and minimalist prompting
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Overview ═══════════════════════════════════════════ #}
+
+{% call activitySection(1, "Instructions and Interactions Overview", "book") %}
+<p>Effective instruction goes beyond content delivery — it involves crafting clear directions, asking purposeful questions, and providing feedback that guides learning. University students need precise instructions to engage with complex tasks while maintaining opportunities for critical thinking and creative problem-solving.</p>
+<p>This unit focuses on the interactive elements of teaching: giving instructions that students can follow, checking understanding through strategic questioning, eliciting prior knowledge, facilitating meaningful discussions, and providing feedback that promotes learning rather than just evaluation.</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — ICQs ═══════════════════════════════════════════════ #}
+
+{% call activitySection(2, "4.1 Giving Clear Instructions: Language, Sequencing, ICQs", "list-ol") %}
+<p>Instructions should employ concise, unambiguous language and be delivered in structured steps. After explaining a task, use Instruction-Checking Questions (ICQs) to confirm comprehension ("How many examples will you write?"). This practice minimises confusion, allowing learners to proceed confidently and independently.</p>
+
+<div class="accordion mt-3" id="u04-acc-2">
+  {% call accordion("u04-2a", "What makes a good ICQ?") %}
+  <p>An effective ICQ targets a specific, verifiable aspect of the task: "How many partners will you work with?" or "What will you hand in at the end?" It avoids vague questions like "Do you understand?" — which students typically answer with "yes" even when confused.</p>
+  {% endcall %}
+  {% call accordion("u04-2b", "How should instructions be sequenced?") %}
+  <ol>
+    <li><strong>Setup:</strong> Group size or initial preparation</li>
+    <li><strong>Task description:</strong> What students will do</li>
+    <li><strong>Process and timing:</strong> How and when to complete it</li>
+    <li><strong>Expected outcome:</strong> What the finished result looks like</li>
+  </ol>
+  {% endcall %}
+</div>
+
+<p class="mt-3"><strong>Scenario:</strong> You have just given instructions for a group presentation. Which ICQ best checks understanding?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-primary btn-sm" onclick="u04showResp('r2','specific')">How many minutes do you have?</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u04showResp('r2','vague')">Do you understand?</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u04showResp('r2','leading')">This is clear, right?</button>
+</div>
+<div id="r2" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 3 — CCQs ═══════════════════════════════════════════════ #}
+
+{% call activitySection(3, "4.2 Concept-Checking Questions (CCQs)", "question-circle") %}
+<p>Before practice activities, use CCQs to verify that learners grasp essential concepts. Well-crafted CCQs target meaning rather than form (e.g., "If I say 'the algorithm will run faster', does this mean it has already finished?"). Effective CCQs prevent misconceptions from persisting into practice stages.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> You are teaching correlation vs. causation. Which CCQ best checks conceptual understanding?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u04showResp('r3','vocab')">What does correlation mean?</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u04showResp('r3','concept')">If ice cream sales and drowning both rise in summer, does ice cream cause drowning?</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u04showResp('r3','understand')">Is this concept clear?</button>
+</div>
+<div id="r3" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Elicitation ════════════════════════════════════════ #}
+
+{% call activitySection(4, "4.3 Elicitation Techniques", "lightbulb") %}
+<p>Elicitation draws out existing knowledge rather than transmitting new information directly. Techniques include brainstorming, concept mapping, asking for examples from students' experience, and posing problems before explanations. Elicitation activates prior knowledge, increases engagement, and allows instructors to gauge what students already know before pitching their input.</p>
+
+<div class="accordion mt-3" id="u04-acc-4">
+  {% call accordion("u04-4a", "Brainstorming") %}
+  <p>"Take 2 minutes to jot down everything you know about [topic]." Works well at the start of a unit to activate prior knowledge and surface misconceptions. Pairs well with brief class discussion before the instructor input.</p>
+  {% endcall %}
+  {% call accordion("u04-4b", "Concept mapping") %}
+  <p>"Draw connections between these key terms on the board." Reveals how students organise knowledge and where links are missing. Useful at mid-unit to check understanding as well as at the start.</p>
+  {% endcall %}
+  {% call accordion("u04-4c", "Example generation") %}
+  <p>"Give me an example of this from your own experience." Requires students to apply understanding to their own context, deepening retention and showing whether they have grasped the concept.</p>
+  {% endcall %}
+  {% call accordion("u04-4d", "Problem posing") %}
+  <p>"What would happen if X? What do you think causes Y?" Presents the problem before the explanation, creating cognitive engagement and a reason to listen to the answer.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Socratic Questioning ══════════════════════════════ #}
+
+{% set questioningTabs = [
+  {id: "closed", label: "Closed questions"},
+  {id: "open", label: "Open questions"},
+  {id: "socratic", label: "Socratic dialogue"}
+] %}
+
+{% call activitySection(5, "4.4 Open and Closed Questioning: Socratic Dialogue", "chat-dots") %}
+<p>Closed questions test recall ("What is Big-O notation?") while open questions probe understanding ("When would you choose this algorithm over that one, and why?"). Socratic dialogue — a chain of probing questions — guides students to reach conclusions through their own reasoning. Balanced questioning develops both factual knowledge and analytical thinking.</p>
+
+{% call tabSet("u04-q-tabs", questioningTabs) %}
+  <div class="tab-pane fade show active" id="u04-q-tabs-closed" role="tabpanel">
+    <p>Closed questions have a specific right answer: "What is the time complexity of bubble sort?" Useful for checking factual recall and establishing shared vocabulary before moving to analysis.</p>
+  </div>
+  <div class="tab-pane fade" id="u04-q-tabs-open" role="tabpanel">
+    <p>Open questions invite extended responses: "What are the trade-offs between these two approaches?" Promote critical thinking, justify reasoning, and reveal depth of understanding.</p>
+  </div>
+  <div class="tab-pane fade" id="u04-q-tabs-socratic" role="tabpanel">
+    <p>Socratic dialogue: "Is that always true? What if X changes? Can you give a counter-example?" Each question builds on the student's previous answer, guiding them to a deeper insight without the instructor providing the answer directly.</p>
+  </div>
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 6 — Feedback Language ════════════════════════════════ #}
+
+{% call activitySection(6, "4.5 Feedback Language: Praise, Correction, Minimalist Prompting", "chat-square-text") %}
+<p>Effective feedback combines positive reinforcement with focused correction. Begin with specific praise ("Your explanation of recursion was clear"), followed by corrective comments ("Next time, define your terms before giving examples"). Minimalist prompting — such as "What happens if x = 0?" — encourages self-correction and deeper reflection.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> A student's code works but is inefficient and poorly commented. What is your feedback priority?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-primary btn-sm" onclick="u04showResp('r6','praise')">Acknowledge it works first</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u04showResp('r6','efficiency')">Focus on efficiency only</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u04showResp('r6','list')">List all problems</button>
+</div>
+<div id="r6" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Test your understanding of instructional communication.</p>
+
+{% call quizMC("u04-q1", "What makes an Instruction-Checking Question (ICQ) effective?", 0,
+   "An effective ICQ targets a specific, verifiable aspect of the task. 'How many examples will you write?' checks understanding of a concrete detail, unlike the vague 'Do you understand?'") %}
+  <label class="quiz-option"><input type="radio" name="u04-q1" value="0"> It has a specific, verifiable answer</label>
+  <label class="quiz-option"><input type="radio" name="u04-q1" value="1"> It asks "Do you understand?"</label>
+  <label class="quiz-option"><input type="radio" name="u04-q1" value="2"> It covers multiple instruction steps at once</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("u04-q2", "Concept-Checking Questions (CCQs) should focus on:", 1,
+   "CCQs should probe meaning and conceptual understanding, not just vocabulary definitions or surface features of language.") %}
+  <label class="quiz-option"><input type="radio" name="u04-q2" value="0"> Vocabulary definitions only</label>
+  <label class="quiz-option"><input type="radio" name="u04-q2" value="1"> Meaning and understanding rather than form</label>
+  <label class="quiz-option"><input type="radio" name="u04-q2" value="2"> Complex explanations from students</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u04-q3", "The main purpose of elicitation techniques is to:", 1,
+   "Elicitation draws out students' existing knowledge and engages them actively, rather than simply testing memorised facts.") %}
+  <label class="quiz-option"><input type="radio" name="u04-q3" value="0"> Test what students have memorised</label>
+  <label class="quiz-option"><input type="radio" name="u04-q3" value="1"> Draw out student knowledge and engagement</label>
+  <label class="quiz-option"><input type="radio" name="u04-q3" value="2"> Fill time when lessons run short</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u04-q4", "Socratic questioning is most effective for:", 1,
+   "By guiding students through a chain of questions, Socratic dialogue leads them to insights through their own reasoning rather than passive reception.") %}
+  <label class="quiz-option"><input type="radio" name="u04-q4" value="0"> Getting quick factual answers</label>
+  <label class="quiz-option"><input type="radio" name="u04-q4" value="1"> Guiding students to independent insights</label>
+  <label class="quiz-option"><input type="radio" name="u04-q4" value="2"> Showing students their mistakes</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u04-q5", "Effective feedback should begin with:", 0,
+   "Specific praise for what was done well builds confidence and goodwill, making the subsequent corrective comments easier to receive and act upon.") %}
+  <label class="quiz-option"><input type="radio" name="u04-q5" value="0"> Specific praise for what was done well</label>
+  <label class="quiz-option"><input type="radio" name="u04-q5" value="1"> A list of all errors</label>
+  <label class="quiz-option"><input type="radio" name="u04-q5" value="2"> General encouragement</label>
+{% endcall %}
+</div>
+
+<p class="mt-4 small" style="color:#aaa;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-05') | url }}">Unit 5: Aims, Objectives and Outcomes</a> when ready.
+</p>
+{% endcall %}
+
+
+{% block scripts %}
+<script>
+(function () {
+  var RESP = {
+    r2: {
+      specific: '<strong>Specific ICQ:</strong> Correct. "How many minutes do you have?" checks a concrete, verifiable detail of the task. If the student doesn\'t know, they didn\'t understand the instructions.',
+      vague: '<strong>Vague question:</strong> Ineffective. Students almost always say "yes" to "Do you understand?" even when they don\'t. A good ICQ must require a specific answer.',
+      leading: '<strong>Leading question:</strong> Ineffective. "This is clear, right?" invites agreement rather than checking actual understanding.'
+    },
+    r3: {
+      vocab: '<strong>Vocabulary question:</strong> Tests memory of a definition, not conceptual understanding. A student could recite the definition without grasping the concept.',
+      concept: '<strong>Conceptual CCQ:</strong> Excellent. Forces students to apply the distinction in a concrete scenario. If they answer correctly, they have understood the concept, not just the label.',
+      understand: '<strong>"Is this concept clear?"</strong> Ineffective — students rarely admit confusion to the whole class. Always use targeted questions that require a specific answer.'
+    },
+    r6: {
+      praise: '<strong>Acknowledge it works first:</strong> Excellent. Starting with what was achieved builds confidence and makes the student receptive to the corrective feedback that follows.',
+      efficiency: '<strong>Focus on efficiency only:</strong> Misses the opportunity to affirm the student\'s achievement. Without initial praise, corrective feedback can feel discouraging.',
+      list: '<strong>List all problems:</strong> Overwhelming and counterproductive. Focus on one or two high-priority improvements, not an exhaustive critique.'
+    }
+  };
+  window.u04showResp = function (id, key) {
+    var el = document.getElementById(id);
+    if (el && RESP[id] && RESP[id][key]) {
+      el.innerHTML = '<p class="mb-0">' + RESP[id][key] + '</p>';
+      el.style.display = 'block';
+    }
+  };
+}());
+</script>
+{% endblock %}

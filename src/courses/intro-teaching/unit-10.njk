@@ -1,0 +1,228 @@
+---
+unit: 10
+unitTitle: Teaching Practice
+title: "Unit 10: Teaching Practice — Introduction to University Teaching"
+courseUnit: true
+objectives:
+  - Design effective micro-teaching sessions with focused, achievable goals
+  - Apply recording guidelines to produce clear, usable teaching footage
+  - Receive and use peer and tutor feedback constructively
+  - Develop reflective practice habits through structured self-analysis
+  - Implement teaching tips systematically with evidence-based reflection
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Overview ═══════════════════════════════════════════ #}
+
+{% call activitySection(1, "Teaching Practice Overview", "book") %}
+<p>Teaching practice brings together everything covered in this course — planning, delivery, assessment, materials, and observation — into a live performance context. Micro-teaching sessions, peer feedback, and reflective practice cycles are the core tools for continuous improvement as a university instructor.</p>
+<p>This unit covers micro-teaching session design, recording techniques, feedback reception and application, reflective journaling, and systematic implementation of teaching strategies. You will develop skills to learn actively from every teaching experience and build a sustainable professional development habit.</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Micro-Teaching Design ══════════════════════════════ #}
+
+{% call activitySection(2, "10.1 Designing Effective Micro-Teaching Sessions", "camera-video") %}
+<p>Effective micro-teaching focuses on one or two discrete skills — elicitation, instruction-giving, feedback delivery — within a short timeframe (10–15 minutes). Clear aims and success criteria help both the teacher and observers evaluate the session meaningfully.</p>
+
+<div class="accordion mt-3" id="u10-acc-2">
+  {% call accordion("u10-2a", "Choosing a focus skill") %}
+  <p>The most productive micro-teaching sessions target a specific, observable skill: giving clear task instructions, using effective concept-checking questions, or managing student groupwork transitions. Avoid broad aims like "teach well" — narrow focus makes feedback actionable.</p>
+  {% endcall %}
+  {% call accordion("u10-2b", "Setting success criteria") %}
+  <p>Define what success looks like before you start: "Students will be able to complete the task without asking for clarification" or "I will use at least three different students' names during the session." Clear criteria help observers give targeted feedback and help you self-evaluate accurately.</p>
+  {% endcall %}
+  {% call accordion("u10-2c", "Planning the session arc") %}
+  <p>Even in 10 minutes, a micro-teaching session benefits from a clear arc: opening (set up the activity), middle (deliver the skill you are practising), close (consolidate and check). A brief written plan — with timings — prepares you and signals your intentions to peer observers.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-3"><strong>Scenario:</strong> You have 10 minutes for a micro-teaching task. Which scope is most appropriate?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u10showResp('r2','broad')">Cover three new grammar points</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u10showResp('r2','specific')">Practise one elicitation technique</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u10showResp('r2','complex')">Simulate an entire 50-minute class</button>
+</div>
+<div id="r2" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Recording Guidelines ══════════════════════════════ #}
+
+{% call activitySection(3, "10.2 Recording and Uploading Teaching Sessions", "camera-video") %}
+<p>Video recording enables detailed self-reflection and tutor review. Key technical priorities are clear audio (use a clip mic or position close to the speaker), adequate framing, and stable footage. Consent from any students in the frame is required before recording begins.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> You review your recording and notice students at the back cannot be heard. What is your best adaptation for the next recording?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u10showResp('r3','volume')">Increase recording volume in post</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u10showResp('r3','repeat')">Repeat student responses aloud yourself</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u10showResp('r3','wireless')">Use a wireless microphone for each student</button>
+</div>
+<div id="r3" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Peer and Tutor Feedback ════════════════════════════ #}
+
+{% set feedbackTabs = [
+  {id: "receiving", label: "Receiving Feedback"},
+  {id: "analysing", label: "Analysing Feedback"},
+  {id: "responding", label: "Responding to Feedback"}
+] %}
+
+{% call activitySection(4, "10.3 Using Peer and Tutor Feedback Constructively", "chat-square-text") %}
+<p>Feedback is only valuable when received with openness and acted upon systematically. Effective learners listen without defensiveness, seek clarification on vague points, and prioritise one or two concrete changes per feedback cycle rather than attempting wholesale self-overhaul.</p>
+
+{% call tabSet("u10-feedback-tabs", feedbackTabs) %}
+  <div class="tab-pane fade show active" id="u10-feedback-tabs-receiving" role="tabpanel">
+    <p><strong>Receiving feedback:</strong> Listen actively without interrupting or justifying. Take notes. Resist the urge to explain why you made each choice — at this stage, your role is to understand the observer's perspective.</p>
+    <p>Ask yourself: "What specific behaviour is being described?" Separate observation ("you spoke for 8 minutes without checking understanding") from interpretation ("that means students were bored").</p>
+  </div>
+  <div class="tab-pane fade" id="u10-feedback-tabs-analysing" role="tabpanel">
+    <p><strong>Analysing feedback:</strong> After the session, review your notes and categorise: What aligns with your own self-evaluation? What surprised you? Where did multiple observers agree?</p>
+    <p>Points where self-perception and observer perception diverge are especially valuable — they reveal blind spots in your self-awareness as a teacher.</p>
+  </div>
+  <div class="tab-pane fade" id="u10-feedback-tabs-responding" role="tabpanel">
+    <p><strong>Responding to feedback:</strong> Select one or two highest-priority changes and write a specific action plan: "In my next session I will ask a comprehension check question after every instruction." Vague plans ("I'll engage students more") rarely produce change.</p>
+    <p>After implementing the change, reflect on whether it produced the intended effect — this closes the professional development loop.</p>
+  </div>
+{% endcall %}
+
+<p class="mt-3"><strong>Scenario:</strong> A peer gives you vague feedback: "You should engage students more." What is your best response?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u10showResp('r4','accept')">Accept the feedback and try harder next time</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u10showResp('r4','probe')">Ask for a specific example of what they observed</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u10showResp('r4','guide')">Ask the tutor to give better feedback training</button>
+</div>
+<div id="r4" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Reflective Practice ════════════════════════════════ #}
+
+{% call activitySection(5, "10.4 Developing Reflective Practice Habits", "journal-text") %}
+<p>Reflective practice — writing structured self-evaluations after each teaching session — transforms experience into professional learning. Frameworks such as Gibbs' Reflective Cycle (Description → Feelings → Evaluation → Analysis → Conclusion → Action Plan) structure reflection productively and prevent superficial self-commentary.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> After a session, you receive conflicting feedback — your tutor praised your pacing but a peer thought it was too slow. How do you handle this in your reflection?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u10showResp('r5','choose')">Choose the feedback you agree with</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u10showResp('r5','analyze')">Analyse the differences and look for evidence</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u10showResp('r5','seek')">Seek a third opinion to break the tie</button>
+</div>
+<div id="r5" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Teaching Tips Implementation ════════════════════════ #}
+
+{% call activitySection(6, "10.5 Implementing Teaching Tips Systematically", "lightbulb") %}
+<p>A "teaching tip" — a concrete technique like think-pair-share, exit tickets, or cold-calling — is most effective when implemented intentionally, observed carefully, and reflected upon. Adopting too many techniques simultaneously prevents the deliberate practice needed to internalise any single one.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> You try a think-pair-share activity but students are reluctant to share with the whole group. What is your best response?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u10showResp('r6','abandon')">Abandon the technique as unsuitable</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u10showResp('r6','modify')">Modify the approach and try again</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u10showResp('r6','persist')">Persist with the same approach until students comply</button>
+</div>
+<div id="r6" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Test your understanding of teaching practice principles.</p>
+
+{% call quizMC("u10-q1", "Effective micro-teaching sessions should:", 1,
+   "Micro-teaching is most valuable when it focuses on one specific skill with clear, observable success criteria. Trying to cover too much in a short session prevents the deliberate, focused practice that builds genuine skill.") %}
+  <label class="quiz-option"><input type="radio" name="u10-q1" value="0"> Cover as many teaching skills as possible in the time available</label>
+  <label class="quiz-option"><input type="radio" name="u10-q1" value="1"> Focus on one specific skill with clear success criteria</label>
+  <label class="quiz-option"><input type="radio" name="u10-q1" value="2"> Replicate a full lesson as closely as possible</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("u10-q2", "When recording a teaching session, the most important consideration is:", 1,
+   "Clear audio and video quality are essential for the recording to serve its purpose — enabling specific, evidence-based feedback. A technically poor recording cannot support meaningful reflection or peer review.") %}
+  <label class="quiz-option"><input type="radio" name="u10-q2" value="0"> Using professional broadcast-quality equipment</label>
+  <label class="quiz-option"><input type="radio" name="u10-q2" value="1"> Ensuring audio and video quality supports effective feedback</label>
+  <label class="quiz-option"><input type="radio" name="u10-q2" value="2"> Recording from a fixed angle throughout the session</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u10-q3", "Effective peer feedback on teaching should be:", 1,
+   "Useful feedback identifies specific observed behaviours, balances strengths with development areas, and gives the teacher something concrete to act on. Vague praise or general criticism does not support professional growth.") %}
+  <label class="quiz-option"><input type="radio" name="u10-q3" value="0"> Comprehensive, covering every aspect of the session</label>
+  <label class="quiz-option"><input type="radio" name="u10-q3" value="1"> Specific, balanced, and actionable</label>
+  <label class="quiz-option"><input type="radio" name="u10-q3" value="2"> Primarily positive to maintain the teacher's confidence</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u10-q4", "Reflective practice is most effective when it:", 1,
+   "Reflection without action does not produce change. The most productive reflective practice analyses specific feedback, identifies a root cause, and commits to a concrete, testable action plan for the next session.") %}
+  <label class="quiz-option"><input type="radio" name="u10-q4" value="0"> Focuses mainly on what went well in the session</label>
+  <label class="quiz-option"><input type="radio" name="u10-q4" value="1"> Links feedback analysis to specific action plans</label>
+  <label class="quiz-option"><input type="radio" name="u10-q4" value="2"> Is completed immediately after the session ends</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u10-q5", "Teaching tips are most effectively implemented when:", 1,
+   "One tip, implemented deliberately over several sessions and reflected upon, produces deeper learning than adopting many tips simultaneously. Deliberate practice — focused, repeated, and reflective — is what builds lasting skill.") %}
+  <label class="quiz-option"><input type="radio" name="u10-q5" value="0"> Several new techniques are tried simultaneously for variety</label>
+  <label class="quiz-option"><input type="radio" name="u10-q5" value="1"> One tip is implemented systematically with reflection</label>
+  <label class="quiz-option"><input type="radio" name="u10-q5" value="2"> Tips are selected based on what other colleagues use</label>
+{% endcall %}
+</div>
+
+<div class="mt-5 p-4 rounded" style="background:#1a1a1a;border:2px solid #ff8c00;">
+  <h5 style="color:#ff8c00;"><i class="bi bi-award me-2"></i>Course Complete</h5>
+  <p class="mb-2">Congratulations on completing <strong>Introduction to University Teaching</strong>. You have worked through ten units covering the core principles of effective university instruction — from understanding learners and managing classrooms to designing assessments, selecting materials, and developing through peer observation and reflective practice.</p>
+  <p class="mb-0">The skills developed in this course form a foundation for continued professional growth. Teaching improves through deliberate practice, openness to feedback, and sustained reflection — the habits you have begun to build here.</p>
+</div>
+{% endcall %}
+
+
+{% block scripts %}
+<script>
+(function () {
+  var RESP = {
+    r2: {
+      broad: '<strong>Three grammar points in 10 minutes:</strong> Far too ambitious. Rushing through three points means none will be taught well and observers cannot focus their feedback. Narrow scope is essential for productive micro-teaching.',
+      specific: '<strong>One elicitation technique:</strong> Excellent scope. Practising a single, observable skill in 10 minutes allows you to do it well, allows observers to focus their attention, and produces concrete, actionable feedback.',
+      complex: '<strong>Simulate a full 50-minute class:</strong> Impossible and unproductive. Compressing a full lesson into 10 minutes creates artificial pressure and prevents deliberate focus on any individual skill.'
+    },
+    r3: {
+      volume: '<strong>Increase volume in post:</strong> Post-processing amplifies background noise as well as speech and rarely produces clear audio. Address the source problem — the recording setup — rather than trying to fix it afterwards.',
+      repeat: '<strong>Repeat student responses:</strong> Excellent technique. Restating student answers clearly ("So you\'re saying X — that\'s right...") ensures responses are captured on audio and makes the exchange audible for viewers watching the recording.',
+      wireless: '<strong>Wireless mic for each student:</strong> Impractical in most teaching contexts. Repeating student contributions achieves the same outcome without expensive or complex equipment.'
+    },
+    r4: {
+      accept: '<strong>Accept and try harder:</strong> Good intention but insufficient. Without understanding what specific behaviour to change, "trying harder" has no clear direction. Vague feedback leads to vague improvement.',
+      probe: '<strong>Ask for a specific example:</strong> Correct approach. "Could you give me an example of a moment where you felt students were not engaged?" transforms a vague impression into observable evidence you can act on.',
+      guide: '<strong>Request better training for the peer:</strong> Understandable frustration, but not the most productive immediate response. First, try to extract value from the feedback you have. Better peer feedback training is a separate, longer-term issue.'
+    },
+    r5: {
+      choose: '<strong>Choose the feedback you agree with:</strong> Confirmation bias — selecting feedback that matches your existing view prevents genuine reflection. Conflicting feedback is data, not a problem to resolve by picking a side.',
+      analyze: '<strong>Analyse differences and look for evidence:</strong> Excellent approach. Ask: "What might each observer have been paying attention to?" Review your recording if available. Conflicting feedback often reveals that different aspects of pacing were working differently for different parts of the group.',
+      seek: '<strong>Seek a third opinion:</strong> Can be useful but is not always necessary or practical. First, try to analyse what each observer\'s perspective might reveal before seeking additional input.'
+    },
+    r6: {
+      abandon: '<strong>Abandon the technique:</strong> Premature. One unsuccessful attempt — especially with a new technique in a new context — is not sufficient evidence that the technique does not work. Most techniques require adjustment and practice before they succeed.',
+      modify: '<strong>Modify and try again:</strong> Excellent. Consider what caused the reluctance: insufficient pair time, unclear instructions, low psychological safety? Adjust one variable and try again. Iterative refinement is how teaching repertoire develops.',
+      persist: '<strong>Persist unchanged:</strong> Repeating the same approach that is not working rarely produces different results. Reflection and adaptation — not repetition — are what improve teaching.'
+    }
+  };
+  window.u10showResp = function (id, key) {
+    var el = document.getElementById(id);
+    if (el && RESP[id] && RESP[id][key]) {
+      el.innerHTML = '<p class="mb-0">' + RESP[id][key] + '</p>';
+      el.style.display = 'block';
+    }
+  };
+}());
+</script>
+{% endblock %}

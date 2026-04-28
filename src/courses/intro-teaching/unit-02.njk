@@ -1,0 +1,215 @@
+---
+unit: 2
+unitTitle: Teachers and Context
+title: "Unit 2: Teachers and Context — Introduction to University Teaching"
+courseUnit: true
+objectives:
+  - Understand and navigate the multiple roles of university teachers
+  - Communicate effectively with diverse student populations using clear language and multimodal approaches
+  - Navigate institutional policies on ethics, academic integrity, and accessibility
+  - Adapt teaching to cultural and disciplinary contexts
+  - Maintain well-being through effective self-care and workload management
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Overview ═══════════════════════════════════════════ #}
+
+{% call activitySection(1, "Teachers and Context Overview", "book") %}
+<p>University teaching involves navigating multiple roles and responsibilities within complex institutional and cultural contexts. As educators, we must balance subject expertise with pedagogical skills, administrative duties with student support, and personal well-being with professional demands.</p>
+<p>This unit explores the multifaceted nature of university teaching roles, effective communication strategies for diverse learners, institutional policies and frameworks, cultural and disciplinary contexts, and strategies for sustainable practice. You will develop awareness of how context shapes teaching and learn to adapt your approach accordingly.</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Roles ═══════════════════════════════════════════════ #}
+
+{% set rolesTabs = [
+  {id: "expert", label: "Subject Expert"},
+  {id: "facilitator", label: "Facilitator"},
+  {id: "assessor", label: "Assessor"},
+  {id: "mentor", label: "Mentor"}
+] %}
+
+{% call activitySection(2, "2.1 Roles & Identities of University Teachers", "mortarboard") %}
+<p>Faculty fulfil multiple roles — including subject-matter expert, facilitator of discussion, assessor of performance, and mentor for personal development. Balancing these identities requires clarity in each context: guiding conceptual understanding in lectures, scaffolding active learning in seminars, and offering individualised support during office hours. Reflecting on one's evolving teaching persona promotes professional growth.</p>
+
+{% call tabSet("u02-roles-tabs", rolesTabs) %}
+  <div class="tab-pane fade show active" id="u02-roles-tabs-expert" role="tabpanel">
+    <p><strong>Subject Expert:</strong> Sharing disciplinary knowledge, demonstrating methods, and providing authoritative explanations. Primary context: lectures, technical demonstrations.</p>
+  </div>
+  <div class="tab-pane fade" id="u02-roles-tabs-facilitator" role="tabpanel">
+    <p><strong>Facilitator:</strong> Guiding learning processes, asking questions, managing discussion, and scaffolding collaborative work. Primary context: seminars, group work, project supervision.</p>
+  </div>
+  <div class="tab-pane fade" id="u02-roles-tabs-assessor" role="tabpanel">
+    <p><strong>Assessor:</strong> Evaluating student performance through marking, providing grades, and applying assessment criteria consistently. Primary context: marking assignments, examinations, presentations.</p>
+  </div>
+  <div class="tab-pane fade" id="u02-roles-tabs-mentor" role="tabpanel">
+    <p><strong>Mentor:</strong> Supporting personal and professional development, advising on career paths, and guiding thesis or project research. Primary context: office hours, supervision meetings.</p>
+  </div>
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 3 — Language Focus ══════════════════════════════════════ #}
+
+{% call activitySection(3, "2.2 Language Focus", "chat-square-text") %}
+<p>When teaching students who have difficulty understanding English, using a dual-medium approach is one of many strategies. Effective instructors explain concepts verbally while providing written notes, enabling students to read and review. Digital notes allow learners to use translation tools, while visual aids transcend language barriers. Clear, simple language benefits all students, not just non-native speakers.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> You need to explain "recursion" to a class with 40% international students. Which approach is most effective?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u02showResp('r3','verbal')">Verbal explanation only</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u02showResp('r3','dual')">Verbal + visual + written</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u02showResp('r3','translation')">Provide in multiple languages</button>
+</div>
+<div id="r3" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Institutional Policies ═════════════════════════════ #}
+
+{% call activitySection(4, "2.3 Institutional Policies: Ethics, Integrity, Accessibility", "shield-check") %}
+<p>Universities require adherence to ethical guidelines — data protection, non-discrimination, and confidentiality — and uphold academic integrity through plagiarism policies. Instructors must also ensure accessibility for learners with disabilities, providing accommodations such as captioning, accessible documents, and flexible assessment formats. Familiarity with institutional regulations safeguards both faculty and students.</p>
+
+<div class="accordion mt-3" id="u02-acc-4">
+  {% call accordion("u02-4a", "Academic integrity: what is the instructor's role?") %}
+  <p>Instructors must report suspected plagiarism following institutional procedures. This typically involves: documenting evidence, meeting with the student, and submitting a report to the academic integrity officer. Clear communication of expectations at the start of a course is a primary prevention strategy.</p>
+  {% endcall %}
+  {% call accordion("u02-4b", "Accessibility: what accommodations are common?") %}
+  <p>Common accommodations include extended exam time (typically 1.5× or 2×), separate testing rooms, alternative material formats (large print, digital text), and permission to record lectures. Accommodation letters from disability services specify what is required; instructors implement them as specified.</p>
+  {% endcall %}
+  {% call accordion("u02-4c", "Data protection in teaching") %}
+  <p>Student work used as course examples requires permission. Student records must be kept confidential. Communication about student performance should occur only through official channels and should not be shared with third parties without consent.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-3"><strong>Scenario:</strong> A student emails: "I have dyslexia and need extra time for the exam." What is your first action?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-primary btn-sm" onclick="u02showResp('r4','refer')">Refer to disability services</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u02showResp('r4','implement')">Implement accommodation immediately</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u02showResp('r4','deny')">Require documentation first</button>
+</div>
+<div id="r4" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Cultural & Disciplinary Contexts ═══════════════════ #}
+
+{% call activitySection(5, "2.4 Cultural & Disciplinary Contexts", "globe") %}
+<p>Disciplinary norms influence pedagogical expectations: computer science often emphasises problem-solving labs, mathematics relies on proofs and derivations, while social sciences encourage critical debate. Cultural dimensions — such as power distance and communication style — further shape interactions. Effective teaching customises methods to discipline-specific practices and to the diverse cultural backgrounds represented in the cohort.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> You are teaching algorithms to a class with students from both collectivist and individualist cultures. How do you structure the work?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u02showResp('r5','individual')">Individual assignments only</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u02showResp('r5','mixed')">Mix individual and group work</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u02showResp('r5','choice')">Let students choose format</button>
+</div>
+<div id="r5" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Teacher Self-Care ══════════════════════════════════ #}
+
+{% call activitySection(6, "2.5 Teacher Self-Care & Workload Management", "heart-pulse") %}
+<p>University teaching demands preparation, assessment, office hours, and ongoing scholarship. To prevent burnout, faculty should establish realistic boundaries, prioritise tasks, and schedule regular breaks. Strategies include time-blocking for course design, delegating administrative duties where possible, and seeking peer support. Sustaining well-being enhances teaching quality and long-term career satisfaction.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> You are asked to take on an additional committee role. Your current workload is already at 55 hours per week. What do you do?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u02showResp('r6','accept')">Accept immediately</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u02showResp('r6','negotiate')">Negotiate terms</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u02showResp('r6','decline')">Politely decline</button>
+</div>
+<div id="r6" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Test your understanding of teachers and context principles.</p>
+
+{% call quizMC("u02-q1", "When teaching diverse learners, what is the most effective approach?", 1,
+   "Combining verbal, visual, and written materials supports diverse learning styles and language proficiency levels simultaneously.") %}
+  <label class="quiz-option"><input type="radio" name="u02-q1" value="0"> Use only verbal explanations</label>
+  <label class="quiz-option"><input type="radio" name="u02-q1" value="1"> Combine verbal, visual, and written materials</label>
+  <label class="quiz-option"><input type="radio" name="u02-q1" value="2"> Provide materials in students' native languages only</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("u02-q2", "A student with a disability requests exam accommodations. Your first action should be:", 1,
+   "Disability services holds the expertise to determine and document appropriate accommodations. Referral ensures the process is handled correctly and equitably.") %}
+  <label class="quiz-option"><input type="radio" name="u02-q2" value="0"> Immediately grant extra time</label>
+  <label class="quiz-option"><input type="radio" name="u02-q2" value="1"> Refer to institutional disability services</label>
+  <label class="quiz-option"><input type="radio" name="u02-q2" value="2"> Ask for medical documentation</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u02-q3", "Which role is primary when providing feedback on assignments?", 2,
+   "The Assessor role is primary when evaluating and providing feedback on student work — judging performance against criteria and communicating that judgement.") %}
+  <label class="quiz-option"><input type="radio" name="u02-q3" value="0"> Subject Expert</label>
+  <label class="quiz-option"><input type="radio" name="u02-q3" value="1"> Facilitator</label>
+  <label class="quiz-option"><input type="radio" name="u02-q3" value="2"> Assessor</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u02-q4", "In culturally diverse classrooms, the best approach is to:", 1,
+   "Mixing individual and group work accommodates both collectivist and individualist cultural preferences, ensuring all students can engage on their own terms.") %}
+  <label class="quiz-option"><input type="radio" name="u02-q4" value="0"> Use only individual assignments</label>
+  <label class="quiz-option"><input type="radio" name="u02-q4" value="1"> Mix individual and group work options</label>
+  <label class="quiz-option"><input type="radio" name="u02-q4" value="2"> Focus only on your discipline's norms</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u02-q5", "A sustainable workload typically involves:", 1,
+   "Sustainable practice balances teaching, research, and service while protecting time for personal health and recovery. Chronic overload leads to burnout and declining quality.") %}
+  <label class="quiz-option"><input type="radio" name="u02-q5" value="0"> Working 60+ hours per week</label>
+  <label class="quiz-option"><input type="radio" name="u02-q5" value="1"> Balancing teaching, research, and personal time</label>
+  <label class="quiz-option"><input type="radio" name="u02-q5" value="2"> Accepting all committee assignments</label>
+{% endcall %}
+</div>
+
+<p class="mt-4 small" style="color:#aaa;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-03') | url }}">Unit 3: Classroom Management</a> when ready.
+</p>
+{% endcall %}
+
+
+{% block scripts %}
+<script>
+(function () {
+  var RESP = {
+    r3: {
+      verbal: '<strong>Verbal only:</strong> Limited effectiveness for international students. Learners with lower English proficiency may miss key content without written or visual support.',
+      dual: '<strong>Multimodal approach:</strong> Excellent. Combining verbal explanation, visual diagrams, and written notes supports all learners and is especially valuable for those with lower English proficiency.',
+      translation: '<strong>Multiple languages:</strong> Well-intentioned but often impractical. Better to provide clear digital text that students can translate independently.'
+    },
+    r4: {
+      refer: '<strong>Refer to disability services:</strong> Correct approach. This ensures proper documentation, appropriate accommodations, and institutional compliance. Express willingness to support once the accommodation letter arrives.',
+      implement: '<strong>Immediate implementation:</strong> Well-intentioned but risky without official documentation. May create inconsistencies or inequity across the cohort.',
+      deny: '<strong>Require documentation first:</strong> Partially correct but lacks support. Better to refer to services while expressing willingness to accommodate once documentation is in place.'
+    },
+    r5: {
+      individual: '<strong>Individual only:</strong> May disadvantage students from collectivist cultures who learn better collaboratively. Reduced engagement is likely for some students.',
+      mixed: '<strong>Mixed approach:</strong> Excellent. Accommodates diverse cultural preferences and ensures all students experience varied learning modes throughout the course.',
+      choice: '<strong>Student choice:</strong> Empowering but requires careful management to prevent self-segregation and ensure equivalent difficulty across formats.'
+    },
+    r6: {
+      accept: '<strong>Accept immediately:</strong> High risk with an already unsustainable workload. Likely to further reduce teaching quality and personal well-being.',
+      negotiate: '<strong>Negotiate terms:</strong> Smart. Consider requesting a reduced teaching load or administrative support in exchange. Be clear about what you need to maintain quality.',
+      decline: '<strong>Politely decline:</strong> A legitimate self-care decision. "I am honoured, but cannot take on additional commitments while maintaining my current standards." Consider revisiting next year.'
+    }
+  };
+  window.u02showResp = function (id, key) {
+    var el = document.getElementById(id);
+    if (el && RESP[id] && RESP[id][key]) {
+      el.innerHTML = '<p class="mb-0">' + RESP[id][key] + '</p>';
+      el.style.display = 'block';
+    }
+  };
+}());
+</script>
+{% endblock %}

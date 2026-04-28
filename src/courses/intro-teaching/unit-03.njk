@@ -1,0 +1,208 @@
+---
+unit: 3
+unitTitle: Classroom Management
+title: "Unit 3: Classroom Management — Introduction to University Teaching"
+courseUnit: true
+objectives:
+  - Establish clear ground rules and netiquette for effective learning environments
+  - Design optimal room layouts and virtual breakout configurations
+  - Manage transitions and timing to maintain learner engagement
+  - Foster positive classroom climate and handle disruptive behaviour
+  - Effectively utilise teaching assistants and peer-leaders
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Overview ═══════════════════════════════════════════ #}
+
+{% call activitySection(1, "Classroom Management Overview", "book") %}
+<p>Effective classroom management creates the foundation for meaningful learning. Unlike secondary education, university classroom management focuses on establishing professional learning environments where adult learners can engage productively with complex ideas and collaborate respectfully with peers.</p>
+<p>This unit covers both face-to-face and online classroom management strategies. You will learn to establish clear expectations, design optimal learning spaces, manage time and transitions, foster positive climates, and work effectively with teaching support staff.</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Ground Rules ═══════════════════════════════════════ #}
+
+{% call activitySection(2, "3.1 Establishing Ground Rules & Netiquette", "card-checklist") %}
+<p>Clear expectations for behaviour — both face-to-face and online — promote respectful, focused learning environments. Co-creating ground rules with learners fosters ownership: punctuality, attentiveness, and constructive participation. In virtual settings, netiquette guidelines (e.g., muting when not speaking, using chat respectfully) reduce distractions and ensure equitable voice to all participants.</p>
+
+<div class="accordion mt-3" id="u03-acc-2">
+  {% call accordion("u03-2a", "Why co-create rules rather than impose them?") %}
+  <p>When students participate in defining classroom norms, they develop a sense of ownership and are more likely to follow them. Co-creation also surfaces cultural differences in expectations early, giving the instructor an opportunity to establish shared norms from the outset.</p>
+  {% endcall %}
+  {% call accordion("u03-2b", "What are the key netiquette principles for online sessions?") %}
+  <ul>
+    <li>Mute when not speaking to reduce background noise</li>
+    <li>Use the raise-hand feature or chat to signal a desire to speak</li>
+    <li>Keep the camera on when participating, if possible</li>
+    <li>Avoid multitasking on visible screens</li>
+    <li>Use respectful, professional language in chat</li>
+  </ul>
+  {% endcall %}
+  {% call accordion("u03-2c", "How do you handle a student who repeatedly breaks the agreed rules?") %}
+  <p>First, use a private, non-confrontational reminder — a quiet word after class or a brief email. If behaviour continues, refer to the institutional code of conduct and follow the departmental procedure. Public confrontation in front of peers tends to escalate rather than resolve the situation.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Room Layout ════════════════════════════════════════ #}
+
+{% set layoutTabs = [
+  {id: "small", label: "Small class (10–20)"},
+  {id: "medium", label: "Medium class (21–40)"},
+  {id: "large", label: "Large class (40+)"},
+  {id: "online", label: "Online / breakout rooms"}
+] %}
+
+{% call activitySection(3, "3.2 Physical Layout vs Virtual Breakout-Room Design", "diagram-3") %}
+<p>In physical classrooms, seating arrangements (seminar circle, U-shape, clustered tables) affect interaction patterns and sightlines. Online, breakout rooms must be configured thoughtfully — assigning clear roles and time limits. In both contexts, instructors plan transitions, ensure visual access to materials, and monitor group dynamics to maximise engagement.</p>
+
+{% call tabSet("u03-layout-tabs", layoutTabs) %}
+  <div class="tab-pane fade show active" id="u03-layout-tabs-small" role="tabpanel">
+    <p><strong>Seminar circle or U-shape:</strong> Optimal for discussion. Every participant can see every other, reducing instructor dominance and encouraging peer-to-peer dialogue.</p>
+  </div>
+  <div class="tab-pane fade" id="u03-layout-tabs-medium" role="tabpanel">
+    <p><strong>Clustered tables or chevron rows:</strong> Supports both group work and whole-class instruction. The instructor can circulate easily. Avoid traditional theatre rows, which inhibit interaction.</p>
+  </div>
+  <div class="tab-pane fade" id="u03-layout-tabs-large" role="tabpanel">
+    <p><strong>Tiered lecture theatre:</strong> Optimise by using think-pair-share between neighbours. Move to the front row during activities. Use polling tools to maintain engagement with the full cohort.</p>
+  </div>
+  <div class="tab-pane fade" id="u03-layout-tabs-online" role="tabpanel">
+    <p><strong>Breakout rooms:</strong> Groups of 4–6 are usually optimal. Assign a clear task, a time limit, and a note-taker role. Visit rooms briefly to monitor progress. Bring groups back with a 2-minute warning.</p>
+  </div>
+{% endcall %}
+{% endcall %}
+
+
+{# ══ Activity 4 — Transitions & Timing ══════════════════════════════ #}
+
+{% call activitySection(4, "3.3 Managing Transitions and Timing", "clock") %}
+<p>Smooth movement between lecture, discussion, and activities maintains learner focus. Signalling transitions — through verbal cues ("Let's pause for discussion") or visual timers — helps students anticipate next steps. Allocating and communicating precise time allotments for each segment prevents activities from overrunning and respects learners' time.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> An activity runs 15 minutes over schedule and you have a content section and wrap-up still to complete. What is your best adaptation?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u03showResp('r4','continue')">Let the activity continue</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u03showResp('r4','adjust')">Adjust remaining schedule thoughtfully</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u03showResp('r4','stop')">Stop immediately without explanation</button>
+</div>
+<div id="r4" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Classroom Climate ══════════════════════════════════ #}
+
+{% call activitySection(5, "3.4 Fostering Positive Classroom Climate", "emoji-smile") %}
+<p>A positive classroom climate is characterised by mutual respect, intellectual safety, and shared purpose. Instructors shape climate through the language they use, how they respond to errors, and the participation structures they create. Acknowledging contributions, reframing mistakes as learning opportunities, and ensuring equitable speaking time all contribute to an inclusive environment.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> During a seminar, a student gives an incorrect answer. How do you respond?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u03showResp('r5','correct')">Correct them directly in front of class</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u03showResp('r5','reframe')">Reframe and build on their thinking</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u03showResp('r5','ignore')">Move on without commenting</button>
+</div>
+<div id="r5" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 6 — TAs and Peer-Leaders ═══════════════════════════════ #}
+
+{% call activitySection(6, "3.5 Utilising Teaching Assistants and Peer-Leaders", "people-fill") %}
+<p>Teaching assistants (TAs) extend the instructor's reach in labs, tutorials, and marking. Effective use requires clear briefing: what TAs can and cannot decide independently, which questions to escalate, and how to give consistent feedback. Peer-leaders — experienced students supporting their cohort — benefit from structured training and regular check-ins to maintain quality and motivation.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> Your TA reports that students are asking questions that go beyond their expertise. What is your response?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-primary btn-sm" onclick="u03showResp('r6','refer')">Create a referral protocol</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u03showResp('r6','training')">Schedule TA training</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u03showResp('r6','resources')">Provide a resource list</button>
+</div>
+<div id="r6" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Test your understanding of classroom management principles.</p>
+
+{% call quizMC("u03-q1", "What is the primary benefit of co-creating ground rules with students?", 0,
+   "When students participate in defining the rules, they develop ownership and are more likely to adhere to them. It also surfaces different cultural expectations early.") %}
+  <label class="quiz-option"><input type="radio" name="u03-q1" value="0"> Students take ownership of classroom behaviour</label>
+  <label class="quiz-option"><input type="radio" name="u03-q1" value="1"> Instructors have fewer responsibilities</label>
+  <label class="quiz-option"><input type="radio" name="u03-q1" value="2"> Rules become more flexible</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("u03-q2", "For optimal group discussion, small classes (10–20 students) work best in:", 1,
+   "A seminar circle or U-shape allows all participants to see each other, reducing instructor dominance and encouraging direct peer dialogue.") %}
+  <label class="quiz-option"><input type="radio" name="u03-q2" value="0"> Traditional rows facing forward</label>
+  <label class="quiz-option"><input type="radio" name="u03-q2" value="1"> Seminar circle or U-shape</label>
+  <label class="quiz-option"><input type="radio" name="u03-q2" value="2"> Individual desks spread apart</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u03-q3", "When an activity runs over time, the best strategy is to:", 1,
+   "Thoughtful adjustment respects both the students' time and the learning plan. Decide which elements are essential and communicate the change clearly.") %}
+  <label class="quiz-option"><input type="radio" name="u03-q3" value="0"> Let it continue regardless of schedule</label>
+  <label class="quiz-option"><input type="radio" name="u03-q3" value="1"> Adjust the remaining schedule thoughtfully</label>
+  <label class="quiz-option"><input type="radio" name="u03-q3" value="2"> Stop immediately without explanation</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u03-q4", "Which approach best handles off-task behaviour?", 1,
+   "Gentle redirection — moving closer, making eye contact, or pausing briefly — addresses the behaviour without public confrontation, maintaining the positive climate.") %}
+  <label class="quiz-option"><input type="radio" name="u03-q4" value="0"> Public confrontation to set an example</label>
+  <label class="quiz-option"><input type="radio" name="u03-q4" value="1"> Gentle redirection and re-engagement</label>
+  <label class="quiz-option"><input type="radio" name="u03-q4" value="2"> Ignore it and hope it stops</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u03-q5", "Teaching assistants are best utilised for:", 1,
+   "TAs are well-suited to grading homework and facilitating lab sessions under instructor guidance. Course policy and pedagogical decisions should remain with the instructor.") %}
+  <label class="quiz-option"><input type="radio" name="u03-q5" value="0"> Setting all course policies</label>
+  <label class="quiz-option"><input type="radio" name="u03-q5" value="1"> Grading homework and facilitating labs</label>
+  <label class="quiz-option"><input type="radio" name="u03-q5" value="2"> Making all pedagogical decisions</label>
+{% endcall %}
+</div>
+
+<p class="mt-4 small" style="color:#aaa;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-04') | url }}">Unit 4: Instructions and Interactions</a> when ready.
+</p>
+{% endcall %}
+
+
+{% block scripts %}
+<script>
+(function () {
+  var RESP = {
+    r4: {
+      continue: '<strong>Let it continue:</strong> Sacrifices the remaining session content. Learners miss key material and the wrap-up, which consolidates understanding.',
+      adjust: '<strong>Adjust thoughtfully:</strong> Best approach. Briefly explain the change, cut or compress lower-priority content, and ensure the wrap-up — which consolidates learning — still occurs.',
+      stop: '<strong>Stop immediately:</strong> Abrupt endings create confusion and leave work unresolved. Always signal transitions clearly, even if you must cut short.'
+    },
+    r5: {
+      correct: '<strong>Direct correction:</strong> Can embarrass students and deter future participation. Use with care — only when precision is critical and the climate is already psychologically safe.',
+      reframe: '<strong>Reframe and build:</strong> Excellent. "That\'s an interesting angle — what if we consider X?" honours the attempt, corrects the direction, and models intellectual curiosity.',
+      ignore: '<strong>Ignore it:</strong> Leaves a misconception unchallenged and may confuse other students who heard the incorrect answer.'
+    },
+    r6: {
+      refer: '<strong>Referral protocol:</strong> Excellent first step. Establish clear escalation paths so TAs know which questions to answer and which to direct to you.',
+      training: '<strong>TA training:</strong> Proactive and valuable. Regular briefings align TAs with course content and expectations, building their confidence and consistency.',
+      resources: '<strong>Resource list:</strong> Practical supplement. Give TAs reference materials and FAQs to handle common questions independently.'
+    }
+  };
+  window.u03showResp = function (id, key) {
+    var el = document.getElementById(id);
+    if (el && RESP[id] && RESP[id][key]) {
+      el.innerHTML = '<p class="mb-0">' + RESP[id][key] + '</p>';
+      el.style.display = 'block';
+    }
+  };
+}());
+</script>
+{% endblock %}

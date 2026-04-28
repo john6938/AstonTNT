@@ -1,0 +1,227 @@
+---
+unit: 7
+unitTitle: Materials and Resources
+title: "Unit 7: Materials and Resources — Introduction to University Teaching"
+courseUnit: true
+objectives:
+  - Evaluate materials using criteria for authenticity vs. pedagogical design
+  - Adapt coursebook texts and exercises to meet specific learner needs
+  - Integrate audio and video effectively through sourcing, editing, and scaffolding
+  - Select and implement appropriate digital tools for enhanced interaction
+  - Ensure accessibility through captions, transcripts, and universal design
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Overview ═══════════════════════════════════════════ #}
+
+{% call activitySection(1, "Materials and Resources Overview", "book") %}
+<p>Effective teaching materials bridge the gap between learning objectives and student understanding. University instructors must balance authenticity with accessibility, ensuring materials challenge students appropriately while remaining comprehensible and engaging.</p>
+<p>This unit covers material evaluation criteria, adaptation techniques, multimedia integration, digital tool selection, and accessibility considerations. You will learn to create inclusive learning experiences that leverage technology meaningfully while maintaining pedagogical effectiveness.</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Authentic vs Pedagogical ═══════════════════════════ #}
+
+{% call activitySection(2, "7.1 Criteria for Authentic vs. Pedagogical Materials", "search") %}
+<p>Authentic materials reflect real-world language or discourse — industry articles, research talks — while pedagogical materials are adapted for instructional clarity. Selection should balance authenticity with linguistic or conceptual accessibility, ensuring tasks remain challenging yet achievable.</p>
+
+<div class="accordion mt-3" id="u07-acc-2">
+  {% call accordion("u07-2a", "What are authentic materials?") %}
+  <p>Authentic materials were created for a real-world audience, not for language or concept teaching: BBC news articles, research journal abstracts, TED talk transcripts, LinkedIn professional profiles. They expose students to genuine language and discourse conventions but may require more scaffolding.</p>
+  {% endcall %}
+  {% call accordion("u07-2b", "What are pedagogical materials?") %}
+  <p>Pedagogical materials are designed or adapted specifically for teaching: textbook chapters with exercises, graded readers with vocabulary notes, simplified case studies. They provide controlled exposure but may feel artificial to students.</p>
+  {% endcall %}
+  {% call accordion("u07-2c", "How to choose?") %}
+  <p>Consider your learners' level, the learning objective, and available time. Authentic materials build real-world readiness; pedagogical materials provide manageable scaffolding. For intermediate and advanced students, adapted authentic materials often offer the best balance.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-3"><strong>Scenario:</strong> You are teaching business communication to intermediate students. Which material offers the best balance?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u07showResp('r2','authentic')">Real business emails (unedited)</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u07showResp('r2','adapted')">Business emails with glossary</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u07showResp('r2','textbook')">Textbook email examples only</button>
+</div>
+<div id="r2" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Adapting Coursebook Texts ═══════════════════════════ #}
+
+{% call activitySection(3, "7.2 Adapting Coursebook Texts and Exercises", "tools") %}
+<p>When using commercial texts, instructors may need to simplify vocabulary, localise contexts, or augment exercises with additional scaffolding. Effective adaptation aligns materials with learners' backgrounds and course aims, maintaining fidelity to original concepts while enhancing relevance.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> A coursebook has basic comprehension questions after a dense technical text. How would you enhance the exercises?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-primary btn-sm" onclick="u07showResp('r3','scaffolding')">Add scaffolding questions</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u07showResp('r3','authentic')">Connect to real examples</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u07showResp('r3','interactive')">Make questions interactive</button>
+</div>
+<div id="r3" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Audio/Video Integration ════════════════════════════ #}
+
+{% call activitySection(4, "7.3 Integrating Audio/Video: Sourcing, Editing, Scaffolding", "camera-video") %}
+<p>Multimedia enriches learning but requires careful preparation: select clips that illustrate key ideas, edit for length, and provide pre-view glossaries or post-view comprehension tasks. Transcripts and guided questions enable learners to focus on salient content without cognitive overload.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> Students struggle to follow a fast-paced video. What is your best adaptation strategy?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u07showResp('r4','slower')">Use slower playback speed</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u07showResp('r4','chunks')">Break into smaller segments</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u07showResp('r4','preview')">Add extensive preview tasks</button>
+</div>
+<div id="r4" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Digital Tools ══════════════════════════════════════ #}
+
+{% set toolTabs = [
+  {id: "polls", label: "Live Polling"},
+  {id: "docs", label: "Collaborative Docs"},
+  {id: "annotation", label: "Annotation Tools"}
+] %}
+
+{% call activitySection(5, "7.4 Digital Tools: Polls, Collaborative Docs, Annotation Platforms", "laptop") %}
+<p>Tools such as Mentimeter polls, Google Docs for real-time collaboration, and Hypothes.is for shared annotation foster interaction and immediate feedback. Selecting tools that align with activity goals — and providing brief orientation — ensures technology enhances rather than distracts.</p>
+
+{% call tabSet("u07-tool-tabs", toolTabs) %}
+  <div class="tab-pane fade show active" id="u07-tool-tabs-polls" role="tabpanel">
+    <p><strong>Live polling (Mentimeter, Poll Everywhere):</strong> Provides real-time anonymous responses with instant visual feedback. Ideal for gauging understanding, taking votes, or starting discussions.</p>
+    <p>Best for: comprehension checks, opinion polls, formative assessment during lectures.</p>
+  </div>
+  <div class="tab-pane fade" id="u07-tool-tabs-docs" role="tabpanel">
+    <p><strong>Collaborative documents (Google Docs, Office 365):</strong> Enable real-time co-editing, version tracking, and comment modes. Support persistent collaboration across sessions.</p>
+    <p>Best for: joint proposal writing, collaborative note-taking, group project documents.</p>
+  </div>
+  <div class="tab-pane fade" id="u07-tool-tabs-annotation" role="tabpanel">
+    <p><strong>Annotation tools (Hypothes.is, Perusall):</strong> Allow shared text annotation with discussion threads. Support social reading and critical analysis of shared texts.</p>
+    <p>Best for: collaborative analysis of research papers, critical reading seminars, pre-class preparation tasks.</p>
+  </div>
+{% endcall %}
+
+<p class="mt-3"><strong>Scenario:</strong> Students are overwhelmed by too many different digital tools. What is your best strategy?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-primary btn-sm" onclick="u07showResp('r5','standardize')">Standardise on 2–3 tools</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u07showResp('r5','training')">Provide tool orientation sessions</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u07showResp('r5','purpose')">Clearly explain each tool's purpose</button>
+</div>
+<div id="r5" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Accessibility ══════════════════════════════════════ #}
+
+{% call activitySection(6, "7.5 Ensuring Accessibility: Captions, Transcripts, Alt-Text", "universal-access") %}
+<p>Universal design principles mandate that all learners — regardless of disability — can access content. Providing video captions, text transcripts, and descriptive alt-text for images not only meets legal requirements but improves usability for non-native speakers and varied learning contexts.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> A student reports difficulty accessing your video content. What is your first response?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u07showResp('r6','individual')">Provide individual accommodation only</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u07showResp('r6','universal')">Improve universal access for all</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u07showResp('r6','refer')">Refer to disability services only</button>
+</div>
+<div id="r6" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Test your understanding of materials and resources principles.</p>
+
+{% call quizMC("u07-q1", "What distinguishes authentic materials from pedagogical materials?", 1,
+   "Authentic materials are created for real-world audiences (news articles, research papers, professional documents), while pedagogical materials are designed or simplified specifically for teaching. Both have value depending on learner level and learning objective.") %}
+  <label class="quiz-option"><input type="radio" name="u07-q1" value="0"> Authentic materials are always more effective for learning</label>
+  <label class="quiz-option"><input type="radio" name="u07-q1" value="1"> Authentic materials were created for real-world use, not for teaching</label>
+  <label class="quiz-option"><input type="radio" name="u07-q1" value="2"> Pedagogical materials are always more accessible</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("u07-q2", "When adapting a difficult text for students, the most effective approach is to:", 1,
+   "Effective text adaptation combines vocabulary support, structural clarity, and scaffolding activities (pre-reading questions, guided tasks). The goal is to maintain authentic content while making it accessible.") %}
+  <label class="quiz-option"><input type="radio" name="u07-q2" value="0"> Remove all difficult vocabulary and concepts</label>
+  <label class="quiz-option"><input type="radio" name="u07-q2" value="1"> Simplify where needed while adding scaffolding support</label>
+  <label class="quiz-option"><input type="radio" name="u07-q2" value="2"> Use the original text without modification</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u07-q3", "The most important consideration when integrating video in teaching is:", 1,
+   "Effective video integration requires scaffolding before (previewing vocabulary/questions), during (segmenting if needed), and after (comprehension tasks). Length, accessibility, and pedagogical alignment all matter.") %}
+  <label class="quiz-option"><input type="radio" name="u07-q3" value="0"> Using videos longer than 10 minutes for depth</label>
+  <label class="quiz-option"><input type="radio" name="u07-q3" value="1"> Providing scaffolding before, during, and after viewing</label>
+  <label class="quiz-option"><input type="radio" name="u07-q3" value="2"> Selecting the highest production quality videos available</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u07-q4", "When selecting digital tools for teaching, the primary criterion should be:", 1,
+   "The tool must serve the pedagogical purpose. Technology should enhance the learning activity, not add complexity for its own sake. Alignment with the learning objective is the primary criterion.") %}
+  <label class="quiz-option"><input type="radio" name="u07-q4" value="0"> Using the most popular or widely-known platforms</label>
+  <label class="quiz-option"><input type="radio" name="u07-q4" value="1"> Alignment with the specific learning activity and objective</label>
+  <label class="quiz-option"><input type="radio" name="u07-q4" value="2"> Requiring the most advanced technical features</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u07-q5", "Universal design for learning means:", 1,
+   "Universal design means creating materials that are accessible to all learners from the outset — through captions, transcripts, alt-text, and multiple formats — rather than providing individual accommodations reactively.") %}
+  <label class="quiz-option"><input type="radio" name="u07-q5" value="0"> Providing individual accommodations when students request them</label>
+  <label class="quiz-option"><input type="radio" name="u07-q5" value="1"> Designing materials to be accessible to all learners from the start</label>
+  <label class="quiz-option"><input type="radio" name="u07-q5" value="2"> Using the same materials for every student equally</label>
+{% endcall %}
+</div>
+
+<p class="mt-4 small" style="color:#aaa;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-08') | url }}">Unit 8: Assessments and Assignments</a> when ready.
+</p>
+{% endcall %}
+
+
+{% block scripts %}
+<script>
+(function () {
+  var RESP = {
+    r2: {
+      authentic: '<strong>Unedited real emails:</strong> May be too challenging for intermediate learners without support. Authentic materials are valuable but require scaffolding — glossaries, guided tasks — to be pedagogically effective.',
+      adapted: '<strong>Business emails with glossary:</strong> Excellent balance. Authentic content with vocabulary support maintains real-world relevance while making the material accessible to intermediate learners.',
+      textbook: '<strong>Textbook examples only:</strong> Safe but may feel artificial. Students will not encounter polished, simplified language in professional settings. A mix of authentic and pedagogical materials is usually more effective.'
+    },
+    r3: {
+      scaffolding: '<strong>Scaffolding questions:</strong> Excellent. Adding step-by-step questions that guide students through the text before the main comprehension task reduces cognitive load and builds confidence.',
+      authentic: '<strong>Connect to real examples:</strong> Very effective. Asking students to relate the text to a real case from their own experience or current news activates prior knowledge and deepens understanding.',
+      interactive: '<strong>Interactive questions:</strong> Good choice. Turning written questions into discussion prompts, pair activities, or live polls increases engagement and allows peer learning.'
+    },
+    r4: {
+      slower: '<strong>Slower playback:</strong> May help briefly, but does not address the root problem — students may lack vocabulary or background knowledge. Slower speed alone is rarely sufficient.',
+      chunks: '<strong>Smaller segments:</strong> Highly effective. Breaking the video into 2–3 minute segments with comprehension tasks between each reduces cognitive load and maintains focus.',
+      preview: '<strong>Preview tasks:</strong> Excellent proactive strategy. Pre-viewing vocabulary work, guided questions, or prediction tasks prepare students for challenging content and improve comprehension significantly.'
+    },
+    r5: {
+      standardize: '<strong>Standardise on 2–3 tools:</strong> Excellent. Limiting the number of tools reduces cognitive load and allows students to develop genuine proficiency with each one.',
+      training: '<strong>Tool orientation:</strong> Very practical. Brief, focused orientation at the start of term prevents confusion and resistance. Students need to feel competent before tools can enhance learning.',
+      purpose: '<strong>Explain each tool\'s purpose:</strong> Essential. Students engage better when they understand why a tool is being used. "We use Hypothes.is to annotate this reading together" is far more effective than silent tool-switching.'
+    },
+    r6: {
+      individual: '<strong>Individual accommodation only:</strong> Addresses immediate need but misses an opportunity. If one student cannot access the content, others likely face the same barrier. Improving universal access benefits everyone.',
+      universal: '<strong>Improve universal access:</strong> Best approach. Adding captions, a transcript, or alternative format helps all students — including non-native speakers, students with disabilities, and those in noisy environments.',
+      refer: '<strong>Refer to disability services only:</strong> Appropriate if the student needs formal support, but the instructor should also take proactive steps to make materials more accessible for everyone.'
+    }
+  };
+  window.u07showResp = function (id, key) {
+    var el = document.getElementById(id);
+    if (el && RESP[id] && RESP[id][key]) {
+      el.innerHTML = '<p class="mb-0">' + RESP[id][key] + '</p>';
+      el.style.display = 'block';
+    }
+  };
+}());
+</script>
+{% endblock %}

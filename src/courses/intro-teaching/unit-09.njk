@@ -1,0 +1,221 @@
+---
+unit: 9
+unitTitle: Peer Observation
+title: "Unit 9: Peer Observation — Introduction to University Teaching"
+courseUnit: true
+objectives:
+  - Apply structured observation frameworks and checklists effectively
+  - Conduct video-lesson analysis using systematic coding for best practices
+  - Follow professional protocols and etiquette for live classroom observation
+  - Facilitate constructive debriefing and reflective dialogue sessions
+  - Write clear, actionable observation reports with specific recommendations
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Overview ═══════════════════════════════════════════ #}
+
+{% call activitySection(1, "Peer Observation Overview", "book") %}
+<p>Peer observation serves as a powerful tool for professional development, offering structured opportunities to learn from colleagues and receive constructive feedback. When conducted professionally, observation supports continuous improvement and builds teaching communities within academic departments.</p>
+<p>This unit covers observation frameworks, video analysis techniques, live observation protocols, debriefing strategies, and report writing. You will learn to create supportive, growth-oriented observation experiences that benefit both observers and those being observed.</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Observation Frameworks ════════════════════════════ #}
+
+{% call activitySection(2, "9.1 Observation Frameworks & Checklists", "clipboard") %}
+<p>Structured observation tools focus attention on key teaching dimensions — clarity of explanations, learner engagement, interaction patterns. Checklists may categorise observable behaviours under headings (e.g., "Questioning," "Feedback"), guiding systematic analysis.</p>
+
+<div class="accordion mt-3" id="u09-acc-2">
+  {% call accordion("u09-2a", "Content Delivery indicators") %}
+  <ul>
+    <li>Clear learning objectives stated at the outset</li>
+    <li>Logical content progression throughout the session</li>
+    <li>Examples relevant to students' discipline and experience</li>
+    <li>Key points emphasised through repetition or visual aids</li>
+  </ul>
+  {% endcall %}
+  {% call accordion("u09-2b", "Student Interaction indicators") %}
+  <ul>
+    <li>Questions invite active participation (not just recall)</li>
+    <li>Adequate wait time provided after questions</li>
+    <li>Student responses acknowledged and built upon</li>
+    <li>Multiple students given opportunity to contribute</li>
+  </ul>
+  {% endcall %}
+  {% call accordion("u09-2c", "Classroom Management indicators") %}
+  <ul>
+    <li>Time managed effectively across all planned stages</li>
+    <li>Transitions between activities are smooth and signalled</li>
+    <li>Technology used purposefully without distraction</li>
+    <li>Inclusive environment maintained throughout</li>
+  </ul>
+  {% endcall %}
+</div>
+
+<p class="mt-3"><strong>Scenario:</strong> You are observing a colleague's first university lecture. What should you focus on primarily?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u09showResp('r2','content')">Content knowledge accuracy</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u09showResp('r2','delivery')">Delivery and engagement techniques</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u09showResp('r2','everything')">Everything equally</button>
+</div>
+<div id="r2" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Video Analysis ════════════════════════════════════ #}
+
+{% call activitySection(3, "9.2 Video-Lesson Analysis: Coding for Best Practice", "camera-video") %}
+<p>Reviewing recorded lessons allows instructors to pause and annotate instances of effective technique — such as elicitation or error correction — using coding schemes. This reflective practice reveals patterns that can inform one's own teaching repertoire.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> While coding a video, you notice the instructor makes a factual error in the content. How should you handle this in your analysis?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u09showResp('r3','ignore')">Ignore and focus only on teaching techniques</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u09showResp('r3','note')">Note it privately for the debrief discussion</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u09showResp('r3','document')">Document it formally in the observation report</button>
+</div>
+<div id="r3" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Observation Protocols ═════════════════════════════ #}
+
+{% call activitySection(4, "9.3 Live-Class Observation Protocols & Etiquette", "hand-index-thumb") %}
+<p>Observing live classes — whether in person or via webinar — requires prior agreement on observer roles, note-taking conventions, and confidentiality. Observers should minimise disruption, focus on agreed domains, and respect both instructor and learner privacy.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> During the observation, a student asks you directly about the course content. What is your best response?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u09showResp('r4','answer')">Answer their question helpfully</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u09showResp('r4','redirect')">Redirect them to the instructor</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u09showResp('r4','ignore')">Politely decline to respond at all</button>
+</div>
+<div id="r4" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Debriefing ════════════════════════════════════════ #}
+
+{% call activitySection(5, "9.4 Debriefing & Reflective Dialogue", "chat-dots") %}
+<p>Post-observation debriefs centre on guided reflection: what worked well, what might be adjusted, and actionable next steps. Facilitators use open questions to prompt self-analysis and support collegial, non-judgmental feedback exchange.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> You observed a colleague's seminar where students were disengaged in the middle but the opening and closing were strong. How do you start the debrief?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u09showResp('r5','positive')">"The opening was really engaging..."</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u09showResp('r5','open')">"How do you feel the lesson went overall?"</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u09showResp('r5','specific')">"Let's talk about the middle section..."</button>
+</div>
+<div id="r5" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Observation Reports ═══════════════════════════════ #}
+
+{% call activitySection(6, "9.5 Documenting Insights: Observation Report Structure", "file-earmark-text") %}
+<p>A concise observation report includes context (class level, topic), observed strengths, areas for development, and suggested strategies. Structuring reports with clear headings (e.g., "Summary," "Recommendations") ensures findings are accessible and readily acted upon.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> You observed excellent content knowledge but unclear explanations. How should you frame this in your report?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u09showResp('r6','negative')">"Explanations were confusing and unclear"</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u09showResp('r6','balanced')">"Strong content knowledge; opportunity to enhance clarity"</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u09showResp('r6','positive')">"Great expertise — students will benefit"</button>
+</div>
+<div id="r6" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Test your understanding of peer observation principles.</p>
+
+{% call quizMC("u09-q1", "The primary purpose of structured observation frameworks is to:", 1,
+   "Observation frameworks focus the observer's attention on specific, agreed teaching dimensions rather than trying to capture everything. This produces more useful, targeted feedback for professional development.") %}
+  <label class="quiz-option"><input type="radio" name="u09-q1" value="0"> Judge and rank teaching effectiveness</label>
+  <label class="quiz-option"><input type="radio" name="u09-q1" value="1"> Focus attention on specific teaching dimensions</label>
+  <label class="quiz-option"><input type="radio" name="u09-q1" value="2"> Document problems for administration</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("u09-q2", "When conducting live classroom observation, observers should:", 1,
+   "Observers must minimise their impact on the class. This means arriving early, sitting unobtrusively, focusing on agreed areas, and taking descriptive rather than evaluative notes. The instructor and students should barely notice the observer.") %}
+  <label class="quiz-option"><input type="radio" name="u09-q2" value="0"> Participate actively in class discussions to fit in</label>
+  <label class="quiz-option"><input type="radio" name="u09-q2" value="1"> Minimise disruption and maintain agreed focus</label>
+  <label class="quiz-option"><input type="radio" name="u09-q2" value="2"> Take detailed notes on all student behaviour</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u09-q3", "Effective post-observation debriefing should begin with:", 1,
+   "Starting with the teacher's own self-reflection creates psychological safety and establishes a collaborative dialogue. The teacher's perspective often surfaces the most important issues, and they are more receptive to feedback after articulating their own thoughts.") %}
+  <label class="quiz-option"><input type="radio" name="u09-q3" value="0"> The observer's critique of the lesson</label>
+  <label class="quiz-option"><input type="radio" name="u09-q3" value="1"> The teacher's self-reflection on the experience</label>
+  <label class="quiz-option"><input type="radio" name="u09-q3" value="2"> An immediate discussion of student responses</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u09-q4", "A good observation report should include:", 1,
+   "A professional observation report provides context (what was taught, to whom), specific observed strengths with examples, development areas framed positively, and actionable recommendations. One-sided reports focused only on problems are not professional.") %}
+  <label class="quiz-option"><input type="radio" name="u09-q4" value="0"> Only areas needing improvement</label>
+  <label class="quiz-option"><input type="radio" name="u09-q4" value="1"> Context, strengths, development areas, and recommendations</label>
+  <label class="quiz-option"><input type="radio" name="u09-q4" value="2"> Detailed descriptions of student behaviour</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u09-q5", "Video lesson analysis is most effective when:", 1,
+   "Systematic coding schemes allow observers to identify patterns — how often certain techniques appear, how they cluster across the lesson. Unfocused viewing or looking only for problems misses the value of video analysis for professional development.") %}
+  <label class="quiz-option"><input type="radio" name="u09-q5" value="0"> Focusing on everything equally throughout the video</label>
+  <label class="quiz-option"><input type="radio" name="u09-q5" value="1"> Using systematic coding schemes for specific behaviours</label>
+  <label class="quiz-option"><input type="radio" name="u09-q5" value="2"> Looking only for major problems in the lesson</label>
+{% endcall %}
+</div>
+
+<p class="mt-4 small" style="color:#aaa;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-10') | url }}">Unit 10: Teaching Practice</a> when ready.
+</p>
+{% endcall %}
+
+
+{% block scripts %}
+<script>
+(function () {
+  var RESP = {
+    r2: {
+      content: '<strong>Content knowledge focus:</strong> Less useful for a first observation. Content accuracy matters, but new university teachers most need feedback on pedagogical skills — engagement, clarity, and classroom management.',
+      delivery: '<strong>Delivery and engagement focus:</strong> Excellent choice. New teachers benefit most from feedback on presentation skills, questioning, student engagement, and classroom management. Content can be verified separately.',
+      everything: '<strong>Everything equally:</strong> Too broad to generate useful feedback. Focused observation on 2–3 agreed areas produces more actionable, manageable recommendations.'
+    },
+    r3: {
+      ignore: '<strong>Ignore the error:</strong> Inappropriate — a factual error could mislead students. However, the observation focus should remain on teaching techniques. Note it separately for private discussion.',
+      note: '<strong>Note privately for debrief:</strong> Best approach. Raise it tactfully in the post-observation discussion: "I noticed one point where the figure seemed different from what I\'ve seen — did you want to check that?" This respects the colleague while addressing accuracy.',
+      document: '<strong>Document formally in report:</strong> Only appropriate if the error is significant and recurrent. A one-off factual slip is better addressed through private dialogue than formal documentation.'
+    },
+    r4: {
+      answer: '<strong>Answer the question:</strong> This undermines the instructor\'s authority and changes your observer role. Students should direct academic questions to their instructor, not to observers.',
+      redirect: '<strong>Redirect to instructor:</strong> Correct protocol. A quiet, friendly "That\'s a great question — ask Dr [name] after class" maintains appropriate boundaries without being dismissive.',
+      ignore: '<strong>Politely decline only:</strong> Slightly abrupt without explanation. A brief, warm redirect to the instructor is more professional and considerate to the student.'
+    },
+    r5: {
+      positive: '<strong>Start with a positive comment:</strong> Well-intentioned but less effective. The teacher may feel patronised if they know the middle went poorly, and it delays the genuine dialogue.',
+      open: '<strong>Open self-reflection question:</strong> Excellent. "How do you feel it went?" invites the teacher\'s own analysis first, which often surfaces the key issues naturally and builds a collaborative rather than evaluative dialogue.',
+      specific: '<strong>Start with the problem:</strong> Puts the teacher on the defensive immediately. Starting with critique before self-reflection inhibits honest, productive dialogue.'
+    },
+    r6: {
+      negative: '<strong>"Explanations were confusing":</strong> Too blunt and demoralising. Does not acknowledge the genuine strength or provide a constructive path forward. Observation reports should maintain a professional, supportive tone.',
+      balanced: '<strong>"Strong content; enhance clarity":</strong> Excellent framing. Acknowledges the real strength, identifies the specific development area, and implicitly invites improvement — all without being either overly critical or sycophantic.',
+      positive: '<strong>"Great expertise only":</strong> Too vague to be useful. Without identifying the clarity issue, the teacher has no actionable information for improvement. Positive framing is good; omitting development areas is not.'
+    }
+  };
+  window.u09showResp = function (id, key) {
+    var el = document.getElementById(id);
+    if (el && RESP[id] && RESP[id][key]) {
+      el.innerHTML = '<p class="mb-0">' + RESP[id][key] + '</p>';
+      el.style.display = 'block';
+    }
+  };
+}());
+</script>
+{% endblock %}

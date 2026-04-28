@@ -1,0 +1,229 @@
+---
+unit: 8
+unitTitle: Assessments and Assignments
+title: "Unit 8: Assessments and Assignments — Introduction to University Teaching"
+courseUnit: true
+objectives:
+  - Distinguish between formative and summative assessment purposes and applications
+  - Design clear rubrics and marking schemes that align with learning outcomes
+  - Implement peer- and self-assessment techniques effectively
+  - Provide effective feedback using feed-forward principles
+  - Apply academic integrity policies and plagiarism prevention strategies
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Overview ═══════════════════════════════════════════ #}
+
+{% call activitySection(1, "Assessments and Assignments Overview", "book") %}
+<p>Assessment serves dual purposes in university education: supporting student learning through feedback and measuring achievement for grading. Effective assessment strategies balance these functions, using formative approaches to guide learning and summative methods to evaluate outcomes fairly and transparently.</p>
+<p>This unit covers assessment design principles, rubric construction, peer and self-assessment implementation, feedback strategies, and academic integrity maintenance. You will learn to create assessment systems that promote learning while ensuring fair evaluation.</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Formative vs Summative ═════════════════════════════ #}
+
+{% set assessTabs = [
+  {id: "formative", label: "Formative Assessment"},
+  {id: "summative", label: "Summative Assessment"},
+  {id: "balance", label: "Balancing Both"}
+] %}
+
+{% call activitySection(2, "8.1 Formative vs. Summative Assessment Purposes", "bar-chart") %}
+<p>Formative assessments (quizzes, draft submissions) offer ongoing feedback and guide learning, while summative assessments (final exams, graded projects) evaluate cumulative achievement. A balanced assessment strategy leverages formative checkpoints to scaffold success in summative tasks.</p>
+
+{% call tabSet("u08-assess-tabs", assessTabs) %}
+  <div class="tab-pane fade show active" id="u08-assess-tabs-formative" role="tabpanel">
+    <p><strong>Formative assessment</strong> is assessment <em>for</em> learning — ongoing, low-stakes, and feedback-focused.</p>
+    <p>Examples: weekly quizzes with immediate feedback, draft essays for peer review, exit tickets after lectures, practice problems with solutions, comprehension checks during class.</p>
+    <p>Purpose: identify gaps, guide instruction, and help students self-regulate their learning.</p>
+  </div>
+  <div class="tab-pane fade" id="u08-assess-tabs-summative" role="tabpanel">
+    <p><strong>Summative assessment</strong> is assessment <em>of</em> learning — high-stakes, used for grading and certification.</p>
+    <p>Examples: final examinations, graded portfolios, midterm project presentations, lab reports contributing to course grade.</p>
+    <p>Purpose: measure cumulative achievement against learning outcomes and award credit.</p>
+  </div>
+  <div class="tab-pane fade" id="u08-assess-tabs-balance" role="tabpanel">
+    <p>Effective courses use both types in proportion. Formative checkpoints throughout the course scaffold students toward summative success.</p>
+    <p>A typical balance might favour formative frequency: weekly low-stakes checks alongside 2–3 major summative assessments per semester. Too many summative assessments without formative support leads to surface learning and anxiety.</p>
+  </div>
+{% endcall %}
+
+<p class="mt-3"><strong>Scenario:</strong> In a 12-week course, what is the optimal formative:summative assessment balance?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u08showResp('r2','equal')">50:50 balance</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u08showResp('r2','formative')">More formative (70:30)</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u08showResp('r2','summative')">More summative (30:70)</button>
+</div>
+<div id="r2" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Rubrics ════════════════════════════════════════════ #}
+
+{% call activitySection(3, "8.2 Designing Rubrics & Marking Schemes", "list-check") %}
+<p>Clear rubrics define performance criteria and levels of achievement, enhancing consistency and transparency. A well-constructed rubric includes descriptors for quality indicators (e.g., "Logical structure," "Code accuracy") and aligns directly with learning outcomes.</p>
+
+<div class="accordion mt-3" id="u08-acc-3">
+  {% call accordion("u08-3a", "What makes a rubric effective?") %}
+  <p>Effective rubrics use specific, observable descriptors at each performance level — not vague terms like "good" or "poor." Each criterion should be independently assessable and clearly tied to a learning outcome. Share rubrics with students before the assignment so expectations are transparent.</p>
+  {% endcall %}
+  {% call accordion("u08-3b", "Holistic vs. analytic rubrics") %}
+  <p>Holistic rubrics give a single overall rating — fast to apply but less diagnostic. Analytic rubrics score each criterion separately — more time-consuming but provide richer feedback and clearer guidance for improvement. For complex assignments, analytic rubrics are usually preferable.</p>
+  {% endcall %}
+  {% call accordion("u08-3c", "Aligning rubrics to outcomes") %}
+  <p>Each rubric criterion should directly reflect a learning outcome. If an outcome is "design a valid research proposal," criteria should assess: research question clarity, methodology appropriateness, literature engagement, and written presentation — not generic writing quality.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-3"><strong>Scenario:</strong> A student's presentation shows excellent content knowledge but poor organisation. Using a rubric, how should you score them?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-secondary btn-sm" onclick="u08showResp('r3','average')">Average the scores across criteria</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u08showResp('r3','separate')">Score each criterion separately</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u08showResp('r3','overall')">Give an overall impression score</button>
+</div>
+<div id="r3" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Peer & Self-Assessment ════════════════════════════ #}
+
+{% call activitySection(4, "8.3 Peer- and Self-Assessment Techniques", "people") %}
+<p>Engaging learners in evaluating their own or peers' work promotes metacognition and responsibility. Structured formats — checklists, guided reflection questions — help maintain objectivity and foster critical insight into disciplinary standards.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> Students complain that peer feedback is too lenient or biased. What is your best strategy?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-primary btn-sm" onclick="u08showResp('r4','calibration')">Provide calibration training</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u08showResp('r4','structure')">Use more structured rubrics</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u08showResp('r4','examples')">Show exemplars of good feedback</button>
+</div>
+<div id="r4" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Effective Feedback ════════════════════════════════ #}
+
+{% call activitySection(5, "8.4 Giving Effective Feedback", "chat-square-text") %}
+<p>Effective feedback is timely, specific, and balanced: identify strengths ("Your algorithm explanation was precise") and areas for improvement ("Consider adding a visual example"). Incorporating "feed-forward" suggestions helps learners understand how to achieve higher standards in future work.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> You have 50 assignments to mark with a one-week deadline. How do you prioritise feedback quality?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-primary btn-sm" onclick="u08showResp('r5','audio')">Use audio feedback</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u08showResp('r5','targeted')">Focus feedback on key areas only</button>
+  <button class="btn btn-outline-primary btn-sm" onclick="u08showResp('r5','codes')">Use feedback codes with rubric</button>
+</div>
+<div id="r5" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Academic Integrity ════════════════════════════════ #}
+
+{% call activitySection(6, "8.5 Academic Integrity & Plagiarism Prevention", "shield-check") %}
+<p>Preventing misconduct involves educating learners on proper citation practices, designing authentic assessment tasks that resist rote copying, and utilising detection tools judiciously. Clear communication of integrity policies and honour codes reinforces ethical scholarship.</p>
+
+<p class="mt-3"><strong>Scenario:</strong> You suspect a student has plagiarised but are not completely certain. What is your first step?</p>
+<div class="d-flex flex-wrap gap-2 mt-2">
+  <button class="btn btn-outline-primary btn-sm" onclick="u08showResp('r6','investigate')">Investigate thoroughly first</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u08showResp('r6','conference')">Meet with student immediately</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="u08showResp('r6','report')">Report to administration immediately</button>
+</div>
+<div id="r6" class="mt-2 p-2 rounded" style="background:#2a2a2a;display:none;"></div>
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Test your understanding of assessment principles.</p>
+
+{% call quizMC("u08-q1", "The primary purpose of formative assessment is to:", 1,
+   "Formative assessment is assessment for learning — it provides ongoing feedback to guide student learning and inform instructor decisions. Summative assessment measures achievement for certification and grading.") %}
+  <label class="quiz-option"><input type="radio" name="u08-q1" value="0"> Assign final grades to students</label>
+  <label class="quiz-option"><input type="radio" name="u08-q1" value="1"> Provide feedback to guide learning</label>
+  <label class="quiz-option"><input type="radio" name="u08-q1" value="2"> Measure achievement for certification</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("u08-q2", "A well-designed rubric should include:", 1,
+   "Effective rubrics contain specific criteria with clear, observable performance descriptors at each level. Vague terms like 'good' or 'poor' without descriptors do not help students understand expectations or improve.") %}
+  <label class="quiz-option"><input type="radio" name="u08-q2" value="0"> Only performance levels without descriptors</label>
+  <label class="quiz-option"><input type="radio" name="u08-q2" value="1"> Specific criteria with clear performance descriptors</label>
+  <label class="quiz-option"><input type="radio" name="u08-q2" value="2"> Generic terms that apply to any assignment</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u08-q3", "Peer assessment is most effective when:", 1,
+   "Peer assessment requires clear criteria and calibration training to be reliable. Without structured rubrics and exemplars, students tend toward leniency or inconsistency. Clear criteria and training are the foundations.") %}
+  <label class="quiz-option"><input type="radio" name="u08-q3" value="0"> Students are given complete freedom to evaluate however they wish</label>
+  <label class="quiz-option"><input type="radio" name="u08-q3" value="1"> Clear criteria and calibration training are provided</label>
+  <label class="quiz-option"><input type="radio" name="u08-q3" value="2"> It replaces all instructor evaluation entirely</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u08-q4", "Effective feedback should be:", 1,
+   "Effective feedback is specific (references particular aspects of the work), timely (given while the work is still relevant), and actionable (students know what to do differently). Feed-forward suggestions link current feedback to future improvement.") %}
+  <label class="quiz-option"><input type="radio" name="u08-q4" value="0"> General and encouraging to maintain confidence</label>
+  <label class="quiz-option"><input type="radio" name="u08-q4" value="1"> Specific, timely, and actionable</label>
+  <label class="quiz-option"><input type="radio" name="u08-q4" value="2"> Focused only on identifying errors and problems</label>
+{% endcall %}
+</div>
+
+<div class="mt-4">
+{% call quizMC("u08-q5", "The best approach to preventing plagiarism is:", 1,
+   "Prevention is more effective than detection. A combination of education (citation workshops, clear policies) and authentic assignment design (personalised topics, process portfolios, oral defences) reduces both intentional and unintentional plagiarism.") %}
+  <label class="quiz-option"><input type="radio" name="u08-q5" value="0"> Relying primarily on plagiarism detection software</label>
+  <label class="quiz-option"><input type="radio" name="u08-q5" value="1"> Education combined with authentic assessment design</label>
+  <label class="quiz-option"><input type="radio" name="u08-q5" value="2"> Applying severe punishment for all violations</label>
+{% endcall %}
+</div>
+
+<p class="mt-4 small" style="color:#aaa;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-09') | url }}">Unit 9: Peer Observation</a> when ready.
+</p>
+{% endcall %}
+
+
+{% block scripts %}
+<script>
+(function () {
+  var RESP = {
+    r2: {
+      equal: '<strong>50:50 balance:</strong> Reasonable, but a higher proportion of formative activity across the 12 weeks provides more learning opportunities and reduces high-stakes pressure.',
+      formative: '<strong>More formative (70:30):</strong> Excellent. Regular low-stakes formative checkpoints throughout the course scaffold learning and reduce anxiety, leading to better summative performance.',
+      summative: '<strong>More summative (30:70):</strong> Creates a high-stakes environment with insufficient feedback opportunities. Students may struggle without enough formative support to guide their learning.'
+    },
+    r3: {
+      average: '<strong>Average the scores:</strong> This obscures important information. A student who excels in content but struggles with organisation needs targeted feedback on organisation — averaging hides this distinction.',
+      separate: '<strong>Score each criterion separately:</strong> Correct. Analytic rubrics score each criterion independently, providing transparent, specific feedback that guides improvement in each area.',
+      overall: '<strong>Overall impression:</strong> Impressionistic scoring lacks transparency and consistency. Students cannot identify what to improve, and markers may be influenced by the halo effect.'
+    },
+    r4: {
+      calibration: '<strong>Calibration training:</strong> Excellent first step. Having students apply the rubric to sample work and comparing their scores builds shared understanding of standards before they assess peers.',
+      structure: '<strong>Structured rubrics:</strong> Essential foundation. Specific criteria with clear descriptors at each level reduce subjectivity and make it harder to give vague positive feedback.',
+      examples: '<strong>Show exemplars:</strong> Highly effective. Seeing examples of high-quality and lower-quality feedback — and discussing why — gives students a concrete model to emulate.'
+    },
+    r5: {
+      audio: '<strong>Audio feedback:</strong> Surprisingly efficient — spoken feedback often takes less time than writing and can be warmer and more nuanced. Recording 2–3 minute voice notes per assignment is a practical strategy.',
+      targeted: '<strong>Focus on key areas:</strong> Very practical. Identify 1–2 high-priority improvements per assignment rather than annotating every error. Focused feedback is more actionable and manageable to produce.',
+      codes: '<strong>Feedback codes with rubric:</strong> Efficient system. Pre-defined codes (e.g., "S1 = strengthen your argument") combined with a shared rubric reduce writing time while maintaining informative feedback.'
+    },
+    r6: {
+      investigate: '<strong>Investigate thoroughly first:</strong> Correct approach. Gather evidence, use detection software if available, and document findings carefully before taking any action. Acting without evidence is unfair and procedurally risky.',
+      conference: '<strong>Meet with student immediately:</strong> Premature without investigation. A meeting without evidence may alert the student before an investigation is complete, and may not follow institutional procedure.',
+      report: '<strong>Report immediately:</strong> Only appropriate after investigation confirms a likely violation. Premature reporting without evidence may be unfair to the student and breach institutional procedures.'
+    }
+  };
+  window.u08showResp = function (id, key) {
+    var el = document.getElementById(id);
+    if (el && RESP[id] && RESP[id][key]) {
+      el.innerHTML = '<p class="mb-0">' + RESP[id][key] + '</p>';
+      el.style.display = 'block';
+    }
+  };
+}());
+</script>
+{% endblock %}
