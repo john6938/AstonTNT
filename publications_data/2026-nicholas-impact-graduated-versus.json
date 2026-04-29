@@ -25,9 +25,13 @@
   ],
   "year": 2026,
   "date": "2026-01-01",
-  "status": "in_press",
+  "status": "published",
   "peer_reviewed": true,
-  "venue": "Applied Pragmatics [ Journal article ]",
-  "abstract": "",
+  "venue": "Applied Pragmatics",
+  "volume": "",
+  "issue": "",
+  "pages": "",
+  "doi": "10.1075/ap.23018.nic",
+  "abstract": "This study investigates the use of a pragmatics-focused computerized dynamic assessment (C-DA) of request-based L2 English email writing among Japanese university learners of English. The C-DA administers four email tasks to learners, automatically identifies perceived instances of pragmatic inappropriateness in texts and provides feedback, based on learner corpus perception data. The study compares the C-DA’s effectiveness in promoting learning among three participant groups: a graduated feedback group received feedback based on the concept of the zone of proximal development (ZPD); an explicit-only group received explicit feedback, and a control group did not receive feedback. The C-DA was administered twice, with a two-week delay between administrations. Both treatment groups showed evidence of development to a greater extent than the control both within a session and between sessions in terms of openings, closings and modification strategies. Comparing treatment groups, the graduated group responded more to feedback within a session for openings and closings, but not for modification strategies. Between sessions, there was no difference between treatment groups; however, across the entirety of the study, the graduated feedback group responded significantly more to feedback. Findings provide support for computerized approaches to L2 email writing feedback, and for approaches sensitive to a learner’s ZPD.",
   "tags": []
 }
