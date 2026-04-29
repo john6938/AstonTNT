@@ -1,0 +1,326 @@
+---
+unit: 4
+unitTitle: Inductive Reasoning
+title: "Unit 4: Inductive Reasoning — Applied Logic"
+courseUnit: true
+objectives:
+  - Explain inductive reasoning and distinguish it from deductive reasoning
+  - Evaluate the strength and cogency of inductive arguments
+  - Recognise generalisation, analogical, and statistical reasoning
+  - Distinguish facts from opinions
+  - Identify when inductive conclusions are well-supported and when they are premature
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, videoEmbed %}
+
+
+{# ══ Activity 1 — What is Inductive Reasoning? ══════════════════════ #}
+
+{% call activitySection(1, "What is Inductive Reasoning?", "arrow-up-circle") %}
+<p>
+  <strong>Inductive reasoning</strong> moves from specific observations to a general
+  conclusion. Unlike deduction, even the strongest inductive argument cannot guarantee
+  its conclusion — new evidence can always overturn it. What induction provides is
+  <em>probability</em>, not certainty.
+</p>
+
+<div class="p-3 mb-3" style="background:#222; border-left:3px solid #4a90d9; border-radius:0 6px 6px 0; font-size:0.9rem; color:#ddd; line-height:2.2;">
+  <strong style="color:#aaa;">Observation 1:</strong> The swan I saw yesterday was white.<br>
+  <strong style="color:#aaa;">Observation 2:</strong> The swan I saw last week was white.<br>
+  <strong style="color:#aaa;">Observation 3:</strong> Every swan I have ever seen has been white.<br>
+  <strong style="color:#4a90d9;">Conclusion:</strong> All swans are white.
+</div>
+
+<p>
+  This argument is <em>strong</em> — based on the evidence available — but it was
+  famously overturned when European explorers encountered black swans in Australia.
+  This is the defining feature of induction: no accumulation of confirming instances
+  can guarantee a universal conclusion. One counterexample is sufficient to falsify it.
+</p>
+
+<h5 class="mt-4" style="color:#ff8c00;">Deductive vs Inductive — a recap</h5>
+<div class="table-responsive mt-2">
+  <table class="table table-dark table-bordered" style="font-size:0.87rem;">
+    <thead><tr style="background:#333;">
+      <th>Feature</th><th>Deductive</th><th>Inductive</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Direction</td><td>General → Specific</td><td>Specific → General</td></tr>
+      <tr><td>If valid / strong and premises true</td><td>Conclusion is <em>certain</em></td><td>Conclusion is <em>probable</em></td></tr>
+      <tr><td>Can new evidence overturn the conclusion?</td><td>No</td><td>Yes</td></tr>
+      <tr><td>Evaluation terms</td><td>Valid / Invalid; Sound / Unsound</td><td>Strong / Weak; Cogent / Uncogent</td></tr>
+    </tbody>
+  </table>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — Strength and Cogency ══════════════════════════════ #}
+
+{% call activitySection(2, "Strength and Cogency", "bar-chart") %}
+<p>
+  Inductive arguments are not evaluated as valid or invalid but as <strong>strong</strong>
+  or <strong>weak</strong>. A strong inductive argument is one where the evidence makes
+  the conclusion highly probable. A weak one provides little support.
+</p>
+<p>
+  Inductive arguments are evaluated as <strong>cogent</strong> if they are (1) strong
+  and (2) have true premises. Cogency for inductive arguments is analogous to soundness
+  for deductive arguments.
+</p>
+
+<div class="row g-3 mt-1 mb-3">
+  <div class="col-md-6">
+    <div class="card h-100" style="background:#1a2a1a; border-color:#27ae60;">
+      <div class="card-body">
+        <h6 class="fw-bold" style="color:#2ecc71;">Strong — cogent</h6>
+        <p style="color:#ccc; font-size:0.88rem; line-height:1.8;">
+          Every patient in this trial who received the treatment recovered.
+          Five hundred patients were in the trial.
+          Therefore, the treatment is likely effective.
+        </p>
+        <p style="color:#aaa; font-size:0.82rem; margin:0;">Large, representative sample. Conclusion is cautious and well-supported.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card h-100" style="background:#2a1a1a; border-color:#e74c3c;">
+      <div class="card-body">
+        <h6 class="fw-bold" style="color:#e74c3c;">Weak — uncogent</h6>
+        <p style="color:#ccc; font-size:0.88rem; line-height:1.8;">
+          I have ten masks. All ten are white.
+          Therefore, all masks are white.
+        </p>
+        <p style="color:#aaa; font-size:0.82rem; margin:0;">Tiny, unrepresentative sample. The generalisation far exceeds the evidence.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h5 class="mt-3" style="color:#ff8c00;">Factors that affect inductive strength</h5>
+<ul style="color:#ddd; line-height:2.3;">
+  <li><strong>Sample size</strong> — larger samples produce stronger conclusions</li>
+  <li><strong>Representativeness</strong> — the sample must reflect the population</li>
+  <li><strong>Variety of evidence</strong> — evidence from multiple independent sources strengthens the argument</li>
+  <li><strong>Counter-evidence</strong> — known exceptions or counterexamples weaken the argument</li>
+  <li><strong>Scope of the conclusion</strong> — a narrow conclusion is easier to support than a sweeping one</li>
+</ul>
+{% endcall %}
+
+
+{# ══ Activity 3 — Types of Inductive Argument ════════════════════════ #}
+
+{% call activitySection(3, "Types of Inductive Argument", "collection") %}
+<p>Three common types of inductive argument appear frequently in academic and everyday reasoning.</p>
+
+<h5 style="color:#ff8c00;">Generalisation</h5>
+<p>
+  Draws a conclusion about an entire class from observations of a sample.
+  The quality of the generalisation depends on sample size and representativeness.
+</p>
+<div class="p-3 mb-3" style="background:#222; border-left:3px solid #ff8c00; border-radius:0 6px 6px 0; font-size:0.88rem; color:#ddd; line-height:2;">
+  In all four regions surveyed, individuals infected with COVID-19 showed fever as a symptom.
+  Therefore, fever is a common symptom of COVID-19.
+</div>
+
+<h5 class="mt-3" style="color:#ff8c00;">Analogical reasoning</h5>
+<p>
+  Draws an inference from the similarity between two cases: if A resembles B in relevant ways,
+  and A has property X, then B probably has property X too.
+  The strength of the analogy depends on how relevant the similarities are.
+</p>
+<div class="p-3 mb-3" style="background:#222; border-left:3px solid #4a90d9; border-radius:0 6px 6px 0; font-size:0.88rem; color:#ddd; line-height:2;">
+  We have developed medicines to cure other harmful viruses in the past.
+  COVID-19 is a harmful virus.
+  Therefore, we will likely find a way to treat or defeat COVID-19.
+</div>
+
+<h5 class="mt-3" style="color:#ff8c00;">Statistical reasoning</h5>
+<p>
+  Uses quantitative data as the basis for probabilistic conclusions.
+  The validity of the statistics and how they were gathered determines the strength.
+</p>
+<div class="p-3 mb-3" style="background:#222; border-left:3px solid #9b59b6; border-radius:0 6px 6px 0; font-size:0.88rem; color:#ddd; line-height:2;">
+  About 8,500 people in Japan were infected with COVID-19 in this period. Approximately 10%
+  recovered quickly without treatment. Therefore, around 10% of all COVID-19 cases
+  worldwide may recover without treatment.
+</div>
+<p style="color:#aaa; font-size:0.85rem;">
+  <i class="bi bi-exclamation-triangle me-1" style="color:#f39c12;"></i>
+  This last example is weak: the Japanese sample may not represent the global population
+  (demographics, healthcare access, strain variation all differ).
+</p>
+{% endcall %}
+
+
+{# ══ Activity 4 — Fact vs Opinion ═══════════════════════════════════ #}
+
+{% call activitySection(4, "Fact vs Opinion", "scale") %}
+<p>
+  Inductive reasoning requires distinguishing between facts and opinions, because
+  only factual claims can serve as genuine evidence. An <strong>opinion</strong> is
+  a belief or judgement that may or may not be supported by evidence.
+  A <strong>fact</strong> is a claim that is known to be true and can, in principle,
+  be verified.
+</p>
+<p>
+  Read each statement below. Decide whether it is a fact, an opinion, or something in
+  between. Be prepared to justify your decision.
+</p>
+
+<ol style="color:#ddd; line-height:2.5;">
+  <li>The standard of education in this country is declining.</li>
+  <li>Water is composed of hydrogen and oxygen.</li>
+  <li>This is the most difficult course I have ever taken.</li>
+  <li>Ghosts exist.</li>
+  <li>The unemployment rate in this country is 4.2%.</li>
+  <li>Eating less sugar improves health.</li>
+  <li>Smoking causes lung cancer.</li>
+  <li>This film is overrated.</li>
+</ol>
+
+<div class="accordion mt-3" id="u04-factop">
+  {% call accordion("fo-a", "Discussion notes") %}
+  <p style="color:#ddd; font-size:0.88rem; line-height:2.2;">
+    (1) <em>Opinion</em> — "standard of education" and "declining" are both vague and contested.<br>
+    (2) <em>Fact</em> — verifiable by chemistry.<br>
+    (3) <em>Opinion</em> — a personal subjective experience.<br>
+    (4) <em>Indeterminate</em> — an empirical claim with no currently available evidence either way.<br>
+    (5) <em>Fact</em> (assuming official statistics are cited accurately).<br>
+    (6) <em>Somewhere between</em> — supported by epidemiological evidence, but general enough to require qualification.<br>
+    (7) <em>Fact</em> — well-supported by extensive epidemiological research.<br>
+    (8) <em>Opinion</em> — evaluative and subjective.
+  </p>
+  <p style="color:#aaa; font-size:0.85rem;">
+    Note that the line between fact and opinion is not always clear. Many statements blend
+    factual claims with evaluative framing.
+  </p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Evaluate Inductive Arguments ══════════════════════ #}
+
+{% call activitySection(5, "Evaluate These Arguments", "patch-exclamation") %}
+<p>
+  For each argument below, decide: (a) Is this inductive? (b) Is it strong or weak?
+  (c) What would make it stronger?
+</p>
+
+<ol style="color:#ddd; line-height:1; margin-bottom:1rem;">
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    I have a fever of 37.6°C. Patients infected with COVID-19 typically have a fever.
+    Therefore, I am infected with COVID-19.
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    COVID-19 is transmitted by droplet infection. Avoiding close contact reduces droplet
+    transmission. Therefore, avoiding close contact is an effective measure against COVID-19.
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    I have thousands of friends who contracted COVID-19. All of them are male.
+    Therefore, only males can be infected with COVID-19.
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    Doctor A examined ten patients with COVID-19 and all reported taste disorders as an
+    initial symptom. Therefore, taste disorders are a definitive initial symptom of COVID-19.
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    Viruses have been reduced by handwashing in many independent clinical studies.
+    COVID-19 is a virus. Therefore, handwashing is likely effective against COVID-19.
+  </li>
+</ol>
+
+<div class="accordion mt-3" id="u04-eval">
+  {% call accordion("ev-04", "Reveal the analysis") %}
+  <ol style="color:#ddd; font-size:0.88rem; line-height:2.3;">
+    <li><strong>Weak.</strong> Fever is common to many illnesses. The argument commits <em>affirming the consequent</em> and is also inductively weak — fever alone is insufficient evidence for COVID-19.</li>
+    <li><strong>Moderately strong</strong> — given well-established premises. The chain of reasoning is sound and the causal mechanism is plausible. Would be strengthened by citing specific evidence.</li>
+    <li><strong>Very weak.</strong> A biased, unrepresentative sample (friends). The conclusion is a sweeping generalisation that contradicts known epidemiological data.</li>
+    <li><strong>Weak.</strong> A sample of ten patients from a single doctor is too small and potentially unrepresentative. Taste disorders may be a symptom but cannot be called "definitive" on this evidence.</li>
+    <li><strong>Strong.</strong> Multiple independent studies, a plausible biological mechanism, and a cautious conclusion. The word "likely" appropriately hedges the claim.</li>
+  </ol>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Check Your Understanding ══════════════════════════ #}
+
+{% call activitySection(6, "Check Your Understanding", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u04-q1",
+  "An inductive argument is cogent when it is:",
+  2,
+  "Cogency is the inductive counterpart of soundness. A cogent argument is both strong (the premises make the conclusion highly probable) and has true premises. A strong argument with false premises is not cogent.") %}
+  <label class="quiz-option"><input type="radio" name="u04-q1" value="0"> Valid and has true premises.</label>
+  <label class="quiz-option"><input type="radio" name="u04-q1" value="1"> Persuasive and well-written.</label>
+  <label class="quiz-option"><input type="radio" name="u04-q1" value="2"> Strong and has true premises.</label>
+  <label class="quiz-option"><input type="radio" name="u04-q1" value="3"> Based on a large sample.</label>
+{% endcall %}
+</div>
+
+<div class="mb-4">
+{% call quizMC("u04-q2",
+  "Which of the following would most strengthen an inductive generalisation?",
+  1,
+  "A larger, more representative sample from diverse contexts provides stronger inductive support. Confidence in the conclusion does not strengthen the argument, and a more general conclusion is harder to support, not easier. Eliminating counterexamples is circular — counterexamples are evidence against the conclusion.") %}
+  <label class="quiz-option"><input type="radio" name="u04-q2" value="0"> Expressing the conclusion with greater confidence.</label>
+  <label class="quiz-option"><input type="radio" name="u04-q2" value="1"> Increasing the sample size and ensuring it is representative.</label>
+  <label class="quiz-option"><input type="radio" name="u04-q2" value="2"> Making the conclusion more general.</label>
+  <label class="quiz-option"><input type="radio" name="u04-q2" value="3"> Eliminating any counterexamples from the data.</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u04-q3",
+  "The black swan example demonstrates that:",
+  0,
+  "The black swan example illustrates that no accumulation of confirming instances can guarantee an inductive conclusion. Even after thousands of observations of white swans, one counterexample (a black swan in Australia) refuted the generalisation. This is why inductive conclusions are always probable, never certain.") %}
+  <label class="quiz-option"><input type="radio" name="u04-q3" value="0"> Inductive conclusions remain probable, never certain, however much evidence is gathered.</label>
+  <label class="quiz-option"><input type="radio" name="u04-q3" value="1"> Deductive arguments are more reliable than inductive ones.</label>
+  <label class="quiz-option"><input type="radio" name="u04-q3" value="2"> Observations of white swans proved that all swans are white.</label>
+  <label class="quiz-option"><input type="radio" name="u04-q3" value="3"> Analogical reasoning is the strongest form of induction.</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Expand each concept to check your understanding before moving on.</p>
+
+<div class="accordion mt-3" id="u04-review">
+  {% call accordion("rev-u04-a", "Inductive reasoning — what makes it distinctive?") %}
+  <p>Inductive reasoning moves from specific observations to a general conclusion. It is <em>ampliative</em>: the conclusion goes beyond what the premises strictly establish. Even the strongest inductive argument cannot guarantee its conclusion — new evidence can always overturn it. The goal is to make the conclusion <em>as probable as possible</em>, not certain.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u04-b", "Strength and cogency — what do they mean?") %}
+  <p><strong>Strength</strong> describes how probable the premises make the conclusion. A strong argument offers substantial evidence; a weak one provides little. <strong>Cogency</strong> = strong + true premises. Cogent is to induction what sound is to deduction.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u04-c", "Three types of inductive argument") %}
+  <p><strong>Generalisation</strong>: from a sample to a conclusion about the whole class. <strong>Analogical reasoning</strong>: from the similarity of two cases to a conclusion about the second. <strong>Statistical reasoning</strong>: using quantitative data to support a probabilistic conclusion. Each type has specific criteria for evaluating its strength.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u04-d", "Fact vs opinion — why does it matter?") %}
+  <p>Only factual claims can serve as reliable evidence in an argument. Opinions may be true, but they require support before they can function as premises. Mixing fact and opinion in premises without distinguishing them is a common source of weak arguments.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u04-e", "Abductive reasoning — a brief note") %}
+  <p><strong>Abductive reasoning</strong> (inference to the best explanation) is a third type: given some evidence, what is the most plausible explanation? It is common in medicine, detective work, and science. Unlike induction, it selects from competing hypotheses rather than generalising from a sample. Abductive conclusions are always uncogent in the strict sense — they remain open to revision when a better explanation is found.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-4" style="color:#aaa; font-size:0.88rem;">
+  Key concepts covered in this unit: inductive reasoning, specific-to-general inference,
+  strength (strong / weak), cogency (cogent / uncogent), generalisation, analogical reasoning,
+  statistical reasoning, abductive reasoning, fact vs opinion, sample representativeness.
+</p>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-05') | url }}">Unit 5: Conditional Logic</a> when ready.
+</p>
+{% endcall %}

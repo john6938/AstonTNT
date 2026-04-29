@@ -1,0 +1,305 @@
+---
+unit: 2
+unitTitle: Arguments and Inference
+title: "Unit 2: Arguments and Inference — Applied Logic"
+courseUnit: true
+objectives:
+  - Recognise a logical argument and distinguish it from other text types
+  - Identify premises and conclusions in short passages
+  - Understand the role of inference in moving from premises to a conclusion
+  - Apply the logical indicator test to locate conclusions
+  - Evaluate the difference between an argument and a mere assertion
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, videoEmbed %}
+
+
+{# ══ Activity 1 — Text Types ════════════════════════════════════════ #}
+
+{% call activitySection(1, "Types of Text", "file-text") %}
+<p>
+  Not every piece of writing contains an argument. Before you can evaluate reasoning,
+  you need to be able to identify whether reasoning is present at all. Consider the four
+  short passages below. Only one is a logical argument. Read each one and decide which.
+</p>
+
+<div class="row g-3 mt-1 mb-3">
+  <div class="col-md-6">
+    <div class="card h-100" style="background:#1e1e1e; border-color:#444;">
+      <div class="card-body" style="font-size:0.88rem; color:#ddd; line-height:1.8;">
+        <p class="fw-bold mb-1" style="color:#ff8c00;">Text A</p>
+        <p class="mb-0">I broke the brand new monitor in my lab. My supervisor was furious. He shouted at me. I told him many times it was not my fault, but he continued to blame me. I still think he is wrong.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card h-100" style="background:#1e1e1e; border-color:#444;">
+      <div class="card-body" style="font-size:0.88rem; color:#ddd; line-height:1.8;">
+        <p class="fw-bold mb-1" style="color:#ff8c00;">Text B</p>
+        <p class="mb-0">Create the content in HTML. Format the styles using CSS. Control the behaviour of the DOM with JavaScript. Server-side interactions can be managed using Python or PHP.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card h-100" style="background:#1e1e1e; border-color:#444;">
+      <div class="card-body" style="font-size:0.88rem; color:#ddd; line-height:1.8;">
+        <p class="fw-bold mb-1" style="color:#ff8c00;">Text C</p>
+        <p class="mb-0">I was worried that I had a fever, so I took my temperature. The thermometer showed 36.8°C. My normal temperature is around 36.6°C. I do not have a fever.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card h-100" style="background:#1e1e1e; border-color:#444;">
+      <div class="card-body" style="font-size:0.88rem; color:#ddd; line-height:1.8;">
+        <p class="fw-bold mb-1" style="color:#ff8c00;">Text D</p>
+        <p class="mb-0">Mathematics is the most important subject taught at school.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Which text is an argument? Which is a narrative? Which is a set of instructions? Which is an assertion?</p>
+
+<div class="accordion mt-3" id="u02-texttypes">
+  {% call accordion("tt-a", "Reveal the answer") %}
+  <p><strong>Text A</strong> is a <em>narrative</em> — it tells a story. There is no attempt to give reasons for a conclusion.</p>
+  <p><strong>Text B</strong> is a set of <em>instructions</em> (or a description of a process). No claim is being argued for.</p>
+  <p><strong>Text C</strong> is an <em>argument</em>. The premises (thermometer reading, normal temperature) provide evidence for the conclusion (no fever). Even though the argument is short and informal, the structure — evidence leading to a reasoned conclusion — is present.</p>
+  <p><strong>Text D</strong> is an <em>assertion</em> — a claim made without any supporting evidence. Assertions are common in everyday speech but should not be confused with arguments. Providing evidence turns an assertion into an argument.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — What Makes an Argument? ═══════════════════════════ #}
+
+{% call activitySection(2, "What Makes an Argument?", "diagram-2") %}
+<p>
+  A <strong>logical argument</strong> consists of two components:
+</p>
+<ul style="color:#ddd; line-height:2.3;">
+  <li><strong>Premises</strong> — one or more propositions offered as evidence or reasons</li>
+  <li><strong>Conclusion</strong> — the proposition that the premises are intended to support</li>
+</ul>
+<p>
+  The movement from premises to conclusion is called <strong>inference</strong>.
+  Logical language uses <strong>indicator words</strong> to signal whether a proposition
+  is a premise or a conclusion.
+</p>
+
+<div class="row g-3 mt-1 mb-3">
+  <div class="col-md-6">
+    <div class="p-3" style="background:#1a2a1a; border:1px solid #27ae60; border-radius:6px;">
+      <h6 class="fw-bold" style="color:#2ecc71;">Conclusion indicators</h6>
+      <p style="color:#ccc; font-size:0.87rem; margin-bottom:0.5rem;">Words that often signal a conclusion:</p>
+      <p style="color:#ddd; font-size:0.87rem; line-height:2;">
+        therefore, thus, hence, so, consequently, it follows that, we can conclude that,
+        this shows that, this proves that
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3" style="background:#1a1a2a; border:1px solid #4a90d9; border-radius:6px;">
+      <h6 class="fw-bold" style="color:#4a90d9;">Premise indicators</h6>
+      <p style="color:#ccc; font-size:0.87rem; margin-bottom:0.5rem;">Words that often signal a premise:</p>
+      <p style="color:#ddd; font-size:0.87rem; line-height:2;">
+        because, since, given that, as, for, in view of the fact that, on the grounds that,
+        assuming that, the reason is that
+      </p>
+    </div>
+  </div>
+</div>
+
+<h5 class="mt-3" style="color:#ff8c00;">The "Therefore" test</h5>
+<p>
+  A useful heuristic: place the word <em>"therefore"</em> before each sentence in a passage.
+  The sentence that sounds most natural after "therefore" is likely the conclusion. Then ask:
+  what evidence is offered for that sentence? Those are the premises.
+</p>
+<div class="p-3 mb-2" style="background:#222; border-left:3px solid #ff8c00; border-radius:0 6px 6px 0; font-size:0.9rem; color:#ddd; line-height:2;">
+  All humans are mortal. &nbsp;<em style="color:#aaa;">[premise]</em><br>
+  Socrates is human. &nbsp;<em style="color:#aaa;">[premise]</em><br>
+  <strong>Therefore,</strong> Socrates is mortal. &nbsp;<em style="color:#aaa;">[conclusion]</em>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Identifying Arguments ═════════════════════════════ #}
+
+{% call activitySection(3, "Identifying Arguments", "search") %}
+<p>
+  For each passage below, decide whether it contains an argument. If it does, identify
+  the conclusion and the premises. Note: arguments can be false, absurd, or even self-defeating
+  — that does not prevent them from being arguments.
+</p>
+
+<ol style="color:#ddd; line-height:1; margin-bottom:1rem;">
+  <li style="margin-bottom:1.2rem; line-height:1.8;">Bananas are yellow. Strawberries are red. Apples are red or green.</li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">Bananas are fruit. Fruits are sweet. Therefore, bananas are sweet.</li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">This activity is too easy for me.</li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">The Earth is similar to the Moon of Jupiter called Io. There is life on Earth. Therefore, there is life on Io.</li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">The Earth is similar to a tennis ball. There is life on Earth. Therefore, there is life on a tennis ball.</li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">Each human has a heart. Professor X is human. Therefore, Professor X has a heart.</li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">Donald is a duck. The president's first name is Donald. Therefore, the president is a duck.</li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">Some members of the group attended class. Aiko attended the class. Therefore, Aiko is a member of the group.</li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">Professor X says there is a rabbit on the moon. You cannot prove that there is not. Therefore, there is a rabbit on the moon.</li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">A man was found in a classroom this morning. His face was cold and blue. He did not need hospital treatment. He had simply washed blue ink off his face.</li>
+</ol>
+
+<div class="accordion mt-3" id="u02-argident">
+  {% call accordion("ai-a", "Reveal the answers") %}
+  <ol style="color:#ddd; font-size:0.88rem; line-height:2.2;">
+    <li><strong>Not an argument</strong> — three independent descriptions with no conclusion.</li>
+    <li><strong>Argument</strong> — premises: bananas are fruit; fruits are sweet. Conclusion: bananas are sweet. (Note: "fruits are sweet" is a generalisation that is not universally true — the argument is contestable.)</li>
+    <li><strong>Not an argument</strong> — a bare assertion with no supporting evidence.</li>
+    <li><strong>Argument</strong> — analogical reasoning from Earth to Io. The analogy is weak (Io and Earth differ dramatically) but the structure is an argument.</li>
+    <li><strong>Argument</strong> — same structure as (4), but even weaker. Arguing from similarity when the cases are obviously dissimilar.</li>
+    <li><strong>Argument</strong> — a valid deductive argument (syllogism). True premises, valid form, sound conclusion.</li>
+    <li><strong>Argument</strong> — but the conclusion does not follow. The argument confuses a name (Donald) with a predicate (being a duck). This is a formal fallacy.</li>
+    <li><strong>Argument</strong> — but invalid. The conclusion does not follow: some members attended does not mean Aiko is one of them.</li>
+    <li><strong>Argument</strong> — but it commits the <em>appeal to ignorance</em> fallacy: the inability to disprove something does not prove it is true.</li>
+    <li><strong>Not an argument</strong> — a short narrative that resolves itself. There is no conclusion that is being argued for.</li>
+  </ol>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Inference and Indicator Words ══════════════════════ #}
+
+{% call activitySection(4, "Inference and Indicator Words", "arrow-right-circle") %}
+<p>
+  The <strong>inference bar</strong> is a visual representation of the move from premises
+  to conclusion used in formal logic notation:
+</p>
+<div class="p-3 mb-3" style="background:#222; border:1px solid #444; border-radius:6px; font-size:0.9rem; color:#ddd; line-height:2.5; font-family:monospace;">
+  P1: All humans are mortal.<br>
+  P2: Socrates is human.<br>
+  <span style="display:block; border-top:1px solid #ff8c00; margin:0.4rem 0; width:200px;"></span>
+  C: &nbsp;Socrates is mortal.
+</div>
+<p>
+  The line separates premises (above) from conclusion (below). You will use this notation
+  when mapping arguments in Unit 9.
+</p>
+
+<h5 class="mt-4" style="color:#ff8c00;">Video: Argument structure</h5>
+<p>Watch this short video on how to identify the structure of an argument.</p>
+
+{{ videoEmbed("A4XPTmmvVow", "How to identify arguments") }}
+
+{% endcall %}
+
+
+{# ══ Activity 5 — Critical Analysis: Professor X ════════════════════ #}
+
+{% call activitySection(5, "Critical Analysis: Professor X", "pencil-square") %}
+<p>
+  Return to the Professor X passage from Unit 1 — this time with the tools of argument analysis.
+  Read it again and answer the questions below.
+</p>
+
+<div class="p-3 mb-3" style="background:#222; border:1px solid #444; border-radius:6px; font-size:0.9rem; color:#ddd; line-height:2.2;">
+  <p class="fw-bold mb-2" style="color:#ff8c00;">Professor X</p>
+  <ol style="margin:0; padding-left:1.4rem;">
+    <li>Professor X is an efficient and effective teacher.</li>
+    <li>All his students enjoy his classes according to the feedback given on the student feedback questionnaires.</li>
+    <li>Every student who attended the course in full received a grade A, which is testimony of his expertise in teaching.</li>
+    <li>The professor not only holds a doctorate in physics but is also a polyglot and a polymath.</li>
+    <li>His course is always popular with students.</li>
+    <li>Every course offered in the previous two years has seen enrolments meeting or exceeding the minimum number.</li>
+    <li>To ensure he has enough energy, he always brings a cup of coffee to the classroom.</li>
+    <li>This is yet more evidence of his dedication to his students.</li>
+    <li>Finally, Professor X's Facebook page has received thousands of "likes", a clear indication of votes of confidence in his teaching.</li>
+  </ol>
+</div>
+
+<ol style="color:#ddd; line-height:2.5;">
+  <li>State the main conclusion in your own words.</li>
+  <li>Identify which sentences are genuine premises — evidence that directly supports the conclusion.</li>
+  <li>Identify which sentences are irrelevant to the conclusion (i.e., they do not support it even if true).</li>
+  <li>Sentence 8 says the coffee is "evidence of dedication". Is this a valid inference? Explain.</li>
+  <li>Sentence 9 uses Facebook "likes" as evidence of teaching quality. What assumptions does this require? Are those assumptions justified?</li>
+</ol>
+{% endcall %}
+
+
+{# ══ Activity 6 — Check Your Understanding ══════════════════════════ #}
+
+{% call activitySection(6, "Check Your Understanding", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u02-q1",
+  "Which of the following is a logical argument?",
+  2,
+  "An argument requires at least one premise and a conclusion where the premise is offered as evidence for the conclusion. Option C provides a reason (the meeting has been cancelled) for the conclusion (Aileen will not attend). Options A and B are assertions; option D is a narrative.") %}
+  <label class="quiz-option"><input type="radio" name="u02-q1" value="0"> The weather today is cold and grey.</label>
+  <label class="quiz-option"><input type="radio" name="u02-q1" value="1"> Turn left at the traffic lights and then take the second right.</label>
+  <label class="quiz-option"><input type="radio" name="u02-q1" value="2"> The meeting has been cancelled. Therefore, Aileen will not attend.</label>
+  <label class="quiz-option"><input type="radio" name="u02-q1" value="3"> I arrived late, found a seat near the back, and left before the end.</label>
+{% endcall %}
+</div>
+
+<div class="mb-4">
+{% call quizMC("u02-q2",
+  "Which word is a premise indicator?",
+  3,
+  "'Because' signals that what follows is a reason or evidence — a premise. 'Therefore', 'consequently', and 'hence' are conclusion indicators: they signal that what follows is the conclusion being argued for.") %}
+  <label class="quiz-option"><input type="radio" name="u02-q2" value="0"> Therefore</label>
+  <label class="quiz-option"><input type="radio" name="u02-q2" value="1"> Consequently</label>
+  <label class="quiz-option"><input type="radio" name="u02-q2" value="2"> Hence</label>
+  <label class="quiz-option"><input type="radio" name="u02-q2" value="3"> Because</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u02-q3",
+  "An assertion differs from an argument in that an assertion:",
+  1,
+  "An assertion makes a claim but provides no evidence or reasoning to support it. An argument, by contrast, offers premises as reasons for a conclusion. Assertions may be true, false, or indeterminate — the absence of supporting evidence is what distinguishes them from arguments.") %}
+  <label class="quiz-option"><input type="radio" name="u02-q3" value="0"> Is always false.</label>
+  <label class="quiz-option"><input type="radio" name="u02-q3" value="1"> Provides no supporting evidence for its claim.</label>
+  <label class="quiz-option"><input type="radio" name="u02-q3" value="2"> Contains more than one sentence.</label>
+  <label class="quiz-option"><input type="radio" name="u02-q3" value="3"> Uses formal logical notation.</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Expand each concept to check your understanding before moving on.</p>
+
+<div class="accordion mt-3" id="u02-review">
+  {% call accordion("rev-u02-a", "Logical argument — what are its components?") %}
+  <p>A logical argument has two essential components: <strong>premises</strong> (propositions offered as evidence) and a <strong>conclusion</strong> (the proposition the premises are intended to support). The inference is the logical step connecting them. An argument can be short — even a single premise and a conclusion — and it can be false, absurd, or weak. Its defining feature is the presence of an evidential relationship between premises and conclusion.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u02-b", "Assertion — how does it differ from an argument?") %}
+  <p>An assertion is a claim made without supporting evidence. It states a conclusion but provides no premises. Assertions are extremely common in everyday discourse — advertising, political speech, and social media are full of them. The moment a speaker provides a reason for a claim, the statement becomes an argument (however weak).</p>
+  {% endcall %}
+
+  {% call accordion("rev-u02-c", "Logical indicator words — what are they?") %}
+  <p><strong>Conclusion indicators</strong> (therefore, thus, hence, so, consequently, it follows that) signal the conclusion. <strong>Premise indicators</strong> (because, since, given that, as, for, on the grounds that) signal premises. These words are guides, not guarantees — they can appear in non-argumentative contexts — but they are highly reliable in academic and formal writing.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u02-d", "The 'Therefore' test — how does it work?") %}
+  <p>Place "therefore" before each sentence in a passage. The sentence that sounds most natural after "therefore" is likely the conclusion. This works because the word therefore signals that what follows is a claim being supported by what came before. Once you have identified the conclusion, the remaining propositions that provide evidence for it are the premises.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u02-e", "Validity and soundness — brief preview") %}
+  <p>An argument is <strong>valid</strong> if the conclusion follows necessarily from the premises — regardless of whether the premises are true. An argument is <strong>sound</strong> if it is valid <em>and</em> the premises are actually true. You can have a valid argument with false premises, and an argument with true premises that is still invalid. These concepts are covered in depth in Unit 3.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-4" style="color:#aaa; font-size:0.88rem;">
+  Key concepts covered in this unit: argument, premise, conclusion, inference, assertion, narrative,
+  instruction, logical indicator words (premise and conclusion indicators), the Therefore test,
+  inference bar notation, validity (preview), soundness (preview).
+</p>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-03') | url }}">Unit 3: Deductive Reasoning</a> when ready.
+</p>
+{% endcall %}

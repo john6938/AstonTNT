@@ -1,0 +1,371 @@
+---
+unit: 6
+unitTitle: Truth Tables
+title: "Unit 6: Truth Tables — Applied Logic"
+courseUnit: true
+objectives:
+  - Construct truth tables for the four basic logical connectives (NOT, AND, OR, IF-THEN)
+  - Use truth tables to evaluate the truth of compound propositions
+  - Verify validity of argument forms using truth tables
+  - Identify tautologies and contradictions
+  - Understand how truth tables connect formal logic to propositional reasoning
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC %}
+
+
+{# ══ Activity 1 — What is a Truth Table? ════════════════════════════ #}
+
+{% call activitySection(1, "What is a Truth Table?", "table") %}
+<p>
+  A <strong>truth table</strong> is a systematic method for determining the truth value
+  of a compound proposition under every possible combination of truth values for its
+  component propositions. Truth tables provide a mechanical — and completely reliable —
+  way to check whether an argument form is valid.
+</p>
+<p>
+  The number of rows in a truth table depends on the number of propositional variables:
+  with <em>n</em> variables, there are 2<sup>n</sup> rows. Two variables give 4 rows;
+  three variables give 8 rows; and so on.
+</p>
+<div class="p-3 mb-3" style="background:#222; border-left:3px solid #ff8c00; border-radius:0 6px 6px 0; font-size:0.9rem; color:#ddd; line-height:2;">
+  Two variables (P, Q): 4 rows (TT, TF, FT, FF)<br>
+  Three variables (P, Q, R): 8 rows<br>
+  Four variables: 16 rows
+</div>
+<p>
+  We evaluate one connective at a time, working from the innermost parentheses outward —
+  just as in arithmetic where you evaluate brackets before multiplication before addition.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — The Four Connectives ══════════════════════════════ #}
+
+{% call activitySection(2, "The Four Basic Connectives", "diagram-3") %}
+<p>
+  Propositional logic uses four basic connectives to build compound propositions.
+  Each has a precise definition captured in its truth table.
+</p>
+
+<h5 class="mt-3" style="color:#ff8c00;">NOT (negation) — ¬P</h5>
+<p>NOT reverses the truth value of a proposition.</p>
+<div class="table-responsive mb-4">
+  <table class="table table-dark table-bordered" style="font-size:0.87rem; max-width:250px;">
+    <thead><tr style="background:#333;"><th>P</th><th>¬P (NOT P)</th></tr></thead>
+    <tbody>
+      <tr><td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td></tr>
+      <tr><td style="color:#e74c3c;">F</td><td style="color:#2ecc71;">T</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h5 style="color:#ff8c00;">AND (conjunction) — P ∧ Q</h5>
+<p>AND is true only when both propositions are true.</p>
+<div class="table-responsive mb-4">
+  <table class="table table-dark table-bordered" style="font-size:0.87rem; max-width:320px;">
+    <thead><tr style="background:#333;"><th>P</th><th>Q</th><th>P ∧ Q</th></tr></thead>
+    <tbody>
+      <tr><td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td></tr>
+      <tr><td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td></tr>
+      <tr><td style="color:#e74c3c;">F</td><td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td></tr>
+      <tr><td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h5 style="color:#ff8c00;">OR (disjunction) — P ∨ Q</h5>
+<p>OR (inclusive) is true when at least one proposition is true.</p>
+<div class="table-responsive mb-4">
+  <table class="table table-dark table-bordered" style="font-size:0.87rem; max-width:320px;">
+    <thead><tr style="background:#333;"><th>P</th><th>Q</th><th>P ∨ Q</th></tr></thead>
+    <tbody>
+      <tr><td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td></tr>
+      <tr><td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td><td style="color:#2ecc71;">T</td></tr>
+      <tr><td style="color:#e74c3c;">F</td><td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td></tr>
+      <tr><td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h5 style="color:#ff8c00;">IF-THEN (conditional) — P → Q</h5>
+<p>The conditional is false only when P is true and Q is false.</p>
+<div class="table-responsive mb-2">
+  <table class="table table-dark table-bordered" style="font-size:0.87rem; max-width:320px;">
+    <thead><tr style="background:#333;"><th>P</th><th>Q</th><th>P → Q</th></tr></thead>
+    <tbody>
+      <tr><td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td></tr>
+      <tr><td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td></tr>
+      <tr><td style="color:#e74c3c;">F</td><td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td></tr>
+      <tr><td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td><td style="color:#2ecc71;">T</td></tr>
+    </tbody>
+  </table>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Evaluating Compound Propositions ═══════════════════ #}
+
+{% call activitySection(3, "Evaluating Compound Propositions", "calculator") %}
+<p>
+  To evaluate a compound proposition, work column by column. Each column represents
+  one logical step. Consider: <strong>(P ∧ Q) → ¬P</strong>
+</p>
+
+<div class="table-responsive mt-3 mb-3">
+  <table class="table table-dark table-bordered" style="font-size:0.87rem;">
+    <thead><tr style="background:#333;">
+      <th>P</th><th>Q</th><th>¬P</th><th>P ∧ Q</th><th>(P ∧ Q) → ¬P</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td>
+        <td style="color:#e74c3c;">F</td><td style="color:#2ecc71;">T</td>
+        <td style="color:#e74c3c;">F</td>
+      </tr>
+      <tr>
+        <td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#2ecc71;">T</td>
+      </tr>
+      <tr>
+        <td style="color:#e74c3c;">F</td><td style="color:#2ecc71;">T</td>
+        <td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#2ecc71;">T</td>
+      </tr>
+      <tr>
+        <td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#2ecc71;">T</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>
+  Because the final column is not all T, this formula is not a tautology.
+  In row 1, the compound proposition is false.
+</p>
+
+<h5 class="mt-4" style="color:#ff8c00;">Tautologies and contradictions</h5>
+<div class="row g-3 mt-1 mb-2">
+  <div class="col-md-6">
+    <div class="p-3 h-100" style="background:#1a2a1a; border:1px solid #27ae60; border-radius:6px;">
+      <h6 class="fw-bold" style="color:#2ecc71;">Tautology</h6>
+      <p style="color:#ccc; font-size:0.87rem; line-height:1.8; margin-bottom:0.5rem;">
+        A proposition that is true under every possible assignment of truth values.
+      </p>
+      <p style="font-family:monospace; color:#ddd; font-size:0.87rem; margin:0;">
+        P ∨ ¬P &nbsp;&nbsp;<em style="font-family:sans-serif; color:#aaa;">(P or not P — always true)</em>
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3 h-100" style="background:#2a1a1a; border:1px solid #e74c3c; border-radius:6px;">
+      <h6 class="fw-bold" style="color:#e74c3c;">Contradiction</h6>
+      <p style="color:#ccc; font-size:0.87rem; line-height:1.8; margin-bottom:0.5rem;">
+        A proposition that is false under every possible assignment of truth values.
+      </p>
+      <p style="font-family:monospace; color:#ddd; font-size:0.87rem; margin:0;">
+        P ∧ ¬P &nbsp;&nbsp;<em style="font-family:sans-serif; color:#aaa;">(P and not P — always false)</em>
+      </p>
+    </div>
+  </div>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Verifying Argument Validity ════════════════════════ #}
+
+{% call activitySection(4, "Verifying Argument Validity", "check-square") %}
+<p>
+  An argument form is <strong>valid</strong> if and only if there is no row in its truth table
+  where all premises are true and the conclusion is false. Equivalently, the formula
+  <em>(P1 ∧ P2 ∧ … ∧ Pn) → C</em> is a tautology.
+</p>
+
+<h5 style="color:#ff8c00;">Verifying Modus Ponens</h5>
+<p>Form: <em>If P then Q; P; therefore Q.</em> Combined formula: <strong>((P → Q) ∧ P) → Q</strong></p>
+<div class="table-responsive mt-2 mb-4">
+  <table class="table table-dark table-bordered" style="font-size:0.87rem;">
+    <thead><tr style="background:#333;">
+      <th>P</th><th>Q</th><th>P → Q</th><th>(P → Q) ∧ P</th><th>((P → Q) ∧ P) → Q</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td>
+        <td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td>
+        <td style="color:#2ecc71;">T</td>
+      </tr>
+      <tr>
+        <td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#2ecc71;">T</td>
+      </tr>
+      <tr>
+        <td style="color:#e74c3c;">F</td><td style="color:#2ecc71;">T</td>
+        <td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#2ecc71;">T</td>
+      </tr>
+      <tr>
+        <td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#2ecc71;">T</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>The final column is all T — confirming that modus ponens is a tautology, hence always valid.</p>
+
+<h5 class="mt-4" style="color:#ff8c00;">Exposing an invalid form</h5>
+<p>Affirming the consequent: <em>If P then Q; Q; therefore P.</em> Formula: <strong>((P → Q) ∧ Q) → P</strong></p>
+<div class="table-responsive mt-2 mb-2">
+  <table class="table table-dark table-bordered" style="font-size:0.87rem;">
+    <thead><tr style="background:#333;">
+      <th>P</th><th>Q</th><th>P → Q</th><th>(P → Q) ∧ Q</th><th>((P → Q) ∧ Q) → P</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td>
+        <td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td>
+        <td style="color:#2ecc71;">T</td>
+      </tr>
+      <tr>
+        <td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#2ecc71;">T</td>
+      </tr>
+      <tr>
+        <td style="color:#e74c3c;">F</td><td style="color:#2ecc71;">T</td>
+        <td style="color:#2ecc71;">T</td><td style="color:#2ecc71;">T</td>
+        <td style="color:#e74c3c; font-weight:bold;">F</td>
+      </tr>
+      <tr>
+        <td style="color:#e74c3c;">F</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#2ecc71;">T</td><td style="color:#e74c3c;">F</td>
+        <td style="color:#2ecc71;">T</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Row 3 is F — the formula is not a tautology, confirming that affirming the consequent is invalid.</p>
+{% endcall %}
+
+
+{# ══ Activity 5 — Practice ═══════════════════════════════════════════ #}
+
+{% call activitySection(5, "Practice: Complete These Tables", "pencil-square") %}
+<p>
+  Complete the truth table for each formula. Then determine whether each is a tautology,
+  a contradiction, or neither.
+</p>
+
+<ol style="color:#ddd; line-height:3; font-size:0.95rem;">
+  <li><strong>¬P ∨ P</strong></li>
+  <li><strong>P ∧ ¬P</strong></li>
+  <li><strong>P → (P ∨ Q)</strong></li>
+  <li><strong>(P ∧ Q) → P</strong></li>
+  <li><strong>¬(P ∧ Q) ↔ (¬P ∨ ¬Q)</strong> &nbsp;<em style="color:#aaa; font-size:0.85rem;">(De Morgan's Law)</em></li>
+</ol>
+
+<div class="accordion mt-3" id="u06-practice">
+  {% call accordion("prac-a", "Reveal the answers") %}
+  <ol style="color:#ddd; font-size:0.88rem; line-height:2.3;">
+    <li><strong>¬P ∨ P</strong> — <em style="color:#2ecc71;">Tautology</em>. Always true (law of excluded middle).</li>
+    <li><strong>P ∧ ¬P</strong> — <em style="color:#e74c3c;">Contradiction</em>. Always false (law of non-contradiction).</li>
+    <li><strong>P → (P ∨ Q)</strong> — <em style="color:#2ecc71;">Tautology</em>. If P is true, P ∨ Q is true. If P is false, the conditional is trivially true.</li>
+    <li><strong>(P ∧ Q) → P</strong> — <em style="color:#2ecc71;">Tautology</em>. If both P and Q are true, then certainly P is true.</li>
+    <li><strong>¬(P ∧ Q) ↔ (¬P ∨ ¬Q)</strong> — <em style="color:#2ecc71;">Tautology</em>. This is De Morgan's Law: "not (P and Q)" is equivalent to "(not P) or (not Q)".</li>
+  </ol>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Check Your Understanding ══════════════════════════ #}
+
+{% call activitySection(6, "Check Your Understanding", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u06-q1",
+  "A tautology is a proposition that is:",
+  2,
+  "A tautology is true under every possible assignment of truth values to its component variables. The classic example is P ∨ ¬P — this is always true, regardless of what P represents. A contradiction is the opposite: always false.") %}
+  <label class="quiz-option"><input type="radio" name="u06-q1" value="0"> Always false.</label>
+  <label class="quiz-option"><input type="radio" name="u06-q1" value="1"> True when all variables are true.</label>
+  <label class="quiz-option"><input type="radio" name="u06-q1" value="2"> True under every possible assignment of truth values.</label>
+  <label class="quiz-option"><input type="radio" name="u06-q1" value="3"> True in most but not all cases.</label>
+{% endcall %}
+</div>
+
+<div class="mb-4">
+{% call quizMC("u06-q2",
+  "The conjunction P ∧ Q is true when:",
+  0,
+  "AND (conjunction) is true only when both conjuncts are true. If either P or Q (or both) is false, the conjunction is false. This differs from OR (disjunction), which requires only one to be true.") %}
+  <label class="quiz-option"><input type="radio" name="u06-q2" value="0"> Both P and Q are true.</label>
+  <label class="quiz-option"><input type="radio" name="u06-q2" value="1"> At least one of P or Q is true.</label>
+  <label class="quiz-option"><input type="radio" name="u06-q2" value="2"> P is true or Q is true, but not both.</label>
+  <label class="quiz-option"><input type="radio" name="u06-q2" value="3"> P is true and Q is false.</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u06-q3",
+  "An argument form is valid if and only if its combined formula (premises → conclusion) is:",
+  1,
+  "A valid argument form corresponds to a tautology: there is no row where all premises are true and the conclusion is false. If the formula is not a tautology, there exists at least one counterexample where the premises hold but the conclusion fails.") %}
+  <label class="quiz-option"><input type="radio" name="u06-q3" value="0"> A contradiction.</label>
+  <label class="quiz-option"><input type="radio" name="u06-q3" value="1"> A tautology.</label>
+  <label class="quiz-option"><input type="radio" name="u06-q3" value="2"> True in most rows of the truth table.</label>
+  <label class="quiz-option"><input type="radio" name="u06-q3" value="3"> True whenever the premises are true.</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Expand each concept to check your understanding before moving on.</p>
+
+<div class="accordion mt-3" id="u06-review">
+  {% call accordion("rev-u06-a", "Truth table — what is it and how do you construct one?") %}
+  <p>A truth table lists every possible combination of truth values for the variables in a proposition, and shows the resulting truth value of the whole expression. With n variables there are 2<sup>n</sup> rows. Evaluate one connective at a time, building up from the innermost subformulas.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u06-b", "Four connectives — truth conditions") %}
+  <p>
+    <strong>NOT (¬P)</strong>: true when P is false; false when P is true.<br>
+    <strong>AND (P ∧ Q)</strong>: true only when both P and Q are true.<br>
+    <strong>OR (P ∨ Q)</strong>: true when at least one of P or Q is true.<br>
+    <strong>IF-THEN (P → Q)</strong>: false only when P is true and Q is false.
+  </p>
+  {% endcall %}
+
+  {% call accordion("rev-u06-c", "Tautology vs contradiction") %}
+  <p>A <strong>tautology</strong> is true under every possible assignment of truth values (e.g., P ∨ ¬P). A <strong>contradiction</strong> is false under every assignment (e.g., P ∧ ¬P). Most compound propositions are neither — they are true under some assignments and false under others.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u06-d", "How truth tables prove validity") %}
+  <p>An argument is valid if the combined formula (all premises conjoined, then placed as antecedent of a conditional with the conclusion as consequent) is a tautology. If there is even one row where all premises are true but the conclusion is false, the argument is invalid. This is called a <em>counterexample</em>.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u06-e", "De Morgan's Laws") %}
+  <p>Two important logical equivalences:<br>
+    <strong>¬(P ∧ Q) ≡ ¬P ∨ ¬Q</strong>: "not (P and Q)" = "(not P) or (not Q)"<br>
+    <strong>¬(P ∨ Q) ≡ ¬P ∧ ¬Q</strong>: "not (P or Q)" = "(not P) and (not Q)"<br>
+    These equivalences allow negation to be distributed through conjunctions and disjunctions.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-4" style="color:#aaa; font-size:0.88rem;">
+  Key concepts covered in this unit: truth table, logical connective, negation (NOT / ¬),
+  conjunction (AND / ∧), disjunction (OR / ∨), conditional (IF-THEN / →),
+  tautology, contradiction, counterexample, logical equivalence, De Morgan's Laws.
+</p>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-07') | url }}">Unit 7: Informal Fallacies I</a> when ready.
+</p>
+{% endcall %}

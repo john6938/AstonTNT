@@ -1,0 +1,19 @@
+{
+  "layout": "layouts/course-unit.njk",
+  "courseTitle": "Applied Logic",
+  "courseBaseUrl": "/courses/applied-logic",
+  "unitCount": 10,
+  "unitTitles": [
+    "Propositions and Truth",
+    "Arguments and Inference",
+    "Deductive Reasoning",
+    "Inductive Reasoning",
+    "Conditional Logic",
+    "Truth Tables",
+    "Informal Fallacies I",
+    "Informal Fallacies II",
+    "Argument Mapping",
+    "Applied Reasoning"
+  ],
+  "quote": "&ldquo;Logic is the beginning of wisdom, not the end.&rdquo; &mdash; Spock"
+}

@@ -1,0 +1,344 @@
+---
+unit: 3
+unitTitle: Deductive Reasoning
+title: "Unit 3: Deductive Reasoning — Applied Logic"
+courseUnit: true
+objectives:
+  - Explain deductive reasoning and distinguish it from inductive reasoning
+  - Identify valid and invalid deductive argument forms
+  - Recognise modus ponens and modus tollens
+  - Understand categorical syllogisms
+  - Apply the concepts of validity and soundness to evaluate deductive arguments
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, videoEmbed %}
+
+
+{# ══ Activity 1 — What is Deductive Reasoning? ══════════════════════ #}
+
+{% call activitySection(1, "What is Deductive Reasoning?", "funnel") %}
+<p>
+  <strong>Deductive reasoning</strong> moves from the general to the specific. It starts
+  with one or more general premises and draws a specific conclusion that must be true
+  if the premises are true. Deductive arguments are truth-preserving: if the premises
+  are true and the argument form is valid, the conclusion cannot be false.
+</p>
+<div class="p-3 mb-3" style="background:#222; border-left:3px solid #ff8c00; border-radius:0 6px 6px 0; font-size:0.9rem; color:#ddd; line-height:2.2;">
+  <strong style="color:#aaa;">P1:</strong> All mammals are warm-blooded.<br>
+  <strong style="color:#aaa;">P2:</strong> Whales are mammals.<br>
+  <strong style="color:#ff8c00;">C:</strong> &nbsp;Therefore, whales are warm-blooded.
+</div>
+<p>
+  Notice that if P1 and P2 are true, C must be true. There is no possible world in which
+  the premises hold and the conclusion fails. This is what makes deductive reasoning so
+  powerful — and why it is the foundation of mathematics, formal logic, and proof-based
+  disciplines.
+</p>
+
+<h5 class="mt-4" style="color:#ff8c00;">Deductive vs inductive — the key distinction</h5>
+<div class="row g-3 mt-1">
+  <div class="col-md-6">
+    <div class="p-3 h-100" style="background:#1a2a1a; border:1px solid #27ae60; border-radius:6px;">
+      <h6 class="fw-bold" style="color:#2ecc71;">Deductive reasoning</h6>
+      <p style="color:#ccc; font-size:0.87rem; line-height:1.8; margin:0;">
+        Moves from <em>general</em> premises to a <em>specific</em> conclusion.
+        If valid and premises are true, the conclusion is <em>certain</em>.
+        A valid deductive argument cannot have true premises and a false conclusion.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3 h-100" style="background:#1a1a2a; border:1px solid #4a90d9; border-radius:6px;">
+      <h6 class="fw-bold" style="color:#4a90d9;">Inductive reasoning</h6>
+      <p style="color:#ccc; font-size:0.87rem; line-height:1.8; margin:0;">
+        Moves from <em>specific</em> observations to a <em>general</em> conclusion.
+        Even a strong inductive argument only makes the conclusion <em>probable</em>.
+        New evidence can always overturn an inductive conclusion.
+      </p>
+    </div>
+  </div>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 2 — Validity ══════════════════════════════════════════ #}
+
+{% call activitySection(2, "Validity", "check2-circle") %}
+<p>
+  A deductive argument is <strong>valid</strong> if it is <em>impossible</em> for the
+  premises to be true and the conclusion to be false. Validity is a structural property:
+  it is about the logical relationship between premises and conclusion, not about whether
+  the premises are actually true.
+</p>
+<p>
+  This means a valid argument can have false premises — and even a false conclusion:
+</p>
+
+<div class="row g-3 mt-1 mb-3">
+  <div class="col-md-6">
+    <div class="card h-100" style="background:#1e1e1e; border-color:#2ecc71;">
+      <div class="card-body">
+        <h6 class="fw-bold" style="color:#2ecc71;"><i class="bi bi-check-circle me-2"></i>Valid</h6>
+        <p style="color:#ccc; font-size:0.88rem; font-family:monospace; line-height:2; margin:0;">
+          All cats can fly.<br>
+          Whiskers is a cat.<br>
+          <span style="border-top:1px solid #555; display:block; margin:0.3rem 0;"></span>
+          Therefore, Whiskers can fly.
+        </p>
+        <p style="color:#aaa; font-size:0.8rem; margin-top:0.75rem; margin-bottom:0;">
+          The first premise is false — but the argument is <em>valid</em> because
+          the conclusion follows necessarily from the premises.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card h-100" style="background:#1e1e1e; border-color:#e74c3c;">
+      <div class="card-body">
+        <h6 class="fw-bold" style="color:#e74c3c;"><i class="bi bi-x-circle me-2"></i>Invalid</h6>
+        <p style="color:#ccc; font-size:0.88rem; font-family:monospace; line-height:2; margin:0;">
+          All dogs are mammals.<br>
+          All cats are mammals.<br>
+          <span style="border-top:1px solid #555; display:block; margin:0.3rem 0;"></span>
+          Therefore, all dogs are cats.
+        </p>
+        <p style="color:#aaa; font-size:0.8rem; margin-top:0.75rem; margin-bottom:0;">
+          Both premises are true, but the conclusion does not follow.
+          The argument is <em>invalid</em>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h5 class="mt-3" style="color:#ff8c00;">Soundness</h5>
+<p>
+  An argument is <strong>sound</strong> if it is (1) valid <em>and</em> (2) all its
+  premises are actually true. A sound argument guarantees a true conclusion.
+</p>
+<div class="table-responsive mt-2">
+  <table class="table table-dark table-bordered" style="font-size:0.87rem;">
+    <thead><tr style="background:#333;">
+      <th>Valid?</th><th>Premises true?</th><th>Result</th>
+    </tr></thead>
+    <tbody>
+      <tr><td style="color:#2ecc71;">Yes</td><td style="color:#2ecc71;">Yes</td><td><strong style="color:#2ecc71;">Sound</strong> — conclusion is guaranteed true</td></tr>
+      <tr><td style="color:#2ecc71;">Yes</td><td style="color:#e74c3c;">No</td><td>Valid but <strong style="color:#f39c12;">unsound</strong> — conclusion may be false</td></tr>
+      <tr><td style="color:#e74c3c;">No</td><td style="color:#2ecc71;">Yes</td><td><strong style="color:#e74c3c;">Invalid</strong> — conclusion does not follow</td></tr>
+      <tr><td style="color:#e74c3c;">No</td><td style="color:#e74c3c;">No</td><td><strong style="color:#e74c3c;">Invalid and unsound</strong></td></tr>
+    </tbody>
+  </table>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Argument Forms ════════════════════════════════════ #}
+
+{% call activitySection(3, "Standard Argument Forms", "grid-3x3") %}
+<p>
+  Certain argument forms appear so frequently in deductive reasoning that they have
+  been named. Recognising these forms helps you evaluate arguments quickly.
+</p>
+
+<h5 class="mt-3" style="color:#ff8c00;">Categorical syllogism</h5>
+<p>
+  A <strong>syllogism</strong> has two premises and a conclusion. The classic form
+  involves three terms — the major, minor, and middle term — distributed across the
+  premises and conclusion.
+</p>
+<div class="p-3 mb-3" style="background:#222; border-left:3px solid #ff8c00; border-radius:0 6px 6px 0; font-size:0.9rem; color:#ddd; line-height:2.2; font-family:monospace;">
+  All M are P. &nbsp;&nbsp;<em style="color:#aaa; font-family:sans-serif;">(major premise)</em><br>
+  All S are M. &nbsp;&nbsp;<em style="color:#aaa; font-family:sans-serif;">(minor premise)</em><br>
+  <span style="border-top:1px solid #555; display:block; margin:0.3rem 0; width:180px;"></span>
+  All S are P. &nbsp;&nbsp;<em style="color:#aaa; font-family:sans-serif;">(conclusion)</em>
+</div>
+
+<h5 class="mt-4" style="color:#ff8c00;">Modus Ponens — affirming the antecedent</h5>
+<div class="p-3 mb-3" style="background:#222; border-left:3px solid #4a90d9; border-radius:0 6px 6px 0; font-size:0.9rem; color:#ddd; line-height:2.2; font-family:monospace;">
+  If P, then Q. &nbsp;&nbsp;<em style="color:#aaa; font-family:sans-serif;">(conditional premise)</em><br>
+  P is true. &nbsp;&nbsp;&nbsp;&nbsp;<em style="color:#aaa; font-family:sans-serif;">(affirm the antecedent)</em><br>
+  <span style="border-top:1px solid #555; display:block; margin:0.3rem 0; width:180px;"></span>
+  Therefore, Q. &nbsp;<em style="color:#aaa; font-family:sans-serif;">(conclusion)</em>
+</div>
+<p style="color:#ddd; font-size:0.88rem;">
+  <em>Example:</em> If it is raining, the ground is wet. It is raining.
+  Therefore, the ground is wet.
+</p>
+
+<h5 class="mt-4" style="color:#ff8c00;">Modus Tollens — denying the consequent</h5>
+<div class="p-3 mb-3" style="background:#222; border-left:3px solid #9b59b6; border-radius:0 6px 6px 0; font-size:0.9rem; color:#ddd; line-height:2.2; font-family:monospace;">
+  If P, then Q. &nbsp;&nbsp;&nbsp;<em style="color:#aaa; font-family:sans-serif;">(conditional premise)</em><br>
+  Q is false. &nbsp;&nbsp;&nbsp;&nbsp;<em style="color:#aaa; font-family:sans-serif;">(deny the consequent)</em><br>
+  <span style="border-top:1px solid #555; display:block; margin:0.3rem 0; width:180px;"></span>
+  Therefore, not P. <em style="color:#aaa; font-family:sans-serif;">(conclusion)</em>
+</div>
+<p style="color:#ddd; font-size:0.88rem;">
+  <em>Example:</em> If it is raining, the ground is wet. The ground is not wet.
+  Therefore, it is not raining.
+</p>
+
+<h5 class="mt-4" style="color:#ff8c00;">Two common invalid forms</h5>
+<div class="row g-3 mt-1">
+  <div class="col-md-6">
+    <div class="p-3" style="background:#2a1a1a; border:1px solid #e74c3c; border-radius:6px; font-size:0.87rem; color:#ddd;">
+      <p class="fw-bold mb-2" style="color:#e74c3c;">Affirming the consequent (invalid)</p>
+      <p style="font-family:monospace; line-height:2; margin-bottom:0.5rem;">
+        If P, then Q.<br>Q is true.<br>
+        <span style="border-top:1px solid #555; display:block; margin:0.2rem 0; width:120px;"></span>
+        Therefore, P.
+      </p>
+      <p style="color:#aaa; margin:0; font-size:0.83rem;">
+        The ground is wet does <em>not</em> prove it is raining —
+        there are many other possible causes.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3" style="background:#2a1a1a; border:1px solid #e74c3c; border-radius:6px; font-size:0.87rem; color:#ddd;">
+      <p class="fw-bold mb-2" style="color:#e74c3c;">Denying the antecedent (invalid)</p>
+      <p style="font-family:monospace; line-height:2; margin-bottom:0.5rem;">
+        If P, then Q.<br>P is false.<br>
+        <span style="border-top:1px solid #555; display:block; margin:0.2rem 0; width:120px;"></span>
+        Therefore, not Q.
+      </p>
+      <p style="color:#aaa; margin:0; font-size:0.83rem;">
+        It is not raining does <em>not</em> prove the ground is dry —
+        it could be wet for other reasons.
+      </p>
+    </div>
+  </div>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Video ══════════════════════════════════════════════ #}
+
+{% call activitySection(4, "Four Types of Reasoning — Video", "play-circle") %}
+<p>
+  Watch this explanation of different types of reasoning. Pay particular attention to
+  how deductive reasoning is contrasted with inductive and abductive reasoning.
+</p>
+{{ videoEmbed("9tvFF0HLm0A", "Four types of reasoning") }}
+{% endcall %}
+
+
+{# ══ Activity 5 — Evaluate Deductive Arguments ══════════════════════ #}
+
+{% call activitySection(5, "Evaluate These Arguments", "check2-all") %}
+<p>
+  For each argument below, determine: (a) Is it valid? (b) Are the premises true?
+  (c) Is it sound? Where possible, identify the argument form (syllogism, modus ponens,
+  modus tollens, etc.).
+</p>
+<ol style="color:#ddd; line-height:1; margin-bottom:1rem;">
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    All viruses can infect organisms. COVID-19 is a virus. Therefore, COVID-19 can infect organisms.
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    If a person is infected with COVID-19, they will develop a fever. This person has a fever. Therefore, this person is infected with COVID-19.
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    If a letter is sealed, it must have a first-class stamp. This letter does not have a first-class stamp. Therefore, this letter is not sealed.
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    COVID-19 can kill people. Something that kills people is dangerous. Therefore, COVID-19 is dangerous.
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    All people in that room two weeks ago developed COVID-19. She was in that room two weeks ago. Therefore, she developed COVID-19.
+  </li>
+</ol>
+
+<div class="accordion mt-3" id="u03-eval">
+  {% call accordion("ev-a", "Reveal the answers") %}
+  <ol style="color:#ddd; font-size:0.88rem; line-height:2.3;">
+    <li><strong>Valid</strong> — categorical syllogism. Both premises are true. <strong>Sound.</strong></li>
+    <li><strong>Invalid</strong> — affirming the consequent. Fever has many causes; COVID-19 is only one. Having a fever does not prove COVID-19 infection.</li>
+    <li><strong>Valid</strong> — modus tollens. If sealed → first class; not first class → not sealed. Both premises true. <strong>Sound.</strong></li>
+    <li><strong>Valid</strong> — categorical syllogism. Both premises are true. <strong>Sound.</strong></li>
+    <li><strong>Valid</strong> — categorical syllogism. However, the first premise is likely false (not everyone in the room necessarily developed COVID-19). <strong>Unsound.</strong></li>
+  </ol>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Check Your Understanding ══════════════════════════ #}
+
+{% call activitySection(6, "Check Your Understanding", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u03-q1",
+  "An argument is valid if:",
+  1,
+  "Validity is purely about structure: it is impossible for the premises to be true and the conclusion to be false. A valid argument can have false premises and even a false conclusion — validity does not guarantee truth of premises.") %}
+  <label class="quiz-option"><input type="radio" name="u03-q1" value="0"> All of its premises are true.</label>
+  <label class="quiz-option"><input type="radio" name="u03-q1" value="1"> The conclusion must be true if the premises are true.</label>
+  <label class="quiz-option"><input type="radio" name="u03-q1" value="2"> The conclusion is true.</label>
+  <label class="quiz-option"><input type="radio" name="u03-q1" value="3"> The argument has exactly two premises.</label>
+{% endcall %}
+</div>
+
+<div class="mb-4">
+{% call quizMC("u03-q2",
+  "Which argument form is: 'If P then Q. Q is true. Therefore, P'?",
+  2,
+  "This is affirming the consequent — an invalid argument form. Just because Q is true does not mean P caused it; Q could be true for reasons other than P. Do not confuse this with modus ponens (If P then Q; P; therefore Q), which is valid.") %}
+  <label class="quiz-option"><input type="radio" name="u03-q2" value="0"> Modus ponens</label>
+  <label class="quiz-option"><input type="radio" name="u03-q2" value="1"> Modus tollens</label>
+  <label class="quiz-option"><input type="radio" name="u03-q2" value="2"> Affirming the consequent (invalid)</label>
+  <label class="quiz-option"><input type="radio" name="u03-q2" value="3"> Categorical syllogism</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u03-q3",
+  "A sound argument is one that is:",
+  3,
+  "Soundness requires both validity (the conclusion follows necessarily from the premises) and true premises. A sound argument guarantees a true conclusion. A valid argument with false premises is unsound.") %}
+  <label class="quiz-option"><input type="radio" name="u03-q3" value="0"> Valid, regardless of whether the premises are true.</label>
+  <label class="quiz-option"><input type="radio" name="u03-q3" value="1"> True, regardless of validity.</label>
+  <label class="quiz-option"><input type="radio" name="u03-q3" value="2"> Persuasive and well-written.</label>
+  <label class="quiz-option"><input type="radio" name="u03-q3" value="3"> Valid and has true premises.</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Expand each concept to check your understanding before moving on.</p>
+
+<div class="accordion mt-3" id="u03-review">
+  {% call accordion("rev-u03-a", "Deductive reasoning — what makes it distinctive?") %}
+  <p>Deductive reasoning moves from general premises to a specific conclusion. It is <em>truth-preserving</em>: if the premises are true and the argument is valid, the conclusion must be true. This certainty distinguishes deduction from induction, where conclusions are only probable.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u03-b", "Validity and soundness — what is the difference?") %}
+  <p><strong>Validity</strong> is a structural property: the conclusion follows necessarily from the premises. A valid argument can have false premises. <strong>Soundness</strong> adds a factual requirement: all premises must be true. A sound argument is valid with true premises, guaranteeing a true conclusion.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u03-c", "Modus ponens — what is the form?") %}
+  <p>If P then Q. P is true. Therefore, Q. This is the most basic valid deductive form — affirming the antecedent. Example: If it rains, the ground is wet. It is raining. Therefore, the ground is wet.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u03-d", "Modus tollens — what is the form?") %}
+  <p>If P then Q. Q is false. Therefore, P is false. This is denying the consequent — equally valid. Example: If it rains, the ground is wet. The ground is not wet. Therefore, it is not raining.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u03-e", "Two invalid forms to avoid") %}
+  <p><strong>Affirming the consequent</strong>: If P then Q; Q; therefore P — invalid. <strong>Denying the antecedent</strong>: If P then Q; not P; therefore not Q — invalid. Both look superficially like valid forms but do not preserve truth.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-4" style="color:#aaa; font-size:0.88rem;">
+  Key concepts covered in this unit: deductive reasoning, general-to-specific inference,
+  validity, soundness, categorical syllogism, modus ponens, modus tollens,
+  affirming the consequent (invalid), denying the antecedent (invalid),
+  universal case, particular case.
+</p>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-04') | url }}">Unit 4: Inductive Reasoning</a> when ready.
+</p>
+{% endcall %}

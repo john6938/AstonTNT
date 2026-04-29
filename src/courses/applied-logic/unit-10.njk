@@ -1,0 +1,403 @@
+---
+unit: 10
+unitTitle: Applied Reasoning
+title: "Unit 10: Applied Reasoning — Applied Logic"
+courseUnit: true
+objectives:
+  - Integrate all course skills to evaluate complex real-world arguments
+  - Distinguish pairs of related logical concepts precisely
+  - Apply the complete critical evaluation framework to extended texts
+  - Demonstrate understanding of key course terminology
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC %}
+
+
+{# ══ Activity 1 — Putting It All Together ════════════════════════════ #}
+
+{% call activitySection(1, "Putting It All Together", "layers") %}
+<p>
+  This final unit integrates all skills developed across the course. You have now
+  studied propositions and truth, argument structure, deductive and inductive reasoning,
+  conditional logic, truth tables, fallacies, and argument mapping. In this unit, you
+  will apply all of these tools to evaluate extended, real-world arguments.
+</p>
+<p>
+  The core skill of applied logic is not knowing the names of fallacies or argument forms —
+  it is being able to read an argument, understand its structure, evaluate the quality of
+  its reasoning, and reach a justified verdict on whether its conclusion is well-supported.
+</p>
+<p>
+  Keep the <strong>critical evaluation framework</strong> from Unit 9 close at hand:
+</p>
+<ol style="color:#ddd; line-height:2.3; font-size:0.92rem;">
+  <li>Identify the main conclusion.</li>
+  <li>Identify the premises.</li>
+  <li>Identify sub-conclusions and hidden assumptions.</li>
+  <li>Determine the argument structure (linked / convergent / serial).</li>
+  <li>Evaluate the truth of each premise.</li>
+  <li>Evaluate the strength of evidence.</li>
+  <li>Check for formal and informal fallacies.</li>
+  <li>Evaluate validity (deductive) or strength (inductive).</li>
+  <li>Evaluate soundness or cogency of the conclusion.</li>
+</ol>
+{% endcall %}
+
+
+{# ══ Activity 2 — Distinguishing Paired Concepts ═════════════════════ #}
+
+{% call activitySection(2, "Distinguishing Paired Concepts", "arrow-left-right") %}
+<p>
+  For each pair of terms, write a clear definition of each and explain precisely how they differ.
+  Provide an original example for each term.
+</p>
+
+<div class="row g-3 mt-2 mb-3">
+  <div class="col-md-6">
+    <div class="p-3" style="background:#1e1e1e; border:1px solid #444; border-radius:6px;">
+      <h6 style="color:#ff8c00; margin-bottom:0.75rem;">Reasoning and argument</h6>
+      <ul style="color:#ddd; font-size:0.87rem; line-height:2.2; margin:0; padding-left:1.2rem;">
+        <li>Premise vs. conclusion</li>
+        <li>Assumption vs. premise</li>
+        <li>Truth vs. validity</li>
+        <li>Validity vs. soundness</li>
+        <li>Soundness vs. cogency</li>
+        <li>Deductive vs. inductive reasoning</li>
+        <li>Inductive vs. abductive reasoning</li>
+        <li>Universal case vs. particular case</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3" style="background:#1e1e1e; border:1px solid #444; border-radius:6px;">
+      <h6 style="color:#ff8c00; margin-bottom:0.75rem;">Fallacies</h6>
+      <ul style="color:#ddd; font-size:0.87rem; line-height:2.2; margin:0; padding-left:1.2rem;">
+        <li>Formal fallacy vs. informal fallacy</li>
+        <li>Affirming the consequent vs. denying the antecedent</li>
+        <li><em>Ad hominem</em> vs. <em>tu quoque</em></li>
+        <li>Middle ground vs. false dilemma</li>
+        <li><em>Post hoc</em> vs. <em>cum hoc</em></li>
+        <li>Hasty generalisation vs. anecdotal fallacy</li>
+        <li>Straw man vs. genetic fallacy</li>
+        <li>Cognitive bias vs. informal fallacy</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Integrated Evaluation: Extended Arguments ══════════ #}
+
+{% call activitySection(3, "Integrated Evaluation: Extended Arguments", "file-text") %}
+<p>
+  Apply the full critical evaluation framework to each passage. Produce a written
+  evaluation of approximately 150–250 words for each. Use logical terminology precisely
+  and accurately.
+</p>
+
+<h5 class="mt-3" style="color:#ff8c00;">Passage A — The Professor</h5>
+<div class="p-3 mb-4" style="background:#222; border:1px solid #444; border-radius:6px; font-size:0.9rem; color:#ddd; line-height:2.2;">
+  <p class="mb-2">
+    An associate professor claims that university salaries are too low. He says executives
+    working similar hours under similar conditions receive at least 10% more in annual income.
+    But the associate professor will benefit financially from any increase in university salaries
+    for all faculty. For that reason, I recommend that we reject his proposal.
+  </p>
+</div>
+
+<h5 style="color:#ff8c00;">Passage B — The Fire Investigation</h5>
+<div class="p-3 mb-4" style="background:#222; border:1px solid #444; border-radius:6px; font-size:0.9rem; color:#ddd; line-height:2.2;">
+  <p class="mb-2">
+    There was a fire in a laboratory. Professor X led the internal investigation. He concluded
+    that the fire was caused either by spontaneous combustion from within the building, or by
+    Researcher Y, who was the only person present who smoked. He noted that there was no evidence
+    of gasoline or other flammable materials, and so ruled out any other cause. Researcher Y was
+    not available for comment. Professor X therefore concluded that Researcher Y was almost
+    certainly responsible for the fire.
+  </p>
+</div>
+
+<h5 style="color:#ff8c00;">Passage C — The Diet Study</h5>
+<div class="p-3 mb-4" style="background:#222; border:1px solid #444; border-radius:6px; font-size:0.9rem; color:#ddd; line-height:2.2;">
+  <p class="mb-2">
+    The Japanese eat little fat and suffer fewer heart attacks than the British or Americans.
+    The French eat a lot of fat and also suffer fewer heart attacks than the British or Americans.
+    The Italians drink a lot of red wine and similarly suffer fewer heart attacks.
+    Conclusion: it must be speaking English that increases the risk of heart attack.
+  </p>
+</div>
+
+<div class="accordion mt-3" id="u10-eval">
+  {% call accordion("eval-10", "Analysis notes") %}
+  <p style="color:#ddd; font-size:0.88rem; line-height:2.2;">
+    <strong>Passage A</strong> — The main conclusion is that the professor's proposal should be rejected. The stated reason is that he will benefit financially — this is the <em>ad hominem</em> fallacy (specifically, a conflict-of-interest attack). The professor's argument (salary comparison with executives) may or may not be valid on its merits; his personal interest is irrelevant to whether the argument is sound. An evaluation should identify: conclusion = reject the proposal; premise = professor benefits financially; fallacy = ad hominem; evaluation = the conflict of interest is relevant to disclose, but insufficient to dismiss the argument without engaging with the actual salary comparison data.
+  </p>
+  <p style="color:#ddd; font-size:0.88rem; line-height:2.2;">
+    <strong>Passage B</strong> — The structure is a disjunctive syllogism: either cause A or cause B; not A (no evidence of flammable materials); therefore B. However, ruling out one option on the basis of absence of evidence is the <em>argument from ignorance</em> fallacy. The conclusion that Researcher Y is responsible also relies on the hidden assumption that the listed options are exhaustive — which is precisely what was not established. Additionally, Researcher Y's unavailability for comment is not evidence of guilt.
+  </p>
+  <p style="color:#ddd; font-size:0.88rem; line-height:2.2;">
+    <strong>Passage C</strong> — This is a <em>false cause</em> / <em>cum hoc</em> fallacy. The argument cherry-picks correlations (diet and heart attack rates across nationalities) and offers a deliberately absurd conclusion (speaking English) to highlight the pattern. While humorous, the structure is genuinely fallacious: correlation without a plausible mechanism and without controlling for confounding variables is not sufficient for a causal conclusion. The real purpose of this example is to illustrate how correlation-based arguments can "prove" almost anything.
+  </p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Causality Distinctions ════════════════════════════ #}
+
+{% call activitySection(4, "Causality: Key Distinctions", "arrows-angle-expand") %}
+<p>
+  Causal reasoning is central to science, medicine, law, and everyday argument.
+  Understanding the different types of cause helps you evaluate causal claims precisely.
+</p>
+
+<div class="accordion mt-3" id="u10-causal">
+  {% call accordion("ca-1", "Necessary vs sufficient cause") %}
+  <p>A <strong>necessary cause</strong> must be present for the effect to occur — but its presence alone does not guarantee the effect. A <strong>sufficient cause</strong> guarantees the effect when present — but the effect can occur without it.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    Oxygen is a necessary cause of fire (no fire without it) but not sufficient (you also need fuel and heat). A massive earthquake is sufficient to trigger a tsunami but not necessary — tsunamis have other causes.
+  </p>
+  {% endcall %}
+
+  {% call accordion("ca-2", "Proximal vs distal cause") %}
+  <p>A <strong>proximal cause</strong> is the most immediate cause in a causal chain. A <strong>distal cause</strong> is further back in the chain — a contributing background factor.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    In a car crash: the proximal cause is the vehicle collision; the distal cause might be the driver's fatigue or poor road conditions.
+  </p>
+  {% endcall %}
+
+  {% call accordion("ca-3", "Common cause vs rival cause") %}
+  <p>A <strong>common cause</strong> (shared cause) produces two effects that appear correlated — but neither causes the other. A <strong>rival cause</strong> is an alternative explanation that could account for the same evidence.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    Ice cream sales and drowning rates are both caused by hot weather (common cause). Whether a drug or placebo caused a patient's recovery are rival causes.
+  </p>
+  {% endcall %}
+
+  {% call accordion("ca-4", "Causal chain vs causal network") %}
+  <p>A <strong>causal chain</strong> is a linear sequence: A causes B, B causes C, and so on. A <strong>causal network</strong> involves multiple interacting causes and effects, with feedback loops and branching paths.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    The spread of a disease is a causal network: infection rates affect behaviour; behaviour affects infection rates; policy affects both.
+  </p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Paradoxes ══════════════════════════════════════════ #}
+
+{% call activitySection(5, "Paradoxes and Vagueness", "infinity") %}
+<p>
+  A <strong>paradox</strong> is an argument that leads to a contradictory or counterintuitive
+  conclusion through apparently valid reasoning. Paradoxes reveal limitations in ordinary language
+  and logic. Two classic cases are worth understanding.
+</p>
+
+<div class="accordion mt-3" id="u10-paradox">
+  {% call accordion("par-1", "Loki's Wager") %}
+  <p>Loki had no money, but bet his own head in a wager with the dwarf Brok. He lost. When Brok came to collect, Loki argued that he had only bet his <em>head</em>, not his <em>neck</em>, and since it was impossible to determine where one ended and the other began, Brok could not take his prize.</p>
+  <p>This is a paradox of <strong>vagueness</strong>: the boundary between head and neck is not precisely defined in natural language. Loki exploits this to make a logically unanswerable claim. It illustrates that many everyday terms lack the precision required for rigorous logical argument.</p>
+  {% endcall %}
+
+  {% call accordion("par-2", "The Sorites Paradox (Heap Paradox)") %}
+  <p>If you have a heap of sand and remove one grain, do you still have a heap? Presumably yes. If you keep removing grains, one at a time, when does the heap cease to be a heap?</p>
+  <p>The paradox arises because <em>heap</em> is a vague predicate — there is no sharp boundary between a heap and a non-heap. The Sorites paradox applies to many everyday predicates: tall, bald, old, rich. It shows that classical two-valued logic (true/false) may be inadequate for vague language — motivating <em>fuzzy logic</em> and other multi-valued systems.</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Course Glossary ════════════════════════════════════ #}
+
+{% call activitySection(6, "Course Glossary: Self-Test", "book") %}
+<p>
+  Test yourself on the key terms from this course. For each term, try to: (a) define it
+  in your own words, (b) explain it in relation to a contrasting term, (c) provide an original example.
+</p>
+
+<div class="row g-3 mt-1">
+  <div class="col-md-6">
+    <div class="p-3" style="background:#1e1e1e; border:1px solid #333; border-radius:6px;">
+      <h6 class="mb-2" style="color:#ff8c00;">Propositions and Truth</h6>
+      <ul style="color:#ccc; font-size:0.84rem; line-height:2; margin:0; padding-left:1.2rem;">
+        <li>Proposition · truth value · true · false · indeterminate</li>
+        <li>Correspondence, coherence, pragmatic theories of truth</li>
+        <li>Plato's allegory of the cave</li>
+        <li>Propositional variable (P, Q)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3" style="background:#1e1e1e; border:1px solid #333; border-radius:6px;">
+      <h6 class="mb-2" style="color:#ff8c00;">Arguments and Inference</h6>
+      <ul style="color:#ccc; font-size:0.84rem; line-height:2; margin:0; padding-left:1.2rem;">
+        <li>Premise · conclusion · inference · argument · assertion</li>
+        <li>Logical indicator words (premise and conclusion indicators)</li>
+        <li>Inference bar · the "Therefore" test</li>
+        <li>Hidden assumption · sub-conclusion</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3" style="background:#1e1e1e; border:1px solid #333; border-radius:6px;">
+      <h6 class="mb-2" style="color:#ff8c00;">Deductive Reasoning</h6>
+      <ul style="color:#ccc; font-size:0.84rem; line-height:2; margin:0; padding-left:1.2rem;">
+        <li>Deductive reasoning · valid · invalid · sound · unsound</li>
+        <li>Categorical syllogism · modus ponens · modus tollens</li>
+        <li>Affirming the consequent (invalid) · denying the antecedent (invalid)</li>
+        <li>Universal case · particular case</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3" style="background:#1e1e1e; border:1px solid #333; border-radius:6px;">
+      <h6 class="mb-2" style="color:#ff8c00;">Inductive Reasoning</h6>
+      <ul style="color:#ccc; font-size:0.84rem; line-height:2; margin:0; padding-left:1.2rem;">
+        <li>Inductive reasoning · strong · weak · cogent · uncogent</li>
+        <li>Generalisation · analogical reasoning · statistical reasoning</li>
+        <li>Abductive reasoning (inference to the best explanation)</li>
+        <li>Fact vs. opinion</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3" style="background:#1e1e1e; border:1px solid #333; border-radius:6px;">
+      <h6 class="mb-2" style="color:#ff8c00;">Conditional Logic and Truth Tables</h6>
+      <ul style="color:#ccc; font-size:0.84rem; line-height:2; margin:0; padding-left:1.2rem;">
+        <li>Antecedent · consequent · conditional (P → Q)</li>
+        <li>Converse · inverse · contrapositive · logical equivalence</li>
+        <li>Hypothetical syllogism · disjunctive syllogism · constructive dilemma</li>
+        <li>NOT · AND · OR · IF-THEN · tautology · contradiction · De Morgan's Laws</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3" style="background:#1e1e1e; border:1px solid #333; border-radius:6px;">
+      <h6 class="mb-2" style="color:#ff8c00;">Informal Fallacies</h6>
+      <ul style="color:#ccc; font-size:0.84rem; line-height:2; margin:0; padding-left:1.2rem;">
+        <li>Formal vs. informal fallacy · cognitive bias · confirmation bias</li>
+        <li>Ad hominem · straw man · appeal to authority · bandwagon · tu quoque</li>
+        <li>False dilemma · appeal to emotion · genetic · no true Scotsman · fallacy fallacy</li>
+        <li>Post hoc · cum hoc · slippery slope · hasty generalisation · anecdotal</li>
+        <li>Texas sharpshooter · begging the question · burden of proof · gambler's fallacy</li>
+        <li>Appeal to nature · middle ground · ambiguity · personal incredulity</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3" style="background:#1e1e1e; border:1px solid #333; border-radius:6px;">
+      <h6 class="mb-2" style="color:#ff8c00;">Argument Mapping</h6>
+      <ul style="color:#ccc; font-size:0.84rem; line-height:2; margin:0; padding-left:1.2rem;">
+        <li>Argument mapping · linked · convergent · serial</li>
+        <li>Critical evaluation framework (nine steps)</li>
+      </ul>
+      <h6 class="mb-2 mt-3" style="color:#ff8c00;">Causality</h6>
+      <ul style="color:#ccc; font-size:0.84rem; line-height:2; margin:0; padding-left:1.2rem;">
+        <li>Necessary vs. sufficient cause</li>
+        <li>Proximal vs. distal cause</li>
+        <li>Common cause vs. rival cause</li>
+        <li>Causal chain vs. causal network</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3" style="background:#1e1e1e; border:1px solid #333; border-radius:6px;">
+      <h6 class="mb-2" style="color:#ff8c00;">Paradoxes and Vagueness</h6>
+      <ul style="color:#ccc; font-size:0.84rem; line-height:2; margin:0; padding-left:1.2rem;">
+        <li>Paradox · vagueness · ambiguity</li>
+        <li>Loki's wager · Sorites paradox</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 7 — Final Self-Assessment ══════════════════════════════ #}
+
+{% call activitySection(7, "Final Self-Assessment", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u10-q1",
+  "An argument is sound if and only if it is:",
+  2,
+  "Soundness requires two conditions: the argument must be valid (the conclusion follows necessarily from the premises) and all premises must be true. A valid argument with a false premise is unsound. A sound argument guarantees a true conclusion.") %}
+  <label class="quiz-option"><input type="radio" name="u10-q1" value="0"> Strong and persuasively written.</label>
+  <label class="quiz-option"><input type="radio" name="u10-q1" value="1"> Valid, regardless of whether premises are true.</label>
+  <label class="quiz-option"><input type="radio" name="u10-q1" value="2"> Valid and has true premises.</label>
+  <label class="quiz-option"><input type="radio" name="u10-q1" value="3"> Inductive and supported by a large sample.</label>
+{% endcall %}
+</div>
+
+<div class="mb-4">
+{% call quizMC("u10-q2",
+  "Which of the following arguments is deductively valid?",
+  0,
+  "Option A is a valid categorical syllogism (All M are P; All S are M; therefore All S are P). Option B is the affirming the consequent fallacy (invalid). Option C is a hasty generalisation (inductive, not deductive). Option D uses a false dilemma structure without valid deductive form.") %}
+  <label class="quiz-option"><input type="radio" name="u10-q2" value="0"> All reptiles are cold-blooded. All snakes are reptiles. Therefore, all snakes are cold-blooded.</label>
+  <label class="quiz-option"><input type="radio" name="u10-q2" value="1"> If P then Q. Q. Therefore, P.</label>
+  <label class="quiz-option"><input type="radio" name="u10-q2" value="2"> I have seen three swans and they were all white. Therefore, all swans are white.</label>
+  <label class="quiz-option"><input type="radio" name="u10-q2" value="3"> Either we win or we lose. We did not lose. Therefore, we must have won.</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u10-q3",
+  "The Sorites paradox illustrates which fundamental issue in logic?",
+  1,
+  "The Sorites (heap) paradox arises because words like 'heap', 'bald', or 'tall' are vague — there is no sharp boundary where the predicate applies or ceases to apply. Classical two-valued logic (true/false) cannot handle such predicates without producing paradoxes, motivating fuzzy or multi-valued logics.") %}
+  <label class="quiz-option"><input type="radio" name="u10-q3" value="0"> The impossibility of causal reasoning.</label>
+  <label class="quiz-option"><input type="radio" name="u10-q3" value="1"> The problem of vagueness in natural language predicates.</label>
+  <label class="quiz-option"><input type="radio" name="u10-q3" value="2"> The unreliability of inductive generalisation.</label>
+  <label class="quiz-option"><input type="radio" name="u10-q3" value="3"> The impossibility of identifying a conclusion.</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Final Review ═════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>You have completed the Applied Logic course. Use this final review to confirm your readiness.</p>
+
+<div class="accordion mt-3" id="u10-review">
+  {% call accordion("rev-u10-a", "Can you do these four things?") %}
+  <ol style="color:#ddd; font-size:0.88rem; line-height:2.5;">
+    <li>Identify, name, and explain arguments, formal fallacies, informal fallacies, and causal claims in real-world texts.</li>
+    <li>Explain the key fallacies clearly using plain language — distinguishing similar fallacies precisely (ad hominem vs. tu quoque; post hoc vs. cum hoc; straw man vs. false dilemma).</li>
+    <li>Apply the critical evaluation framework to evaluate arguments in writing, using accurate logical terminology.</li>
+    <li>Draw a simple argument map for a short passage, identifying premises, sub-conclusions, main conclusion, and argument structure.</li>
+  </ol>
+  {% endcall %}
+
+  {% call accordion("rev-u10-b", "The most important distinctions in the course") %}
+  <p>
+    <strong>Truth vs. validity</strong>: truth is a property of individual propositions; validity is a structural property of arguments.<br>
+    <strong>Valid vs. sound</strong>: a valid argument can have false premises; a sound one is valid with true premises.<br>
+    <strong>Strong vs. cogent</strong>: the inductive equivalents of valid and sound.<br>
+    <strong>Formal vs. informal fallacy</strong>: structural error vs. content error.<br>
+    <strong>Correlation vs. causation</strong>: co-occurrence does not establish causal direction or mechanism.<br>
+    <strong>Affirming the consequent vs. modus ponens</strong>: the most commonly confused pair in conditional logic.<br>
+    <strong>Absence of evidence vs. evidence of absence</strong>: not finding evidence for X does not prove X does not exist.
+  </p>
+  {% endcall %}
+
+  {% call accordion("rev-u10-c", "A word on applying logic") %}
+  <p>
+    Knowing the names of fallacies is only the beginning. The real skill is using this vocabulary to communicate clearly about <em>why</em> an argument fails — and to construct arguments of your own that are clear, well-evidenced, and honest about their limitations. Logic is not a weapon for winning arguments; it is a tool for thinking more clearly and communicating more honestly.
+  </p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic; margin-top:0.5rem;">
+    "Logic is the beginning of wisdom, not the end." — Spock
+  </p>
+  {% endcall %}
+</div>
+
+<p class="mt-4" style="color:#aaa; font-size:0.88rem;">
+  Course complete. Thank you for working through Applied Logic.
+  Return to any unit at any time using the sidebar navigation.
+</p>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-house"></i>
+  Return to the <a href="{{ (courseBaseUrl + '/') | url }}">Applied Logic course page</a>.
+</p>
+{% endcall %}

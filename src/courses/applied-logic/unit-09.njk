@@ -1,0 +1,302 @@
+---
+unit: 9
+unitTitle: Argument Mapping
+title: "Unit 9: Argument Mapping — Applied Logic"
+courseUnit: true
+objectives:
+  - Explain the purpose of argument mapping
+  - Distinguish linked, convergent, and serial argument structures
+  - Apply a systematic framework to critically evaluate arguments
+  - Produce a visual argument map for a short passage
+  - Identify hidden assumptions in arguments
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC %}
+
+
+{# ══ Activity 1 — What is Argument Mapping? ═════════════════════════ #}
+
+{% call activitySection(1, "What is Argument Mapping?", "diagram-2") %}
+<p>
+  <strong>Argument mapping</strong> is the visual representation of the logical structure
+  of an argument. Rather than reading an argument as a linear sequence of sentences,
+  an argument map makes the relationships between premises and conclusions explicit
+  by using boxes and arrows.
+</p>
+<p>
+  Argument maps are useful for:
+</p>
+<ul style="color:#ddd; line-height:2.3;">
+  <li>Revealing the structure of complex arguments at a glance</li>
+  <li>Identifying where evidence is weak or missing</li>
+  <li>Distinguishing the main conclusion from sub-conclusions</li>
+  <li>Exposing hidden assumptions</li>
+  <li>Planning your own arguments before writing</li>
+</ul>
+<p>
+  In an argument map, <strong>arrows</strong> run from supporting evidence (premises)
+  upward toward the claim they support (conclusion). The main conclusion appears at
+  the top; premises and supporting arguments appear below.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Three Argument Structures ══════════════════════════ #}
+
+{% call activitySection(2, "Three Argument Structures", "collection") %}
+<p>
+  Three basic structures appear in most arguments. Understanding these structures
+  allows you to map even complex multi-layered arguments systematically.
+</p>
+
+<div class="row g-3 mt-2 mb-3">
+
+  <div class="col-md-4">
+    <div class="card h-100" style="background:#1e1e1e; border-color:#ff8c00;">
+      <div class="card-body">
+        <h6 class="fw-bold" style="color:#ff8c00;">Linked (joint support)</h6>
+        <p style="color:#ccc; font-size:0.87rem; line-height:1.8;">
+          Two or more premises work <em>together</em> to support the conclusion.
+          If either premise is removed, the argument fails.
+        </p>
+        <div style="font-family:monospace; font-size:0.82rem; color:#ddd; margin-top:0.5rem; line-height:1.8;">
+          [P1] + [P2]<br>
+          &nbsp;&nbsp;&darr; (jointly)<br>
+          [Conclusion]
+        </div>
+        <p style="color:#aaa; font-size:0.8rem; margin-top:0.6rem; margin-bottom:0;">
+          <em>All humans are mortal + Socrates is human → Socrates is mortal</em>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card h-100" style="background:#1e1e1e; border-color:#4a90d9;">
+      <div class="card-body">
+        <h6 class="fw-bold" style="color:#4a90d9;">Convergent (independent support)</h6>
+        <p style="color:#ccc; font-size:0.87rem; line-height:1.8;">
+          Multiple premises each <em>independently</em> support the conclusion.
+          Removing one weakens but does not destroy the argument.
+        </p>
+        <div style="font-family:monospace; font-size:0.82rem; color:#ddd; margin-top:0.5rem; line-height:1.8;">
+          [P1] &darr; &nbsp;[P2] &darr;<br>
+          &nbsp;&nbsp;[Conclusion]
+        </div>
+        <p style="color:#aaa; font-size:0.8rem; margin-top:0.6rem; margin-bottom:0;">
+          <em>Exercise reduces stress + Exercise improves sleep → Exercise is beneficial</em>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card h-100" style="background:#1e1e1e; border-color:#9b59b6;">
+      <div class="card-body">
+        <h6 class="fw-bold" style="color:#b07fd4;">Serial (chain of reasoning)</h6>
+        <p style="color:#ccc; font-size:0.87rem; line-height:1.8;">
+          A conclusion at one stage becomes a premise for the next.
+          Also called a <em>sub-argument</em> structure.
+        </p>
+        <div style="font-family:monospace; font-size:0.82rem; color:#ddd; margin-top:0.5rem; line-height:1.8;">
+          [P1] &darr;<br>
+          [Sub-conclusion] &darr;<br>
+          [Main conclusion]
+        </div>
+        <p style="color:#aaa; font-size:0.8rem; margin-top:0.6rem; margin-bottom:0;">
+          <em>Server is down → users can't log in → orders are lost</em>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<p>
+  Real arguments frequently combine all three structures. A convergent argument may have
+  one branch that is itself a serial argument, with a sub-conclusion feeding into the main one.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 3 — Systematic Evaluation Framework ════════════════════ #}
+
+{% call activitySection(3, "A Framework for Critical Evaluation", "list-check") %}
+<p>
+  Before mapping an argument, work through this systematic checklist. Apply it in order
+  — each step builds on the previous one.
+</p>
+<ol style="color:#ddd; line-height:2.5;">
+  <li><strong>Identify the main conclusion.</strong> What claim is the argument trying to establish?</li>
+  <li><strong>Identify the premises.</strong> What evidence or reasons are offered in support?</li>
+  <li><strong>Identify any sub-conclusions.</strong> Are there intermediate claims that serve as stepping stones?</li>
+  <li><strong>Identify hidden assumptions.</strong> What unstated premises does the argument take for granted?</li>
+  <li><strong>Determine the argument structure.</strong> Is it linked, convergent, or serial?</li>
+  <li><strong>Evaluate truth of premises.</strong> Are the premises actually true? Are any vague or ambiguous?</li>
+  <li><strong>Evaluate strength of evidence.</strong> Is the evidence sufficient to support the conclusion?</li>
+  <li><strong>Check for fallacies.</strong> Does the argument commit any formal or informal fallacy?</li>
+  <li><strong>Evaluate validity or strength.</strong> For deductive arguments: is it valid? For inductive: is it strong?</li>
+  <li><strong>Evaluate soundness or cogency.</strong> Valid + true premises = sound. Strong + true premises = cogent.</li>
+</ol>
+{% endcall %}
+
+
+{# ══ Activity 4 — Practice: Map These Arguments ══════════════════════ #}
+
+{% call activitySection(4, "Practice: Map and Evaluate", "diagram-3") %}
+<p>
+  For each argument, (a) identify the conclusion and premises, (b) identify the structure
+  (linked / convergent / serial), (c) draw a simple argument map, and (d) evaluate
+  using the framework above.
+</p>
+
+<h5 class="mt-2" style="color:#ff8c00;">Argument 1 — Aliens</h5>
+<ol style="color:#ddd; line-height:1; margin-bottom:1.5rem;">
+  <li style="margin-bottom:1.2rem; line-height:1.8;">I have never seen an alien. Therefore, there are no aliens.</li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">Aliens are life forms that evolved on other planets. There are other planets. Therefore, there may be other life forms.</li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">Aliens have big heads. My teacher told me I had a big head. Therefore, I am an alien.</li>
+</ol>
+
+<h5 style="color:#ff8c00;">Argument 2 — Mixed bag</h5>
+<ol style="color:#ddd; line-height:1; margin-bottom:1.5rem;">
+  <li style="margin-bottom:1.2rem; line-height:1.8;">
+    If Tony comes to class, Jim will come to class. If Jim comes to class, Tom will come to class. Therefore, if Tony comes to class, Tom will come to class.
+  </li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">
+    Yuki is a model or a dancer. Yuki is not a dancer. Therefore, Yuki is a model.
+  </li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">
+    Professor X conducted a telephone survey one afternoon by calling households in a local village (n=35). All 35 respondents were retired, stay-at-home parents, or unemployed. He then concluded that no one in the city was employed.
+  </li>
+  <li style="margin-bottom:1.2rem; line-height:1.8;">
+    The Japanese eat little fat and suffer fewer heart attacks than British or Americans. The French eat a lot of fat and also suffer fewer heart attacks. The Italians drink lots of red wine and also suffer fewer heart attacks than the British or Americans. Therefore, it is speaking English that kills you.
+  </li>
+</ol>
+
+<div class="accordion mt-3" id="u09-practice">
+  {% call accordion("prac-09", "Reveal the analysis") %}
+  <p style="color:#ddd; font-size:0.88rem; line-height:2.2;">
+    <strong>Aliens (1)</strong> — <em>Anecdotal fallacy</em>. Conclusion: no aliens. Premise: I have not seen one. The premise is an isolated personal experience — generalising from absence of evidence (for one person) to a universal negative conclusion is not justified.<br><br>
+
+    <strong>Aliens (2)</strong> — Valid deductive argument (categorical syllogism). Structure: <em>linked</em>. Both premises required. The conclusion is appropriately cautious ("may be"). If both premises are true, the argument is sound — though the conclusion is very modest.<br><br>
+
+    <strong>Aliens (3)</strong> — Invalid. The middle term "big head" shifts meaning between premises (literally = biologically) and conclusion (metaphorically = conceited). This is the fallacy of <em>equivocation</em>. Structure: <em>linked</em> (both premises required).<br><br>
+
+    <strong>Mixed (1)</strong> — <em>Hypothetical Syllogism (HS)</em>. Valid. Structure: <em>serial</em> (the conclusion of If Tony → Jim becomes the premise for Jim → Tom). Sound if the premises are true.<br><br>
+
+    <strong>Mixed (2)</strong> — <em>Disjunctive Syllogism (DS)</em>. Valid. Structure: <em>linked</em>. If premises are true, the conclusion follows necessarily. Sound.<br><br>
+
+    <strong>Mixed (3)</strong> — <em>Unrepresentative sample + hasty generalisation</em>. The sample was taken in an afternoon in a village — it excluded employed people who were at work. The generalisation to the entire city is not justified.<br><br>
+
+    <strong>Mixed (4)</strong> — <em>False cause / cum hoc</em>. The observed correlation (speaking English, higher heart attack rates) is used to imply causation, while ignoring obvious confounding variables (diet, healthcare, lifestyle). A humorous example, but the structure is genuinely fallacious.
+  </p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Hidden Assumptions ════════════════════════════════ #}
+
+{% call activitySection(5, "Hidden Assumptions", "eye-slash") %}
+<p>
+  Every argument rests on assumptions — unstated premises that the argument takes for
+  granted. Making these assumptions explicit is an important part of argument evaluation,
+  because if an assumption is false, the argument fails even if all stated premises are true.
+</p>
+<p>
+  For each argument below, identify the hidden assumption(s).
+</p>
+<ol style="color:#ddd; line-height:2.5;">
+  <li>Sales of electric vehicles have increased every year for five years. Therefore, petrol cars will become obsolete within a decade.</li>
+  <li>The best students in the class all scored above 80%. You scored 85%. Therefore, you are one of the best students in the class.</li>
+  <li>This product is endorsed by a famous sportsperson. Therefore, it must be effective.</li>
+  <li>No evidence of weapon stockpiles has been found in the country. Therefore, the country has no weapon stockpiles.</li>
+</ol>
+
+<div class="accordion mt-3" id="u09-assump">
+  {% call accordion("assump-09", "Reveal hidden assumptions") %}
+  <ol style="color:#ddd; font-size:0.88rem; line-height:2.3;">
+    <li>Hidden assumption: the current rate of increase will continue, and no significant barriers (infrastructure, cost, policy) will halt or reverse it. Also assumes "obsolete" means the same as "no longer purchased."</li>
+    <li>Hidden assumption: scoring above 80% is the criterion for being among the best students, and that "best students" refers to a fixed group defined by this threshold.</li>
+    <li>Hidden assumption: the endorser has relevant expertise in the product's domain; that the endorser actually uses and believes in the product; and that celebrity approval is a reliable indicator of effectiveness.</li>
+    <li>Hidden assumption: the absence of found evidence is the same as the absence of the thing. This is the <em>argument from ignorance</em> — absence of evidence is not evidence of absence, especially when the search may be incomplete.</li>
+  </ol>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 6 — Check Your Understanding ══════════════════════════ #}
+
+{% call activitySection(6, "Check Your Understanding", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u09-q1",
+  "In a convergent argument structure:",
+  0,
+  "In a convergent argument, multiple premises each independently support the conclusion. Removing one weakens the argument but does not destroy it, because the remaining premises still provide some support. This contrasts with a linked structure, where all premises are jointly required.") %}
+  <label class="quiz-option"><input type="radio" name="u09-q1" value="0"> Each premise independently supports the conclusion.</label>
+  <label class="quiz-option"><input type="radio" name="u09-q1" value="1"> The premises must all be true together to support the conclusion.</label>
+  <label class="quiz-option"><input type="radio" name="u09-q1" value="2"> A sub-conclusion from one stage becomes a premise in the next.</label>
+  <label class="quiz-option"><input type="radio" name="u09-q1" value="3"> The conclusion is listed first and the premises follow.</label>
+{% endcall %}
+</div>
+
+<div class="mb-4">
+{% call quizMC("u09-q2",
+  "What is a hidden assumption in an argument?",
+  2,
+  "A hidden assumption (also called an implicit premise) is an unstated claim that the argument takes for granted. The argument depends on the assumption being true, but the assumption is never explicitly stated. Identifying hidden assumptions is crucial: if an assumption is false, the argument fails even if all stated premises are true.") %}
+  <label class="quiz-option"><input type="radio" name="u09-q2" value="0"> A conclusion that is deliberately concealed.</label>
+  <label class="quiz-option"><input type="radio" name="u09-q2" value="1"> A fallacy that is impossible to identify.</label>
+  <label class="quiz-option"><input type="radio" name="u09-q2" value="2"> An unstated premise the argument takes for granted.</label>
+  <label class="quiz-option"><input type="radio" name="u09-q2" value="3"> Evidence that has been explicitly ruled out.</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u09-q3",
+  "If Tony → Jim, and Jim → Tom (hypothetical syllogism), the argument structure is best described as:",
+  1,
+  "The hypothetical syllogism is a serial (chain) argument: the conclusion of the first step (If Tony, then Jim) becomes the basis for the second step, leading to the final conclusion (If Tony, then Tom). This is a linked-serial structure, since both premises are jointly required.") %}
+  <label class="quiz-option"><input type="radio" name="u09-q3" value="0"> Convergent — each premise independently supports the conclusion.</label>
+  <label class="quiz-option"><input type="radio" name="u09-q3" value="1"> Serial — the conclusion of one step becomes the premise of the next.</label>
+  <label class="quiz-option"><input type="radio" name="u09-q3" value="2"> Convergent — each conditional is an independent reason.</label>
+  <label class="quiz-option"><input type="radio" name="u09-q3" value="3"> Neither — the argument is invalid and has no structure.</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Expand each concept to check your understanding before the final unit.</p>
+
+<div class="accordion mt-3" id="u09-review">
+  {% call accordion("rev-u09-a", "Argument mapping — purpose and method") %}
+  <p>Argument mapping makes the logical structure of an argument explicit through a visual diagram. Premises are connected by arrows to the claims they support; sub-conclusions feed into the main conclusion. Maps reveal whether premises are linked (jointly required), convergent (independently sufficient), or serial (chained).</p>
+  {% endcall %}
+
+  {% call accordion("rev-u09-b", "Three argument structures") %}
+  <p><strong>Linked</strong>: premises work together — each is necessary. Remove one and the argument collapses. <strong>Convergent</strong>: each premise independently supports the conclusion. Removing one weakens but does not destroy the argument. <strong>Serial</strong>: a sub-conclusion at one stage becomes a premise at the next, forming a chain.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u09-c", "Critical evaluation — the ten-step framework") %}
+  <p>1. Identify the main conclusion. 2. Identify premises. 3. Identify sub-conclusions. 4. Identify hidden assumptions. 5. Determine argument structure. 6. Evaluate truth of premises. 7. Evaluate strength of evidence. 8. Check for fallacies. 9. Evaluate validity or strength. 10. Evaluate soundness or cogency.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u09-d", "Hidden assumptions — why do they matter?") %}
+  <p>Every argument relies on unstated premises. If a hidden assumption is false, the argument fails even if all stated premises are true. Exposing hidden assumptions is especially important in inductive arguments, where the link between evidence and conclusion often involves significant background assumptions about representativeness, causation, or relevance.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-4" style="color:#aaa; font-size:0.88rem;">
+  Key concepts covered in this unit: argument mapping, linked argument, convergent argument,
+  serial argument, sub-conclusion, hidden assumption, implicit premise,
+  critical evaluation framework, soundness, cogency.
+</p>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-10') | url }}">Unit 10: Applied Reasoning</a> when ready.
+</p>
+{% endcall %}

@@ -1,0 +1,325 @@
+---
+unit: 8
+unitTitle: Informal Fallacies II
+title: "Unit 8: Informal Fallacies II — Applied Logic"
+courseUnit: true
+objectives:
+  - Recognise causal fallacies and explain why correlation is not causation
+  - Identify weak evidence fallacies — hasty generalisation, anecdotal, and Texas sharpshooter
+  - Spot circular reasoning and the burden of proof fallacy
+  - Recognise linguistic fallacies — ambiguity, appeal to nature, and middle ground
+  - Apply the full set of informal fallacies to evaluate real arguments
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, videoEmbed %}
+
+
+{# ══ Activity 1 — Causal Fallacies ══════════════════════════════════ #}
+
+{% call activitySection(1, "Causal Fallacies — Correlation is Not Causation", "arrow-right-circle") %}
+<p>
+  Causal fallacies (also called <em>non causa pro causa</em> — "not the cause for the cause")
+  occur when a connection between events is mistaken for a causal relationship.
+  Establishing genuine causation requires more than identifying a correlation.
+</p>
+
+<div class="accordion mt-3" id="u08-causal">
+
+  {% call accordion("c01", "Post Hoc Ergo Propter Hoc — 'after this, therefore because of this'") %}
+  <p>Assuming that because one event followed another, the first caused the second.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "I started wearing a lucky bracelet, and since then I have not had a cold. The bracelet is preventing illness."
+  </p>
+  <p style="color:#ddd; font-size:0.87rem;">
+    Temporal sequence (A before B) is necessary for causation but not sufficient. Many things happen before many other things without causing them.
+  </p>
+  {% endcall %}
+
+  {% call accordion("c02", "Cum Hoc Ergo Propter Hoc — 'with this, therefore because of this'") %}
+  <p>Assuming that two things that occur together are causally related. This is the classic correlation-causation confusion.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "Ice cream sales and drowning rates both increase in summer. Ice cream causes drowning."
+  </p>
+  <p style="color:#ddd; font-size:0.87rem;">
+    Both are caused by a third variable (hot weather), not by each other.
+  </p>
+  {% endcall %}
+
+  {% call accordion("c03", "False Cause — general causal error") %}
+  <p>Any error in which a non-causal relationship is treated as causal. This is the umbrella term for all causal fallacies.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "Countries with more television sets per household have higher life expectancy. Therefore, buying more televisions increases life expectancy."
+  </p>
+  {% endcall %}
+
+  {% call accordion("c04", "Slippery Slope — unwarranted causal chain") %}
+  <p>Claiming that if one event is allowed to occur, a chain of increasingly bad consequences will inevitably follow — without justifying why each step in the chain is necessary.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "If we allow students to retake one exam, soon they will expect to retake every assessment, and eventually grades will become meaningless."
+  </p>
+  {% endcall %}
+
+</div>
+
+<h5 class="mt-4" style="color:#ff8c00;">Post Hoc in action — video</h5>
+<p>Watch this clip illustrating <em>post hoc ergo propter hoc</em> reasoning in a US television drama.</p>
+{{ videoEmbed("WiEAr2uSlzI", "Post hoc ergo propter hoc — West Wing") }}
+
+{% endcall %}
+
+
+{# ══ Activity 2 — Weak Evidence Fallacies ════════════════════════════ #}
+
+{% call activitySection(2, "Weak Evidence Fallacies", "bar-chart-line") %}
+<p>
+  These fallacies involve using evidence that is technically present but insufficient
+  to support the conclusion drawn.
+</p>
+
+<div class="accordion mt-3" id="u08-weak">
+
+  {% call accordion("w01", "Hasty Generalisation — too small a sample") %}
+  <p>Drawing a broad conclusion from a sample that is too small or unrepresentative to support it.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "I met two people from that city who were rude. People from that city are rude."
+  </p>
+  {% endcall %}
+
+  {% call accordion("w02", "Anecdotal — personal experience as general evidence") %}
+  <p>Using a personal experience or a single isolated case in place of systematic evidence.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "My grandfather smoked every day and lived to 95. Smoking cannot be that dangerous."
+  </p>
+  {% endcall %}
+
+  {% call accordion("w03", "Texas Sharpshooter — cherry-picking data") %}
+  <p>
+    Selecting data that supports a predetermined conclusion while ignoring the rest.
+    The name comes from a mythical shooter who fires at a barn, then draws a target
+    around the bullet holes.
+  </p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "This dietary supplement has been tested 100 times. In 6 trials it outperformed the placebo — proof that it works." (The arguer ignores the 94 trials showing no effect.)
+  </p>
+  {% endcall %}
+
+  {% call accordion("w04", "Unrepresentative Sample — biased sampling") %}
+  <p>Drawing conclusions from a sample that does not reflect the population being studied.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "Our survey of 500 social media users found that 90% support this policy. The public overwhelmingly supports it." (Social media users are not a representative sample of the general public.)
+  </p>
+  {% endcall %}
+
+  {% call accordion("w05", "Misleading Statistics — inappropriate use of data") %}
+  <p>Using statistics as evidence when they are biased, cherry-picked, or inapplicable to the claim.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "Our new drug reduces the risk of heart attack by 50%." (The risk fell from 2% to 1% — a 50% relative reduction, but only a 1% absolute reduction in real terms.)
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Circular and Linguistic Fallacies ══════════════════ #}
+
+{% call activitySection(3, "Circular and Linguistic Fallacies", "arrows-angle-contract") %}
+
+<div class="accordion mt-3" id="u08-other">
+
+  {% call accordion("o01", "Begging the Question (Circular Reasoning) — assuming the conclusion") %}
+  <p>Including the conclusion in the premises — or assuming what needs to be proved.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "This book must be true because it says so, and what it says is always true."
+  </p>
+  {% endcall %}
+
+  {% call accordion("o02", "Burden of Proof — shifting the burden") %}
+  <p>Claiming that the burden of proof lies with the person disputing a claim, rather than with the person making it. The principle: extraordinary claims require extraordinary evidence; the burden falls on the claimant.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "Prove that this herbal supplement does not cure cancer. Until you can, I will continue to take it."
+  </p>
+  {% endcall %}
+
+  {% call accordion("o03", "Loaded Question — a question with a built-in assumption") %}
+  <p>A question that presupposes a claim which the respondent has not accepted. Any answer to the question appears to confirm the presupposition.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "Have you stopped cheating on your expenses?" (Answering either yes or no implies the person has cheated.)
+  </p>
+  {% endcall %}
+
+  {% call accordion("o04", "Ambiguity — equivocation") %}
+  <p>Using a word or phrase with more than one meaning and shifting between meanings within an argument.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "The sign said 'fine for parking here.' So I parked there." (The sign uses "fine" to mean a penalty; the driver interprets it as permission.)
+  </p>
+  {% endcall %}
+
+  {% call accordion("o05", "Appeal to Nature — natural = good") %}
+  <p>Arguing that because something is natural, it is therefore good, safe, or preferable — and that artificial things are bad.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "This product is completely natural, so it has no side effects." (Arsenic and botulinum toxin are natural; many life-saving medicines are synthetic.)
+  </p>
+  {% endcall %}
+
+  {% call accordion("o06", "Middle Ground — false compromise") %}
+  <p>Assuming that a compromise between two positions must be correct. Sometimes the truth is not in the middle — one side may simply be right.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "You say climate change is driven by humans; the other side says it is entirely natural. The truth must be somewhere in the middle."
+  </p>
+  {% endcall %}
+
+  {% call accordion("o07", "Personal Incredulity — I don't understand it, therefore it's false") %}
+  <p>Claiming that because you cannot understand how something works, it is probably not true or impossible.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "I cannot understand how vaccines train the immune system, so I don't believe they work."
+  </p>
+  {% endcall %}
+
+  {% call accordion("o08", "Gambler's Fallacy — independence of random events") %}
+  <p>Believing that past random events affect the probability of future independent events. Each spin of a roulette wheel is independent of all previous spins.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "The coin has landed heads ten times in a row. It is bound to be tails next time."
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Spot the Fallacy ══════════════════════════════════ #}
+
+{% call activitySection(4, "Spot the Fallacy", "search") %}
+<p>
+  Identify the informal fallacy in each passage. Use both Unit 7 and Unit 8 fallacies.
+</p>
+
+<ol style="color:#ddd; line-height:1; margin-bottom:1rem;">
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    "Organic food is natural, which means it is healthier than conventional food with its artificial pesticides."
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    "Kaoru started drinking coffee when she joined Professor X's lab. Twenty years later, Kaoru became a world-famous researcher. This proves the positive effect of drinking coffee on academic achievement."
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    "Prove to me that extraterrestrial life does not exist. Until you can do so, you have no reason to disbelieve it."
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    "This new drug reduces stroke risk by 40%!" (In fact, the stroke rate fell from 0.5% to 0.3%.)
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    "The coin has come up heads eight times in a row. I should definitely bet on tails this time."
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    "The Bible is the word of God because it says so in the Bible, and the Bible is true because it is the word of God."
+  </li>
+</ol>
+
+<div class="accordion mt-3" id="u08-spot">
+  {% call accordion("spot-08", "Reveal the answers") %}
+  <ol style="color:#ddd; font-size:0.88rem; line-height:2.3;">
+    <li><strong>Appeal to Nature</strong> — "natural" does not mean safe or beneficial. Many natural substances are harmful; many synthetic ones are beneficial.</li>
+    <li><strong>Post Hoc Ergo Propter Hoc</strong> — the coffee drinking preceded her success, but that does not establish it as the cause. Many other factors contributed to her career.</li>
+    <li><strong>Burden of Proof</strong> — the burden of proof lies with the person making the claim, not with those who remain sceptical. "You cannot disprove it" is not evidence for it.</li>
+    <li><strong>Misleading Statistics</strong> — a 40% relative reduction sounds dramatic, but the absolute reduction is only 0.2 percentage points (from 0.5% to 0.3%). The relative framing exaggerates the effect size.</li>
+    <li><strong>Gambler's Fallacy</strong> — each coin flip is an independent event. Past results have no influence on future outcomes for a fair coin.</li>
+    <li><strong>Begging the Question (Circular Reasoning)</strong> — the Bible's authority is assumed to prove its own truth, and its truth is assumed to establish its authority. The argument goes in a circle.</li>
+  </ol>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Check Your Understanding ══════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u08-q1",
+  "Post hoc ergo propter hoc is the assumption that:",
+  2,
+  "Post hoc ergo propter hoc — 'after this, therefore because of this' — mistakes temporal sequence for causation. Because A happened before B does not mean A caused B. Establishing causation requires controlling for alternative explanations and identifying a plausible mechanism.") %}
+  <label class="quiz-option"><input type="radio" name="u08-q1" value="0"> Two events that happen simultaneously must be causally related.</label>
+  <label class="quiz-option"><input type="radio" name="u08-q1" value="1"> Natural things are better than artificial things.</label>
+  <label class="quiz-option"><input type="radio" name="u08-q1" value="2"> Because one event followed another, the first caused the second.</label>
+  <label class="quiz-option"><input type="radio" name="u08-q1" value="3"> The middle position between two extremes is always correct.</label>
+{% endcall %}
+</div>
+
+<div class="mb-4">
+{% call quizMC("u08-q2",
+  "The Texas Sharpshooter fallacy involves:",
+  1,
+  "The Texas Sharpshooter fires at a barn and then draws a target around the bullet holes — selecting where the evidence lands to match a conclusion rather than testing the conclusion against all available evidence. Cherry-picking data is the essence of this fallacy.") %}
+  <label class="quiz-option"><input type="radio" name="u08-q2" value="0"> Making a generalisation from too small a sample.</label>
+  <label class="quiz-option"><input type="radio" name="u08-q2" value="1"> Selecting only the data that supports a conclusion while ignoring the rest.</label>
+  <label class="quiz-option"><input type="radio" name="u08-q2" value="2"> Shifting the burden of proof to the opponent.</label>
+  <label class="quiz-option"><input type="radio" name="u08-q2" value="3"> Using a personal story as evidence for a general claim.</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u08-q3",
+  "Begging the question is a fallacy in which:",
+  3,
+  "Begging the question (circular reasoning) assumes the truth of the very conclusion it is trying to prove. The premises include the conclusion, either directly or in a slightly disguised form. The argument appears to give a reason, but it is circular — it arrives back where it started.") %}
+  <label class="quiz-option"><input type="radio" name="u08-q3" value="0"> A question is asked that cannot be answered.</label>
+  <label class="quiz-option"><input type="radio" name="u08-q3" value="1"> The questioner makes an emotional appeal.</label>
+  <label class="quiz-option"><input type="radio" name="u08-q3" value="2"> The burden of proof is shifted to the opponent.</label>
+  <label class="quiz-option"><input type="radio" name="u08-q3" value="3"> The conclusion is assumed in the premises.</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Expand each category to consolidate your understanding of Unit 8 fallacies.</p>
+
+<div class="accordion mt-3" id="u08-review">
+  {% call accordion("rev-u08-a", "Causal fallacies — four types") %}
+  <p>
+    <strong>Post hoc</strong>: A before B, therefore A caused B.<br>
+    <strong>Cum hoc</strong>: A and B together, therefore A caused B (or vice versa).<br>
+    <strong>False cause</strong>: general causal error — treating correlation as causation.<br>
+    <strong>Slippery slope</strong>: claiming that A will lead inevitably to extreme Z without justifying the chain.
+  </p>
+  {% endcall %}
+
+  {% call accordion("rev-u08-b", "Weak evidence fallacies — five types") %}
+  <p>
+    <strong>Hasty generalisation</strong>: too small or unrepresentative a sample.<br>
+    <strong>Anecdotal</strong>: a personal experience in place of systematic evidence.<br>
+    <strong>Texas sharpshooter</strong>: cherry-picking data to fit a conclusion.<br>
+    <strong>Unrepresentative sample</strong>: biased sampling method.<br>
+    <strong>Misleading statistics</strong>: inappropriate use of quantitative data.
+  </p>
+  {% endcall %}
+
+  {% call accordion("rev-u08-c", "Circular and linguistic fallacies — eight types") %}
+  <p>
+    <strong>Begging the question</strong>: conclusion embedded in premises.<br>
+    <strong>Burden of proof</strong>: shifting responsibility to the sceptic.<br>
+    <strong>Loaded question</strong>: question presupposes what needs to be proved.<br>
+    <strong>Ambiguity / equivocation</strong>: shifting the meaning of a key term.<br>
+    <strong>Appeal to nature</strong>: natural = good.<br>
+    <strong>Middle ground</strong>: compromise must be correct.<br>
+    <strong>Personal incredulity</strong>: can't understand → must be false.<br>
+    <strong>Gambler's fallacy</strong>: past random events affect future independent events.
+  </p>
+  {% endcall %}
+</div>
+
+<p class="mt-4" style="color:#aaa; font-size:0.88rem;">
+  Key concepts covered in this unit: causal fallacy, post hoc ergo propter hoc,
+  cum hoc ergo propter hoc, false cause, slippery slope, hasty generalisation,
+  anecdotal fallacy, Texas sharpshooter, unrepresentative sample, misleading statistics,
+  begging the question (circular reasoning), burden of proof, loaded question,
+  ambiguity, appeal to nature, middle ground, personal incredulity, gambler's fallacy.
+</p>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-09') | url }}">Unit 9: Argument Mapping</a> when ready.
+</p>
+{% endcall %}

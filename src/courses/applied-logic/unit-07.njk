@@ -1,0 +1,282 @@
+---
+unit: 7
+unitTitle: Informal Fallacies I
+title: "Unit 7: Informal Fallacies I — Applied Logic"
+courseUnit: true
+objectives:
+  - Explain the difference between formal and informal fallacies
+  - Recognise and name ten common informal fallacies
+  - Identify red herring fallacies in context
+  - Distinguish cognitive biases from formal logical errors
+  - Apply fallacy recognition to everyday arguments and media examples
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, videoEmbed %}
+
+
+{# ══ Activity 1 — What is an Informal Fallacy? ══════════════════════ #}
+
+{% call activitySection(1, "Formal vs Informal Fallacies", "exclamation-diamond") %}
+<p>
+  A <strong>fallacy</strong> is a mistake in reasoning — an argument that appears convincing
+  but fails to provide genuine support for its conclusion. Fallacies are divided into two
+  broad categories.
+</p>
+<div class="row g-3 mt-1 mb-3">
+  <div class="col-md-6">
+    <div class="p-3 h-100" style="background:#1a1a2a; border:1px solid #4a90d9; border-radius:6px;">
+      <h6 class="fw-bold" style="color:#4a90d9;">Formal fallacies</h6>
+      <p style="color:#ccc; font-size:0.87rem; line-height:1.8; margin:0;">
+        Errors in the <em>structure</em> of an argument. The conclusion fails to follow
+        from the premises regardless of their content. Examples: affirming the consequent,
+        denying the antecedent (covered in Units 3 and 5).
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3 h-100" style="background:#2a1a1a; border:1px solid #e74c3c; border-radius:6px;">
+      <h6 class="fw-bold" style="color:#e74c3c;">Informal fallacies</h6>
+      <p style="color:#ccc; font-size:0.87rem; line-height:1.8; margin:0;">
+        Errors in the <em>content</em> or <em>reasoning</em> of an argument — the jump
+        from premises to conclusion is problematic even though the argument may not
+        violate a propositional form. They are much more common in real-world reasoning.
+      </p>
+    </div>
+  </div>
+</div>
+<p>
+  A <strong>cognitive bias</strong> is not a fallacy in the strict sense — it is a
+  systematic tendency to reason in a particular flawed way (for example, the
+  <em>confirmation bias</em>: seeking out information that confirms existing beliefs
+  and ignoring disconfirming evidence). Cognitive biases and informal fallacies often
+  reinforce each other.
+</p>
+<p>
+  This unit covers informal fallacies of <strong>relevance</strong> — cases where the
+  evidence offered is simply not relevant to the conclusion, even though it may feel
+  persuasive. Unit 8 covers causal fallacies and weak evidence fallacies.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — Video Introduction ════════════════════════════════ #}
+
+{% call activitySection(2, "Introduction to Informal Fallacies — Video", "play-circle") %}
+<p>
+  Watch this video introducing a number of informal fallacies with clear, memorable examples.
+  Try to identify the category each fallacy belongs to as you watch.
+</p>
+{{ videoEmbed("dP5imeWMDVg", "Introduction to informal fallacies") }}
+{% endcall %}
+
+
+{# ══ Activity 3 — Ten Fallacies of Relevance ════════════════════════ #}
+
+{% call activitySection(3, "Ten Fallacies of Relevance", "collection") %}
+<p>
+  These fallacies share a common structure: the evidence offered is irrelevant to
+  the conclusion. They may distract, attack, manipulate, or misrepresent — but they
+  do not provide genuine reasons to accept the claim.
+</p>
+
+<div class="accordion mt-3" id="u07-fallacies">
+
+  {% call accordion("f01", "1. Ad Hominem — personal attack") %}
+  <p>Attacking the <em>person</em> making the argument rather than the argument itself. The character or personal traits of the speaker are irrelevant to whether the argument is sound.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "We should not take Dr Smith's climate research seriously — she has been divorced twice and once declared bankruptcy."
+  </p>
+  {% endcall %}
+
+  {% call accordion("f02", "2. Straw Man — misrepresenting the argument") %}
+  <p>Misrepresenting someone's position to make it easier to attack. The arguer defeats a weakened version of the opponent's claim, not the actual claim.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    Person A: "We should regulate gun ownership more carefully." Person B: "So you want to ban all guns and leave citizens defenceless."
+  </p>
+  {% endcall %}
+
+  {% call accordion("f03", "3. Appeal to Authority (Ad Verecundiam) — unwarranted expert appeal") %}
+  <p>Claiming something is true because an authority believes it, without checking whether the authority is relevant, trustworthy, or unanimous. Legitimate appeals to expert consensus are not fallacious — the fallacy arises when the authority is misapplied.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "A famous actor said this vitamin supplement cures arthritis — it must be true."
+  </p>
+  {% endcall %}
+
+  {% call accordion("f04", "4. Bandwagon (Ad Populum) — appeal to popularity") %}
+  <p>Arguing that something is true or correct because many people believe it or do it. Popularity is not evidence of truth.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "Millions of people use this app, so it must be secure and reliable."
+  </p>
+  {% endcall %}
+
+  {% call accordion("f05", "5. Tu Quoque — two wrongs make a right") %}
+  <p>Deflecting a criticism by pointing out that the critic does the same thing. This does not address the original criticism — it merely deflects it.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "You say I should exercise more, but you never go to the gym either."
+  </p>
+  {% endcall %}
+
+  {% call accordion("f06", "6. False Dilemma (Black or White) — false dichotomy") %}
+  <p>Presenting only two options when more alternatives exist. The arguer forces a choice between extremes by hiding the middle ground.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "Either you support this policy completely, or you are against national security."
+  </p>
+  {% endcall %}
+
+  {% call accordion("f07", "7. Appeal to Emotion — rhetorical manipulation") %}
+  <p>Using emotional language to manipulate the audience's feelings in place of providing reasoned evidence. Appealing to fear, pity, pride, or flattery are common variants.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "Think of the children — how can you oppose this law?"
+  </p>
+  {% endcall %}
+
+  {% call accordion("f08", "8. Genetic Fallacy — judging by origin") %}
+  <p>Evaluating an argument or claim as good or bad based solely on its source or origin, rather than its content.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "We should not trust this study — it was funded by a company with a financial interest in the result." (Note: funding bias is a legitimate concern, but it is not by itself sufficient to dismiss all conclusions.)</p>
+  {% endcall %}
+
+  {% call accordion("f09", "9. No True Scotsman — appeal to purity") %}
+  <p>Dismissing counterexamples by redefining the category to exclude them. A claim is protected from falsification by moving the goalposts.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "No true professional would make that mistake." "But Professor Y is a professional and she made it." "Well then, she's not a <em>true</em> professional."
+  </p>
+  {% endcall %}
+
+  {% call accordion("f10", "10. Fallacy Fallacy — wrong conclusion from a fallacy") %}
+  <p>Assuming that because an argument contains a fallacy, its conclusion must be false. A conclusion can be true even if the argument made for it is bad. The quality of the argument and the truth of the conclusion are separate questions.</p>
+  <p style="color:#aaa; font-size:0.87rem; font-style:italic;">
+    "Your argument for eating less sugar contained an ad hominem attack. Therefore, eating less sugar is not beneficial."
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Spot the Fallacy ══════════════════════════════════ #}
+
+{% call activitySection(4, "Spot the Fallacy", "search") %}
+<p>
+  Identify the informal fallacy in each passage below. Name the fallacy and explain
+  why the reasoning is flawed.
+</p>
+
+<ol style="color:#ddd; line-height:1; margin-bottom:1rem;">
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    "You say we should eat less meat to reduce our carbon footprint. But you drove to work today — so you have no right to tell me what to eat."
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    "A Nobel Prize-winning physicist has said that astrology is scientifically valid. Who are we to disagree with a Nobel laureate?"
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    "If we allow students to use calculators in maths exams, soon they'll be unable to do any mental arithmetic at all, and eventually no one will be able to function without a device for even the simplest tasks."
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    "My opponent claims we should reduce defence spending by 5%. Clearly, he wants to leave our country completely defenceless."
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    "Over 80% of people in this survey said they believe in ghosts. With that level of agreement, ghosts must exist."
+  </li>
+  <li style="margin-bottom:1.4rem; line-height:1.8;">
+    "Her research on workplace discrimination was poorly cited and her logic was flawed. This proves that workplace discrimination is not a serious issue."
+  </li>
+</ol>
+
+<div class="accordion mt-3" id="u07-spot">
+  {% call accordion("spot-07", "Reveal the answers") %}
+  <ol style="color:#ddd; font-size:0.88rem; line-height:2.3;">
+    <li><strong>Tu Quoque</strong> — deflecting the criticism by pointing to the critic's own behaviour. Whether driving to work is inconsistent is irrelevant to whether the claim about meat and carbon is correct.</li>
+    <li><strong>Appeal to Authority</strong> — a physicist's expertise does not transfer to astrology. Expert authority is only relevant within the domain of that expertise.</li>
+    <li><strong>Slippery Slope</strong> — asserting that a small step will inevitably lead to extreme consequences without establishing why each intermediate step must follow.</li>
+    <li><strong>Straw Man</strong> — a 5% reduction in spending is misrepresented as wanting to leave the country "completely defenceless."</li>
+    <li><strong>Bandwagon (Ad Populum)</strong> — 80% agreement does not establish truth. Many widely held beliefs have been shown to be false.</li>
+    <li><strong>Fallacy Fallacy</strong> — a flawed argument does not prove the conclusion is false. The quality of the argument must be distinguished from the truth of the conclusion.</li>
+  </ol>
+  {% endcall %}
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Check Your Understanding ══════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u07-q1",
+  "The straw man fallacy involves:",
+  2,
+  "The straw man fallacy misrepresents an opponent's argument — often by exaggerating or simplifying it — so it is easier to attack. The arguer defeats the misrepresentation rather than the actual claim. It is a red herring because it distracts from the real argument.") %}
+  <label class="quiz-option"><input type="radio" name="u07-q1" value="0"> Appealing to the emotions of the audience.</label>
+  <label class="quiz-option"><input type="radio" name="u07-q1" value="1"> Attacking the character of the person making the argument.</label>
+  <label class="quiz-option"><input type="radio" name="u07-q1" value="2"> Misrepresenting an opponent's argument to make it easier to defeat.</label>
+  <label class="quiz-option"><input type="radio" name="u07-q1" value="3"> Appealing to popular opinion as evidence.</label>
+{% endcall %}
+</div>
+
+<div class="mb-4">
+{% call quizMC("u07-q2",
+  "Which fallacy is committed when someone responds to criticism by pointing out that the critic does the same thing?",
+  1,
+  "Tu quoque (Latin: 'you also') deflects criticism by turning it back on the accuser. It does not address the substance of the criticism — it merely claims the critic is hypocritical. Hypocrisy may be relevant in some contexts, but it does not refute an argument.") %}
+  <label class="quiz-option"><input type="radio" name="u07-q2" value="0"> Ad hominem</label>
+  <label class="quiz-option"><input type="radio" name="u07-q2" value="1"> Tu quoque</label>
+  <label class="quiz-option"><input type="radio" name="u07-q2" value="2"> Genetic fallacy</label>
+  <label class="quiz-option"><input type="radio" name="u07-q2" value="3"> No true Scotsman</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u07-q3",
+  "A politician says: 'Either you are with us, or you are against us.' This is an example of:",
+  3,
+  "The false dilemma (also called false dichotomy or black-or-white fallacy) presents only two options when more exist. Political discourse frequently uses this tactic to force audiences into one of two extreme positions, suppressing nuance and middle-ground options.") %}
+  <label class="quiz-option"><input type="radio" name="u07-q3" value="0"> Bandwagon</label>
+  <label class="quiz-option"><input type="radio" name="u07-q3" value="1"> Straw man</label>
+  <label class="quiz-option"><input type="radio" name="u07-q3" value="2"> Slippery slope</label>
+  <label class="quiz-option"><input type="radio" name="u07-q3" value="3"> False dilemma</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Expand each fallacy group to consolidate your understanding.</p>
+
+<div class="accordion mt-3" id="u07-review">
+  {% call accordion("rev-u07-a", "Formal vs informal fallacies — what is the difference?") %}
+  <p><strong>Formal fallacies</strong> are structural errors — the conclusion does not follow from the premises regardless of content (e.g., affirming the consequent). <strong>Informal fallacies</strong> are errors in reasoning content — the evidence offered is irrelevant, misleading, or insufficient. This unit focused on fallacies of <em>relevance</em>: cases where the "evidence" has no logical bearing on the conclusion.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u07-b", "Ten fallacies of relevance — summary") %}
+  <p>
+    <strong>Ad hominem</strong>: attacking the person, not the argument.<br>
+    <strong>Straw man</strong>: misrepresenting the opponent's argument.<br>
+    <strong>Appeal to authority</strong>: citing an authority outside their relevant domain.<br>
+    <strong>Bandwagon</strong>: popularity as evidence of truth.<br>
+    <strong>Tu quoque</strong>: deflecting criticism by reversing it.<br>
+    <strong>False dilemma</strong>: only two options when more exist.<br>
+    <strong>Appeal to emotion</strong>: manipulating feelings instead of providing reasons.<br>
+    <strong>Genetic fallacy</strong>: judging a claim by its origin.<br>
+    <strong>No true Scotsman</strong>: protecting a generalisation from counterexamples by redefining terms.<br>
+    <strong>Fallacy fallacy</strong>: assuming a bad argument means a false conclusion.
+  </p>
+  {% endcall %}
+
+  {% call accordion("rev-u07-c", "Cognitive biases — how do they relate?") %}
+  <p>Cognitive biases are systematic tendencies in human thinking that lead to errors in judgement. The <strong>confirmation bias</strong> leads people to seek confirming evidence and ignore disconfirming evidence. It is not a fallacy in the formal sense but it reinforces many informal fallacies — for example, it makes the bandwagon fallacy more persuasive (we are naturally drawn to believing what others believe). Being aware of cognitive biases helps explain why fallacies are so difficult to resist.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-4" style="color:#aaa; font-size:0.88rem;">
+  Key concepts covered in this unit: informal fallacy, cognitive bias, confirmation bias,
+  ad hominem, straw man, appeal to authority, bandwagon (ad populum), tu quoque,
+  false dilemma, appeal to emotion, genetic fallacy, no true Scotsman, fallacy fallacy.
+</p>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-08') | url }}">Unit 8: Informal Fallacies II</a> when ready.
+</p>
+{% endcall %}

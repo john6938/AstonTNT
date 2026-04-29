@@ -1,0 +1,404 @@
+---
+unit: 1
+unitTitle: Propositions and Truth
+title: "Unit 1: Propositions and Truth — Applied Logic"
+courseUnit: true
+objectives:
+  - Distinguish propositions from non-propositions
+  - Assign truth values (true, false, indeterminate) to propositions
+  - Explain three theories of truth — correspondence, coherence, and pragmatic
+  - Recognise the key terms premise, conclusion, reasoning, and argument
+  - Use basic logical form notation (P, Q)
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection, accordion, quizMC, videoEmbed %}
+
+
+{# ══ Activity 1 — What is Logic? ═════════════════════════════════════ #}
+
+{% call activitySection(1, "What is Applied Logic?", "lightbulb") %}
+<p>
+  Logic is the study of correct reasoning. It provides tools for distinguishing
+  good arguments from bad ones — not on the basis of whether we agree with the
+  conclusion, but on the basis of whether the reasoning is valid.
+</p>
+<p>
+  <em>Applied</em> logic focuses on using these tools in real contexts: evaluating
+  news articles, spotting weak arguments in debates, identifying errors in everyday
+  reasoning, and constructing clearer arguments of your own.
+</p>
+<p>
+  This unit introduces the most fundamental concept in logic: the <strong>proposition</strong>
+  — a statement that has a truth value. Everything else in the course builds on this idea.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 2 — What is a Proposition? ════════════════════════════ #}
+
+{% call activitySection(2, "What is a Proposition?", "chat-square-text") %}
+<p>
+  A <strong>proposition</strong> is a declarative statement that is either true or false.
+  It asserts something about the world that can, in principle, be evaluated.
+  Not every sentence is a proposition — questions, commands, and exclamations are not propositions
+  because they do not make a claim that can be true or false.
+</p>
+
+<div class="row g-3 mt-2 mb-3">
+  <div class="col-md-6">
+    <div class="card h-100" style="background:#1a2a1a; border-color:#27ae60;">
+      <div class="card-body">
+        <h6 class="fw-bold mb-3" style="color:#2ecc71;">
+          <i class="bi bi-check-circle me-2"></i>Propositions
+        </h6>
+        <ul style="color:#ddd; font-size:0.9rem; line-height:2.2; margin:0; padding-left:1.2rem;">
+          <li>Water boils at 100°C at sea level.</li>
+          <li>The Earth is older than 4 billion years.</li>
+          <li>Paris is the capital of Germany.</li>
+          <li>All prime numbers greater than 2 are odd.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card h-100" style="background:#2a1a1a; border-color:#e74c3c;">
+      <div class="card-body">
+        <h6 class="fw-bold mb-3" style="color:#e74c3c;">
+          <i class="bi bi-x-circle me-2"></i>Not Propositions
+        </h6>
+        <ul style="color:#ddd; font-size:0.9rem; line-height:2.2; margin:0; padding-left:1.2rem;">
+          <li>Is Paris the capital of France? <em style="color:#888;">(question)</em></li>
+          <li>Close the door! <em style="color:#888;">(command)</em></li>
+          <li>What a beautiful sunset. <em style="color:#888;">(exclamation)</em></li>
+          <li>Hello, how are you? <em style="color:#888;">(greeting)</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>
+  Notice that a proposition can be false — <em>"Paris is the capital of Germany"</em>
+  is a proposition even though it is factually wrong. The defining feature is not that the
+  statement is true, but that it <em>could</em> be true or false.
+</p>
+
+<h5 class="mt-4" style="color:#ff8c00;">Logical form notation</h5>
+<p>
+  In formal logic, propositions are represented by letters — typically <strong>P</strong>,
+  <strong>Q</strong>, and <strong>R</strong>. This allows us to reason about the
+  <em>structure</em> of an argument without being distracted by its content.
+</p>
+<div class="p-3 mb-2" style="background:#222; border-left:3px solid #ff8c00; border-radius:0 6px 6px 0; font-size:0.9rem; color:#ddd; line-height:2;">
+  <strong style="color:#ff8c00;">P:</strong> It is raining.<br>
+  <strong style="color:#ff8c00;">Q:</strong> The ground is wet.<br>
+  <strong style="color:#ff8c00;">If P, then Q</strong> — <em>If it is raining, then the ground is wet.</em>
+</div>
+<p>
+  You will use this notation throughout the course. For now, simply note that P and Q are
+  placeholders for any proposition.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 3 — Thinking About Truth ══════════════════════════════ #}
+
+{% call activitySection(3, "Thinking About Truth", "question-circle") %}
+<p>
+  Before we study the concept formally, consider these questions. Think about each one,
+  and if possible discuss your answers with someone nearby.
+</p>
+<ol style="color:#ddd; line-height:2.5;">
+  <li>What does it mean to say that something is true?</li>
+  <li>Can you always tell whether a statement is true or false? Give an example where you cannot.</li>
+  <li>Is it logical to say 1 + 1 = 2? Why — or why not?</li>
+  <li>Is the statement <em>"This sentence is false"</em> a proposition? What is its truth value?</li>
+  <li>If two people sincerely disagree about whether a statement is true, can they both be right?</li>
+</ol>
+<p class="mt-2" style="color:#aaa; font-size:0.88rem;">
+  <i class="bi bi-info-circle me-1"></i>
+  There are no simple right or wrong answers here. These questions are designed to surface
+  your intuitions about truth so you can compare them with the formal theories in the next activity.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 4 — Truth Values ═══════════════════════════════════════ #}
+
+{% call activitySection(4, "Truth Values", "toggles") %}
+<p>
+  Every proposition has a <strong>truth value</strong>: it is either <strong>true (T)</strong>,
+  <strong>false (F)</strong>, or — in some logics — <strong>indeterminate</strong>
+  (we cannot currently assign a definite truth value).
+</p>
+
+<div class="table-responsive mt-3 mb-4">
+  <table class="table table-dark table-bordered" style="font-size:0.88rem;">
+    <thead>
+      <tr style="background:#333;">
+        <th>Truth Value</th>
+        <th>Meaning</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong style="color:#2ecc71;">True (T)</strong></td>
+        <td>The proposition corresponds to facts about the world.</td>
+        <td>Water is composed of hydrogen and oxygen.</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#e74c3c;">False (F)</strong></td>
+        <td>The proposition does not correspond to facts about the world.</td>
+        <td>The Moon is larger than the Sun.</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#f39c12;">Indeterminate</strong></td>
+        <td>We cannot assign T or F — due to vagueness, incomplete evidence, or paradox.</td>
+        <td>There is intelligent life elsewhere in the universe.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h5 style="color:#ff8c00;">Case study: How many colours are in a rainbow?</h5>
+<p>
+  Consider this statement: <em>"There are seven colours in a rainbow."</em>
+</p>
+<p>
+  Is this true? Is it false? How confident are you? The number of colours we perceive
+  depends on how we draw the boundaries between colour categories — and different cultures
+  and languages draw those boundaries differently. What looks like a straightforward factual
+  question reveals something important: many propositions that appear clear-cut turn out to
+  be more complicated on closer inspection. The truth value depends partly on how we
+  <em>define</em> the terms in the proposition.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 5 — Three Theories of Truth ═══════════════════════════ #}
+
+{% call activitySection(5, "Three Theories of Truth", "diagram-3") %}
+<p>
+  Philosophers have proposed several theories to explain what it means for a proposition
+  to be true. Three of the most influential are described below.
+</p>
+
+<div class="row g-3 mt-1 mb-3">
+  <div class="col-md-4">
+    <div class="card h-100" style="background:#1e1e1e; border-color:#4a90d9;">
+      <div class="card-body">
+        <h6 class="fw-bold" style="color:#4a90d9;">Correspondence Theory</h6>
+        <p style="color:#ccc; font-size:0.87rem; line-height:1.7;">
+          A proposition is true if it corresponds to the facts — if it accurately
+          describes a state of affairs in the world. This is the most intuitive view.
+        </p>
+        <p style="color:#aaa; font-size:0.83rem; font-style:italic;">
+          "Snow is white" is true if and only if snow is, in fact, white. &mdash; Tarski
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100" style="background:#1e1e1e; border-color:#9b59b6;">
+      <div class="card-body">
+        <h6 class="fw-bold" style="color:#b07fd4;">Coherence Theory</h6>
+        <p style="color:#ccc; font-size:0.87rem; line-height:1.7;">
+          A proposition is true if it coheres — fits consistently — with a set of
+          other accepted propositions. Truth is a matter of internal consistency
+          within a system of beliefs.
+        </p>
+        <p style="color:#aaa; font-size:0.83rem; font-style:italic;">
+          A statement is true if it is part of a coherent web of beliefs.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100" style="background:#1e1e1e; border-color:#27ae60;">
+      <div class="card-body">
+        <h6 class="fw-bold" style="color:#2ecc71;">Pragmatic Theory</h6>
+        <p style="color:#ccc; font-size:0.87rem; line-height:1.7;">
+          A proposition is true if believing it works — if it leads to successful
+          outcomes or useful predictions. Truth is defined by its practical consequences.
+        </p>
+        <p style="color:#aaa; font-size:0.83rem; font-style:italic;">
+          "True ideas are those that we can assimilate, validate, corroborate, and verify." &mdash; William James
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>
+  Each theory captures something important, and each has weaknesses. In this course we will
+  mostly work within the correspondence theory — the default in formal logic — but being
+  aware of the alternatives helps you recognise when arguments rest on different assumptions
+  about what counts as true.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 6 — Video: Introduction to Logic ════════════════════════ #}
+
+{% call activitySection(6, "Introduction to Logic — Video", "play-circle") %}
+<p>
+  Watch this introductory lecture on logic. As you watch, pay attention to how the
+  presenter defines the following key terms — you will need them throughout the course.
+</p>
+<ul style="color:#ddd; line-height:2.2; margin-bottom:1rem;">
+  <li><strong>Premise</strong> — a statement offered as evidence or a reason</li>
+  <li><strong>Conclusion</strong> — the claim that the premises are intended to support</li>
+  <li><strong>Reasoning</strong> — the process of moving from premises to conclusion</li>
+  <li><strong>Argument</strong> — premises + reasoning + conclusion</li>
+  <li><strong>Validity</strong> — does the conclusion follow from the premises?</li>
+  <li><strong>Soundness</strong> — is the argument valid <em>and</em> are the premises true?</li>
+</ul>
+
+{{ videoEmbed("LCxtrqhsLA4", "Introduction to Logic and Language") }}
+
+{% endcall %}
+
+
+{# ══ Activity 7 — Plato's Allegory of the Cave (Optional) ════════════ #}
+
+{% call activitySection(7, "Plato's Allegory of the Cave — Optional", "eye") %}
+<p>
+  Plato's Allegory of the Cave is one of the most famous thought experiments in philosophy.
+  It explores how our perception shapes what we believe to be true — and raises the question
+  of whether the world we experience is the same as the world as it really is.
+</p>
+<p>
+  Watch this short animated explanation (6 min 28 sec). Consider: what does the cave tell
+  us about the relationship between truth, perception, and knowledge?
+</p>
+
+{{ videoEmbed("O6U25zUBsdQ", "Plato's Allegory of the Cave") }}
+
+<p class="mt-3" style="color:#aaa; font-size:0.87rem;">
+  <i class="bi bi-lightbulb me-1" style="color:#ff8c00;"></i>
+  The allegory connects to the correspondence theory of truth: the prisoners mistake shadows
+  for reality. What does this imply about the difficulty of establishing correspondence
+  between our beliefs and the world?
+</p>
+{% endcall %}
+
+
+{# ══ Activity 8 — Critical Analysis: Professor X ═════════════════════ #}
+
+{% call activitySection(8, "Critical Analysis: Professor X", "pencil-square") %}
+<p>
+  The following passage is a short argument. Read it carefully. Each sentence is numbered
+  for ease of reference.
+</p>
+
+<div class="p-3 mb-3" style="background:#222; border:1px solid #444; border-radius:6px; font-size:0.9rem; color:#ddd; line-height:2.2;">
+  <p class="fw-bold mb-2" style="color:#ff8c00;">Professor X</p>
+  <ol style="margin:0; padding-left:1.4rem;">
+    <li>Professor X is an efficient and effective teacher.</li>
+    <li>All his students enjoy his classes according to the feedback given on the student feedback questionnaires.</li>
+    <li>Every student who attended the course in full received a grade A, which is testimony of his expertise in teaching.</li>
+    <li>The professor not only holds a doctorate in physics but is also a polyglot and a polymath.</li>
+    <li>His course is always popular with students.</li>
+    <li>Every course offered in the previous two years has seen enrolments meeting or exceeding the minimum number of students.</li>
+    <li>To ensure he has enough energy, he always brings a cup of coffee to the classroom.</li>
+    <li>This is yet more evidence of his dedication to his students.</li>
+    <li>Finally, Professor X's Facebook page has received thousands of "likes", a clear indication of votes of confidence in his teaching.</li>
+  </ol>
+</div>
+
+<p>Work through these questions:</p>
+<ol style="color:#ddd; line-height:2.5;">
+  <li>What is the main conclusion of the passage?</li>
+  <li>Which sentences provide genuine evidence for that conclusion?</li>
+  <li>Which sentences are irrelevant to the conclusion?</li>
+  <li>Which sentences make claims that are not adequately supported?</li>
+  <li>Are any of the sentences themselves propositions with an indeterminate truth value?</li>
+</ol>
+<p style="color:#aaa; font-size:0.87rem;">
+  <i class="bi bi-info-circle me-1"></i>
+  This exercise is a preview of argument analysis skills covered in depth in Unit 2.
+  For now, focus on identifying what is being claimed and what evidence is offered.
+</p>
+{% endcall %}
+
+
+{# ══ Activity 9 — Check Your Understanding ══════════════════════════ #}
+
+{% call activitySection(9, "Check Your Understanding", "patch-question") %}
+
+<div class="mb-4">
+{% call quizMC("u01-q1",
+  "Which of the following is a proposition?",
+  2,
+  "A proposition is a declarative statement with a truth value. 'Shut the door' is a command; 'Are you ready?' is a question; 'The boiling point of water is 100°C at sea level' is a declarative statement that is either true or false — it is a proposition. An exclamation like 'Excellent!' makes no claim and has no truth value.") %}
+  <label class="quiz-option"><input type="radio" name="u01-q1" value="0"> Shut the door!</label>
+  <label class="quiz-option"><input type="radio" name="u01-q1" value="1"> Are you ready?</label>
+  <label class="quiz-option"><input type="radio" name="u01-q1" value="2"> The boiling point of water is 100°C at sea level.</label>
+  <label class="quiz-option"><input type="radio" name="u01-q1" value="3"> Excellent!</label>
+{% endcall %}
+</div>
+
+<div class="mb-4">
+{% call quizMC("u01-q2",
+  "The correspondence theory of truth holds that a proposition is true when:",
+  0,
+  "The correspondence theory — the most common view in formal logic — holds that a proposition is true if it accurately describes the facts of the world. Coherence theory defines truth as internal consistency within a set of beliefs; pragmatic theory defines it by practical outcomes.") %}
+  <label class="quiz-option"><input type="radio" name="u01-q2" value="0"> It accurately describes the facts of the world.</label>
+  <label class="quiz-option"><input type="radio" name="u01-q2" value="1"> It is consistent with other things we believe.</label>
+  <label class="quiz-option"><input type="radio" name="u01-q2" value="2"> Believing it leads to useful outcomes.</label>
+  <label class="quiz-option"><input type="radio" name="u01-q2" value="3"> A majority of people agree with it.</label>
+{% endcall %}
+</div>
+
+{% call quizMC("u01-q3",
+  "In formal logic, the letters P and Q are used to represent:",
+  1,
+  "P and Q are propositional variables — placeholders for any proposition. This notation allows logicians to study the structure of arguments independently of their content, which is the foundation of formal logic.") %}
+  <label class="quiz-option"><input type="radio" name="u01-q3" value="0"> People involved in an argument.</label>
+  <label class="quiz-option"><input type="radio" name="u01-q3" value="1"> Propositions — placeholders for any declarative statement.</label>
+  <label class="quiz-option"><input type="radio" name="u01-q3" value="2"> Questions that cannot be answered.</label>
+  <label class="quiz-option"><input type="radio" name="u01-q3" value="3"> The quality and quantity of evidence.</label>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+<p>Expand each concept to check your understanding before moving on.</p>
+
+<div class="accordion mt-3" id="u01-review">
+  {% call accordion("rev-u01-a", "Proposition — what is it and how do you recognise one?") %}
+  <p>A proposition is a declarative statement that has a truth value — it is either true or false (or indeterminate). Questions, commands, and exclamations are not propositions. A proposition can be false and still be a proposition: the key criterion is that it <em>could</em> be true or false.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u01-b", "Truth values — what are the three possibilities?") %}
+  <p><strong>True (T)</strong>: the proposition corresponds to the facts. <strong>False (F)</strong>: it does not. <strong>Indeterminate</strong>: we cannot assign a definite truth value — due to vagueness, paradox, or incomplete evidence. Classical (two-valued) logic uses only T and F; some logics add a third value.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u01-c", "Three theories of truth — what are they?") %}
+  <p><strong>Correspondence</strong>: a proposition is true if it corresponds to facts about the world. <strong>Coherence</strong>: a proposition is true if it coheres with a system of accepted beliefs. <strong>Pragmatic</strong>: a proposition is true if acting on it produces successful outcomes. Formal logic predominantly uses the correspondence view.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u01-d", "Premise, conclusion, reasoning, argument — how do they relate?") %}
+  <p>An <strong>argument</strong> consists of one or more <strong>premises</strong> (the evidence offered) and a <strong>conclusion</strong> (the claim being supported). <strong>Reasoning</strong> is the process by which we move from premises to conclusion. Not every passage with opinions is an argument — there must be an attempt to provide reasons for a conclusion.</p>
+  {% endcall %}
+
+  {% call accordion("rev-u01-e", "P and Q notation — what does it mean?") %}
+  <p>P and Q are propositional variables — letters that stand for any proposition. Writing <em>If P, then Q</em> expresses a conditional relationship between two propositions without specifying their content. This notation lets us analyse the <em>structure</em> of an argument separately from its subject matter.</p>
+  {% endcall %}
+</div>
+
+<p class="mt-4" style="color:#aaa; font-size:0.88rem;">
+  Key concepts covered in this unit: declarative statement, proposition, truth value (true, false, indeterminate),
+  correspondence theory, coherence theory, pragmatic theory, Plato's allegory of the cave,
+  premise, conclusion, reasoning, argument, propositional variable (P, Q).
+</p>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-02') | url }}">Unit 2: Arguments and Inference</a> when ready.
+</p>
+{% endcall %}

@@ -47,7 +47,7 @@ Academic website for showcasing research, recruiting graduate students, and shar
   - Sidebar shows four evaluation criteria (Novelty, Rigour, Substance, Significance) with abstract-specific notes; active criterion highlights on each stage
 
 ### To Do
-- [ ] Add units to Applied Logic course by adapting old course (`/courses/applied-logic/`)
+- [x] Add units to Applied Logic course by adapting old course (`/courses/applied-logic/`)
 - [ ] Fill in `booktitle` for all book chapters in `publications_data/`
 - [ ] Add more tool links as new versions of tools are finalised
 - [ ] Configure custom domain for GitHub Pages
@@ -120,7 +120,8 @@ aston_site/
         ├── error-free/           # Error-Free Research Writing (6 units + bespoke index)
         ├── reader-friendly/      # Reader-Friendly Writing (6 units)
         ├── icall/                # iCALL Suite (10 units)
-        └── scientific-abstracts/ # Scientific Research Abstracts (6 units + bespoke index)
+        ├── scientific-abstracts/ # Scientific Research Abstracts (6 units + bespoke index)
+        └── applied-logic/        # Applied Logic (10 units + bespoke index with Wason demo)
 ```
 
 ---
