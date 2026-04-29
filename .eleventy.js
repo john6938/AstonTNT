@@ -7,6 +7,8 @@ module.exports = function(eleventyConfig) {
   // Copy assets folder to output
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
+  // Copy slide image folders to output unchanged
+  eleventyConfig.addPassthroughCopy("src/slides");
 
   // Shortcode for current year
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
