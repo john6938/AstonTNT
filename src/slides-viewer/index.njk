@@ -225,7 +225,7 @@ eleventyExcludeFromCollections: true
     <div class="sv-input-box">
       <h1><img src="{{ '/assets/tnt_logo_small.jpg' | url }}" alt="Logo" style="height:36px; vertical-align:middle; border-radius:4px;"> &nbsp;Slide Viewer</h1>
       <p>Enter the presentation folder name.<br>
-         Slides should be named <code style="color:#ff8c00;">slide1.png</code>, <code style="color:#ff8c00;">slide2.png</code>, etc.</p>
+         Slides should be named <code style="color:#ff8c00;">Slide1.png</code>, <code style="color:#ff8c00;">Slide2.png</code>, etc.</p>
       <div class="sv-input-row">
         <input id="sv-deck-input" type="text" placeholder="e.g. teamworking" autocomplete="off" spellcheck="false">
         <button id="sv-deck-btn">Open</button>
@@ -241,7 +241,7 @@ eleventyExcludeFromCollections: true
       <div id="sv-error">
         <strong>No slides found.</strong>
         Check that the folder name and file naming pattern are correct
-        (<code>slide1.png</code>, <code>slide2.png</code>, …).
+        (<code>Slide1.png</code>, <code>Slide2.png</code>, …).
       </div>
     </div>
 
@@ -270,7 +270,7 @@ eleventyExcludeFromCollections: true
 <script>
   window.SLIDE_VIEWER_CONFIG = {
     SLIDE_BASE:      "{{ '/slides/' | url }}",
-    SLIDE_PREFIX:    "slide",
+    SLIDE_PREFIX:    "Slide",
     SLIDE_EXTENSION: ".png",
     LOOP_SLIDES:     false
   };
