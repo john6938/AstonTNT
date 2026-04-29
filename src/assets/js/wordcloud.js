@@ -1,7 +1,7 @@
 am4core.useTheme(am4themes_animated);
 
 var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
-chart.background.fill = am4core.color("beige");
+chart.background.fill = am4core.color("#f5f5dc");
 chart.background.fillOpacity = 1;
 var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
 
