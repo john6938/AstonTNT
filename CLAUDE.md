@@ -48,6 +48,7 @@ Academic website for showcasing research, recruiting graduate students, and shar
 
 ### To Do
 - [x] Add units to Applied Logic course by adapting old course (`/courses/applied-logic/`)
+- [ ] Test slide viewer (`/slides-viewer/?deck=test`)
 - [ ] Fill in `booktitle` for all book chapters in `publications_data/`
 - [ ] Add more tool links as new versions of tools are finalised
 - [ ] Configure custom domain for GitHub Pages
