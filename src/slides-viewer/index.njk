@@ -267,6 +267,9 @@ eleventyExcludeFromCollections: true
       <button id="sv-change-deck" title="Open a different presentation">
         <i class="bi bi-folder2-open"></i>
       </button>
+      <button id="sv-exit" title="Close presentation">
+        <i class="bi bi-x-lg"></i>
+      </button>
     </div>
   </div>
 
@@ -278,7 +281,8 @@ eleventyExcludeFromCollections: true
     SLIDE_BASE:      "{{ '/slides/' | url }}",
     SLIDE_PREFIX:    "Slide",
     SLIDE_EXTENSION: ".PNG",
-    LOOP_SLIDES:     false
+    LOOP_SLIDES:     false,
+    HOME_URL:        "{{ '/' | url }}"
   };
 </script>
 <script src="{{ '/assets/js/slide-viewer.js' | url }}"></script>

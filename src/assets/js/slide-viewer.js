@@ -29,6 +29,7 @@
   var fsContainer = document.getElementById('sv-container');
   var controls    = document.getElementById('sv-controls');
   var changeDeckBtn = document.getElementById('sv-change-deck');
+  var exitBtn       = document.getElementById('sv-exit');
 
   /* ── Helpers ────────────────────────────────────────────────────────── */
   function slidePath(deck, n) {
@@ -196,6 +197,11 @@
   prevBtn.addEventListener('click', prev);
   nextBtn.addEventListener('click', next);
   fsBtn.addEventListener('click',   toggleFullscreen);
+
+  exitBtn.addEventListener('click', function () {
+    try { localStorage.removeItem(LS_DECK); localStorage.removeItem(LS_SLIDE); } catch (e) {}
+    window.location.href = SLIDE_VIEWER_CONFIG.HOME_URL || '/';
+  });
 
   changeDeckBtn.addEventListener('click', function () {
     viewer.style.display      = 'none';
