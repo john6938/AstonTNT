@@ -200,7 +200,10 @@
 
   exitBtn.addEventListener('click', function () {
     try { localStorage.removeItem(LS_DECK); localStorage.removeItem(LS_SLIDE); } catch (e) {}
-    window.location.href = SLIDE_VIEWER_CONFIG.HOME_URL || '/';
+    viewer.style.display      = 'none';
+    inputScreen.style.display = 'flex';
+    deckInput.value           = '';
+    deckInput.focus();
   });
 
   changeDeckBtn.addEventListener('click', function () {
