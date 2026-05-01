@@ -226,7 +226,8 @@ body {
 
 /* Orange headings on dark background sections */
 .container h2,
-.container h3 {
+.container h3,
+.container h4 {
   color: #ff8c00;
 }
 
