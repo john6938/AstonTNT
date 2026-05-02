@@ -1,0 +1,19 @@
+{
+  "layout": "layouts/course-unit.njk",
+  "courseTitle": "UML for Software Engineering",
+  "courseBaseUrl": "/courses/uml",
+  "unitCount": 10,
+  "unitTitles": [
+    "Intro to SE & UML",
+    "Requirements",
+    "Use Case Diagrams",
+    "Class Diagrams: Structure I",
+    "Class Diagrams: Structure II",
+    "Sequence Diagrams",
+    "Activity Diagrams",
+    "Integrating UML",
+    "Design & Documentation",
+    "Critical Analysis"
+  ],
+  "quote": "&ldquo;Any fool can write code that a computer can understand. Good programmers write code that humans can understand.&rdquo; &mdash; Martin Fowler"
+}

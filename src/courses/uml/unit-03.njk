@@ -1,0 +1,415 @@
+---
+unit: 3
+unitTitle: Use Case Diagrams
+title: "Unit 3: Use Case Diagrams"
+description: "Learn to represent system goals and user interactions using UML use case diagrams — the bridge between requirements and design."
+objectives:
+  - Identify actors, use cases, and system boundaries in a use case diagram
+  - Distinguish between «include» and «extend» relationships
+  - Evaluate a use case diagram for appropriate abstraction and completeness
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, videoEmbed, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Core Input ═════════════════════════════════════════ #}
+
+{% set coreTabs = [
+  {id: "elements", label: "Diagram Elements"},
+  {id: "rels",     label: "Relationships"},
+  {id: "practice", label: "Good Practice"}
+] %}
+
+{% call activitySection(1, "Core Input", "book") %}
+<p class="mb-3">Read through each tab before moving to the key concepts below.</p>
+
+{% call tabSet("unit03-core", coreTabs) %}
+  <div class="tab-pane fade show active" id="unit03-core-elements" role="tabpanel">
+    <p>A use case diagram contains three core elements:</p>
+    <ul>
+      <li>
+        <strong>Actor</strong> — drawn as a stick figure. Represents any entity outside the system
+        boundary that interacts with the system: a human user, an external system, or a hardware device.
+        Actors are named by role, not by person (<em>Student</em>, not <em>John</em>).
+      </li>
+      <li>
+        <strong>Use case</strong> — drawn as an ellipse with a name inside. Represents a goal
+        that an actor wants to achieve using the system. Each use case is a meaningful unit of
+        functionality from the actor's perspective. Named with a verb phrase: <em>Book Room</em>,
+        <em>Submit Assignment</em>, <em>Generate Report</em>.
+      </li>
+      <li>
+        <strong>System boundary</strong> — drawn as a rectangle. The use cases sit inside it;
+        the actors sit outside. The name of the system is written at the top of the rectangle.
+      </li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit03-core-rels" role="tabpanel">
+    <p>Four relationship types are used in use case diagrams:</p>
+    <ul>
+      <li>
+        <strong>Association</strong> — a plain line between an actor and a use case.
+        It means the actor participates in that use case.
+      </li>
+      <li>
+        <strong>«include»</strong> — a dashed arrow from one use case to another, labelled
+        <em>«include»</em>. The base use case <em>always</em> triggers the included use case.
+        Use this for shared sub-flows. Example: <em>Book Room</em> «include» <em>Check Availability</em>.
+      </li>
+      <li>
+        <strong>«extend»</strong> — a dashed arrow from an extending use case to the base use case,
+        labelled <em>«extend»</em>. The extension occurs only under a specified condition.
+        Example: <em>Apply Discount</em> «extend» <em>Process Payment</em> — only when a discount code is entered.
+      </li>
+      <li>
+        <strong>Generalisation</strong> — a solid line with a hollow arrowhead, used between
+        actors (a <em>Student</em> is a kind of <em>User</em>) or between use cases
+        (a <em>Pay by Card</em> is a kind of <em>Make Payment</em>).
+      </li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit03-core-practice" role="tabpanel">
+    <p>
+      Use case diagrams are easy to misuse. Common mistakes and how to avoid them:
+    </p>
+    <ul>
+      <li>
+        <strong>Wrong level of abstraction</strong> — use cases should represent meaningful
+        goals, not low-level steps. <em>Click Submit Button</em> is not a use case;
+        <em>Submit Assignment</em> is.
+      </li>
+      <li>
+        <strong>Too many «include»/«extend» relationships</strong> — these add complexity.
+        Use them only when a sub-flow is genuinely reused across multiple use cases, or when
+        an extension is clearly conditional and optional.
+      </li>
+      <li>
+        <strong>Confusing actors with roles</strong> — an actor is a <em>role</em>, not a
+        person or system name. One person can play multiple roles; one role can be played by
+        multiple people.
+      </li>
+      <li>
+        <strong>Putting processes inside the diagram</strong> — a use case diagram shows
+        <em>what</em> users want to do, not <em>how</em> the system does it. Sequence and
+        activity diagrams handle the how.
+      </li>
+    </ul>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Activity 2 — Key Concepts: Diagram Elements ════════════════════ #}
+
+{% call activitySection(2, "Key Concepts: Diagram Elements", "lightbulb") %}
+<p class="mb-3">Expand each item and think about your answer before reading the explanation.</p>
+<div class="accordion" id="unit03-acc-a">
+
+  {% call accordion("acc-03-a1", "What is an actor — and what counts as one?") %}
+  <p>
+    An actor is anything <em>outside</em> the system boundary that interacts with the system.
+    The three most common types are:
+  </p>
+  <ul>
+    <li>
+      <strong>Human users</strong> — roles such as <em>Student</em>, <em>Lecturer</em>,
+      <em>Administrator</em>. Named by role, not by person.
+    </li>
+    <li>
+      <strong>External systems</strong> — another software system that exchanges data with
+      yours, such as a <em>Payment Gateway</em> or <em>Email Service</em>. Drawn as a stick
+      figure with a label clarifying it is a system, or sometimes as a box.
+    </li>
+    <li>
+      <strong>Time</strong> — a system can be triggered by a clock event (e.g. a nightly
+      report). Time is an actor when no human initiates the interaction.
+    </li>
+  </ul>
+  <p>
+    Crucially: actors are not part of the system. They sit outside the boundary rectangle.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-03-a2", "What makes a good use case name?") %}
+  <p>
+    A use case should be named with a clear <strong>verb + noun</strong> phrase that
+    describes the actor's goal — not the system's internal process.
+  </p>
+  <ul>
+    <li><span style="color:#75b798;">✓ Submit Assignment</span> — describes what the student wants to achieve</li>
+    <li><span style="color:#ea868f;">✗ Process File Upload</span> — describes what the system does internally</li>
+    <li><span style="color:#75b798;">✓ View Booking History</span> — clear actor goal</li>
+    <li><span style="color:#ea868f;">✗ Database Query</span> — an implementation detail, not a goal</li>
+  </ul>
+  <p>
+    A useful test: could the actor walk up to a desk and ask a human to do this for them?
+    If yes, it is probably a good use case. If it sounds like a technical process, it probably belongs
+    in a sequence or activity diagram, not here.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-03-a3", "What does the system boundary rectangle represent?") %}
+  <p>
+    The rectangle defines the scope of the system being modelled. Everything inside it is
+    the responsibility of the system you are building. Everything outside it is an actor —
+    something you must interface with but do not control.
+  </p>
+  <p>
+    The boundary is not a physical container — it is a <em>design decision</em>.
+    For example, a payment process could be handled by your system or delegated to a payment
+    gateway. Where you draw the boundary determines how much your system must implement.
+  </p>
+  <p>
+    The system name is written at the top of the rectangle, making it clear which system
+    the diagram describes.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-03-a4", "How many use cases should a diagram have?") %}
+  <p>
+    There is no fixed number, but a common guideline is <strong>5–15 use cases per diagram</strong>
+    for a readable level of abstraction. More than that usually means you have gone too low-level.
+  </p>
+  <p>
+    For large systems, it is better to draw <em>multiple use case diagrams</em> — one per major
+    subsystem or actor — rather than cramming everything onto one diagram.
+  </p>
+  <p>
+    Remember: the purpose of the diagram is communication. If it takes more than a few minutes
+    to read and understand, it is too complex.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Key Concepts: Relationships ════════════════════════ #}
+
+{% call activitySection(3, "Key Concepts: Relationships", "arrow-left-right") %}
+<p class="mb-3">
+  The relationships between use cases are the most commonly misunderstood part of this diagram type.
+  Work through each item carefully.
+</p>
+<div class="accordion" id="unit03-acc-b">
+
+  {% call accordion("acc-03-b1", "What is an association in a use case diagram?") %}
+  <p>
+    An <strong>association</strong> is drawn as a plain solid line between an actor and a
+    use case. It simply means: <em>this actor participates in this use case.</em>
+  </p>
+  <p>
+    An association has no arrowhead by convention (or sometimes a unidirectional arrow showing
+    who initiates). It does not imply any ordering, frequency, or conditionality — those
+    details belong in other diagrams.
+  </p>
+  <p>
+    Every use case must have at least one actor associated with it. A use case with no actor
+    is a design error — if nothing can initiate or benefit from a use case, it should not
+    be in the system.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-03-b2", "What is the «include» relationship and when should you use it?") %}
+  <p>
+    An <strong>«include»</strong> relationship means: whenever the base use case is performed,
+    the included use case is <em>always</em> performed as part of it.
+  </p>
+  <p>
+    Drawn as a dashed arrow from the base use case to the included use case, labelled «include».
+  </p>
+  <p><strong>When to use it:</strong></p>
+  <ul>
+    <li>When a sub-flow is <em>mandatory</em> and reused across multiple use cases</li>
+    <li>When the included behaviour is complex enough to deserve its own description</li>
+  </ul>
+  <p><strong>Example:</strong><br>
+  <em>Book Room</em> «include» <em>Check Availability</em><br>
+  <em>Reserve Equipment</em> «include» <em>Check Availability</em><br>
+  Here, <em>Check Availability</em> is shared between two use cases — «include» models this cleanly.</p>
+  <p>
+    <strong>Common mistake:</strong> using «include» for every sub-step. Only use it when
+    the included behaviour is genuinely reused or meaningfully complex.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-03-b3", "What is the «extend» relationship and when should you use it?") %}
+  <p>
+    An <strong>«extend»</strong> relationship means: the extending use case adds optional
+    behaviour to the base use case — but <em>only under a specified condition</em>.
+  </p>
+  <p>
+    Drawn as a dashed arrow from the <em>extending</em> use case to the <em>base</em> use case
+    (note the direction is reversed from «include»), labelled «extend».
+  </p>
+  <p><strong>When to use it:</strong></p>
+  <ul>
+    <li>When a behaviour is <em>optional</em> and conditional</li>
+    <li>When the base use case is complete without the extension</li>
+  </ul>
+  <p><strong>Example:</strong><br>
+  <em>Apply Discount Code</em> «extend» <em>Process Payment</em><br>
+  Payment processing happens without a discount code. Applying a discount is optional and
+  occurs only when the user provides one.</p>
+  <p>
+    <strong>Key distinction:</strong> «include» is about what <em>always</em> happens;
+    «extend» is about what <em>sometimes</em> happens.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-03-b4", "What is generalisation between actors or use cases?") %}
+  <p>
+    <strong>Generalisation</strong> expresses an is-a relationship — the same concept used in
+    class diagrams. It is drawn as a solid line with a hollow triangle arrowhead pointing to
+    the parent.
+  </p>
+  <p><strong>Between actors:</strong><br>
+  A <em>Registered User</em> and a <em>Guest</em> are both kinds of <em>User</em>.
+  Both can access public use cases; <em>Registered User</em> additionally accesses
+  protected ones. The child actor inherits the parent's associations.</p>
+  <p><strong>Between use cases:</strong><br>
+  <em>Pay by Card</em> and <em>Pay by Bank Transfer</em> are both kinds of <em>Make Payment</em>.
+  Use case generalisation is less common than actor generalisation and should be used sparingly.</p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Video ═══════════════════════════════════════════════ #}
+
+{% call activitySection(4, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Quiz ════════════════════════════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+<p class="mb-3">Select the best answer for each question.</p>
+
+{% call quizMC("quiz-03-a", "In a use case diagram, which element represents a user or external system that interacts with the system?", 1,
+   "Actors represent anything outside the system boundary that interacts with it — human users, other software systems, or hardware devices. They are drawn as stick figures and sit outside the system boundary rectangle.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-03-a" value="0"> A use case (ellipse with a label inside)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-a" value="1"> An actor (stick figure outside the boundary)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-a" value="2"> The system boundary (rectangle)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-a" value="3"> A «include» dependency arrow</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-03-b", "The use case 'Book Room' always requires 'Check Availability' to run first. Which relationship should you use?", 2,
+   "«include» is used when a sub-flow is always performed as part of another use case. «extend» is for optional behaviour that occurs only under certain conditions. Since 'Check Availability' is mandatory every time 'Book Room' runs, «include» is correct.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-03-b" value="0"> «extend» — because availability checking extends the booking</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-b" value="1"> Generalisation — because one is a kind of the other</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-b" value="2"> «include» — because the sub-flow is always triggered</label>
+  <label class="quiz-option"><input type="radio" name="quiz-03-b" value="3"> Association — because both involve the same actor</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 6 — Individual / Pair / Group ═══════════════════════════ #}
+
+{% set activityTabs = [
+  {id: "ind",   label: "Individual"},
+  {id: "pair",  label: "Pair"},
+  {id: "group", label: "Group"}
+] %}
+
+{% call activitySection(6, "Activities", "people") %}
+
+{% call tabSet("unit03-activities", activityTabs) %}
+  <div class="tab-pane fade show active" id="unit03-activities-ind" role="tabpanel">
+    <p class="fw-semibold">Individual task</p>
+    <p>
+      Using the group system from Unit 1, draw a use case diagram. Your diagram should include:
+    </p>
+    <ul>
+      <li>At least <strong>three actors</strong></li>
+      <li>At least <strong>five use cases</strong> inside the system boundary</li>
+      <li>At least <strong>one «include» relationship</strong></li>
+      <li>At least <strong>one «extend» relationship</strong> (if applicable)</li>
+    </ul>
+    <p>
+      Draw the diagram on paper or using a tool of your choice (draw.io, Lucidchart, or similar).
+      Be prepared to explain your choices.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit03-activities-pair" role="tabpanel">
+    <p class="fw-semibold">Pair task</p>
+    <p>Exchange diagrams with a partner and review theirs against these criteria:</p>
+    <ul>
+      <li>
+        <strong>Abstraction</strong> — are the use cases at the right level?
+        Any that sound like internal processes (not actor goals)?
+      </li>
+      <li>
+        <strong>Completeness</strong> — do the use cases cover the requirements from Unit 2?
+        Are there any obvious gaps?
+      </li>
+      <li>
+        <strong>Relationships</strong> — are any «include»/«extend» relationships missing or misused?
+      </li>
+      <li>
+        <strong>Naming</strong> — are all use cases named with a clear verb + noun phrase?
+      </li>
+    </ul>
+    <p>Provide written feedback on at least two specific improvements.</p>
+  </div>
+  <div class="tab-pane fade" id="unit03-activities-group" role="tabpanel">
+    <p class="fw-semibold">Group task</p>
+    <p>
+      As a group, produce a single shared use case diagram for your system.
+    </p>
+    <ul>
+      <li>Start from the individual diagrams and identify points of agreement and disagreement.</li>
+      <li>Resolve naming conflicts — choose the clearest use case names.</li>
+      <li>Agree on the correct use of «include» and «extend» for any shared sub-flows.</li>
+      <li>Ensure the diagram reflects the requirements agreed in Unit 2.</li>
+    </ul>
+    <p>
+      This shared diagram will be used as input for Unit 4 (Class Diagrams). Keep it accessible.
+    </p>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+
+<div class="accordion mb-3" id="unit03-review">
+  {% call accordion("rev-03-a", "Summary: What are the core elements of a use case diagram?") %}
+  <ul>
+    <li><strong>Actor</strong> — a role outside the system boundary that interacts with the system</li>
+    <li><strong>Use case</strong> — a goal that an actor can achieve using the system (verb + noun name)</li>
+    <li><strong>System boundary</strong> — the rectangle that defines scope</li>
+    <li><strong>Relationships</strong> — association, «include», «extend», generalisation</li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("rev-03-b", "Summary: How does a use case diagram connect to the requirements from Unit 2?") %}
+  <p>
+    Each use case corresponds to one or more functional requirements. The actors correspond to
+    stakeholders. The system boundary represents the scope defined during requirements analysis.
+  </p>
+  <p>
+    A use case diagram does not replace the requirements list — it visualises it, making it
+    easier to identify gaps and communicate scope to non-technical stakeholders.
+  </p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-04') | url }}">Unit 4: Class Diagrams — Structure I</a> when ready.
+</p>
+{% endcall %}

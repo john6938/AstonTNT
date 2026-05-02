@@ -1,0 +1,405 @@
+---
+unit: 4
+unitTitle: "Class Diagrams: Structure I"
+title: "Unit 4: Class Diagrams — Structure I"
+description: "Learn to model the static structure of a system using UML class diagrams — classes, attributes, operations, and associations."
+objectives:
+  - Identify and correctly use the three compartments of a UML class
+  - Write attributes with visibility symbols and types, and operations with signatures
+  - Model associations between classes with appropriate multiplicity notation
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, videoEmbed, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Core Input ═════════════════════════════════════════ #}
+
+{% set coreTabs = [
+  {id: "notation", label: "Class Notation"},
+  {id: "assoc",    label: "Associations"},
+  {id: "multi",    label: "Multiplicity"}
+] %}
+
+{% call activitySection(1, "Core Input", "book") %}
+<p class="mb-3">Read through each tab before moving to the key concepts.</p>
+
+{% call tabSet("unit04-core", coreTabs) %}
+  <div class="tab-pane fade show active" id="unit04-core-notation" role="tabpanel">
+    <p>A UML class is drawn as a rectangle divided into three compartments:</p>
+    <ul>
+      <li><strong>Top</strong> — the class name, centred and in bold. By convention, class names use UpperCamelCase (<em>BookingSystem</em>, <em>Student</em>).</li>
+      <li><strong>Middle</strong> — attributes (data held by the class). Each attribute is written as: <code>visibility name : type</code>. Example: <code>- studentId : Integer</code></li>
+      <li><strong>Bottom</strong> — operations (behaviours the class can perform). Each operation is written as: <code>visibility name(params) : returnType</code>. Example: <code>+ enrol(c : Course) : Boolean</code></li>
+    </ul>
+    <p><strong>Visibility symbols:</strong></p>
+    <ul>
+      <li><code>+</code> public — accessible from anywhere</li>
+      <li><code>-</code> private — accessible only within the class</li>
+      <li><code>#</code> protected — accessible within the class and its subclasses</li>
+      <li><code>~</code> package — accessible within the same package</li>
+    </ul>
+    <p>
+      The middle and bottom compartments can be omitted when the detail is not needed — for
+      example, in early design sketches where class names and relationships are more important.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit04-core-assoc" role="tabpanel">
+    <p>
+      An <strong>association</strong> represents a relationship between two classes — one class
+      knows about or uses the other. It is drawn as a solid line between the two class boxes.
+    </p>
+    <ul>
+      <li>
+        <strong>Unidirectional association</strong> — an open arrowhead on one end shows that
+        only one class knows about the other. <em>Order</em> → <em>Customer</em> means Order
+        knows about Customer, but not vice versa.
+      </li>
+      <li>
+        <strong>Bidirectional association</strong> — no arrowheads (or one at each end). Both
+        classes know about each other.
+      </li>
+      <li>
+        <strong>Role names</strong> — labels placed near each end of the line naming the role
+        played in the relationship. For example: <em>employer</em> at the Company end,
+        <em>employee</em> at the Person end.
+      </li>
+    </ul>
+    <p>
+      Associations often correspond to attributes — but showing them as lines on the diagram
+      is preferred when the relationship is meaningful and has multiplicity.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit04-core-multi" role="tabpanel">
+    <p>
+      <strong>Multiplicity</strong> specifies how many instances of one class can be associated
+      with one instance of another. It is written at each end of an association line.
+    </p>
+    <table class="table table-sm table-dark table-bordered mb-3" style="font-size:0.875rem;">
+      <thead><tr><th>Notation</th><th>Meaning</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><code>1</code></td><td>Exactly one</td><td>An Order has exactly one Customer</td></tr>
+        <tr><td><code>0..1</code></td><td>Zero or one (optional)</td><td>A Person has zero or one Passport</td></tr>
+        <tr><td><code>1..*</code></td><td>One or more</td><td>A Course has one or more Students</td></tr>
+        <tr><td><code>0..*</code> or <code>*</code></td><td>Zero or more (many)</td><td>A Student is enrolled in zero or more Courses</td></tr>
+        <tr><td><code>2..5</code></td><td>Between 2 and 5</td><td>A Team has between 2 and 5 Members</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Multiplicity constraints are enforced at the data level — they describe valid states of
+      the system, not just typical ones.
+    </p>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Activity 2 — Key Concepts: Class Notation ══════════════════════ #}
+
+{% call activitySection(2, "Key Concepts: Class Notation", "lightbulb") %}
+<p class="mb-3">Work through each accordion item carefully — class notation is precise and detail matters.</p>
+<div class="accordion" id="unit04-acc-a">
+
+  {% call accordion("acc-04-a1", "What are the three compartments and what belongs in each?") %}
+  <p>Every UML class box has three horizontal compartments:</p>
+  <ol>
+    <li>
+      <strong>Name compartment</strong> — the class name only. Abstract class names are written
+      in <em>italics</em>. No other content belongs here.
+    </li>
+    <li>
+      <strong>Attributes compartment</strong> — instance variables: data that each object of this
+      class holds. Format: <code>visibility name : type [= defaultValue]</code>.
+      Class-level (static) attributes are underlined.
+    </li>
+    <li>
+      <strong>Operations compartment</strong> — methods: behaviours the class can perform.
+      Format: <code>visibility name(paramName : paramType) : returnType</code>.
+      A void operation has no return type listed (or lists <code>void</code>).
+    </li>
+  </ol>
+  <p>
+    In early design stages, it is common to show only the name compartment. Add attributes
+    and operations as the design becomes more detailed.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-04-a2", "What do the visibility symbols mean in practice?") %}
+  <p>
+    Visibility controls which other classes can access an attribute or operation.
+    It is a key tool for <strong>encapsulation</strong> — hiding implementation details.
+  </p>
+  <ul>
+    <li>
+      <strong><code>-</code> private</strong> — only code <em>inside this class</em> can read or
+      modify this attribute. This is the default for most attributes — direct access from outside
+      is a design smell.
+    </li>
+    <li>
+      <strong><code>+</code> public</strong> — any class can call this operation. Typically used
+      for the class's intended interface — its public API.
+    </li>
+    <li>
+      <strong><code>#</code> protected</strong> — accessible within this class and any subclass.
+      Used when subclasses need to access internal state.
+    </li>
+  </ul>
+  <p>
+    A common convention: attributes are private (<code>-</code>), operations are public (<code>+</code>).
+    Getter and setter operations provide controlled access to private attributes.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-04-a3", "How do you write an attribute correctly?") %}
+  <p>The full attribute syntax is:</p>
+  <p><code>visibility name : type [multiplicity] [= defaultValue]</code></p>
+  <p><strong>Examples:</strong></p>
+  <ul>
+    <li><code>- studentId : Integer</code></li>
+    <li><code>- email : String</code></li>
+    <li><code>- isEnrolled : Boolean = false</code></li>
+    <li><code>- grades : Integer[0..*]</code> — a collection of integers</li>
+  </ul>
+  <p>
+    Type names are typically language-neutral in UML: <em>Integer</em>, <em>String</em>,
+    <em>Boolean</em>, <em>Real</em>. If you are modelling closely to a specific language
+    (Java, Python), you may use that language's type names instead.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-04-a4", "How do you write an operation signature correctly?") %}
+  <p>The full operation syntax is:</p>
+  <p><code>visibility name(paramName : paramType, ...) : returnType</code></p>
+  <p><strong>Examples:</strong></p>
+  <ul>
+    <li><code>+ enrol(course : Course) : Boolean</code></li>
+    <li><code>+ getName() : String</code></li>
+    <li><code>+ setEmail(email : String)</code> — void, no return type shown</li>
+    <li><code>+ calculateGrade(scores : Integer[*]) : Real</code></li>
+  </ul>
+  <p>
+    Operations represent <em>what the class can do</em>, not how it does it. You should not
+    include implementation details (loops, conditionals) in the operation signature — those
+    belong in sequence or activity diagrams.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Key Concepts: Associations and Multiplicity ════════ #}
+
+{% call activitySection(3, "Key Concepts: Associations and Multiplicity", "diagram-3") %}
+<p class="mb-3">Continue with the remaining key concepts on relationships between classes.</p>
+<div class="accordion" id="unit04-acc-b">
+
+  {% call accordion("acc-04-b1", "When should a relationship be shown as an association rather than an attribute?") %}
+  <p>
+    Both represent a class holding a reference to another type. The choice is a modelling
+    convention:
+  </p>
+  <ul>
+    <li>
+      If the related type is a <strong>primitive or simple data type</strong> (String, Integer,
+      Date), model it as an attribute.
+    </li>
+    <li>
+      If the related type is a <strong>class in your model</strong> (e.g., Student has a reference
+      to Course), model it as an association line — this makes the relationship explicit and
+      allows multiplicity to be shown.
+    </li>
+  </ul>
+  <p>
+    An association line is preferred when the relationship itself carries meaning — such as
+    role names or multiplicity constraints.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-04-b2", "What is navigability and why does it matter?") %}
+  <p>
+    <strong>Navigability</strong> specifies which direction you can traverse the relationship
+    in code. An arrowhead on one end means: the class at the tail end has a reference to the
+    class at the arrow end — but not necessarily vice versa.
+  </p>
+  <p>
+    Example: <em>Order</em> → <em>Customer</em><br>
+    An Order object knows which Customer placed it. A Customer object does not hold a list
+    of their Orders (unless you add an arrow in the other direction).
+  </p>
+  <p>
+    Navigability decisions affect implementation: a unidirectional association means one
+    class holds a reference field; a bidirectional association means both do (and both must
+    be kept in sync, which adds complexity).
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-04-b3", "How do you read multiplicity notation at both ends of an association?") %}
+  <p>
+    Read multiplicity as: <em>"One instance of [class at this end] is associated with
+    [multiplicity] instances of [class at the other end]."</em>
+  </p>
+  <p><strong>Example:</strong> Student <code>0..*</code> —————— <code>1..*</code> Course</p>
+  <ul>
+    <li>One Course is taken by zero or more Students.</li>
+    <li>One Student is enrolled in one or more Courses.</li>
+  </ul>
+  <p>
+    Always read from the perspective of one instance at your end, looking across to the
+    multiplicity at the other end.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-04-b4", "What does the multiplicity constraint mean at the data level?") %}
+  <p>
+    Multiplicity is not a description of typical behaviour — it is a constraint on valid
+    system state. If you specify <code>1..*</code> students per course, then a course with
+    zero students is an <em>invalid state</em>.
+  </p>
+  <p>
+    This has implementation consequences:
+  </p>
+  <ul>
+    <li>A <code>0..1</code> relationship means the field can be null</li>
+    <li>A <code>1</code> relationship means the field must always be set</li>
+    <li>A <code>1..*</code> relationship means the collection must never be empty</li>
+  </ul>
+  <p>
+    Getting multiplicity right requires careful thought about the business rules the system
+    must enforce.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Video ═══════════════════════════════════════════════ #}
+
+{% call activitySection(4, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Quiz ════════════════════════════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+<p class="mb-3">Select the best answer for each question.</p>
+
+{% call quizMC("quiz-04-a", "What does the multiplicity notation '0..*' mean?", 2,
+   "The notation '0..*' means zero or more — the relationship is optional at the minimum end (0) and unbounded at the maximum (*). This is the most permissive multiplicity and is commonly read as 'many'.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="0"> Exactly zero instances</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="1"> One or more instances</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="2"> Zero or more instances</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-a" value="3"> At most one instance</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-04-b", "In UML class notation, which visibility symbol denotes a private attribute?", 3,
+   "UML visibility symbols: + = public, - = private, # = protected, ~ = package. The minus sign (-) marks an attribute as private — accessible only within the class itself, not from outside.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="0"> + (plus sign)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="1"> # (hash / octothorpe)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="2"> ~ (tilde)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-04-b" value="3"> - (minus sign)</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 6 — Individual / Pair / Group ═══════════════════════════ #}
+
+{% set activityTabs = [
+  {id: "ind",   label: "Individual"},
+  {id: "pair",  label: "Pair"},
+  {id: "group", label: "Group"}
+] %}
+
+{% call activitySection(6, "Activities", "people") %}
+
+{% call tabSet("unit04-activities", activityTabs) %}
+  <div class="tab-pane fade show active" id="unit04-activities-ind" role="tabpanel">
+    <p class="fw-semibold">Individual task</p>
+    <p>
+      Review the shared use case diagram from Unit 3. Identify the main <strong>classes</strong>
+      that will be needed to implement it.
+    </p>
+    <p>For each class, produce a UML class box (on paper or in a tool) with:</p>
+    <ul>
+      <li>The class name (UpperCamelCase)</li>
+      <li>At least <strong>two attributes</strong> with visibility and type</li>
+      <li>At least <strong>one operation</strong> with a signature</li>
+    </ul>
+    <p>Aim for at least <strong>four classes</strong>.</p>
+  </div>
+  <div class="tab-pane fade" id="unit04-activities-pair" role="tabpanel">
+    <p class="fw-semibold">Pair task</p>
+    <p>Review your partner's class list against these questions:</p>
+    <ul>
+      <li>
+        Are there any <strong>attributes that should be classes</strong>? For example,
+        an attribute <em>address : String</em> might be better modelled as an
+        <em>Address</em> class.
+      </li>
+      <li>Are there any obvious <strong>missing classes</strong>?</li>
+      <li>
+        Draw the <strong>associations</strong> between your combined set of classes.
+        Which classes know about which others?
+      </li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit04-activities-group" role="tabpanel">
+    <p class="fw-semibold">Group task</p>
+    <p>
+      Combine your individual class diagrams into a single shared class diagram. Then:
+    </p>
+    <ul>
+      <li>Add <strong>multiplicities</strong> to all associations.</li>
+      <li>Check that every association multiplicity reflects a real business rule — not just a guess.</li>
+      <li>Agree on attribute visibility: which attributes should be private? Which operations public?</li>
+    </ul>
+    <p>
+      Keep this diagram — you will extend it significantly in Unit 5.
+    </p>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+
+<div class="accordion mb-3" id="unit04-review">
+  {% call accordion("rev-04-a", "Summary: What information belongs in each class compartment?") %}
+  <ul>
+    <li><strong>Top</strong> — class name only (italics if abstract)</li>
+    <li><strong>Middle</strong> — attributes: <code>visibility name : type [= default]</code></li>
+    <li><strong>Bottom</strong> — operations: <code>visibility name(params) : returnType</code></li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("rev-04-b", "Summary: How does the class diagram connect to the use cases from Unit 3?") %}
+  <p>
+    Each use case describes what a user can do; the class diagram describes the data and
+    behaviour needed to support those use cases. Each noun in a use case description is
+    a candidate class. Each action a use case requires maps to one or more operations.
+  </p>
+  <p>
+    There is no one-to-one mapping — design involves judgement. But a class diagram with
+    no connection to the use cases is an early warning sign that the model is not grounded
+    in actual requirements.
+  </p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-05') | url }}">Unit 5: Class Diagrams — Structure II</a> when ready.
+</p>
+{% endcall %}

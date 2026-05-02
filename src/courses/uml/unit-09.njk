@@ -1,0 +1,432 @@
+---
+unit: 9
+unitTitle: Design & Documentation
+title: "Unit 9: Software Design Thinking and Documentation"
+description: "Learn to communicate designs effectively — writing for your audience, explaining decisions, and producing a design narrative that guides any reader through your model."
+objectives:
+  - Apply documentation principles to UML models for different audiences
+  - Articulate design rationale — explaining why decisions were made, not just what was decided
+  - Produce a concise design narrative that walks a reader through an integrated model
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, videoEmbed, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Core Input ═════════════════════════════════════════ #}
+
+{% set coreTabs = [
+  {id: "principles", label: "Documentation Principles"},
+  {id: "audience",   label: "Audience Awareness"},
+  {id: "rationale",  label: "Design Rationale"}
+] %}
+
+{% call activitySection(1, "Core Input", "book") %}
+<p class="mb-3">Read through each tab before working through the key concepts.</p>
+
+{% call tabSet("unit09-core", coreTabs) %}
+  <div class="tab-pane fade show active" id="unit09-core-principles" role="tabpanel">
+    <p>
+      A technically correct UML diagram that no one can read is not useful. Good documentation
+      has four properties:
+    </p>
+    <ul>
+      <li>
+        <strong>Clear naming</strong> — every class, operation, use case, and attribute has a name
+        that communicates its purpose without explanation. If you need a footnote to explain what
+        <em>DataHandler</em> does, rename it.
+      </li>
+      <li>
+        <strong>Consistent abstraction</strong> — all elements in a diagram operate at the same
+        level of detail. Mixing high-level concepts with implementation details creates confusion.
+        A use case diagram should not include database table names.
+      </li>
+      <li>
+        <strong>Selective annotation</strong> — add notes only where the diagram is ambiguous or
+        where a decision is non-obvious. Annotating everything creates noise; annotating nothing
+        leaves readers guessing about important choices.
+      </li>
+      <li>
+        <strong>Purpose-driven selection</strong> — choose the diagram type that answers the
+        specific question you are trying to communicate. Not every design decision requires
+        every type of diagram.
+      </li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit09-core-audience" role="tabpanel">
+    <p>
+      Different stakeholders need different things from your documentation.
+      The same model can be presented differently depending on who is reading it:
+    </p>
+    <ul>
+      <li>
+        <strong>Executives / clients</strong> — care about what the system does and for whom.
+        Use case diagrams are ideal: goal-focused, no technical notation, readable by anyone.
+      </li>
+      <li>
+        <strong>Business analysts / domain experts</strong> — care about processes and workflows.
+        Activity diagrams (especially with swimlanes) show responsibilities clearly.
+      </li>
+      <li>
+        <strong>Developers</strong> — care about structure and interaction detail.
+        Class diagrams (with full notation) and sequence diagrams (with operation signatures).
+      </li>
+      <li>
+        <strong>Testers</strong> — care about what conditions trigger what behaviour.
+        Activity diagrams (to derive test paths) and sequence diagrams (to verify message flows).
+      </li>
+    </ul>
+    <p>
+      Producing one version of a diagram "for everyone" often means it works well for no one.
+      Tailor your presentation to its audience.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit09-core-rationale" role="tabpanel">
+    <p>
+      <strong>Design rationale</strong> is documentation that explains <em>why</em> a decision
+      was made — not just <em>what</em> was decided. It includes:
+    </p>
+    <ul>
+      <li>The options that were considered</li>
+      <li>The criteria used to evaluate them (performance, simplicity, testability, etc.)</li>
+      <li>The trade-offs that were accepted</li>
+      <li>The option that was chosen and why</li>
+    </ul>
+    <p>
+      Example: <em>"We chose composition over aggregation for the Order–OrderLine relationship
+      because OrderLine objects have no meaning outside of an Order. This simplifies the data
+      model and enforces referential integrity. The trade-off is that OrderLine objects cannot
+      be independently archived, which was accepted since the client has no archiving requirement."</em>
+    </p>
+    <p>
+      Without rationale, future maintainers may unknowingly revisit decisions already made —
+      wasting time or reintroducing rejected approaches.
+    </p>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Activity 2 — Key Concepts: Documentation Principles ════════════ #}
+
+{% call activitySection(2, "Key Concepts: Documentation Principles", "lightbulb") %}
+<p class="mb-3">Work through each item. Good documentation is a skill, not an afterthought.</p>
+<div class="accordion" id="unit09-acc-a">
+
+  {% call accordion("acc-09-a1", "What makes a UML element name clear?") %}
+  <p>
+    A clear name communicates purpose without ambiguity. Tests for a good name:
+  </p>
+  <ul>
+    <li>Can a developer who did not write the model understand it immediately?</li>
+    <li>Does it describe what the element <em>is</em> or <em>does</em>, not how it works?</li>
+    <li>Is it specific enough to distinguish it from similar elements?</li>
+  </ul>
+  <p><strong>Common naming problems:</strong></p>
+  <ul>
+    <li><span style="color:#ea868f;">✗ DataManager</span> — manages what data? does what with it?</li>
+    <li><span style="color:#75b798;">✓ StudentEnrolmentService</span> — clear scope and purpose</li>
+    <li><span style="color:#ea868f;">✗ processData()</span> — processes which data, into what?</li>
+    <li><span style="color:#75b798;">✓ calculateFinalGrade(assessments : List) : Grade</span> — specific and complete</li>
+  </ul>
+  <p>
+    In UML, names appear on diagrams consumed by many people over many months. A bad name
+    is a small cost at the time of writing and a large cost at every subsequent reading.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-09-a2", "What is consistent abstraction and why does it matter?") %}
+  <p>
+    A diagram at a consistent level of abstraction contains elements that all belong at the
+    same conceptual altitude. Mixing levels creates a disorienting diagram that is hard to reason about.
+  </p>
+  <p><strong>Example of inconsistent abstraction in a class diagram:</strong></p>
+  <ul>
+    <li><code>Student</code> — a meaningful domain concept</li>
+    <li><code>Course</code> — a meaningful domain concept</li>
+    <li><code>db_connection_pool</code> — an implementation detail (belongs in a deployment or component diagram)</li>
+    <li><code>EmailValidator</code> — a utility class that belongs at a lower level of the architecture</li>
+  </ul>
+  <p>
+    The fix is not to remove these elements from the model — it is to put them in the right
+    diagram, at the right level, for the right audience.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-09-a3", "When should you add a note or annotation?") %}
+  <p>
+    Annotations (UML notes are shown as dog-eared rectangles) should be used selectively:
+  </p>
+  <ul>
+    <li>
+      <strong>Add a note when:</strong> a decision is non-obvious, a constraint cannot be
+      expressed in standard notation, or a diagram element would be misunderstood without context.
+    </li>
+    <li>
+      <strong>Do not add a note when:</strong> the element name already communicates the point,
+      or the note would repeat what the diagram already shows.
+    </li>
+  </ul>
+  <p>
+    Over-annotation is as unhelpful as under-annotation — it forces the reader to read a wall
+    of text attached to every element. Reserve annotations for genuinely non-obvious points.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-09-a4", "What should documentation NOT include?") %}
+  <p>
+    Good documentation has boundaries. Things that do not belong in UML model documentation:
+  </p>
+  <ul>
+    <li>
+      <strong>Implementation code</strong> — operation bodies, SQL queries, algorithms.
+      These belong in the source code, not the model.
+    </li>
+    <li>
+      <strong>Meeting notes and draft commentary</strong> — the model should represent agreed
+      decisions, not the discussion that led to them.
+    </li>
+    <li>
+      <strong>Stale information</strong> — outdated diagrams that no longer represent the
+      system are worse than no documentation, because they actively mislead.
+    </li>
+    <li>
+      <strong>Redundant description</strong> — prose that simply restates what the diagram already
+      shows. Documentation should add to the diagram, not repeat it.
+    </li>
+  </ul>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Key Concepts: Audience and Rationale ═══════════════ #}
+
+{% call activitySection(3, "Key Concepts: Audience and Rationale", "people") %}
+<p class="mb-3">
+  Understanding your audience and capturing your reasoning are two of the most transferable
+  skills in professional software engineering.
+</p>
+<div class="accordion" id="unit09-acc-b">
+
+  {% call accordion("acc-09-b1", "How does audience affect your choice of diagram?") %}
+  <p>
+    The diagram type you choose should match what your audience needs to understand, not what
+    you find easiest to produce.
+  </p>
+  <table class="table table-sm table-dark table-bordered mb-0" style="font-size:0.85rem;">
+    <thead>
+      <tr><th>Audience</th><th>Need</th><th>Best diagram type</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Client / executive</td><td>What does the system do?</td><td>Use case diagram</td></tr>
+      <tr><td>Business analyst</td><td>How does the process work?</td><td>Activity diagram (with swimlanes)</td></tr>
+      <tr><td>Developer</td><td>What classes exist and how do they relate?</td><td>Class diagram</td></tr>
+      <tr><td>Developer</td><td>How is this feature implemented?</td><td>Sequence diagram</td></tr>
+      <tr><td>Tester</td><td>What are the test scenarios?</td><td>Activity diagram, sequence diagram</td></tr>
+    </tbody>
+  </table>
+  {% endcall %}
+
+  {% call accordion("acc-09-b2", "What is design rationale and why should it be documented?") %}
+  <p>
+    Design rationale captures the reasoning behind a decision — the alternatives considered,
+    the trade-offs evaluated, and the justification for the chosen option.
+  </p>
+  <p>
+    Without rationale, a model is a record of <em>what was decided</em>. With rationale, it
+    is also a record of <em>why</em> — which is far more valuable when the system must evolve.
+  </p>
+  <p>
+    Rationale prevents <strong>knowledge loss</strong>: when the original designer leaves, the
+    reasons for key decisions go with them. Future maintainers then face the choice of trusting
+    a decision they do not understand or rediscovering the answer at significant cost.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-09-b3", "How do you write useful design rationale?") %}
+  <p>
+    A rationale entry should be concise but complete. A useful template:
+  </p>
+  <ol>
+    <li><strong>Decision:</strong> What was decided?</li>
+    <li><strong>Options considered:</strong> What alternatives were evaluated?</li>
+    <li><strong>Criteria:</strong> What factors mattered (performance, simplicity, cost, risk)?</li>
+    <li><strong>Justification:</strong> Why was this option chosen over the others?</li>
+    <li><strong>Trade-offs accepted:</strong> What was given up by making this choice?</li>
+  </ol>
+  <p>
+    Rationale does not need to be long — two or three sentences per decision is usually
+    enough. The goal is to give a future reader enough context to understand the choice,
+    not to reproduce the entire design discussion.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-09-b4", "What is a design narrative and how does it differ from a diagram description?") %}
+  <p>
+    A <strong>diagram description</strong> restates what the diagram shows: "The Student class
+    has a name attribute and an enrol operation."
+  </p>
+  <p>
+    A <strong>design narrative</strong> guides a reader through the model, explaining the
+    structure, the key decisions, and how the pieces connect: "The central relationship in
+    the model is between Student and Course. We chose a many-to-many association here because
+    our requirements specify that students can enrol in multiple courses and each course has
+    multiple students. The Enrolment class acts as the associative class, holding the enrolment
+    date and grade — data that belongs to the relationship itself, not to either participant."
+  </p>
+  <p>
+    A narrative adds interpretation. It tells the reader not just what exists, but what
+    matters and why it was designed that way.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Video ═══════════════════════════════════════════════ #}
+
+{% call activitySection(4, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Quiz ════════════════════════════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+<p class="mb-3">Select the best answer for each question.</p>
+
+{% call quizMC("quiz-09-a", "A non-technical project manager needs to understand what a software system does and for whom. Which UML diagram is most appropriate?", 2,
+   "Use case diagrams are intentionally high-level and goal-focused. They show what users can do with the system without any technical notation — making them the most accessible diagram type for non-technical stakeholders such as project managers or clients.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-09-a" value="0"> Class diagram — it shows all the structure of the system</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-a" value="1"> Sequence diagram — it shows the order of interactions</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-a" value="2"> Use case diagram — it shows user goals without implementation detail</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-a" value="3"> Activity diagram — it shows every step of each process</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-09-b", "Design rationale documentation should primarily answer which question?", 1,
+   "Rationale captures the reasoning behind a decision — the options considered, the criteria used, and the trade-offs accepted. This is far more valuable than a description of what was decided, because it gives future maintainers the context to evaluate whether the decision still applies.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-09-b" value="0"> Which developer is responsible for implementing each class?</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-b" value="1"> Why was this design decision made, and what alternatives were considered?</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-b" value="2"> How many lines of code will each class require?</label>
+  <label class="quiz-option"><input type="radio" name="quiz-09-b" value="3"> When will each component be built and tested?</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 6 — Individual / Pair / Group ═══════════════════════════ #}
+
+{% set activityTabs = [
+  {id: "ind",   label: "Individual"},
+  {id: "pair",  label: "Pair"},
+  {id: "group", label: "Group"}
+] %}
+
+{% call activitySection(6, "Activities", "people") %}
+
+{% call tabSet("unit09-activities", activityTabs) %}
+  <div class="tab-pane fade show active" id="unit09-activities-ind" role="tabpanel">
+    <p class="fw-semibold">Individual task</p>
+    <p>
+      Choose one diagram from your integrated model (Unit 8) — ideally one that contains
+      a design decision you remember discussing.
+    </p>
+    <p>Review it against these criteria and make improvements:</p>
+    <ul>
+      <li>
+        <strong>Names:</strong> Rename any class, operation, or use case that requires
+        explanation to understand. The new name should make the purpose self-evident.
+      </li>
+      <li>
+        <strong>Abstraction level:</strong> Remove any element that belongs at a different level.
+        Add a note if a decision is non-obvious.
+      </li>
+      <li>
+        <strong>Audience:</strong> If this diagram were shown to a non-technical stakeholder,
+        what would confuse them? Address it.
+      </li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit09-activities-pair" role="tabpanel">
+    <p class="fw-semibold">Pair task — structured peer review</p>
+    <p>Exchange your revised diagram with a partner. Review it against these four questions:</p>
+    <ol>
+      <li>Are all names self-explanatory to someone unfamiliar with the project?</li>
+      <li>Is the level of abstraction consistent throughout — or does any element feel out of place?</li>
+      <li>Is there any design decision on the diagram that is left unexplained?</li>
+      <li>If you had to describe this diagram in one sentence, could you?</li>
+    </ol>
+    <p>
+      Provide written feedback on at least two specific improvements, citing the element
+      and explaining why the change would help.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit09-activities-group" role="tabpanel">
+    <p class="fw-semibold">Group task</p>
+    <p>
+      As a group, produce a <strong>design narrative</strong> for your integrated model from Unit 8.
+    </p>
+    <p>The narrative should be 200–300 words and cover:</p>
+    <ul>
+      <li>The purpose of the system (one sentence)</li>
+      <li>The key structural decisions in the class diagram (most important relationships, any use of inheritance or composition) with brief rationale</li>
+      <li>How the main use cases are implemented (sequence or activity diagram highlights)</li>
+      <li>At least one design trade-off that was consciously made</li>
+    </ul>
+    <p>
+      Write it as if you are handing the model to a new developer joining the project on
+      their first day. What do they most need to understand quickly?
+    </p>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+
+<div class="accordion mb-3" id="unit09-review">
+  {% call accordion("rev-09-a", "Summary: What are the key principles of audience-aware documentation?") %}
+  <ul>
+    <li>Match the diagram type to the audience's question — not to your preference</li>
+    <li>Use case diagrams for non-technical stakeholders; class and sequence diagrams for developers</li>
+    <li>Use names that communicate purpose without explanation</li>
+    <li>Maintain consistent abstraction within a single diagram</li>
+    <li>Annotate selectively — only where genuine ambiguity exists</li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("rev-09-b", "Summary: What is the difference between describing and explaining a design?") %}
+  <p>
+    <strong>Describing</strong> restates what is in the diagram: "The Order class has an
+    OrderLine collection."
+  </p>
+  <p>
+    <strong>Explaining</strong> adds interpretation: "OrderLine is modelled as a composition
+    rather than an attribute list because it represents a distinct domain concept with its
+    own quantity and price — and because future requirements may add behaviour to individual
+    order lines."
+  </p>
+  <p>
+    Explanation requires understanding. It is the mark of a designer who knows not just what
+    they built, but why it is the right thing to build.
+  </p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-10') | url }}">Unit 10: Critical Analysis</a> when ready.
+</p>
+{% endcall %}

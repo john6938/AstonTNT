@@ -1,0 +1,402 @@
+---
+layout: layouts/base.njk
+title: "UML for Software Engineering — Courses"
+description: "Learn to model software systems using UML — from requirements to class diagrams, sequence diagrams, and critical analysis."
+---
+
+<style>
+/* ── UML course landing page ── prefix: uml- ─────────────────────── */
+
+.uml-hero {
+  padding: 3rem 0 2.5rem;
+}
+.uml-accent {
+  display: inline-block;
+  background: #ff8c00;
+  height: 4px; width: 50px;
+  border-radius: 2px;
+  margin-bottom: 0.9rem;
+}
+
+/* ── Code / Diagram toggle ────────────────────────────────────────── */
+.uml-example-card {
+  background: #222;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100%;
+}
+.uml-example-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid #333;
+}
+.uml-example-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+.uml-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.uml-badge-class    { background: rgba(255,140,0,0.15);  color: #ff8c00; border: 1px solid rgba(255,140,0,0.35); }
+.uml-badge-usecase  { background: rgba(74,144,217,0.15); color: #4a90d9; border: 1px solid rgba(74,144,217,0.35); }
+.uml-badge-sequence { background: rgba(156,108,212,0.15);color: #9c6cd4; border: 1px solid rgba(156,108,212,0.35); }
+
+.uml-toggle-bar {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #2a2a2a;
+}
+.uml-toggle-btn {
+  padding: 0.2rem 0.8rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.uml-toggle-btn.active {
+  background: #ff8c00;
+  border-color: #ff8c00;
+  color: #000;
+  font-weight: 700;
+}
+.uml-panel {
+  display: none;
+  padding: 1rem;
+}
+.uml-panel.active { display: block; }
+
+pre.uml-code {
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  font-size: 0.8rem;
+  color: #ccc;
+  overflow-x: auto;
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ── UML class box ────────────────────────────────────────────────── */
+.uml-class-box {
+  font-family: monospace;
+  font-size: 0.82rem;
+  border: 2px solid #ff8c00;
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-block;
+  min-width: 200px;
+  max-width: 100%;
+}
+.uml-class-box .uml-cn {
+  background: #ff8c00;
+  color: #000;
+  padding: 0.35rem 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+.uml-class-box .uml-ca,
+.uml-class-box .uml-co {
+  padding: 0.45rem 0.75rem;
+  color: #ddd;
+  border-top: 1px solid #444;
+  line-height: 1.7;
+}
+
+/* ── Sequence / Activity ASCII ────────────────────────────────────── */
+pre.uml-diagram {
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  font-size: 0.78rem;
+  color: #ccc;
+  overflow-x: auto;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Phase blocks ─────────────────────────────────────────────────── */
+.uml-phase {
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.75rem;
+}
+.uml-phase-foundation { background: rgba(120,120,120,0.12); border-left: 3px solid #888; }
+.uml-phase-diagrams   { background: rgba(74,144,217,0.10);  border-left: 3px solid #4a90d9; }
+.uml-phase-integration{ background: rgba(255,140,0,0.10);   border-left: 3px solid #ff8c00; }
+.uml-phase-analysis   { background: rgba(156,108,212,0.10); border-left: 3px solid #9c6cd4; }
+.uml-phase-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+</style>
+
+
+{# ── Hero ──────────────────────────────────────────────────────────── #}
+
+<section class="page-header">
+  <div class="container">
+    <h1>UML for Software Engineering</h1>
+    <p class="lead mb-0">Model software systems with precision — from requirements to critical analysis</p>
+  </div>
+</section>
+
+
+{# ── Code ↔ Diagram demo ───────────────────────────────────────────── #}
+
+<section class="container py-4">
+
+  <div class="uml-accent"></div>
+  <h2 class="mb-1">From Code to Model</h2>
+  <p class="mb-4" style="color:#bbb;">
+    If you can read code, you already understand UML. Click the tabs to see how programming
+    concepts map to diagram notation — the language you will use throughout this course.
+  </p>
+
+  <div class="row g-4 mb-5">
+
+    {# Card 1 — Class #}
+    <div class="col-md-4">
+      <div class="uml-example-card">
+        <div class="uml-example-header">
+          <span class="uml-example-title">Class definition</span>
+          <span class="uml-badge uml-badge-class">Class Diagram</span>
+        </div>
+        <div class="uml-toggle-bar">
+          <button class="uml-toggle-btn active" onclick="umlToggle(this,'code','ex1')">Code</button>
+          <button class="uml-toggle-btn" onclick="umlToggle(this,'diagram','ex1')">Diagram</button>
+        </div>
+        <div id="ex1-code" class="uml-panel active">
+<pre class="uml-code">class Student:
+    def __init__(self,
+                 name: str,
+                 student_id: int):
+        self.__name = name
+        self.__student_id = student_id
+
+    def enrol(self,
+              course: Course) -> bool:
+        ...
+
+    def get_transcript(self) -> list:
+        ...</pre>
+        </div>
+        <div id="ex1-diagram" class="uml-panel">
+          <div class="uml-class-box">
+            <div class="uml-cn">Student</div>
+            <div class="uml-ca">
+              - name : String<br>
+              - studentId : Integer
+            </div>
+            <div class="uml-co">
+              + enrol(c : Course) : Boolean<br>
+              + getTranscript() : List
+            </div>
+          </div>
+          <p class="mt-2 mb-0" style="font-size:0.78rem; color:#888;">
+            Private attributes (<code>-</code>), public operations (<code>+</code>),
+            types made explicit. Units 4–5.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {# Card 2 — Sequence #}
+    <div class="col-md-4">
+      <div class="uml-example-card">
+        <div class="uml-example-header">
+          <span class="uml-example-title">Method call chain</span>
+          <span class="uml-badge uml-badge-sequence">Sequence Diagram</span>
+        </div>
+        <div class="uml-toggle-bar">
+          <button class="uml-toggle-btn active" onclick="umlToggle(this,'code','ex2')">Code</button>
+          <button class="uml-toggle-btn" onclick="umlToggle(this,'diagram','ex2')">Diagram</button>
+        </div>
+        <div id="ex2-code" class="uml-panel active">
+<pre class="uml-code">def login(username, password):
+    user = db.find_user(username)
+    if user is None:
+        return False
+    ok = user.check_password(
+             password)
+    if ok:
+        session.create(user)
+    return ok</pre>
+        </div>
+        <div id="ex2-diagram" class="uml-panel">
+<pre class="uml-diagram">User   Controller  Database  Session
+  |        |           |        |
+  |—login()→|           |        |
+  |        |—find_user()→        |
+  |        |←——user————|        |
+  |        |—check_password()    |
+  |        |←——ok——————|        |
+  |        |  [ok] —create()—→  |
+  |←result—|           |        |</pre>
+          <p class="mt-2 mb-0" style="font-size:0.78rem; color:#888;">
+            Same logic, different view — shows <em>who</em> calls <em>what</em>. Unit 6.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {# Card 3 — Activity #}
+    <div class="col-md-4">
+      <div class="uml-example-card">
+        <div class="uml-example-header">
+          <span class="uml-example-title">Process flow</span>
+          <span class="uml-badge uml-badge-usecase">Activity Diagram</span>
+        </div>
+        <div class="uml-toggle-bar">
+          <button class="uml-toggle-btn active" onclick="umlToggle(this,'code','ex3')">Code</button>
+          <button class="uml-toggle-btn" onclick="umlToggle(this,'diagram','ex3')">Diagram</button>
+        </div>
+        <div id="ex3-code" class="uml-panel active">
+<pre class="uml-code">def confirm_order(order):
+    validate_cart(order)
+    # run in parallel:
+    thread_a = charge_payment(order)
+    thread_b = notify_warehouse(order)
+    await all(thread_a, thread_b)
+    send_confirmation(order)</pre>
+        </div>
+        <div id="ex3-diagram" class="uml-panel">
+<pre class="uml-diagram">     ● start
+     |
+[Validate Cart]
+     |
+  ══════════ fork
+  |              |
+[Charge       [Notify
+ Payment]     Warehouse]
+  |              |
+  ══════════ join
+     |
+[Send Confirmation]
+     |
+     ⊙ end</pre>
+          <p class="mt-2 mb-0" style="font-size:0.78rem; color:#888;">
+            Fork + join = parallel threads. Unit 7.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>{# /row #}
+
+
+  {# ── Course Structure ──────────────────────────────────────────────── #}
+
+  <div class="uml-accent"></div>
+  <h2 class="mb-1">Course Structure</h2>
+  <p class="mb-4" style="color:#bbb;">
+    Ten units built on a spiral — each one revisiting and deepening earlier work.
+  </p>
+
+  <div class="row g-4 mb-5">
+    <div class="col-lg-5">
+
+      <div class="uml-phase uml-phase-foundation">
+        <div class="uml-phase-label" style="color:#aaa;">Phase 1 — Foundation</div>
+        <strong style="font-size:0.9rem;">Units 1–2</strong>
+        <p class="mb-0 small" style="color:#bbb;">What is software engineering? How do we capture requirements? Defines the vocabulary and scope used throughout the course.</p>
+      </div>
+
+      <div class="uml-phase uml-phase-diagrams">
+        <div class="uml-phase-label" style="color:#4a90d9;">Phase 2 — Core Diagrams</div>
+        <strong style="font-size:0.9rem;">Units 3–7</strong>
+        <p class="mb-0 small" style="color:#bbb;">Use case, class (×2), sequence, and activity diagrams — each building on the last. From goals to structure to behaviour to process.</p>
+      </div>
+
+      <div class="uml-phase uml-phase-integration">
+        <div class="uml-phase-label" style="color:#ff8c00;">Phase 3 — Integration</div>
+        <strong style="font-size:0.9rem;">Units 8–9</strong>
+        <p class="mb-0 small" style="color:#bbb;">Bringing all diagrams together into a consistent model. Traceability, contradiction resolution, and audience-aware documentation.</p>
+      </div>
+
+      <div class="uml-phase uml-phase-analysis">
+        <div class="uml-phase-label" style="color:#9c6cd4;">Phase 4 — Analysis</div>
+        <strong style="font-size:0.9rem;">Unit 10</strong>
+        <p class="mb-0 small" style="color:#bbb;">Critical evaluation using quality criteria. Justified critique, design debate, and reflective practice.</p>
+      </div>
+
+    </div>
+
+    <div class="col-lg-7">
+      <div class="row g-2">
+        {% set unitLinks = [
+          {n:1, t:"Intro to SE & UML",            phase:"foundation"},
+          {n:2, t:"Requirements",                  phase:"foundation"},
+          {n:3, t:"Use Case Diagrams",             phase:"diagrams"},
+          {n:4, t:"Class Diagrams: Structure I",   phase:"diagrams"},
+          {n:5, t:"Class Diagrams: Structure II",  phase:"diagrams"},
+          {n:6, t:"Sequence Diagrams",             phase:"diagrams"},
+          {n:7, t:"Activity Diagrams",             phase:"diagrams"},
+          {n:8, t:"Integrating UML",               phase:"integration"},
+          {n:9, t:"Design & Documentation",        phase:"integration"},
+          {n:10, t:"Critical Analysis",            phase:"analysis"}
+        ] %}
+        {% for u in unitLinks %}
+        <div class="col-6">
+          <a href="{{ ('/courses/uml/unit-0' + u.n if u.n < 10 else '/courses/uml/unit-10') | url }}"
+             class="d-block text-decoration-none p-2"
+             style="background:#222; border:1px solid #333; border-radius:6px; transition:border-color 0.2s;"
+             onmouseover="this.style.borderColor='#ff8c00'" onmouseout="this.style.borderColor='#333'">
+            <span style="font-size:0.7rem; color:#888;">Unit {{ u.n }}</span><br>
+            <span style="font-size:0.85rem; color:#ddd; font-weight:500;">{{ u.t }}</span>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <a href="{{ '/courses/uml/unit-01' | url }}" class="btn btn-primary btn-lg px-4">
+    <i class="bi bi-play-circle me-2"></i>Start Course — Unit 1
+  </a>
+
+</section>
+
+
+<script>
+(function () {
+  function umlToggle(btn, panel, prefix) {
+    // deactivate sibling buttons
+    btn.closest('.uml-toggle-bar').querySelectorAll('.uml-toggle-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    btn.classList.add('active');
+    // hide all panels for this card
+    var card = btn.closest('.uml-example-card');
+    card.querySelectorAll('.uml-panel').forEach(function(p) {
+      p.classList.remove('active');
+    });
+    // show selected panel
+    var target = document.getElementById(prefix + '-' + panel);
+    if (target) target.classList.add('active');
+  }
+  // expose globally
+  window.umlToggle = umlToggle;
+}());
+</script>

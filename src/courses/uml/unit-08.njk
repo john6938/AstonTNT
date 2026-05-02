@@ -1,0 +1,426 @@
+---
+unit: 8
+unitTitle: Integrating UML
+title: "Unit 8: Integrating UML Diagrams"
+description: "Bring all four diagram types together into a coherent model — checking consistency, tracing requirements, and resolving contradictions."
+objectives:
+  - Explain what traceability means and why it matters in software design
+  - Identify the most common types of contradiction across UML diagrams
+  - Produce a consistent, integrated set of diagrams for the group's shared system
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, videoEmbed, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Core Input ═════════════════════════════════════════ #}
+
+{% set coreTabs = [
+  {id: "trace",   label: "Traceability"},
+  {id: "contra",  label: "Common Contradictions"},
+  {id: "check",   label: "Integration Checklist"}
+] %}
+
+{% call activitySection(1, "Core Input", "book") %}
+<p class="mb-3">Read through each tab before working through the key concepts.</p>
+
+{% call tabSet("unit08-core", coreTabs) %}
+  <div class="tab-pane fade show active" id="unit08-core-trace" role="tabpanel">
+    <p>
+      <strong>Traceability</strong> is the ability to follow a requirement from its origin
+      through every design artefact that implements it.
+    </p>
+    <p>In a UML model, the chain runs:</p>
+    <ol>
+      <li><strong>Requirement</strong> — a statement of what the system must do</li>
+      <li><strong>Use case</strong> — the requirement expressed as a user goal</li>
+      <li><strong>Class diagram</strong> — the structural elements that support the use case</li>
+      <li><strong>Sequence or activity diagram</strong> — the behaviour that implements the use case</li>
+    </ol>
+    <p>
+      A <strong>traceability matrix</strong> is a table that maps each requirement to its
+      use case, its supporting classes, and its behavioural model. It makes gaps visible at
+      a glance: a row with an empty cell means something is missing.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit08-core-contra" role="tabpanel">
+    <p>
+      Contradictions between UML diagrams are almost inevitable in early design. Common types:
+    </p>
+    <ul>
+      <li>
+        <strong>Missing class</strong> — a class appears in a sequence diagram but is not defined
+        in the class diagram. The structural model is incomplete.
+      </li>
+      <li>
+        <strong>Missing behavioural model</strong> — a use case has no corresponding sequence or
+        activity diagram. How the use case is implemented is unspecified.
+      </li>
+      <li>
+        <strong>Multiplicity conflict</strong> — the class diagram specifies a 1..* relationship,
+        but the sequence diagram sends a message to a single object with no loop. These are
+        inconsistent assumptions.
+      </li>
+      <li>
+        <strong>Missing operation</strong> — a sequence diagram calls an operation on a class
+        that does not appear in the operations compartment of the class diagram.
+      </li>
+      <li>
+        <strong>Orphaned class</strong> — a class in the class diagram is never referenced by
+        any use case, sequence diagram, or activity diagram. It may be unnecessary.
+      </li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit08-core-check" role="tabpanel">
+    <p>Use this checklist to verify a set of integrated UML diagrams:</p>
+    <ul>
+      <li>Every requirement maps to at least one use case.</li>
+      <li>Every use case has at least one sequence or activity diagram modelling its implementation.</li>
+      <li>Every class name in a sequence diagram exists in the class diagram.</li>
+      <li>Every operation called in a sequence diagram appears in the class diagram's operations compartment.</li>
+      <li>Multiplicities in the class diagram are consistent with the message flows in sequence diagrams.</li>
+      <li>Every class in the class diagram is referenced by at least one behavioural diagram or use case.</li>
+      <li>Activity diagrams for business processes are consistent with the sequence diagrams for the same use case.</li>
+    </ul>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Activity 2 — Key Concepts: Traceability ═════════════════════════ #}
+
+{% call activitySection(2, "Key Concepts: Traceability", "lightbulb") %}
+<p class="mb-3">Work through each item carefully — traceability is abstract but has very practical consequences.</p>
+<div class="accordion" id="unit08-acc-a">
+
+  {% call accordion("acc-08-a1", "What is traceability and why does it matter?") %}
+  <p>
+    <strong>Traceability</strong> means that every design element can be linked back to a
+    requirement that justifies its existence — and every requirement can be followed forward
+    to the design elements that implement it.
+  </p>
+  <p>Traceability matters for three reasons:</p>
+  <ul>
+    <li>
+      <strong>Completeness checking</strong> — if a requirement has no corresponding design element,
+      it will not be implemented. Traceability makes this visible before it becomes a problem.
+    </li>
+    <li>
+      <strong>Impact analysis</strong> — when a requirement changes, traceability tells you exactly
+      which diagrams need to be updated. Without it, changes are made blindly and inconsistency spreads.
+    </li>
+    <li>
+      <strong>Justification</strong> — every class and operation should exist because a requirement
+      demands it. A class with no traceable requirement may be scope creep or dead code.
+    </li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("acc-08-a2", "How do you build a traceability matrix?") %}
+  <p>
+    A traceability matrix is typically a table with requirements as rows and design artefacts
+    as columns (use cases, classes, diagrams). A cell is marked when the artefact implements
+    or relates to the requirement.
+  </p>
+  <p><strong>Simple example:</strong></p>
+  <table class="table table-sm table-dark table-bordered mb-0" style="font-size:0.825rem;">
+    <thead>
+      <tr><th>Requirement</th><th>Use Case</th><th>Classes</th><th>Sequence Diagram</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>FR01: User can log in</td><td>Login</td><td>User, Session, AuthService</td><td>Login Sequence</td></tr>
+      <tr><td>FR02: User can reset password</td><td>Reset Password</td><td>User, EmailService</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p class="mt-2">
+    The empty cell for FR02 immediately flags a gap: the Reset Password use case has no
+    sequence diagram. That needs to be produced.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-08-a3", "What is the chain of artefacts in a complete UML model?") %}
+  <p>
+    A complete UML model for a use case traces through four levels:
+  </p>
+  <ol>
+    <li>
+      <strong>Requirements document</strong> — the written specification: "The system shall allow
+      registered users to log in with an email address and password."
+    </li>
+    <li>
+      <strong>Use case diagram</strong> — the Login use case, associated with the Registered User actor.
+    </li>
+    <li>
+      <strong>Class diagram</strong> — the User, AuthService, and Session classes with their
+      attributes and operations.
+    </li>
+    <li>
+      <strong>Sequence diagram</strong> — the messages between the actor, LoginController,
+      AuthService, UserDatabase, and Session during a login interaction.
+    </li>
+  </ol>
+  <p>
+    Each level adds detail. None is optional in a complete design — each answers a different
+    question that developers, testers, and stakeholders need answered.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-08-a4", "Why does traceability matter during maintenance — not just development?") %}
+  <p>
+    Most software spends far more time being maintained than being initially built.
+    When a system is maintained, the original development team may have moved on.
+    New developers must understand what was built and why.
+  </p>
+  <p>
+    Without traceability:
+  </p>
+  <ul>
+    <li>A developer modifies a class without realising it is the only implementation of a critical requirement</li>
+    <li>A requirement is changed but only some diagrams are updated — the rest become stale</li>
+    <li>Features are added that duplicate existing functionality, because no one can trace what already exists</li>
+  </ul>
+  <p>
+    Traceability is the map that keeps a system navigable as it evolves.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Key Concepts: Finding and Resolving Contradictions ═ #}
+
+{% call activitySection(3, "Key Concepts: Finding and Resolving Contradictions", "exclamation-triangle") %}
+<p class="mb-3">
+  Contradictions in a model are not failures — they are discoveries. The goal is to find and
+  resolve them before development begins.
+</p>
+<div class="accordion" id="unit08-acc-b">
+
+  {% call accordion("acc-08-b1", "What counts as a contradiction between UML diagrams?") %}
+  <p>
+    A contradiction exists when two or more diagrams make incompatible assumptions about the
+    same system. Common examples:
+  </p>
+  <ul>
+    <li>
+      A sequence diagram calls <code>User.getAccount()</code>, but the class diagram does not
+      list <code>getAccount()</code> as an operation of User.
+    </li>
+    <li>
+      The class diagram shows a <code>1..*</code> relationship (one or more) between Course and
+      Student, but a sequence diagram processes a fixed single student with no loop.
+    </li>
+    <li>
+      A use case named "Send Invoice" has no sequence or activity diagram showing how it is
+      implemented — it is specified in requirements but not designed.
+    </li>
+    <li>
+      An activity diagram shows "Check Inventory" as a step, but there is no Inventory class
+      in the class diagram.
+    </li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("acc-08-b2", "How do you resolve a missing class contradiction?") %}
+  <p>
+    When a class appears in a sequence diagram but not in the class diagram, there are two
+    possible resolutions:
+  </p>
+  <ul>
+    <li>
+      <strong>The class is genuinely needed:</strong> Add it to the class diagram with appropriate
+      attributes and operations. Update the traceability matrix. Check if it affects any
+      multiplicity constraints.
+    </li>
+    <li>
+      <strong>The class was modelled in error:</strong> It may be a renamed version of an existing
+      class, or a responsibility that should be part of another class. Correct the sequence diagram.
+    </li>
+  </ul>
+  <p>
+    In practice: ask "should this class exist?" before adding it. Every class in the model
+    should trace back to a requirement.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-08-b3", "How do you resolve a multiplicity conflict?") %}
+  <p>
+    A multiplicity conflict occurs when the structural model and a behavioural model make
+    incompatible assumptions about how many objects are involved.
+  </p>
+  <p>
+    To resolve it, ask: <em>what does the business rule actually say?</em>
+  </p>
+  <ul>
+    <li>
+      If the class diagram is correct (e.g. a course really does have many students), update
+      the sequence diagram to use a loop fragment or show the pattern for a single student
+      with a note that it loops.
+    </li>
+    <li>
+      If the sequence diagram reflects actual behaviour (e.g. in practice only one student
+      is processed at a time), update the class diagram multiplicity to match.
+    </li>
+  </ul>
+  <p>
+    The resolution should match the business rule — not whichever diagram is easier to change.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-08-b4", "What should you do with orphaned classes?") %}
+  <p>
+    An <strong>orphaned class</strong> is one that appears in the class diagram but is never
+    referenced in any use case, sequence diagram, or activity diagram.
+  </p>
+  <p>
+    Before deleting it, investigate:
+  </p>
+  <ul>
+    <li>Was it added for a requirement that was later removed? Remove the class.</li>
+    <li>Is it needed for a use case that has not yet been modelled? Add the missing behavioural diagram.</li>
+    <li>Is it a utility or infrastructure class (e.g. Logger, Configuration) with no direct use case? Document why it exists — it is not traced to a functional requirement but may be justified by a non-functional one.</li>
+  </ul>
+  <p>
+    Orphaned classes are not always wrong, but they always deserve scrutiny.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Video ═══════════════════════════════════════════════ #}
+
+{% call activitySection(4, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Quiz ════════════════════════════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+<p class="mb-3">Select the best answer for each question.</p>
+
+{% call quizMC("quiz-08-a", "A sequence diagram shows a 'PaymentProcessor' class, but this class does not appear in the class diagram. What does this indicate?", 1,
+   "All classes used in behavioural diagrams must be defined in the class diagram. A missing class means the structural model is incomplete. This is a contradiction that must be resolved — either by adding the class or correcting the sequence diagram.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-08-a" value="0"> The sequence diagram is incorrect and should be deleted</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-a" value="1"> The class diagram is incomplete — PaymentProcessor needs to be added</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-a" value="2"> This is acceptable — not all classes need to appear in all diagrams</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-a" value="3"> The sequence diagram is modelling a future state of the system</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-08-b", "What is the primary purpose of a traceability matrix?", 1,
+   "A traceability matrix links each requirement to the design artefacts that implement it. This makes gaps immediately visible — a requirement with no design element will not be built. It also supports impact analysis when requirements change.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-08-b" value="0"> To measure the complexity of the software design</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-b" value="1"> To show which design artefacts implement each requirement, making gaps visible</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-b" value="2"> To assign development tasks to team members</label>
+  <label class="quiz-option"><input type="radio" name="quiz-08-b" value="3"> To choose which UML diagram type to use for each use case</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 6 — Individual / Pair / Group ═══════════════════════════ #}
+
+{% set activityTabs = [
+  {id: "ind",   label: "Individual"},
+  {id: "pair",  label: "Pair"},
+  {id: "group", label: "Group"}
+] %}
+
+{% call activitySection(6, "Activities", "people") %}
+
+{% call tabSet("unit08-activities", activityTabs) %}
+  <div class="tab-pane fade show active" id="unit08-activities-ind" role="tabpanel">
+    <p class="fw-semibold">Individual task</p>
+    <p>
+      Using your diagrams from Units 3–7, create a <strong>traceability table</strong>
+      for your group's system.
+    </p>
+    <p>Structure the table with these columns:</p>
+    <ul>
+      <li>Requirement (from Unit 2)</li>
+      <li>Use case (from Unit 3)</li>
+      <li>Supporting classes (from Units 4–5)</li>
+      <li>Sequence or activity diagram (from Units 6–7)</li>
+    </ul>
+    <p>
+      Mark any cells where you have no artefact — these are your gaps. Note them for the pair task.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit08-activities-pair" role="tabpanel">
+    <p class="fw-semibold">Pair task</p>
+    <p>Compare traceability tables with a partner and identify:</p>
+    <ul>
+      <li>
+        <strong>Use cases with no behavioural model</strong> — a sequence or activity diagram
+        should exist for every use case. Which are missing?
+      </li>
+      <li>
+        <strong>Classes not referenced by any use case or behavioural diagram</strong> — these
+        are orphaned classes. Are they justified or should they be removed?
+      </li>
+      <li>
+        <strong>Sequence diagram operations not in the class diagram</strong> — list any and
+        decide whether to add them to the class diagram or correct the sequence diagram.
+      </li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit08-activities-group" role="tabpanel">
+    <p class="fw-semibold">Group task</p>
+    <p>
+      Using the gaps and contradictions identified by the pair task, produce an
+      <strong>updated, integrated set of diagrams</strong> for your system:
+    </p>
+    <ul>
+      <li>Every use case has at least one behavioural model</li>
+      <li>Every class in a sequence diagram exists in the class diagram</li>
+      <li>Every operation called in a sequence diagram is listed in the class diagram</li>
+      <li>The traceability matrix has no empty cells</li>
+    </ul>
+    <p>
+      This integrated model is the input for Unit 9, where you will document and present it.
+    </p>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+
+<div class="accordion mb-3" id="unit08-review">
+  {% call accordion("rev-08-a", "Summary: What does a complete integrated UML model include?") %}
+  <ul>
+    <li>A requirements list (from Unit 2)</li>
+    <li>A use case diagram with all actors and use cases (Unit 3)</li>
+    <li>A class diagram with attributes, operations, and relationships (Units 4–5)</li>
+    <li>A sequence diagram for each major use case (Unit 6)</li>
+    <li>An activity diagram for each major workflow (Unit 7)</li>
+    <li>A traceability matrix linking all four levels (Unit 8)</li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("rev-08-b", "Summary: How does integration prepare you for documentation?") %}
+  <p>
+    A set of consistent, traced diagrams is the raw material for documentation. In Unit 9,
+    you will learn to present this material clearly to different audiences — not just producing
+    correct diagrams, but communicating what they mean and why the key decisions were made.
+  </p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-09') | url }}">Unit 9: Design &amp; Documentation</a> when ready.
+</p>
+{% endcall %}

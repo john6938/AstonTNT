@@ -1,0 +1,429 @@
+---
+unit: 1
+unitTitle: Intro to SE & UML
+title: "Unit 1: Introduction to Software Engineering and UML"
+description: "Understand what software engineering is, why modelling matters, and how UML fits into the software development process."
+objectives:
+  - Define software engineering and explain how it differs from programming
+  - Explain why modelling is a core activity in software development
+  - Identify the three main families of UML diagrams and give an example of each
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, videoEmbed, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Core Input ═════════════════════════════════════════ #}
+
+{% set coreTabs = [
+  {id: "se",    label: "Software Engineering"},
+  {id: "model", label: "Why Model?"},
+  {id: "uml",   label: "UML Overview"}
+] %}
+
+{% call activitySection(1, "Core Input", "book") %}
+<p class="mb-3">
+  Read through each tab. Take notes on the key ideas before moving to the activities below.
+</p>
+
+{% call tabSet("unit01-core", coreTabs) %}
+  <div class="tab-pane fade show active" id="unit01-core-se" role="tabpanel">
+    <p>
+      <strong>Software engineering</strong> is the disciplined application of engineering principles
+      to the design, development, testing, and maintenance of software systems. It is not simply
+      writing code — it involves managing complexity, working with stakeholders, and making
+      decisions under constraints.
+    </p>
+    <p>A software engineer must consider:</p>
+    <ul>
+      <li><strong>Process</strong> — how the team will plan, build, and deliver the system</li>
+      <li><strong>Stakeholders</strong> — everyone affected by or responsible for the system (users, clients, developers, regulators)</li>
+      <li><strong>Constraints</strong> — time, budget, hardware, legal requirements, and existing infrastructure</li>
+      <li><strong>Quality</strong> — the system must not only work, but be maintainable, secure, and usable</li>
+    </ul>
+    <p>
+      A programmer can write a function that works. A software engineer designs a system that works
+      reliably, can be modified safely, and meets the needs of real users in a real context.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit01-core-model" role="tabpanel">
+    <p>
+      Before building a complex system, we create <strong>models</strong> — simplified
+      representations that help us think, communicate, and plan. Architects draw blueprints
+      before laying foundations; engineers build prototypes before mass production. Software
+      engineers create diagrams before writing code.
+    </p>
+    <p>Modelling serves three core purposes:</p>
+    <ul>
+      <li>
+        <strong>Abstraction</strong> — a model captures what matters for a given question and
+        ignores irrelevant detail. A map is useful precisely because it is not the territory.
+      </li>
+      <li>
+        <strong>Communication</strong> — a shared diagram gives all stakeholders a common language.
+        A developer, a manager, and a client can all look at the same use case diagram and
+        understand the system's goals.
+      </li>
+      <li>
+        <strong>Planning</strong> — modelling exposes problems early, when they are cheap to fix.
+        A contradiction in a diagram costs nothing to correct; the same contradiction found
+        during testing costs days.
+      </li>
+    </ul>
+    <p>
+      A model is not a perfect copy of the system — it is a deliberate simplification.
+      Different models highlight different aspects of the same system.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit01-core-uml" role="tabpanel">
+    <p>
+      <strong>UML (Unified Modeling Language)</strong> is a standardised visual language for
+      describing software systems. It was developed in the 1990s by Grady Booch, Ivar Jacobson,
+      and James Rumbaugh, and is now maintained by the Object Management Group (OMG).
+    </p>
+    <p>UML diagrams are grouped into three families:</p>
+    <ul>
+      <li>
+        <strong>Structural diagrams</strong> — show the static parts of a system (classes,
+        components, objects). Example: <em>Class Diagram</em>.
+      </li>
+      <li>
+        <strong>Behavioural diagrams</strong> — show how the system behaves over time (processes,
+        decisions, state changes). Example: <em>Activity Diagram</em>.
+      </li>
+      <li>
+        <strong>Interaction diagrams</strong> — a subset of behavioural diagrams focusing on
+        how objects communicate. Example: <em>Sequence Diagram</em>.
+      </li>
+    </ul>
+    <p>
+      This course covers four diagram types: Use Case, Class, Sequence, and Activity — enough
+      to describe most systems at a professional level.
+    </p>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Activity 2 — Key Concepts: What is Software Engineering? ════════ #}
+
+{% call activitySection(2, "Key Concepts: What is Software Engineering?", "lightbulb") %}
+<p class="mb-3">
+  Expand each item. Think about your answer before reading the explanation.
+</p>
+<div class="accordion" id="unit01-acc-a">
+
+  {% call accordion("acc-01-a1", "How is software engineering different from programming?") %}
+  <p>
+    Programming is one activity within software engineering — writing the code that implements
+    a solution. Software engineering is the broader discipline that encompasses requirements
+    analysis, design, testing, deployment, and maintenance.
+  </p>
+  <p>
+    A useful analogy: programming is to software engineering what bricklaying is to architecture.
+    Both are essential, but the architect is responsible for the overall system — its structure,
+    its fit to purpose, and its long-term integrity.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-01-a2", "What is the Software Development Life Cycle (SDLC)?") %}
+  <p>
+    The <strong>Software Development Life Cycle (SDLC)</strong> is a structured sequence of
+    phases that a software system passes through — from initial concept to retirement.
+    It provides a common framework for planning, building, and maintaining software,
+    regardless of which methodology a team follows.
+  </p>
+  <p>All SDLC models include some version of these core phases:</p>
+  <ul>
+    <li><strong>Specification</strong> — what should the system do? Requirements are gathered and documented.</li>
+    <li><strong>Design</strong> — how will it be structured? Architecture and detailed design are produced.</li>
+    <li><strong>Implementation</strong> — the design is translated into working code.</li>
+    <li><strong>Validation</strong> — does it do what was specified? Testing verifies correctness.</li>
+    <li><strong>Deployment</strong> — the system is released to its users.</li>
+    <li><strong>Evolution</strong> — the system is maintained, updated, and extended over time.</li>
+  </ul>
+  <p>
+    UML is used across the SDLC — most heavily during specification, design, and as living
+    documentation during evolution. Different development methodologies organise these phases
+    differently, as explored in the next section.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-01-a3", "What are the main software development methodologies?") %}
+  <p>
+    A software process can be organised in different ways. Three widely used approaches are:
+  </p>
+  <p><strong>Waterfall</strong></p>
+  <p>
+    A sequential, linear model in which each phase must be completed before the next begins:
+    requirements → design → implementation → testing → deployment → maintenance.
+    Changes are difficult once a phase is closed. Best suited to projects with stable,
+    well-understood requirements and a fixed scope — for example, safety-critical or
+    regulatory systems where full specification is required upfront.
+  </p>
+  <p><strong>Agile</strong></p>
+  <p>
+    An iterative, incremental model built around short development cycles called
+    <em>sprints</em> or <em>iterations</em> (typically 1–4 weeks). Requirements evolve
+    through continuous collaboration between developers and stakeholders. Working software
+    is delivered frequently rather than at the end of a long cycle. Agile prioritises
+    adaptability — making it well-suited to projects where requirements are uncertain or
+    likely to change. Common frameworks include Scrum, Kanban, and Extreme Programming (XP).
+  </p>
+  <p><strong>Spiral</strong></p>
+  <p>
+    A risk-driven model that combines iterative development with systematic risk assessment.
+    Each loop of the spiral passes through four phases: planning, risk analysis, engineering,
+    and evaluation. The spiral model is suited to large, complex, high-risk projects where
+    identifying and mitigating risk at each stage is more important than speed of delivery.
+  </p>
+  <p>
+    UML is methodology-agnostic — it is used across all three approaches. In Waterfall,
+    diagrams are typically produced fully upfront. In Agile, they are produced iteratively
+    and updated as the design evolves.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-01-a4-stake", "Who are stakeholders and why do they matter?") %}
+  <p>
+    A <strong>stakeholder</strong> is anyone who has an interest in the system — whether they
+    use it, fund it, regulate it, or are affected by it. Common stakeholders include:
+  </p>
+  <ul>
+    <li><strong>End users</strong> — the people who interact with the system directly</li>
+    <li><strong>Clients</strong> — the organisation or individual commissioning the system</li>
+    <li><strong>Developers and engineers</strong> — those building and maintaining the system</li>
+    <li><strong>Regulators</strong> — external bodies whose rules the system must comply with</li>
+  </ul>
+  <p>
+    Stakeholders often have conflicting priorities. A user wants simplicity; a regulator wants
+    audit trails; a client wants low cost. Software engineering involves negotiating and
+    balancing these demands.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-01-a5", "What kinds of constraints shape a software system?") %}
+  <p>
+    Software systems do not exist in isolation — they are built under real-world constraints:
+  </p>
+  <ul>
+    <li><strong>Technical constraints</strong> — existing infrastructure, required platforms, performance limits</li>
+    <li><strong>Organisational constraints</strong> — team size, skills, timescales, budget</li>
+    <li><strong>Legal and regulatory constraints</strong> — data protection laws, industry standards, accessibility requirements</li>
+    <li><strong>Interoperability constraints</strong> — the system must integrate with other systems</li>
+  </ul>
+  <p>
+    Identifying constraints early is critical — a design that ignores them will fail in practice,
+    even if it is technically elegant.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Key Concepts: Modelling and UML ════════════════════ #}
+
+{% call activitySection(3, "Key Concepts: Modelling and UML", "diagram-3") %}
+<p class="mb-3">
+  Continue with the key concepts below.
+</p>
+<div class="accordion" id="unit01-acc-b">
+
+  {% call accordion("acc-01-b1", "What is a model, and how does it differ from the real system?") %}
+  <p>
+    A <strong>model</strong> is a deliberately simplified representation of a system, created
+    for a specific purpose. A city map is a model of a city — it shows roads but not every
+    building. A UML class diagram is a model of software structure — it shows classes and
+    relationships but not the code inside each method.
+  </p>
+  <p>
+    The key insight: <em>a model is always wrong in some ways</em>, and that is fine.
+    The purpose of a model is not to reproduce the system in full — it is to make a specific
+    aspect of the system easier to think about and communicate.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-01-b2", "Why model before building?") %}
+  <p>
+    Building software without models is possible for small, simple systems. For anything
+    complex, it is risky. Models help because:
+  </p>
+  <ul>
+    <li>They force you to think through the design before committing to code</li>
+    <li>They reveal contradictions and gaps early — when fixes are cheap</li>
+    <li>They give the whole team a shared understanding of what is being built</li>
+    <li>They serve as documentation that outlasts the original development team</li>
+  </ul>
+  <p>
+    The cost of changing a diagram is near zero. The cost of changing production code is not.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-01-b3", "What are the three UML diagram families?") %}
+  <p>UML diagrams are organised into three families, each answering a different question:</p>
+  <ul>
+    <li>
+      <strong>Structural diagrams</strong> — <em>"What exists in the system?"</em>
+      These show static elements: classes, objects, components, packages.
+      The most widely used is the <strong>Class Diagram</strong>.
+    </li>
+    <li>
+      <strong>Behavioural diagrams</strong> — <em>"What does the system do?"</em>
+      These show processes, decisions, and state changes over time.
+      Examples: <strong>Activity Diagram</strong>, <strong>Use Case Diagram</strong>.
+    </li>
+    <li>
+      <strong>Interaction diagrams</strong> — <em>"How do the parts communicate?"</em>
+      A subset of behavioural diagrams focused on message exchanges between objects.
+      Example: <strong>Sequence Diagram</strong>.
+    </li>
+  </ul>
+  <p>
+    A complete system description typically uses all three families together. This course
+    builds up all four diagram types progressively.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-01-b4", "Do you need to use all UML diagrams for every project?") %}
+  <p>
+    No. UML is a toolkit, not a checklist. Professional engineers select the diagrams that
+    are most useful for the task at hand. For a small web application, a class diagram and
+    a few use cases may be sufficient. For a safety-critical system, a much richer set of
+    diagrams is appropriate.
+  </p>
+  <p>
+    The skill is knowing <em>which</em> diagram to reach for, and <em>when</em> it adds more
+    value than it costs to produce. This course gives you that judgement.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Video ═══════════════════════════════════════════════ #}
+
+{% call activitySection(4, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Quiz ════════════════════════════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+<p class="mb-3">Select the best answer for each question.</p>
+
+{% call quizMC("quiz-01-a", "Which of the following best describes the purpose of UML?", 1,
+   "UML (Unified Modeling Language) is a visual modelling language for specifying, visualising, and documenting software systems. It does not execute or test code — it is a notation for communicating design.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-01-a" value="0"> A programming language for building software systems</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-a" value="1"> A standard notation for visualising and documenting software designs</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-a" value="2"> A testing framework for validating software behaviour</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-a" value="3"> A database schema design tool</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-01-b", "Which UML diagram family is concerned with the static structure of a system?", 1,
+   "Structural diagrams show the static parts of a system — classes, objects, components — at a point in time. Class diagrams are the most widely used structural diagram.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-01-b" value="0"> Interaction diagrams</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-b" value="1"> Structural diagrams</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-b" value="2"> Behavioural diagrams</label>
+  <label class="quiz-option"><input type="radio" name="quiz-01-b" value="3"> Process diagrams</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 6 — Individual / Pair / Group ═══════════════════════════ #}
+
+{% set activityTabs = [
+  {id: "ind",  label: "Individual"},
+  {id: "pair", label: "Pair"},
+  {id: "group", label: "Group"}
+] %}
+
+{% call activitySection(6, "Activities", "people") %}
+
+{% call tabSet("unit01-activities", activityTabs) %}
+  <div class="tab-pane fade show active" id="unit01-activities-ind" role="tabpanel">
+    <p class="fw-semibold">Individual task</p>
+    <p>
+      Choose a system you interact with regularly — for example, a university learning management
+      system, an online booking platform, or a food delivery app.
+    </p>
+    <p>Write a short structured description (150–200 words) covering:</p>
+    <ul>
+      <li>The <strong>purpose</strong> of the system — what problem does it solve?</li>
+      <li>The key <strong>users</strong> — who interacts with it and in what roles?</li>
+      <li>The main <strong>processes</strong> — what are the three or four most important things the system does?</li>
+      <li>The <strong>system boundary</strong> — name two things that are clearly <em>outside</em> the scope of this system</li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit01-activities-pair" role="tabpanel">
+    <p class="fw-semibold">Pair task</p>
+    <p>Exchange your system descriptions with a partner.</p>
+    <p>Discuss the following:</p>
+    <ul>
+      <li>Did you make the same assumptions about the system boundary? Where do they differ?</li>
+      <li>Did you identify the same key users? Are there any your partner missed — or vice versa?</li>
+      <li>Which description is more precise? Why?</li>
+    </ul>
+    <p>
+      Note: there is no single correct answer. The goal is to see how two people can read
+      the same system differently — and to understand why precision matters before any
+      design work begins.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit01-activities-group" role="tabpanel">
+    <p class="fw-semibold">Group task</p>
+    <p>
+      As a group, agree on a <strong>single system</strong> to use for the rest of this course.
+      This will be your shared case study — you will build diagrams for it in Units 3–8.
+    </p>
+    <p>Produce a shared written definition that includes:</p>
+    <ul>
+      <li>A one-sentence statement of the system's purpose</li>
+      <li>A list of at least three user roles</li>
+      <li>Three constraints that would shape the system's design (technical, organisational, or legal)</li>
+      <li>A clear statement of two things that are <em>outside</em> the system boundary</li>
+    </ul>
+    <p>Keep this definition — you will refer back to it in every subsequent unit.</p>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+
+<div class="accordion mb-3" id="unit01-review">
+  {% call accordion("rev-01-a", "Summary: What are the three UML diagram families and an example of each?") %}
+  <ul>
+    <li><strong>Structural</strong> — show what exists in the system at a point in time. Example: <em>Class Diagram</em>.</li>
+    <li><strong>Behavioural</strong> — show what the system does over time. Examples: <em>Activity Diagram</em>, <em>Use Case Diagram</em>.</li>
+    <li><strong>Interaction</strong> — show how objects communicate. Example: <em>Sequence Diagram</em>.</li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("rev-01-b", "Summary: What is the difference between a model and the system it represents?") %}
+  <p>
+    A model is a deliberate simplification. It highlights one aspect of a system while
+    omitting others. The same system can have many models — each useful for a different
+    purpose. A model is not wrong for being incomplete; it is only wrong if it misrepresents
+    the aspect it is intended to show.
+  </p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-02') | url }}">Unit 2: Requirements</a> when ready.
+</p>
+{% endcall %}

@@ -1,0 +1,415 @@
+---
+unit: 7
+unitTitle: Activity Diagrams
+title: "Unit 7: Activity Diagrams"
+description: "Model processes and workflows — and develop judgement about when to use an activity diagram versus a sequence diagram."
+objectives:
+  - Model a workflow using activity diagram notation including decisions and parallel flows
+  - Explain the purpose of fork and join nodes
+  - Compare activity and sequence diagrams and choose the appropriate type for a given scenario
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, videoEmbed, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Core Input ═════════════════════════════════════════ #}
+
+{% set coreTabs = [
+  {id: "elements", label: "Diagram Elements"},
+  {id: "parallel", label: "Parallel Flows"},
+  {id: "compare",  label: "vs Sequence Diagrams"}
+] %}
+
+{% call activitySection(1, "Core Input", "book") %}
+<p class="mb-3">Read through each tab before working through the key concepts.</p>
+
+{% call tabSet("unit07-core", coreTabs) %}
+  <div class="tab-pane fade show active" id="unit07-core-elements" role="tabpanel">
+    <p>An activity diagram models a workflow or process as a flow of actions. Core elements:</p>
+    <ul>
+      <li>
+        <strong>Initial node</strong> — a filled black circle. The single starting point of the
+        activity. Every activity diagram has exactly one.
+      </li>
+      <li>
+        <strong>Action node</strong> — a rounded rectangle containing the action name.
+        Represents a discrete step in the process: <em>Validate Payment</em>,
+        <em>Send Confirmation Email</em>, <em>Update Inventory</em>.
+      </li>
+      <li>
+        <strong>Decision node</strong> — a diamond shape. A single incoming flow splits into two or
+        more outgoing flows based on conditions. Each outgoing flow is labelled with a guard
+        condition in square brackets: <code>[payment valid]</code>, <code>[payment failed]</code>.
+      </li>
+      <li>
+        <strong>Merge node</strong> — also a diamond shape, but multiple incoming flows converge
+        into one outgoing flow. Unlike a join node, a merge does not wait for all paths — it
+        passes through whichever flow arrives.
+      </li>
+      <li>
+        <strong>Activity final node</strong> — a bullseye (filled circle inside a ring). Marks the
+        end of the entire activity. All flows terminate here.
+      </li>
+      <li>
+        <strong>Flow final node</strong> — a circle with an X inside. Terminates one branch of the
+        flow only — the rest of the activity continues.
+      </li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit07-core-parallel" role="tabpanel">
+    <p>
+      Activity diagrams can model <strong>concurrent (parallel) processes</strong> using
+      two specialised nodes:
+    </p>
+    <ul>
+      <li>
+        <strong>Fork node</strong> — a thick horizontal (or vertical) bar with one incoming
+        flow and multiple outgoing flows. The incoming flow splits into parallel branches
+        that execute <em>simultaneously</em>.
+      </li>
+      <li>
+        <strong>Join node</strong> — a thick bar with multiple incoming flows and one outgoing
+        flow. Waits until <em>all</em> parallel branches have completed before continuing.
+      </li>
+    </ul>
+    <p>
+      Fork and join nodes always appear in pairs — every fork must eventually be joined.
+    </p>
+    <p>
+      <strong>Example:</strong> When an order is confirmed, three things happen in parallel:
+      the payment is charged, the warehouse is notified, and the confirmation email is sent.
+      Only when all three are complete does the flow continue to "Order Complete".
+    </p>
+    <p>
+      This parallel modelling capability is one of the main reasons to prefer an activity
+      diagram over a sequence diagram for workflow scenarios.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit07-core-compare" role="tabpanel">
+    <p>
+      Both sequence and activity diagrams model behaviour, but they answer different questions:
+    </p>
+    <table class="table table-sm table-dark table-bordered mb-0" style="font-size:0.875rem;">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Sequence Diagram</th>
+          <th>Activity Diagram</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Focus</strong></td><td>Which objects interact and in what order</td><td>The steps and flow of a process</td></tr>
+        <tr><td><strong>Central element</strong></td><td>Messages between objects</td><td>Actions and control flow</td></tr>
+        <tr><td><strong>Parallel flows</strong></td><td>Limited (par fragment)</td><td>First-class (fork/join nodes)</td></tr>
+        <tr><td><strong>Object focus</strong></td><td>Yes — shows which class does what</td><td>No — objects are optional (swimlanes)</td></tr>
+        <tr><td><strong>Best for</strong></td><td>Detailed object interactions, API calls</td><td>Business processes, workflows, algorithms</td></tr>
+        <tr><td><strong>Audience</strong></td><td>Developers</td><td>Business analysts, managers, developers</td></tr>
+      </tbody>
+    </table>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Activity 2 — Key Concepts: Activity Diagram Elements ════════════ #}
+
+{% call activitySection(2, "Key Concepts: Activity Diagram Elements", "lightbulb") %}
+<p class="mb-3">Work through each item carefully — several elements look similar but have distinct meanings.</p>
+<div class="accordion" id="unit07-acc-a">
+
+  {% call accordion("acc-07-a1", "What is the initial node and are there rules about it?") %}
+  <p>
+    The <strong>initial node</strong> is a filled black circle. It marks where the activity starts.
+  </p>
+  <ul>
+    <li>Every activity diagram has exactly <strong>one</strong> initial node.</li>
+    <li>It has no incoming flows — only outgoing.</li>
+    <li>It does not represent an action — it is a control node that starts the flow.</li>
+  </ul>
+  <p>
+    If you find yourself drawing multiple starting points, you should ask whether you are
+    modelling one activity or two separate activities that should be diagrammed independently.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-07-a2", "What is the difference between a decision node and a merge node?") %}
+  <p>
+    Both are drawn as a diamond, but they serve opposite purposes:
+  </p>
+  <ul>
+    <li>
+      <strong>Decision node</strong> — <em>one input, multiple outputs</em>.
+      The flow arrives and one of the outgoing paths is taken, based on guard conditions.
+      Like an if/else or switch statement.
+    </li>
+    <li>
+      <strong>Merge node</strong> — <em>multiple inputs, one output</em>.
+      Different paths that were split by a decision node reconnect here.
+      The merge does not wait for all inputs — it passes through whichever arrives.
+    </li>
+  </ul>
+  <p>
+    A common modelling error is using a fork/join where a decision/merge is intended (or vice versa).
+    The difference is critical: a fork starts parallel execution; a decision makes a choice.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-07-a3", "What is the difference between an activity final node and a flow final node?") %}
+  <p>
+    <strong>Activity final node</strong> (bullseye — filled circle inside a ring): terminates the
+    <em>entire</em> activity. All currently active flows stop when this node is reached.
+    Use this to end the whole process.
+  </p>
+  <p>
+    <strong>Flow final node</strong> (circle with X inside): terminates <em>one branch</em> only.
+    Other parallel branches continue unaffected.
+    Use this when one parallel path ends early (e.g. an error in one thread) but the rest
+    of the process should continue.
+  </p>
+  <p><strong>Example:</strong> In a parallel order process, if email delivery fails, a flow final
+  node ends the email branch — but the payment and warehouse branches continue.
+  An activity final node here would be wrong: it would terminate the entire order process.</p>
+  {% endcall %}
+
+  {% call accordion("acc-07-a4", "What are swimlanes and when should you use them?") %}
+  <p>
+    <strong>Swimlanes</strong> (also called partitions) divide the activity diagram into
+    vertical or horizontal lanes, each representing a different actor or system component.
+    Each action is placed in the lane of the actor responsible for performing it.
+  </p>
+  <p>
+    Use swimlanes when:
+  </p>
+  <ul>
+    <li>Responsibility for different steps is shared across multiple people or systems</li>
+    <li>You want to show clearly who does what, without drawing a full sequence diagram</li>
+    <li>The audience includes business stakeholders who need to see their role</li>
+  </ul>
+  <p>
+    Swimlane activity diagrams bridge the gap between business process analysis and system
+    design — they are readable by non-technical stakeholders while still being precise enough
+    for developers.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Key Concepts: Parallel Flows and Diagram Choice ════ #}
+
+{% call activitySection(3, "Key Concepts: Parallel Flows and Diagram Choice", "diagram-2") %}
+<p class="mb-3">
+  Parallel flows and the choice between diagram types are among the most important
+  practical judgements in UML modelling.
+</p>
+<div class="accordion" id="unit07-acc-b">
+
+  {% call accordion("acc-07-b1", "What is the difference between a fork and a decision node?") %}
+  <p>This is one of the most commonly confused distinctions in activity diagrams:</p>
+  <ul>
+    <li>
+      <strong>Decision node (diamond)</strong> — the flow takes <em>one</em> of multiple paths.
+      The paths are alternatives. Guard conditions make clear which path is taken.
+      Think: if/else.
+    </li>
+    <li>
+      <strong>Fork node (thick bar)</strong> — the flow splits into <em>all</em> outgoing paths
+      simultaneously. All branches execute in parallel. Think: thread.start().
+    </li>
+  </ul>
+  <p>
+    A decision is exclusive: one path is taken, the others are not.
+    A fork is inclusive: all paths are taken at the same time.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-07-b2", "What does a join node wait for?") %}
+  <p>
+    A <strong>join node</strong> (thick bar with multiple incoming flows) waits for
+    <em>all</em> incoming parallel branches to complete before allowing the outgoing flow
+    to continue.
+  </p>
+  <p>
+    This models synchronisation: the process cannot continue until every parallel activity
+    is finished. In implementation terms, this corresponds to a barrier, a join() call
+    on multiple threads, or a Promise.all() in JavaScript.
+  </p>
+  <p>
+    If some branches can finish early and the process should continue as soon as
+    <em>any</em> branch finishes, that is a different pattern — not directly supported by
+    standard activity diagram notation without additional annotations.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-07-b3", "When should you use an activity diagram rather than a sequence diagram?") %}
+  <p>Choose an <strong>activity diagram</strong> when:</p>
+  <ul>
+    <li>You are modelling a business process or workflow (not a technical interaction)</li>
+    <li>The process involves <strong>parallel or concurrent activities</strong></li>
+    <li>The audience includes non-technical stakeholders</li>
+    <li>The process has complex branching logic (multiple decisions)</li>
+    <li>Object-level detail is not needed — you care about steps, not which class executes them</li>
+  </ul>
+  <p>Choose a <strong>sequence diagram</strong> when:</p>
+  <ul>
+    <li>You need to show which specific objects interact and in what order</li>
+    <li>You are specifying an API or interface between components</li>
+    <li>Message parameters and return values are important</li>
+    <li>The audience is developers implementing the interaction</li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("acc-07-b4", "Can activity and sequence diagrams model the same thing?") %}
+  <p>
+    Often, yes — the same use case can be modelled by both. They highlight different aspects:
+  </p>
+  <ul>
+    <li>A <strong>sequence diagram</strong> for a login process shows the exact messages between
+    User, LoginController, and UserDatabase — useful for a developer writing those classes.</li>
+    <li>An <strong>activity diagram</strong> for the same login process shows the steps from a user
+    perspective: enter credentials → validate → check account status → grant or deny access —
+    useful for a business analyst or for specifying test cases.</li>
+  </ul>
+  <p>
+    In a well-designed model, both diagrams exist and are consistent with each other.
+    Unit 8 explores how to check and maintain that consistency.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Video ═══════════════════════════════════════════════ #}
+
+{% call activitySection(4, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Quiz ════════════════════════════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+<p class="mb-3">Select the best answer for each question.</p>
+
+{% call quizMC("quiz-07-a", "In an activity diagram, which symbol splits a single flow into two or more parallel branches?", 2,
+   "A thick horizontal bar is the fork node — it splits one incoming flow into multiple concurrent outgoing flows that execute simultaneously. A diamond shape is a decision node, which splits into alternative (not parallel) paths.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-07-a" value="0"> A diamond shape (decision node)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-a" value="1"> A bullseye (activity final node)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-a" value="2"> A thick horizontal bar (fork node)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-a" value="3"> A rounded rectangle (action node)</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-07-b", "You need to model a checkout process where 'Charge Payment', 'Notify Warehouse', and 'Send Confirmation' happen simultaneously. Which diagram type is most appropriate?", 2,
+   "Activity diagrams model parallel flows naturally using fork and join nodes. Sequence diagrams focus on ordered message exchanges between specific objects and are less suited to showing genuinely parallel processes. A use case diagram shows goals, not processes.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-07-b" value="0"> Sequence diagram — to show message order between objects</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-b" value="1"> Use case diagram — to show the checkout goal</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-b" value="2"> Activity diagram — to show the parallel workflow</label>
+  <label class="quiz-option"><input type="radio" name="quiz-07-b" value="3"> Class diagram — to show the checkout structure</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 6 — Individual / Pair / Group ═══════════════════════════ #}
+
+{% set activityTabs = [
+  {id: "ind",   label: "Individual"},
+  {id: "pair",  label: "Pair"},
+  {id: "group", label: "Group"}
+] %}
+
+{% call activitySection(6, "Activities", "people") %}
+
+{% call tabSet("unit07-activities", activityTabs) %}
+  <div class="tab-pane fade show active" id="unit07-activities-ind" role="tabpanel">
+    <p class="fw-semibold">Individual task</p>
+    <p>
+      Choose a process from your group's system — something with clear steps and at least one
+      decision point. Good candidates: placing an order, registering a new account, handling a
+      support request.
+    </p>
+    <p>Create an activity diagram that includes:</p>
+    <ul>
+      <li>An initial node and an activity final node</li>
+      <li>At least <strong>four action nodes</strong></li>
+      <li>At least <strong>one decision/merge pair</strong></li>
+      <li>At least <strong>one fork/join pair</strong> showing parallel activities</li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit07-activities-pair" role="tabpanel">
+    <p class="fw-semibold">Pair task</p>
+    <p>
+      One partner takes the activity diagram from the individual task. The other partner models
+      the same process as a <strong>sequence diagram</strong> (using the classes from Units 4–5).
+    </p>
+    <p>Compare the two representations:</p>
+    <ul>
+      <li>What information is clearly shown in the activity diagram that is hard to show in the sequence diagram?</li>
+      <li>What information is clearly shown in the sequence diagram that is absent from the activity diagram?</li>
+      <li>Is there any information that is inconsistent between the two?</li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit07-activities-group" role="tabpanel">
+    <p class="fw-semibold">Group task</p>
+    <p>
+      Discuss: for your group's system, which process would you present using an activity
+      diagram if talking to a business analyst, and which would you present using a sequence
+      diagram if talking to a developer implementing a feature?
+    </p>
+    <ul>
+      <li>Choose one process for each scenario and justify the diagram choice.</li>
+      <li>If time allows, produce both representations for one process and compare them side by side.</li>
+    </ul>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+
+<div class="accordion mb-3" id="unit07-review">
+  {% call accordion("rev-07-a", "Summary: What are the key elements of an activity diagram?") %}
+  <ul>
+    <li><strong>Initial node</strong> — filled circle (start)</li>
+    <li><strong>Action node</strong> — rounded rectangle (a step)</li>
+    <li><strong>Decision node</strong> — diamond with guard conditions (choice)</li>
+    <li><strong>Merge node</strong> — diamond joining alternative paths</li>
+    <li><strong>Fork node</strong> — thick bar splitting into parallel branches</li>
+    <li><strong>Join node</strong> — thick bar synchronising parallel branches</li>
+    <li><strong>Activity final node</strong> — bullseye (end of whole activity)</li>
+    <li><strong>Flow final node</strong> — circle with X (end of one branch)</li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("rev-07-b", "Summary: How do activity and sequence diagrams complement each other?") %}
+  <p>
+    Activity diagrams show <em>what happens</em> in a process — the steps, decisions, and flows.
+    Sequence diagrams show <em>how objects implement</em> those steps — the messages that flow
+    between specific classes.
+  </p>
+  <p>
+    Together, they give a complete behavioural picture: the activity diagram provides the
+    process overview; the sequence diagram provides the technical detail. In Unit 8,
+    you will check that these two types of diagram — along with the structural diagrams —
+    are consistent with each other.
+  </p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-08') | url }}">Unit 8: Integrating UML</a> when ready.
+</p>
+{% endcall %}

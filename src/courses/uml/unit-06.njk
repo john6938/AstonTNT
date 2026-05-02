@@ -1,0 +1,442 @@
+---
+unit: 6
+unitTitle: Sequence Diagrams
+title: "Unit 6: Sequence Diagrams"
+description: "Model how objects interact over time — tracing the messages that flow between them to implement a use case."
+objectives:
+  - Identify objects, lifelines, activation bars, and messages in a sequence diagram
+  - Distinguish between synchronous, asynchronous, and return messages
+  - Align a sequence diagram with the class diagram and use cases it models
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, videoEmbed, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Core Input ═════════════════════════════════════════ #}
+
+{% set coreTabs = [
+  {id: "elements", label: "Diagram Elements"},
+  {id: "messages", label: "Message Types"},
+  {id: "frags",    label: "Combined Fragments"}
+] %}
+
+{% call activitySection(1, "Core Input", "book") %}
+<p class="mb-3">Read through each tab before working through the key concepts.</p>
+
+{% call tabSet("unit06-core", coreTabs) %}
+  <div class="tab-pane fade show active" id="unit06-core-elements" role="tabpanel">
+    <p>A sequence diagram has four core elements:</p>
+    <ul>
+      <li>
+        <strong>Object / Participant</strong> — drawn as a labelled box at the top of the diagram.
+        Named as <code>objectName : ClassName</code> or just <code>: ClassName</code>.
+        Objects are the actors and system objects involved in the interaction.
+      </li>
+      <li>
+        <strong>Lifeline</strong> — a vertical dashed line extending downward from each object.
+        Represents the object's existence over the duration of the interaction.
+        Time flows downward along lifelines.
+      </li>
+      <li>
+        <strong>Activation bar</strong> — a narrow rectangle on a lifeline.
+        Shows the period during which an object is actively processing — executing an operation
+        or waiting for a return.
+      </li>
+      <li>
+        <strong>Return message</strong> — a dashed arrow pointing back to the caller.
+        Represents the completion of a called operation, optionally labelled with a return value.
+      </li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit06-core-messages" role="tabpanel">
+    <p>Messages are the arrows that connect lifelines. Three types matter most:</p>
+    <ul>
+      <li>
+        <strong>Synchronous message</strong> — drawn as a solid arrow with a <em>filled arrowhead</em>.
+        The sender waits for the receiver to finish processing before continuing.
+        This is the most common type — it represents a normal method call.
+      </li>
+      <li>
+        <strong>Asynchronous message</strong> — drawn as a solid arrow with an <em>open arrowhead</em>.
+        The sender does not wait — it continues processing immediately after sending.
+        Used for event-driven systems, message queues, or background tasks.
+      </li>
+      <li>
+        <strong>Return message</strong> — drawn as a <em>dashed arrow</em>, usually with an open arrowhead.
+        Represents the reply from a synchronous call. Often labelled with the return value.
+        In simple diagrams it is sometimes omitted if the return is obvious.
+      </li>
+    </ul>
+    <p>
+      Messages are labelled with the operation name and any parameters:
+      <code>enrol(course)</code>, <code>findUser(userId)</code>.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit06-core-frags" role="tabpanel">
+    <p>
+      <strong>Combined fragments</strong> are rectangular frames drawn around part of a sequence
+      diagram to indicate conditional or repeated logic. The operator label appears in the top-left corner.
+    </p>
+    <ul>
+      <li>
+        <strong>alt</strong> — alternative flows (like if/else). Contains multiple operands separated
+        by dashed lines, each with a guard condition in square brackets. Only one operand executes.
+      </li>
+      <li>
+        <strong>opt</strong> — optional flow (like an if without else). The enclosed messages occur
+        only if the guard condition is true.
+      </li>
+      <li>
+        <strong>loop</strong> — repeated execution. A guard condition specifies when the loop
+        continues or stops.
+      </li>
+      <li>
+        <strong>par</strong> — parallel execution. Each operand represents a concurrent flow.
+      </li>
+    </ul>
+    <p>
+      Combined fragments are useful for capturing decision logic without needing to draw a
+      separate activity diagram. Use them sparingly — a very complex sequence diagram usually
+      means the design is overly complicated.
+    </p>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Activity 2 — Key Concepts: Diagram Elements ════════════════════ #}
+
+{% call activitySection(2, "Key Concepts: Diagram Elements", "lightbulb") %}
+<p class="mb-3">Work through each item. Sequence diagrams use precise notation — the details matter.</p>
+<div class="accordion" id="unit06-acc-a">
+
+  {% call accordion("acc-06-a1", "What is the difference between an object box and an actor in a sequence diagram?") %}
+  <p>
+    Both appear as boxes at the top of the diagram, but they represent different things:
+  </p>
+  <ul>
+    <li>
+      <strong>Actor</strong> — the external user or system that initiates the interaction.
+      The same actor from your use case diagram. Often drawn as a stick figure rather than
+      a box to distinguish it visually.
+    </li>
+    <li>
+      <strong>Object</strong> — an instance of a class in your class diagram. Named as
+      <code>name : ClassName</code>. This is the software object receiving and sending messages.
+    </li>
+  </ul>
+  <p>
+    A key consistency check: every class name appearing in a sequence diagram should exist
+    in your class diagram. If it does not, your class diagram is incomplete.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-06-a2", "What does a lifeline represent?") %}
+  <p>
+    A lifeline is the dashed vertical line below each participant's box. It represents that
+    object's <em>existence over time</em> during the interaction.
+  </p>
+  <p>
+    Time flows downward. Messages higher on the diagram happen earlier than messages lower down.
+    This makes the sequence diagram a readable narrative: read it top to bottom to follow the
+    flow of the interaction.
+  </p>
+  <p>
+    An object can be created during an interaction — shown by the message arrow pointing to
+    the object box itself, rather than to the lifeline below it.
+    An object can also be destroyed — shown by a large X at the end of its lifeline.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-06-a3", "What is an activation bar and what does it show?") %}
+  <p>
+    An activation bar (also called an execution specification) is a narrow rectangle drawn
+    on a lifeline. It shows the period during which an object is actively executing.
+  </p>
+  <p>
+    The bar starts when the object receives a call and ends when:
+  </p>
+  <ul>
+    <li>It returns a response to the caller (end of synchronous call)</li>
+    <li>It finishes processing an asynchronous message</li>
+  </ul>
+  <p>
+    Activation bars can be nested — a bar within a bar shows that an object calls itself
+    (recursion) or that a new call arrives while it is still processing a previous one.
+  </p>
+  <p>
+    In simple diagrams, activation bars are sometimes omitted. Include them when the
+    timing and duration of processing is important to communicate.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-06-a4", "How does time flow in a sequence diagram?") %}
+  <p>
+    Time flows strictly <strong>top to bottom</strong>. A message drawn higher on the diagram
+    occurs before one drawn lower. This imposes a clear ordering on the interaction.
+  </p>
+  <p>
+    However, sequence diagrams do not specify exact timings or durations — only ordering.
+    They show <em>what happens before what</em>, not <em>how long each step takes</em>.
+  </p>
+  <p>
+    This is an important limitation: if you need to model timing constraints (e.g. a response
+    must arrive within 500ms), a timing diagram is the appropriate UML diagram, not a
+    sequence diagram.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Key Concepts: Messages and Fragments ═══════════════ #}
+
+{% call activitySection(3, "Key Concepts: Messages and Fragments", "arrow-left-right") %}
+<p class="mb-3">
+  Getting message types right is critical for reading and producing accurate sequence diagrams.
+</p>
+<div class="accordion" id="unit06-acc-b">
+
+  {% call accordion("acc-06-b1", "What is a synchronous message and when does it apply?") %}
+  <p>
+    A <strong>synchronous message</strong> is drawn as a solid arrow with a <em>filled arrowhead</em>.
+    It means: the sending object calls the receiving object and <em>waits</em> for the response
+    before doing anything else.
+  </p>
+  <p>
+    This is the standard model for most software interactions — a method call where the caller
+    blocks until the method returns. The sender's activation bar extends downward until the
+    return message arrives.
+  </p>
+  <p>
+    <strong>Example:</strong> <em>LoginController</em> calls <em>UserDatabase.findUser(userId)</em>
+    and waits for the User object to be returned before proceeding.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-06-b2", "What is an asynchronous message and when does it apply?") %}
+  <p>
+    An <strong>asynchronous message</strong> is drawn as a solid arrow with an <em>open (stick) arrowhead</em>.
+    The sender does not wait for a response — it continues processing immediately.
+  </p>
+  <p>
+    Use this for:
+  </p>
+  <ul>
+    <li>Sending events or notifications (fire and forget)</li>
+    <li>Interactions with message queues or event buses</li>
+    <li>Background thread processing</li>
+    <li>User interface interactions (button press triggers event, UI does not block)</li>
+  </ul>
+  <p>
+    Asynchronous messages do not have a corresponding return arrow — there is no response
+    the sender is waiting for.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-06-b3", "What is a return message and when should you include it?") %}
+  <p>
+    A <strong>return message</strong> is drawn as a <em>dashed arrow</em> pointing back to
+    the original caller. It represents the response from a synchronous call.
+  </p>
+  <p>
+    <strong>When to include it:</strong>
+  </p>
+  <ul>
+    <li>When the return value is important to the logic of the diagram</li>
+    <li>When the interaction would be ambiguous without it</li>
+    <li>In detailed, precise diagrams where completeness matters</li>
+  </ul>
+  <p>
+    <strong>When it is acceptable to omit it:</strong>
+  </p>
+  <ul>
+    <li>When the return is obvious and labelling it adds no information</li>
+    <li>In overview diagrams where clarity of the high-level flow matters more than completeness</li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("acc-06-b4", "What is an alt fragment and how do you read it?") %}
+  <p>
+    An <strong>alt fragment</strong> (alternative) is drawn as a rectangular frame around part
+    of the interaction, with the label <code>alt</code> in the top-left corner.
+    Inside, two or more regions are separated by dashed lines.
+    Each region has a guard condition in square brackets: <code>[condition]</code>.
+  </p>
+  <p>
+    Only the region whose guard condition is true will execute — exactly like an if/else statement.
+  </p>
+  <p><strong>Example:</strong></p>
+  <ul>
+    <li>Region 1: <code>[password matches]</code> → create session, return success</li>
+    <li>Region 2: <code>[password does not match]</code> → return failure message</li>
+  </ul>
+  <p>
+    The <strong>opt fragment</strong> is similar but has only one region — the enclosed messages
+    occur only if the guard is true (no else branch).
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-06-b5", "What is a loop fragment?") %}
+  <p>
+    A <strong>loop fragment</strong> is drawn as a rectangular frame labelled <code>loop</code>.
+    The guard condition specifies the condition under which the loop continues.
+  </p>
+  <p>
+    Often written as <code>loop(minOccurrences, maxOccurrences)</code> or with a condition:
+    <code>loop [more items in cart]</code>.
+  </p>
+  <p>
+    Use loop fragments when the same sub-interaction repeats — for example, processing each
+    item in a shopping cart, or retrying a failed connection up to three times.
+  </p>
+  <p>
+    <strong>Caution:</strong> Heavy use of combined fragments can make a sequence diagram hard
+    to read. If the logic becomes complex, consider whether an activity diagram would communicate
+    the same information more clearly.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Video ═══════════════════════════════════════════════ #}
+
+{% call activitySection(4, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Quiz ════════════════════════════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+<p class="mb-3">Select the best answer for each question.</p>
+
+{% call quizMC("quiz-06-a", "In a sequence diagram, what does a vertical dashed line represent?", 1,
+   "The dashed vertical line is the lifeline — it represents an object's existence over the duration of the interaction. Time flows downward along the lifeline. The object's box sits at the top; the lifeline extends below it.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-06-a" value="0"> A message passed between two objects</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-a" value="1"> The lifeline of an object over the duration of the interaction</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-a" value="2"> A return value sent back to the caller</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-a" value="3"> A decision point in the control flow</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-06-b", "A solid arrow with a filled arrowhead in a sequence diagram indicates:", 2,
+   "A filled arrowhead marks a synchronous message — the sender waits for the receiver to finish processing before continuing. An open arrowhead marks an asynchronous message (sender does not wait). A dashed arrow marks a return message.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-06-b" value="0"> A return message from the receiver to the caller</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-b" value="1"> An asynchronous message (sender does not wait)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-b" value="2"> A synchronous message (sender waits for response)</label>
+  <label class="quiz-option"><input type="radio" name="quiz-06-b" value="3"> Object creation during the interaction</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 6 — Individual / Pair / Group ═══════════════════════════ #}
+
+{% set activityTabs = [
+  {id: "ind",   label: "Individual"},
+  {id: "pair",  label: "Pair"},
+  {id: "group", label: "Group"}
+] %}
+
+{% call activitySection(6, "Activities", "people") %}
+
+{% call tabSet("unit06-activities", activityTabs) %}
+  <div class="tab-pane fade show active" id="unit06-activities-ind" role="tabpanel">
+    <p class="fw-semibold">Individual task</p>
+    <p>
+      Choose one use case from your shared diagram (Unit 3) and model it as a sequence diagram.
+      A good choice is a login or booking flow with a clear sequence of steps.
+    </p>
+    <p>Your diagram must include:</p>
+    <ul>
+      <li>At least <strong>three participants</strong> (one actor + two or more classes from your class diagram)</li>
+      <li>At least <strong>four messages</strong>, correctly labelled with operation names</li>
+      <li>At least <strong>one return message</strong></li>
+      <li>Activation bars on each object during processing</li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit06-activities-pair" role="tabpanel">
+    <p class="fw-semibold">Pair task</p>
+    <p>Exchange sequence diagrams and check the following:</p>
+    <ul>
+      <li>
+        <strong>Class consistency:</strong> Does every class name in the sequence diagram exist
+        in the shared class diagram from Units 4–5? List any that are missing.
+      </li>
+      <li>
+        <strong>Message logic:</strong> Does the order of messages make sense? Is there any step
+        that seems to be missing or in the wrong position?
+      </li>
+      <li>
+        <strong>Message types:</strong> Are synchronous and asynchronous messages used correctly?
+        Are return messages included where they are needed?
+      </li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit06-activities-group" role="tabpanel">
+    <p class="fw-semibold">Group task</p>
+    <p>
+      Compare all individual sequence diagrams for the same use case.
+    </p>
+    <ul>
+      <li>Where do the diagrams differ? Are any differences due to design choices or modelling errors?</li>
+      <li>
+        Identify any classes that appear in a sequence diagram but are missing from the shared
+        class diagram. Add them to the class diagram now.
+      </li>
+      <li>
+        Agree on a single shared sequence diagram for this use case. It will be used in Unit 8
+        as part of the integrated model.
+      </li>
+    </ul>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+
+<div class="accordion mb-3" id="unit06-review">
+  {% call accordion("rev-06-a", "Summary: What are the key elements of a sequence diagram?") %}
+  <ul>
+    <li><strong>Object / Participant box</strong> — the actor or class instance at the top</li>
+    <li><strong>Lifeline</strong> — dashed vertical line representing the object's existence over time</li>
+    <li><strong>Activation bar</strong> — narrow rectangle showing active processing</li>
+    <li><strong>Synchronous message</strong> — solid arrow, filled arrowhead (sender waits)</li>
+    <li><strong>Asynchronous message</strong> — solid arrow, open arrowhead (sender continues)</li>
+    <li><strong>Return message</strong> — dashed arrow back to caller</li>
+    <li><strong>Combined fragments</strong> — frames for alt, opt, loop, par logic</li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("rev-06-b", "Summary: Why must a sequence diagram be consistent with the class diagram?") %}
+  <p>
+    A sequence diagram shows objects of classes interacting. If a class appears in a sequence
+    diagram but not in the class diagram, the structural model is incomplete — there is no
+    specification of what that class contains or how it relates to others.
+  </p>
+  <p>
+    Consistency between diagrams is not just good practice — it is a requirement for the models
+    to be usable by a development team. In Unit 8 we will examine this integration systematically.
+  </p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-07') | url }}">Unit 7: Activity Diagrams</a> when ready.
+</p>
+{% endcall %}

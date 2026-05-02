@@ -1,0 +1,689 @@
+---
+unit: 10
+unitTitle: Critical Analysis
+title: "Unit 10: Critical Analysis of Software Systems"
+description: "Develop the evaluative judgement to assess software designs — applying quality criteria, identifying weaknesses with evidence, and debating alternative approaches."
+objectives:
+  - Apply quality criteria (maintainability, scalability, usability, reliability, security) to evaluate a software design
+  - Produce a justified critique of a UML model, citing specific elements as evidence
+  - Engage in structured debate about alternative design decisions
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, videoEmbed, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Core Input ═════════════════════════════════════════ #}
+
+{% set coreTabs = [
+  {id: "criteria",  label: "Quality Criteria"},
+  {id: "framework", label: "Analytical Framework"},
+  {id: "practice",  label: "Evaluation in Practice"}
+] %}
+
+{% call activitySection(1, "Core Input", "book") %}
+<p class="mb-3">Read through each tab before working through the key concepts.</p>
+
+{% call tabSet("unit10-core", coreTabs) %}
+  <div class="tab-pane fade show active" id="unit10-core-criteria" role="tabpanel">
+    <p>
+      A software design can be evaluated against five core quality criteria:
+    </p>
+    <ul>
+      <li>
+        <strong>Maintainability</strong> — how easily can the system be changed? A maintainable
+        design has high cohesion, low coupling, and clear separation of concerns. Changes can
+        be made safely and in isolation.
+      </li>
+      <li>
+        <strong>Scalability</strong> — can the system handle growth? In load (more users, more data),
+        in scope (new features), and in team size (more developers working on it simultaneously)?
+      </li>
+      <li>
+        <strong>Usability</strong> — does the design support the users' actual needs? Are the
+        right use cases implemented? Is the interaction model appropriate for the users' context?
+      </li>
+      <li>
+        <strong>Reliability</strong> — does the design account for failure? Are error conditions
+        modelled? Are there points of failure that could bring down the whole system?
+      </li>
+      <li>
+        <strong>Security</strong> — at a design level, does the model reflect appropriate
+        authorisation (who can do what), data protection (what is kept private), and
+        separation of concerns (no single point of compromise)?
+      </li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit10-core-framework" role="tabpanel">
+    <p>
+      A structured analytical critique follows four steps:
+    </p>
+    <ol>
+      <li>
+        <strong>Describe</strong> — state what you are evaluating. Name the specific element,
+        relationship, or pattern you are examining. Be precise.
+      </li>
+      <li>
+        <strong>Evaluate</strong> — apply one or more quality criteria to it. Does this element
+        support or undermine maintainability, scalability, usability, reliability, or security?
+      </li>
+      <li>
+        <strong>Justify</strong> — provide evidence. Why does this element raise the concern
+        you have identified? Reference specific notation, multiplicity, relationships, or
+        the number of dependencies.
+      </li>
+      <li>
+        <strong>Suggest</strong> — propose a specific, feasible improvement. Not "make it better"
+        — but "split this class into X and Y, assigning responsibility Z to Y".
+      </li>
+    </ol>
+    <p>
+      A critique that stops at step 2 is an observation. Only at step 4 does it become
+      analysis.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit10-core-practice" role="tabpanel">
+    <p>
+      In practice, evaluating a software design requires looking for specific signals:
+    </p>
+    <ul>
+      <li>
+        <strong>Classes with many associations</strong> — potential god class or high coupling.
+        Count the associations. More than 5–7 from a single class warrants scrutiny.
+      </li>
+      <li>
+        <strong>Use cases with no error flow</strong> — what happens when the user enters invalid
+        data, or the network fails? A sequence diagram that only models the happy path is incomplete.
+      </li>
+      <li>
+        <strong>Missing actors</strong> — a use case diagram that only shows end users may be
+        missing system actors (email services, payment gateways) or administrative roles.
+      </li>
+      <li>
+        <strong>Deep inheritance hierarchies</strong> — more than two or three levels of
+        inheritance often signals that inheritance is being overused. Consider composition.
+      </li>
+      <li>
+        <strong>Absent non-functional requirements</strong> — does the design reflect any NFRs?
+        Performance, security, and reliability leave traces in the class structure if they have
+        been considered.
+      </li>
+    </ul>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Activity 2 — Key Concepts: Quality Criteria ════════════════════ #}
+
+{% call activitySection(2, "Key Concepts: Quality Criteria", "bar-chart") %}
+<p class="mb-3">
+  Each quality criterion applies differently to different parts of a design.
+  Work through each item and think about how it would be assessed in a class diagram,
+  a use case diagram, or a sequence diagram.
+</p>
+<div class="accordion" id="unit10-acc-a">
+
+  {% call accordion("acc-10-a1", "What is maintainability and how is it assessed in a class diagram?") %}
+  <p>
+    <strong>Maintainability</strong> is the ease with which a system can be modified — to fix bugs,
+    add features, or adapt to changing requirements.
+  </p>
+  <p>In a class diagram, signs of good maintainability:</p>
+  <ul>
+    <li>Classes with clearly bounded responsibilities (high cohesion)</li>
+    <li>Few and purposeful associations (low coupling)</li>
+    <li>Encapsulated attributes (private visibility) with controlled access via operations</li>
+    <li>Use of inheritance only where justified — not as a shortcut</li>
+  </ul>
+  <p>Signs of poor maintainability:</p>
+  <ul>
+    <li>God classes with many attributes, operations, and associations</li>
+    <li>Bidirectional associations between many classes (high coupling)</li>
+    <li>Direct access to attributes across class boundaries</li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("acc-10-a2", "What is scalability and what does it mean for a software design?") %}
+  <p>
+    <strong>Scalability</strong> is the ability of a system to handle increased demand without
+    degradation in performance or correctness.
+  </p>
+  <p>Three types of scalability matter:</p>
+  <ul>
+    <li>
+      <strong>Load scalability</strong> — can the system handle more users or more data?
+      Class design issues include: shared mutable state, god classes that become bottlenecks,
+      insufficient separation between data access and business logic.
+    </li>
+    <li>
+      <strong>Feature scalability</strong> — can new features be added without redesigning
+      the core? Designs with low coupling and clear abstractions scale well; tightly coupled
+      designs resist extension.
+    </li>
+    <li>
+      <strong>Team scalability</strong> — can multiple developers work on the system without
+      conflicts? High coupling means many developers touching the same class; low coupling
+      allows independent parallel development.
+    </li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("acc-10-a3", "What is usability at the design level?") %}
+  <p>
+    Usability is usually associated with user interface design, but it has a place in UML
+    analysis too — at the level of use case and requirements.
+  </p>
+  <p>Usability questions to ask of a use case diagram:</p>
+  <ul>
+    <li>Are all user goals represented as use cases?</li>
+    <li>Is the number of steps to achieve a common goal reasonable?</li>
+    <li>Are optional features («extend») used to keep the core flow simple?</li>
+    <li>Are there any mandatory steps that users would find unnecessary?</li>
+  </ul>
+  <p>
+    A system that is functionally correct but requires ten steps to perform a simple task
+    has a usability problem that is visible — and solvable — at the design stage.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-10-a4", "What is reliability at the design level?") %}
+  <p>
+    <strong>Reliability</strong> concerns a system's ability to perform correctly under
+    expected and unexpected conditions. At the design level, this means thinking about
+    failure modes.
+  </p>
+  <p>In a sequence diagram, signs of reliability awareness:</p>
+  <ul>
+    <li><code>alt</code> fragments modelling error conditions (not just the happy path)</li>
+    <li>Explicit handling of null responses, timeouts, and service failures</li>
+    <li>No single object handling every interaction (a single point of failure)</li>
+  </ul>
+  <p>
+    A sequence diagram that only models the "everything goes right" scenario is incomplete.
+    Real systems fail. A design that does not model failure has not been properly analysed.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-10-a5", "What is security at the design level?") %}
+  <p>
+    Security in software design concerns two primary concerns: <strong>authorisation</strong>
+    (who is allowed to do what) and <strong>data protection</strong> (what information is
+    kept private).
+  </p>
+  <p>In a use case diagram:</p>
+  <ul>
+    <li>Are actor permissions correctly modelled? Can a Guest perform use cases reserved for a Registered User?</li>
+    <li>Are administrative use cases separated from user-facing ones?</li>
+  </ul>
+  <p>In a class diagram:</p>
+  <ul>
+    <li>Are sensitive attributes (passwords, payment data) private?</li>
+    <li>Is there a clear separation between authentication/authorisation logic and business logic?</li>
+  </ul>
+  <p>
+    Security is not an add-on — it is visible in the structure of a well-designed model.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Key Concepts: How to Analyse a Design ══════════════ #}
+
+{% call activitySection(3, "Key Concepts: How to Analyse a Design", "search") %}
+<p class="mb-3">
+  Analysis is a skill. Work through these items to understand what separates a good critique
+  from a superficial one.
+</p>
+<div class="accordion" id="unit10-acc-b">
+
+  {% call accordion("acc-10-b1", "What does an analytical critique look like in practice?") %}
+  <p>
+    Compare these two critiques of the same class diagram element:
+  </p>
+  <div class="p-3 mb-2" style="background:#1a1a1a; border-radius:0.375rem; border-left:3px solid #ea868f;">
+    <p class="mb-1 small" style="color:#ea868f; font-weight:bold;">Descriptive (not analytical):</p>
+    <p class="mb-0 small" style="color:#ccc;">
+      "The SystemManager class has many associations. This seems complex."
+    </p>
+  </div>
+  <div class="p-3" style="background:#1a1a1a; border-radius:0.375rem; border-left:3px solid #75b798;">
+    <p class="mb-1 small" style="color:#75b798; font-weight:bold;">Analytical:</p>
+    <p class="mb-0 small" style="color:#ccc;">
+      "The SystemManager class has associations to nine other classes and twenty-three operations.
+      This indicates low cohesion — the class is responsible for authentication, logging,
+      report generation, and user management simultaneously. This will reduce maintainability:
+      any change to the reporting logic risks breaking unrelated authentication code.
+      I recommend extracting ReportService, AuthService, and AuditLogger as separate classes,
+      each with a single responsibility."
+    </p>
+  </div>
+  <p class="mt-3">
+    The analytical version names the element, cites the evidence (nine associations, twenty-three
+    operations), applies the criterion (maintainability / cohesion), and proposes a specific
+    improvement.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-10-b2", "What is the describe-evaluate-justify-suggest framework?") %}
+  <p>This four-step structure ensures a critique is complete:</p>
+  <ul>
+    <li>
+      <strong>Describe</strong> — name the specific element you are examining.
+      <em>"The Enrolment class has a composition relationship with Student."</em>
+    </li>
+    <li>
+      <strong>Evaluate</strong> — apply a quality criterion.
+      <em>"This raises a reliability concern."</em>
+    </li>
+    <li>
+      <strong>Justify</strong> — explain why, with evidence.
+      <em>"If a Student record is deleted, all associated Enrolment records are destroyed too.
+      This could result in unintentional data loss if a student account is deactivated rather
+      than deleted."</em>
+    </li>
+    <li>
+      <strong>Suggest</strong> — propose a specific improvement.
+      <em>"Change the relationship to aggregation, and add a status attribute to Student
+      (active/inactive) to handle deactivation without deletion."</em>
+    </li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("acc-10-b3", "What counts as evidence in a design critique?") %}
+  <p>
+    Evidence in a design critique is specific and observable — something another person
+    looking at the same diagram would also see.
+  </p>
+  <p><strong>Valid evidence:</strong></p>
+  <ul>
+    <li>The number of associations from a single class</li>
+    <li>The number of operations in a class</li>
+    <li>The multiplicity values on an association</li>
+    <li>The absence of an error path in a sequence diagram</li>
+    <li>A missing class or operation</li>
+    <li>The direction and type of a relationship (composition vs aggregation)</li>
+  </ul>
+  <p><strong>Not valid evidence:</strong></p>
+  <ul>
+    <li>"It looks complicated" — this is an impression, not evidence</li>
+    <li>"I would have done it differently" — this is preference, not analysis</li>
+    <li>"The names are confusing" — this is valid only if you explain <em>why</em> a specific name is misleading</li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("acc-10-b4", "What are common pitfalls in design evaluation?") %}
+  <p><strong>Vague criticism:</strong> Stating that a design "has problems" or "could be improved"
+  without identifying the specific element, the criterion violated, or the improvement.
+  This is the most common weakness in student critiques.</p>
+  <p><strong>Criticism without suggestion:</strong> Identifying a problem but not proposing a
+  solution. A good critique closes the loop: here is the problem, here is what to do about it.</p>
+  <p><strong>Unrealistic suggestions:</strong> Proposing improvements that ignore the constraints
+  of the project (e.g. "rebuild from scratch", or suggestions that violate stated requirements).
+  Suggestions should be targeted, feasible, and justified.</p>
+  <p><strong>Praising without justification:</strong> "The class diagram is well-structured" is not
+  an evaluation. If something is done well, cite what it is and why it works.</p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Video ═══════════════════════════════════════════════ #}
+
+{% call activitySection(4, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Quiz ════════════════════════════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+<p class="mb-3">Select the best answer for each question.</p>
+
+{% call quizMC("quiz-10-a", "Which quality criterion asks: 'If the number of users doubles, will the system still perform acceptably?'", 3,
+   "Scalability concerns a system's ability to handle increased load — more users, more data, or higher frequency of requests — without degradation. It is distinct from reliability (consistent behaviour under normal load) and maintainability (ease of change).") %}
+  <label class="quiz-option"><input type="radio" name="quiz-10-a" value="0"> Maintainability</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-a" value="1"> Usability</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-a" value="2"> Reliability</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-a" value="3"> Scalability</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-10-b", "A class has 25 methods, 15 attributes, and associations to 12 other classes. Which quality concern does this most directly raise?", 2,
+   "A class with many methods, attributes, and dependencies has low cohesion and high coupling — the hallmarks of a god class. This is a maintainability concern: the class is too large to understand or test safely, and changes to any part of it risk affecting many others.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-10-b" value="0"> Scalability — the class will not handle high traffic well</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-b" value="1"> Security — too many associations expose sensitive data</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-b" value="2"> Maintainability — the class has low cohesion and high coupling</label>
+  <label class="quiz-option"><input type="radio" name="quiz-10-b" value="3"> Usability — the interface will be too complex for users</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 6 — Question Bank ══════════════════════════════════════ #}
+
+{% call activitySection(6, "Question Bank", "question-circle") %}
+<p class="mb-3">
+  Test your knowledge of key UML and software engineering concepts from across the course.
+  Questions are drawn randomly from a bank of 44 items — once every question has appeared,
+  the set resets automatically.
+</p>
+
+<div id="umlqb">
+  <div id="umlqb-panel" style="background:#1a1a1a; border:1px solid #333; border-radius:0.5rem; padding:1.25rem; min-height:6rem;">
+    <p id="umlqb-badge" style="font-size:0.7rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#666; margin-bottom:0.6rem;">Click New Question to begin</p>
+    <p id="umlqb-q" class="fw-semibold mb-3" style="color:#ddd; font-size:0.95rem; min-height:1.4rem;"></p>
+    <div id="umlqb-opts"></div>
+  </div>
+
+  <div class="d-flex gap-2 mt-3 mb-3">
+    <button class="btn btn-sm btn-outline-secondary" onclick="umlqbNext()">
+      <i class="bi bi-shuffle"></i> New Question
+    </button>
+    <button id="umlqb-check-btn" class="btn btn-sm" onclick="umlqbCheck()"
+            style="background:#ff8c00; border:none; color:#000; font-weight:600; display:none;">
+      <i class="bi bi-check2"></i> Check Answer
+    </button>
+  </div>
+
+  <div id="umlqb-feedback" style="display:none;" class="mb-3"></div>
+
+  <p class="small mb-0" style="color:#555;">
+    <i class="bi bi-info-circle"></i>
+    <span id="umlqb-counter">0 of 44 questions seen this session</span>
+  </p>
+</div>
+
+<script>
+(function () {
+  var Q = [
+    {t:'Define the term', q:'Define: Actor', c:1, e:'An actor is any entity outside the system boundary that interacts with the system — a human user, an external system, or a time trigger. Actors sit outside the boundary rectangle in a use case diagram.',
+     o:['A class that performs actions inside the system','Any entity outside the system boundary that interacts with it','A use case that triggers another via an include relationship','A database record representing a user']},
+    {t:'Define the term', q:'Define: Use case', c:2, e:'A use case represents a goal that an actor wants to achieve using the system. It is drawn as an ellipse and named with a verb-noun phrase such as Submit Assignment or Book Room.',
+     o:['A test scenario for validating software','A method call shown in a sequence diagram','A goal that an actor wants to achieve using the system','A class that handles a specific system function']},
+    {t:'Define the term', q:'Define: Multiplicity', c:1, e:'Multiplicity specifies how many instances of one class can be associated with instances of another. It is written at each end of an association line, e.g. 1..*, 0..1.',
+     o:['The number of methods in a class','A constraint specifying how many instances of one class can be associated with instances of another','The number of actors permitted in a use case diagram','A type of inheritance relationship']},
+    {t:'Define the term', q:'Define: Cohesion', c:2, e:'Cohesion measures how tightly a class is focused on a single, well-defined responsibility. High cohesion means the class does one thing well. Low cohesion means it handles too many unrelated concerns.',
+     o:['The degree to which one class depends on another','The number of associations a class has with others','The degree to which a class is focused on a single, well-defined responsibility','A type of relationship between parent and child classes']},
+    {t:'Define the term', q:'Define: Coupling', c:0, e:'Coupling measures how much one class depends on others. High coupling means changes in one class force changes elsewhere. Low coupling is desirable — it keeps classes independently modifiable.',
+     o:['The degree to which one class depends on another','The focus of a class on a single responsibility','The number of operations defined in a class','A relationship where parts cannot exist without the whole']},
+    {t:'Define the term', q:'Define: Lifeline', c:1, e:'A lifeline is the vertical dashed line below each participant box in a sequence diagram. It represents the object\'s existence over the duration of the interaction. Time flows downward.',
+     o:['The duration of a software project timeline','A vertical dashed line representing an object\'s existence during an interaction','A message passed between two objects in a sequence diagram','The activation bar drawn on top of a lifeline']},
+    {t:'Define the term', q:'Define: Composition', c:2, e:'Composition is a strong whole-part relationship. The parts cannot exist without the whole — if the whole is destroyed, the parts are destroyed with it. Drawn with a filled diamond at the whole end.',
+     o:['A relationship where a child class inherits from a parent','A weak whole-part relationship where parts can exist independently','A strong whole-part relationship where parts cannot exist without the whole','A relationship where two classes share the same interface']},
+    {t:'Define the term', q:'Define: Aggregation', c:1, e:'Aggregation is a weak whole-part relationship. The parts can exist independently of the whole. Drawn with a hollow diamond at the whole end. Example: a Library aggregates Books — Books survive if the Library is dissolved.',
+     o:['A strong whole-part relationship where parts are destroyed with the whole','A weak whole-part relationship where parts can exist independently of the whole','A relationship expressing that one class is a type of another','A collection of use cases defined for one actor']},
+    {t:'Define the term', q:'Define: Traceability', c:1, e:'Traceability is the ability to link each design element back to a requirement that justifies it, and to follow each requirement forward to the elements that implement it. A traceability matrix makes gaps visible.',
+     o:['The ability to debug software at runtime','The ability to link each design element back to the requirement that justifies it','A technique for testing sequence diagrams against class diagrams','The process of drawing UML diagrams in a fixed sequence']},
+    {t:'Define the term', q:'Define: God class', c:2, e:'A god class is one that has taken on too many responsibilities — many attributes, many operations, and associations to most other classes. It violates the Single Responsibility Principle and creates low cohesion and high coupling.',
+     o:['A class with no attributes or operations','A class that inherits from many different parent classes','A class that has taken on too many responsibilities, resulting in low cohesion and high coupling','A class that contains only static utility methods']},
+    {t:'Define the term', q:'Define: Synchronous message', c:1, e:'A synchronous message is drawn with a filled arrowhead. The sender waits for the receiver to finish processing before continuing. This models a standard method call where the caller blocks until the method returns.',
+     o:['A message where the sender does not wait for a response','A message where the sender waits for the receiver to finish before continuing','A return value sent back to the original caller','A message triggered by a scheduled timer event']},
+    {t:'Define the term', q:'Define: Fork node', c:1, e:'A fork node is a thick bar in an activity diagram that splits one incoming flow into multiple parallel outgoing branches that execute simultaneously. Every fork must be matched by a join node.',
+     o:['A diamond shape representing a decision point in the flow','A thick bar that splits a single flow into multiple parallel branches','A node that terminates a single branch without ending the activity','A merge point where alternative paths reconverge']},
+    {t:'Define the term', q:'Define: System boundary', c:1, e:'The system boundary is the rectangle in a use case diagram that defines what is inside the system and what is outside. Actors sit outside; use cases sit inside. It represents the agreed scope of the system.',
+     o:['The hardware and network limits of the deployed system','The rectangle in a use case diagram that defines the scope of the system','The maximum number of actors permitted in a single diagram','The interface contract between two external systems']},
+    {t:'Define the term', q:'Define: Design rationale', c:1, e:'Design rationale documents why a decision was made — the options considered, the criteria used to evaluate them, the trade-offs accepted, and the justification for the chosen option.',
+     o:['A measure of overall code complexity','Documentation explaining why a design decision was made, including alternatives and trade-offs','A diagram showing the high-level system architecture','The original set of requirements that drove the design']},
+    {t:'Define the term', q:'Define: Maintainability', c:1, e:'Maintainability is the ease with which a system can be modified to fix bugs, add features, or adapt to changed requirements. High cohesion and low coupling support maintainability.',
+     o:['The ability of a system to handle increased user load','The ease with which a system can be modified safely','The degree to which users find the system easy to operate','The system\'s ability to recover from failures automatically']},
+    {t:'Define the term', q:'Define: Scalability', c:1, e:'Scalability is the ability of a system to handle increased demand — more users, more data, or new features — without degradation in performance or correctness.',
+     o:['The ease with which a system can be changed safely','The ability of a system to handle increased demand without degradation','The degree to which the system meets the stated user needs','The system\'s resistance to security threats and attacks']},
+    {t:'Define the term', q:'Define: «include» relationship', c:1, e:'An «include» relationship means the base use case always triggers the included use case as a mandatory sub-flow. Drawn as a dashed arrow from base to included, labelled «include».',
+     o:['An optional extension that occurs only under certain conditions','A relationship where one use case always triggers another as a mandatory sub-flow','A generalisation between two actors in a use case diagram','A dependency between two classes in a class diagram']},
+    {t:'Define the term', q:'Define: «extend» relationship', c:2, e:'An «extend» relationship adds optional behaviour to a base use case — but only under a specified condition. Drawn as a dashed arrow from the extending use case to the base use case, labelled «extend».',
+     o:['A relationship where one use case always triggers another','A generalisation between two use cases in the same system','An optional extension to a base use case that occurs only under a specified condition','An association between an actor and a use case in the boundary']},
+    {t:'Define the term', q:'Define: Activation bar', c:1, e:'An activation bar is a narrow rectangle on a lifeline in a sequence diagram. It shows the period during which an object is actively processing — executing an operation or waiting for a return value.',
+     o:['A horizontal message arrow connecting two lifelines','A narrow rectangle on a lifeline showing the period of active processing','A thick bar representing a parallel fork in an activity diagram','The name compartment at the top of a UML class box']},
+    {t:'Define the term', q:'Define: Non-functional requirement', c:2, e:'A non-functional requirement (NFR) defines a quality or constraint on how well the system performs its functions — performance, security, usability, reliability, etc. — rather than what it does.',
+     o:['A requirement that has been rejected by the stakeholders','A specific feature or capability the system must provide','A quality or constraint on how well the system performs its functions','A requirement that applies only to the user interface layer']},
+    {t:'Define the term', q:'Define: Inheritance', c:0, e:'Inheritance (generalisation) expresses an is-a relationship. The child class inherits all attributes and operations of the parent and can add its own. Drawn with a solid line and hollow triangle arrowhead pointing to the parent.',
+     o:['An is-a relationship where a child class inherits attributes and operations from a parent','A strong whole-part relationship between two classes','A dependency between a use case and a shared sub-flow','A weak association between two unrelated classes']},
+    {t:'Define the term', q:'Define: Combined fragment', c:1, e:'A combined fragment is a rectangular frame drawn around part of a sequence diagram to indicate conditional or repeated logic. The operator (alt, opt, loop, par) appears in the top-left corner.',
+     o:['A swimlane partition in an activity diagram','A rectangular frame in a sequence diagram showing conditional or repeated logic','A group of related use cases within the system boundary','A package in a class diagram containing related classes']},
+    {t:'Define the term', q:'Define: Scope creep', c:2, e:'Scope creep is the gradual expansion of a project beyond its original agreed scope, typically caused by vague requirements or unchecked stakeholder requests. A clearly defined system boundary helps prevent it.',
+     o:['A design smell caused by too many inheritance levels','A testing failure that appears only in production environments','The gradual expansion of a project beyond its originally agreed scope','A form of coupling where two classes share too many associations']},
+    {t:'Define the term', q:'Define: Feature envy', c:1, e:'Feature envy is a design smell where a class has operations that mostly access data from another class. This suggests those operations belong in the other class.',
+     o:['A user requirement that is desirable but not mandatory','A design smell where a class uses mostly data from another class','A use case that extends a base use case with optional behaviour','An over-engineered inheritance hierarchy']},
+
+    // TYPE 2: Identify the term from the definition
+    {t:'Identify the term', q:'Which term matches this definition? "A role outside the system boundary that interacts with the system."', c:1, e:'An actor is anything outside the system boundary that interacts with it — a human user, external system, or time trigger. The term stakeholder is broader and includes people who do not directly use the system.',
+     o:['Use case','Actor','Stakeholder','System administrator']},
+    {t:'Identify the term', q:'Which term matches this definition? "The degree to which a class is tightly focused on a single, well-defined responsibility."', c:2, e:'Cohesion measures single-purpose focus. High cohesion means the class does one thing well. Coupling, by contrast, measures dependency between classes.',
+     o:['Coupling','Abstraction','Cohesion','Encapsulation']},
+    {t:'Identify the term', q:'Which term matches this definition? "A dashed arrow in a sequence diagram representing the completion of a synchronous call."', c:2, e:'Return messages are drawn as dashed arrows pointing back to the original caller. They represent the response from a synchronous operation and can be labelled with the return value.',
+     o:['Asynchronous message','Create message','Return message','Self-call']},
+    {t:'Identify the term', q:'Which term matches this definition? "A thick bar in an activity diagram that waits for all parallel branches to complete before continuing."', c:3, e:'A join node synchronises all incoming parallel flows. Every parallel path must complete before the outgoing flow can proceed. It is the counterpart of the fork node.',
+     o:['Decision node','Fork node','Flow final node','Join node']},
+    {t:'Identify the term', q:'Which term matches this definition? "A table that maps each requirement to the design artefacts that implement it."', c:1, e:'A traceability matrix makes gaps immediately visible — a requirement with no corresponding design element will not be built. It also supports impact analysis when requirements change.',
+     o:['Requirements specification','Traceability matrix','Integration checklist','Design rationale document']},
+    {t:'Identify the term', q:'Which term matches this definition? "A class with many attributes, operations, and associations to most other classes."', c:2, e:'A god class violates the Single Responsibility Principle. It becomes a bottleneck — hard to understand, test, and change. The fix is to extract focused classes from it.',
+     o:['Abstract class','Base class','God class','Utility class']},
+    {t:'Identify the term', q:'Which term matches this definition? "A software process model that uses short iterative development cycles and welcomes changing requirements."', c:2, e:'Agile is built around short iterations (sprints), continuous stakeholder collaboration, and working software delivered frequently. Waterfall is sequential and resists change once phases are closed.',
+     o:['Waterfall','Spiral','Agile','V-Model']},
+    {t:'Identify the term', q:'Which term matches this definition? "A rectangular frame in a sequence diagram labelled with an operator such as alt, opt, or loop."', c:1, e:'Combined fragments are used to show conditional and repeated logic within a sequence diagram. The operator in the top-left corner defines the semantics: alt = alternatives, opt = optional, loop = repeated.',
+     o:['System boundary','Combined fragment','Swimlane','Activation block']},
+    {t:'Identify the term', q:'Which term matches this definition? "The ability of a system to handle growth in load, features, or development team size."', c:3, e:'Scalability covers three dimensions: load (more users/data), feature (new functionality without redesign), and team (multiple developers working independently). Low coupling is essential for all three.',
+     o:['Reliability','Maintainability','Usability','Scalability']},
+    {t:'Identify the term', q:'Which term matches this definition? "Documentation explaining why a design decision was made, including options considered and trade-offs accepted."', c:1, e:'Design rationale captures the reasoning behind decisions — not just what was decided, but why. It prevents future maintainers from unknowingly revisiting decisions already made.',
+     o:['System specification','Design rationale','Requirements document','Test plan']},
+    {t:'Identify the term', q:'Which term matches this definition? "A constraint specifying how many instances of one class can be associated with instances of another."', c:2, e:'Multiplicity is written at each end of an association line. Common values: 1 (exactly one), 0..1 (optional), 1..* (one or more), 0..* or * (zero or more).',
+     o:['Navigability','Cardinality','Multiplicity','Association degree']},
+
+    // TYPE 3: Key difference between A and B
+    {t:'Explain the difference', q:'What is the key difference between «include» and «extend»?', c:1, e:'«include» models mandatory behaviour — the sub-flow always runs. «extend» models optional behaviour — it runs only when a specific condition is met. The arrow direction also differs: «include» points from base to included; «extend» points from extending to base.',
+     o:['«include» is used between actors; «extend» is used between use cases','«include» models mandatory sub-flows; «extend» models optional behaviour under a condition','«include» adds optional behaviour; «extend» adds mandatory sub-flows','There is no functional difference — they are interchangeable in most diagrams']},
+    {t:'Explain the difference', q:'What is the key difference between aggregation and composition?', c:2, e:'In aggregation, parts can exist independently of the whole (hollow diamond). In composition, parts cannot exist without the whole — destroying the whole destroys the parts (filled diamond). The diamond is at the whole end in both cases.',
+     o:['Aggregation uses a filled diamond; composition uses a hollow diamond','Aggregation is used for inheritance; composition is used for associations','In aggregation, parts can exist independently; in composition, they cannot exist without the whole','Aggregation uses a dashed line; composition uses a solid line']},
+    {t:'Explain the difference', q:'What is the key difference between a decision node and a fork node in an activity diagram?', c:1, e:'A decision node (diamond) sends the flow down exactly one outgoing path based on a guard condition — it is a choice. A fork node (thick bar) sends the flow down all outgoing paths simultaneously — it starts parallel execution.',
+     o:['A decision node is round; a fork node is rectangular','A decision node chooses one path; a fork node starts all paths simultaneously in parallel','A decision node starts parallel flows; a fork node selects a single path','They represent the same concept with different visual styles in different versions of UML']},
+    {t:'Explain the difference', q:'What is the key difference between cohesion and coupling?', c:2, e:'Cohesion and coupling are related but distinct. Cohesion is an internal measure — how focused is this class? Coupling is an external measure — how much does this class depend on others? The goal is high cohesion AND low coupling.',
+     o:['Cohesion measures class size; coupling measures the number of methods','Cohesion and coupling are the same concept described from different perspectives','Cohesion measures how focused a class is; coupling measures how much it depends on other classes','Cohesion applies to methods; coupling applies only to classes']},
+    {t:'Explain the difference', q:'What is the key difference between a synchronous and an asynchronous message?', c:1, e:'A synchronous message (filled arrowhead) causes the sender to wait for a response before continuing — like a standard method call. An asynchronous message (open arrowhead) lets the sender continue immediately, without waiting.',
+     o:['A synchronous message is drawn as a dashed arrow; an asynchronous message is solid','A synchronous message sender waits for a response; an asynchronous sender continues immediately','Synchronous messages always carry a labelled return value; asynchronous messages never do','There is no visual difference — only the label on the arrow distinguishes them']},
+    {t:'Explain the difference', q:'What is the key difference between an activity diagram and a sequence diagram?', c:1, e:'An activity diagram models processes and workflows — the steps, decisions, and flows — without necessarily specifying which objects perform them. A sequence diagram models interactions between specific named objects and the messages they exchange.',
+     o:['Activity diagrams show object interactions; sequence diagrams show process flows','Activity diagrams model processes and workflows; sequence diagrams model interactions between specific objects','Activity diagrams are used only by developers; sequence diagrams are for business analysts','Activity diagrams cannot show decision points; sequence diagrams can use alt fragments instead']},
+    {t:'Explain the difference', q:'What is the key difference between an activity final node and a flow final node?', c:1, e:'The activity final node (bullseye) terminates the entire activity — all active flows stop. The flow final node (circle with X) terminates only the one branch it is on — other parallel branches continue unaffected.',
+     o:['An activity final node ends a single branch; a flow final node ends the entire activity','An activity final node ends the entire activity; a flow final node ends only one branch','They are visually identical and functionally equivalent in standard UML','An activity final node is used in sequence diagrams; a flow final node is for class diagrams']},
+    {t:'Explain the difference', q:'What is the key difference between a functional and a non-functional requirement?', c:1, e:'Functional requirements describe what the system must do — specific features and behaviours. Non-functional requirements describe how well it must perform — qualities such as speed, security, reliability, and usability.',
+     o:['Functional requirements are written by developers; non-functional requirements by managers','Functional requirements describe features the system provides; non-functional describe how well it performs them','Functional requirements apply to the whole system; non-functional apply only to the user interface','Non-functional requirements are optional extras; functional requirements are always mandatory']},
+    {t:'Explain the difference', q:'What is the key difference between inheritance and composition?', c:0, e:'Inheritance expresses an is-a relationship — a child class is a specialised kind of parent class. Composition expresses a strong has-a relationship — the whole contains parts that cannot exist independently. Choosing the wrong one is a common design error.',
+     o:['Inheritance expresses an is-a relationship; composition expresses a strong has-a relationship where parts cannot exist without the whole','Inheritance models whole-part relationships; composition models type hierarchies','Inheritance uses a filled diamond; composition uses a hollow triangle arrowhead','There is no meaningful difference — both model relationships between two classes']},
+    {t:'Explain the difference', q:'What is the key difference between the Waterfall and Agile methodologies?', c:2, e:'Waterfall is sequential — each phase completes before the next begins, and changes are costly once a phase is closed. Agile is iterative — it works in short cycles, welcomes changing requirements, and delivers working software frequently.',
+     o:['Waterfall is used for small projects; Agile is used for large enterprise systems','Waterfall uses UML diagrams throughout; Agile does not use UML at all','Waterfall is sequential with phases completed in order; Agile is iterative with short cycles and evolving requirements','Waterfall produces working software faster; Agile produces better technical documentation']},
+    {t:'Explain the difference', q:'What is the key difference between a structural and a behavioural UML diagram?', c:0, e:'Structural diagrams (e.g. class diagram) show what exists in the system at a point in time — static elements. Behavioural diagrams (e.g. activity, sequence) show how the system behaves over time — actions, messages, and flows.',
+     o:['Structural diagrams show what exists statically; behavioural diagrams show how the system acts over time','Structural diagrams are used by developers; behavioural diagrams are for business analysts only','Structural diagrams model processes; behavioural diagrams model data and attributes','There is no meaningful distinction — all UML diagrams are treated equivalently']},
+    {t:'Explain the difference', q:'What is the key difference between a use case diagram and a class diagram?', c:0, e:'A use case diagram shows user goals and system scope — what users want to do. A class diagram shows the static structure needed to support those goals — the classes, attributes, operations, and relationships that implement the system.',
+     o:['A use case diagram shows user goals; a class diagram shows the static structure that supports them','A use case diagram is for developers; a class diagram is for clients and managers','A use case diagram shows classes; a class diagram shows actors and their interactions','A use case diagram is more technically detailed than a class diagram']}
+  ];
+
+  var remaining = [];
+
+  function refill() {
+    remaining = Q.map(function(_, i) { return i; });
+  }
+
+  function pickNext() {
+    if (remaining.length === 0) refill();
+    var ri = Math.floor(Math.random() * remaining.length);
+    var qi = remaining.splice(ri, 1)[0];
+    return Q[qi];
+  }
+
+  var current = null;
+  var answered = false;
+  var score = 0;
+  var total = 0;
+
+  function umlqbNext() {
+    current = pickNext();
+    answered = false;
+
+    var badgeColors = { 'Define the term': '#ff8c00', 'Identify the term': '#4a90d9', 'Explain the difference': '#9c6cd4' };
+    var badge = document.getElementById('umlqb-badge');
+    badge.textContent = current.t;
+    badge.style.color = badgeColors[current.t] || '#888';
+
+    document.getElementById('umlqb-q').textContent = current.q;
+
+    var html = '';
+    current.o.forEach(function(opt, i) {
+      html += '<label class="quiz-option" style="cursor:pointer;">' +
+        '<input type="radio" name="umlqb-r" value="' + i + '"> ' + opt + '</label>';
+    });
+    document.getElementById('umlqb-opts').innerHTML = html;
+
+    document.getElementById('umlqb-check-btn').style.display = '';
+    document.getElementById('umlqb-feedback').style.display = 'none';
+    document.getElementById('umlqb-feedback').innerHTML = '';
+
+    var seen = Q.length - remaining.length;
+    document.getElementById('umlqb-counter').textContent =
+      seen + ' of ' + Q.length + ' questions seen this session' +
+      (remaining.length === 0 ? ' — full set complete, resetting' : '');
+  }
+
+  function umlqbCheck() {
+    if (answered) return;
+    var sel = document.querySelector('input[name="umlqb-r"]:checked');
+    if (!sel) return;
+    answered = true;
+    total++;
+    var chosen = parseInt(sel.value);
+    var ok = chosen === current.c;
+    if (ok) score++;
+
+    var fb = document.getElementById('umlqb-feedback');
+    fb.style.display = 'block';
+    fb.innerHTML =
+      '<div class="p-3" style="border-radius:0.375rem; background:' +
+        (ok ? 'rgba(46,204,113,0.08); border-left:3px solid #2ecc71;' : 'rgba(231,76,60,0.08); border-left:3px solid #e74c3c;') + '">' +
+      '<p class="mb-1 fw-semibold" style="color:' + (ok ? '#2ecc71' : '#e74c3c') + ';">' +
+        (ok ? '\u2713 Correct' : '\u2717 Incorrect') + '</p>' +
+      '<p class="mb-0 small" style="color:#ccc;">' + current.e + '</p>' +
+      (ok ? '' : '<p class="mt-2 mb-0 small" style="color:#aaa;">Correct answer: <strong style="color:#ddd;">' + current.o[current.c] + '</strong></p>') +
+      '</div>';
+
+    document.getElementById('umlqb-check-btn').style.display = 'none';
+    document.getElementById('umlqb-counter').textContent =
+      'Score: ' + score + ' / ' + total + ' \u2022 ' +
+      (Q.length - remaining.length) + ' of ' + Q.length + ' seen this session';
+  }
+
+  window.umlqbNext = umlqbNext;
+  window.umlqbCheck = umlqbCheck;
+}());
+</script>
+
+{% endcall %}
+
+
+{# ══ Activity 7 — Individual / Pair / Group ═══════════════════════════ #}
+
+{% set activityTabs = [
+  {id: "ind",   label: "Individual"},
+  {id: "pair",  label: "Pair"},
+  {id: "group", label: "Group"}
+] %}
+
+{% call activitySection(7, "Activities", "people") %}
+
+{% call tabSet("unit10-act7", activityTabs) %}
+  <div class="tab-pane fade show active" id="unit10-act7-ind" role="tabpanel">
+    <p class="fw-semibold">Individual task</p>
+    <p>
+      Review the complete set of UML diagrams you have built in this course. Choose one
+      diagram and write a structured critique using the describe-evaluate-justify-suggest framework.
+    </p>
+    <p>Your critique should:</p>
+    <ul>
+      <li>Identify at least <strong>one strength</strong> with evidence and justification</li>
+      <li>Identify at least <strong>one weakness</strong> with evidence and a specific, feasible suggestion for improvement</li>
+      <li>Apply at least <strong>two quality criteria</strong> (e.g. maintainability and reliability)</li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit10-act7-pair" role="tabpanel">
+    <p class="fw-semibold">Pair task</p>
+    <p>Exchange critiques with a partner and evaluate the critique itself:</p>
+    <ul>
+      <li>Is each point of criticism <strong>specific</strong>? (Does it name an element?)</li>
+      <li>Is each point <strong>justified with evidence</strong>? (Is there something observable in the diagram to support it?)</li>
+      <li>Is the suggested improvement <strong>feasible</strong> and <strong>clearly described</strong>?</li>
+      <li>Does the critique go beyond description to genuine analysis?</li>
+    </ul>
+    <p>
+      Identify the strongest part of your partner's critique — and the one part that could
+      be made more analytical. Explain both.
+    </p>
+  </div>
+  <div class="tab-pane fade" id="unit10-act7-group" role="tabpanel">
+    <p class="fw-semibold">Group task — design debate</p>
+    <p>
+      Select one design decision your group made during Units 5 or 8 — one where alternatives
+      were discussed or where the right choice was not obvious.
+    </p>
+    <p>Reconstruct the debate:</p>
+    <ul>
+      <li>What were the alternatives?</li>
+      <li>What criteria did you use to decide (implicitly or explicitly)?</li>
+      <li>What trade-offs did you accept?</li>
+      <li>Having now completed all 10 units — would you make the same decision? Why or why not?</li>
+    </ul>
+    <p>
+      This final task asks you to think like a senior engineer: not just "what did we do?" but
+      "was it the right thing to do, and what have we learned?"
+    </p>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+
+<div class="accordion mb-3" id="unit10-review">
+  {% call accordion("rev-10-a", "Summary: What are the five quality criteria from this unit?") %}
+  <ul>
+    <li><strong>Maintainability</strong> — how easily can the system be changed safely?</li>
+    <li><strong>Scalability</strong> — can the system handle more load, more features, or more developers?</li>
+    <li><strong>Usability</strong> — does the design genuinely support user goals?</li>
+    <li><strong>Reliability</strong> — does the design account for failure and error conditions?</li>
+    <li><strong>Security</strong> — does the design enforce appropriate authorisation and data protection?</li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("rev-10-b", "Summary: How does this course connect — the full spiral?") %}
+  <p>
+    This course was designed as a spiral: each unit revisited and deepened earlier work.
+  </p>
+  <ul>
+    <li><strong>Units 1–2</strong> — the foundation: what is software engineering and how do we capture requirements?</li>
+    <li><strong>Units 3–7</strong> — the four diagram types, each building on the last: use cases → class structure → behaviour → processes</li>
+    <li><strong>Unit 8</strong> — integration: ensuring all diagrams form a coherent, consistent whole</li>
+    <li><strong>Unit 9</strong> — communication: presenting and explaining designs to different audiences</li>
+    <li><strong>Unit 10</strong> — evaluation: applying critical judgement to assess the quality of any design</li>
+  </ul>
+  <p>
+    A software engineer who can do all five of these things — specify, model, integrate,
+    communicate, and evaluate — is equipped to work effectively on real systems.
+    That is the goal this course was designed to support.
+  </p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-check-circle"></i>
+  You have completed <strong>UML for Software Engineering</strong>.
+  Return to the <a href="{{ '/courses/uml/' | url }}">course home page</a>.
+</p>
+{% endcall %}

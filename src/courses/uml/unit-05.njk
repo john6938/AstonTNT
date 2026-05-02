@@ -1,0 +1,401 @@
+---
+unit: 5
+unitTitle: "Class Diagrams: Structure II"
+title: "Unit 5: Class Diagrams — Structure II"
+description: "Extend your class diagrams with advanced relationship types and develop design quality judgement using cohesion, coupling, and design smells."
+objectives:
+  - Distinguish between inheritance, aggregation, and composition and apply them correctly
+  - Explain cohesion and coupling as measures of design quality
+  - Identify common design weaknesses in a class model and suggest improvements
+---
+
+{% from "macros/course.njk" import activitySection, reviewSection,
+   accordion, videoEmbed, quizMC, tabSet %}
+
+
+{# ══ Activity 1 — Core Input ═════════════════════════════════════════ #}
+
+{% set coreTabs = [
+  {id: "rels",     label: "Relationship Types"},
+  {id: "quality",  label: "Cohesion & Coupling"},
+  {id: "smells",   label: "Design Smells"}
+] %}
+
+{% call activitySection(1, "Core Input", "book") %}
+<p class="mb-3">Read through each tab before moving to the key concepts.</p>
+
+{% call tabSet("unit05-core", coreTabs) %}
+  <div class="tab-pane fade show active" id="unit05-core-rels" role="tabpanel">
+    <p>
+      Beyond basic associations, UML class diagrams support three specialised relationship types:
+    </p>
+    <ul>
+      <li>
+        <strong>Inheritance (Generalisation)</strong> — drawn as a solid line with a <em>hollow triangle arrowhead</em>
+        pointing to the parent class. Represents an is-a relationship: a Dog is an Animal.
+        The child class inherits all attributes and operations of the parent, and can add its own.
+      </li>
+      <li>
+        <strong>Aggregation</strong> — drawn as a solid line with a <em>hollow diamond</em> at the
+        whole end. Represents a has-a (weak whole-part) relationship where the parts can exist
+        independently of the whole. A Library has Books, but Books can exist without the Library.
+      </li>
+      <li>
+        <strong>Composition</strong> — drawn as a solid line with a <em>filled diamond</em> at the
+        whole end. A strong whole-part relationship where the parts cannot exist without the whole.
+        A House is composed of Rooms — destroy the House and the Rooms cease to exist.
+      </li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit05-core-quality" role="tabpanel">
+    <p>
+      Two fundamental design quality measures apply to class diagrams:
+    </p>
+    <ul>
+      <li>
+        <strong>Cohesion</strong> — how focused a class is on a single, well-defined responsibility.
+        A <em>highly cohesive</em> class does one thing and does it well. A class that handles user
+        input, database access, business logic, and report generation has <em>low cohesion</em> — it
+        is doing too much.
+      </li>
+      <li>
+        <strong>Coupling</strong> — the degree to which one class depends on another. <em>Low coupling</em>
+        is desirable: a class that can be changed without forcing changes in many other classes is easier
+        to maintain. <em>High coupling</em> means a change anywhere ripples through the whole system.
+      </li>
+    </ul>
+    <p>The goal in class design is <strong>high cohesion and low coupling</strong>.</p>
+  </div>
+  <div class="tab-pane fade" id="unit05-core-smells" role="tabpanel">
+    <p>
+      <strong>Design smells</strong> are patterns in a class model that suggest poor design — warning
+      signs that the model may be hard to maintain, extend, or understand.
+    </p>
+    <ul>
+      <li>
+        <strong>God Class</strong> — one enormous class with dozens of attributes, operations, and
+        associations to almost every other class. Violates single responsibility. Breaks cohesion.
+      </li>
+      <li>
+        <strong>Feature Envy</strong> — a class that spends most of its operations accessing data
+        from another class. This suggests the operations belong in the other class.
+      </li>
+      <li>
+        <strong>Inappropriate Intimacy</strong> — two classes that access each other's private
+        data directly, creating tight coupling. They know too much about each other's internals.
+      </li>
+      <li>
+        <strong>Refused Bequest</strong> — a subclass that inherits operations from a parent but
+        overrides most of them to do nothing (or to raise errors). Suggests the inheritance
+        relationship is wrong.
+      </li>
+    </ul>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Activity 2 — Key Concepts: Advanced Relationship Types ══════════ #}
+
+{% call activitySection(2, "Key Concepts: Advanced Relationship Types", "lightbulb") %}
+<p class="mb-3">
+  These three relationship types are frequently confused. Work through each item carefully
+  and note the distinctions.
+</p>
+<div class="accordion" id="unit05-acc-a">
+
+  {% call accordion("acc-05-a1", "What is inheritance (generalisation) and when should you use it?") %}
+  <p>
+    Inheritance expresses an <strong>is-a</strong> relationship. Class B inherits from class A
+    when every B is a kind of A — B shares all the characteristics of A and adds its own.
+  </p>
+  <p><strong>Example:</strong> <em>Lecturer</em> inherits from <em>Person</em>. A Lecturer is
+  a Person. All attributes and operations of Person (name, email, getDetails()) apply to Lecturer.
+  Lecturer adds its own (department, courseList, assignCourse()).</p>
+  <p><strong>The is-a test:</strong> Before using inheritance, confirm the relationship holds
+  in both directions in plain English. <em>"A Lecturer is a Person"</em> — true.
+  <em>"A Person is a Lecturer"</em> — not necessarily true. If the reverse also holds,
+  it is not an inheritance relationship.</p>
+  <p>
+    <strong>Caution:</strong> Inheritance creates tight coupling between parent and child.
+    Overuse of inheritance is a common design mistake. Prefer composition where the is-a
+    relationship is not clearly justified.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-05-a2", "What is aggregation and when should you use it?") %}
+  <p>
+    Aggregation represents a <strong>has-a (weak)</strong> whole-part relationship.
+    The whole contains parts, but the parts can exist independently.
+  </p>
+  <p>
+    <strong>Example:</strong> A <em>Department</em> aggregates <em>Lecturers</em>.
+    A Lecturer belongs to a Department — but if the Department is dissolved, the Lecturer
+    does not cease to exist. They simply move to another Department.
+  </p>
+  <p>
+    <strong>Notation:</strong> A hollow diamond at the whole end of the association line.
+    Multiplicity is added as usual.
+  </p>
+  <p>
+    Aggregation is the weaker of the two whole-part relationships. In practice, many engineers
+    use plain association for most relationships and reserve the diamond notations for cases
+    where the whole-part relationship is explicit and important.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-05-a3", "What is composition and how does it differ from aggregation?") %}
+  <p>
+    Composition represents a <strong>has-a (strong)</strong> whole-part relationship.
+    The parts <em>cannot exist independently</em> of the whole. If the whole is destroyed,
+    the parts are destroyed with it.
+  </p>
+  <p>
+    <strong>Example:</strong> An <em>Order</em> is composed of <em>OrderLine</em> items.
+    An OrderLine has no meaning outside of an Order — it refers to a specific item in a
+    specific order. If the Order is deleted, all its OrderLines are deleted too.
+  </p>
+  <p>
+    <strong>Notation:</strong> A filled (solid) diamond at the whole end.
+  </p>
+  <p>
+    <strong>Key distinction from aggregation:</strong><br>
+    Aggregation = parts can survive without the whole.<br>
+    Composition = parts cannot survive without the whole.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-05-a4", "How do you choose between inheritance, aggregation, and composition?") %}
+  <p>Use these tests:</p>
+  <ul>
+    <li>
+      <strong>Is it an is-a relationship?</strong> If yes, consider inheritance.
+      Apply the is-a test in plain English. Be sceptical — inheritance is often overused.
+    </li>
+    <li>
+      <strong>Is it a has-a relationship?</strong> If yes, decide between aggregation and composition.
+    </li>
+    <li>
+      <strong>Can the part exist without the whole?</strong> If yes, use aggregation.
+      If no, use composition.
+    </li>
+    <li>
+      <strong>Is there no meaningful whole-part relationship?</strong> Use a plain association.
+    </li>
+  </ul>
+  <p>
+    In early design stages, it is often fine to model everything as a plain association and
+    refine to aggregation/composition/inheritance once the relationships are better understood.
+  </p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 3 — Key Concepts: Design Quality ═══════════════════════ #}
+
+{% call activitySection(3, "Key Concepts: Design Quality", "bar-chart") %}
+<p class="mb-3">
+  Design quality is not about taste — it is about how well a design will survive change.
+  These concepts apply directly to what you can see in a class diagram.
+</p>
+<div class="accordion" id="unit05-acc-b">
+
+  {% call accordion("acc-05-b1", "What is cohesion and how do you assess it in a class diagram?") %}
+  <p>
+    <strong>Cohesion</strong> measures how tightly a class's responsibilities are focused.
+    A highly cohesive class has a single, clear purpose — all its attributes and operations
+    relate to that purpose.
+  </p>
+  <p>A useful test: can you write a one-sentence description of what this class does?</p>
+  <ul>
+    <li><span style="color:#75b798;">High cohesion:</span> <em>"The Order class manages the data and rules for a single customer order."</em></li>
+    <li><span style="color:#ea868f;">Low cohesion:</span> <em>"The Manager class handles orders, sends emails, generates PDFs, manages users, and logs events."</em></li>
+  </ul>
+  <p>
+    In a class diagram, low cohesion is visible as a class with many unrelated attributes,
+    or a very large number of operations, or associations to a wide range of other classes.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-05-b2", "What is coupling and why should it be low?") %}
+  <p>
+    <strong>Coupling</strong> measures how much one class depends on others. Every association,
+    parameter type, or return type creates a dependency. High coupling means a change in one
+    class forces changes in many others.
+  </p>
+  <p>
+    In a class diagram, high coupling is visible as one class with associations radiating out
+    to many others, or classes that access each other's internal attributes directly.
+  </p>
+  <p>
+    <strong>Why low coupling matters:</strong> Software changes. Requirements evolve. A class
+    that depends on many others is expensive to modify and easy to break accidentally.
+    Low coupling makes individual classes replaceable and testable in isolation.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-05-b3", "What is a god class and how do you fix one?") %}
+  <p>
+    A <strong>god class</strong> is a class that has grown to take on too many responsibilities.
+    It typically has:
+  </p>
+  <ul>
+    <li>A large number of attributes (often more than 10)</li>
+    <li>A large number of operations (often more than 15–20)</li>
+    <li>Associations to most other classes in the system</li>
+  </ul>
+  <p>
+    A god class creates a bottleneck: every developer needs to understand it; every change
+    risks breaking something unrelated.
+  </p>
+  <p>
+    <strong>Fix:</strong> Apply the Single Responsibility Principle — identify the distinct
+    responsibilities the class is handling and extract each into a new, focused class.
+    The original class may then coordinate these smaller classes, or disappear entirely.
+  </p>
+  {% endcall %}
+
+  {% call accordion("acc-05-b4", "What other design smells can you spot in a class diagram?") %}
+  <p><strong>Feature Envy:</strong> A class has many operations that mostly use data from another class.
+  This suggests those operations belong in that other class.</p>
+  <p>
+    <em>Example:</em> A <em>ReportGenerator</em> class that has ten operations, all of which access
+    attributes of <em>Order</em>. Most of those operations should probably be in <em>Order</em> itself.
+  </p>
+  <p><strong>Inappropriate Intimacy:</strong> Two classes access each other's private state directly,
+  bypassing encapsulation. This creates brittle coupling — any change to one class's internals
+  breaks the other.</p>
+  <p><strong>Refused Bequest:</strong> A subclass inherits operations from a parent but overrides
+  them to throw errors or do nothing. This is a sign that inheritance was the wrong relationship —
+  consider replacing it with composition or a completely separate class.</p>
+  {% endcall %}
+
+</div>
+{% endcall %}
+
+
+{# ══ Activity 4 — Video ═══════════════════════════════════════════════ #}
+
+{% call activitySection(4, "Watch", "play-circle") %}
+<div class="p-3 text-center" style="background:#1a1a1a; border:2px dashed #555; border-radius:0.375rem; color:#888;">
+  <i class="bi bi-camera-video" style="font-size:2rem;"></i>
+  <p class="mt-2 mb-0">Video coming soon</p>
+</div>
+{% endcall %}
+
+
+{# ══ Activity 5 — Quiz ════════════════════════════════════════════════ #}
+
+{% call activitySection(5, "Check Your Understanding", "patch-question") %}
+<p class="mb-3">Select the best answer for each question.</p>
+
+{% call quizMC("quiz-05-a", "A Car class contains an Engine class. If the Engine cannot exist without the Car, which relationship is most appropriate?", 2,
+   "Composition models a strong whole-part relationship where the part cannot exist independently. If the Car is destroyed, its Engine is also destroyed. Aggregation would allow the Engine to survive independently — which is not the case here.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-05-a" value="0"> Aggregation — hollow diamond at Car end</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-a" value="1"> Inheritance — Engine is a kind of Car</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-a" value="2"> Composition — filled diamond at Car end</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-a" value="3"> Plain association — Engine is connected to Car</label>
+{% endcall %}
+
+<div class="mt-4">
+{% call quizMC("quiz-05-b", "A class handles user input, database access, business logic, and PDF generation. This is an example of:", 1,
+   "A class doing four unrelated things has low cohesion. This is the 'god class' anti-pattern — it violates the Single Responsibility Principle. Each concern (input handling, database access, business logic, reporting) should be in its own focused class.") %}
+  <label class="quiz-option"><input type="radio" name="quiz-05-b" value="0"> High cohesion — the class covers the full workflow</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-b" value="1"> A god class with low cohesion</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-b" value="2"> Appropriate use of inheritance</label>
+  <label class="quiz-option"><input type="radio" name="quiz-05-b" value="3"> Strong encapsulation through composition</label>
+{% endcall %}
+</div>
+
+{% endcall %}
+
+
+{# ══ Activity 6 — Individual / Pair / Group ═══════════════════════════ #}
+
+{% set activityTabs = [
+  {id: "ind",   label: "Individual"},
+  {id: "pair",  label: "Pair"},
+  {id: "group", label: "Group"}
+] %}
+
+{% call activitySection(6, "Activities", "people") %}
+
+{% call tabSet("unit05-activities", activityTabs) %}
+  <div class="tab-pane fade show active" id="unit05-activities-ind" role="tabpanel">
+    <p class="fw-semibold">Individual task</p>
+    <p>
+      Return to the shared class diagram from Unit 4. Review every association and identify
+      at least <strong>two relationships</strong> that should be modelled as inheritance,
+      aggregation, or composition rather than plain association.
+    </p>
+    <p>For each one:</p>
+    <ul>
+      <li>State the relationship type you recommend</li>
+      <li>Justify your choice — apply the is-a test or the "can the part exist without the whole?" test</li>
+      <li>Update the diagram with the correct notation</li>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="unit05-activities-pair" role="tabpanel">
+    <p class="fw-semibold">Pair task</p>
+    <p>
+      Review your partner's updated diagram for design quality:
+    </p>
+    <ul>
+      <li>Is there any class that looks like it might be a god class? How many attributes, operations, and associations does it have?</li>
+      <li>Are any classes doing things that seem to belong in another class (feature envy)?</li>
+      <li>Do any inheritance relationships fail the is-a test?</li>
+    </ul>
+    <p>Identify at least one design weakness and suggest a specific improvement.</p>
+  </div>
+  <div class="tab-pane fade" id="unit05-activities-group" role="tabpanel">
+    <p class="fw-semibold">Group task</p>
+    <p>
+      As a group, select one class from your shared diagram that has been identified as
+      problematic (ideally a god class candidate or a class with unclear responsibilities).
+    </p>
+    <ul>
+      <li>Draw the <strong>before</strong> version of the class as it currently stands</li>
+      <li>Redesign it — split responsibilities, add new classes if needed, adjust relationships</li>
+      <li>Draw the <strong>after</strong> version and explain the improvement in terms of cohesion and coupling</li>
+    </ul>
+  </div>
+{% endcall %}
+
+{% endcall %}
+
+
+{# ══ Review ═══════════════════════════════════════════════════════════ #}
+
+{% call reviewSection() %}
+
+<div class="accordion mb-3" id="unit05-review">
+  {% call accordion("rev-05-a", "Summary: How do you distinguish inheritance, aggregation, and composition?") %}
+  <ul>
+    <li><strong>Inheritance</strong> — is-a relationship. Hollow triangle arrowhead pointing to parent.</li>
+    <li><strong>Aggregation</strong> — has-a (weak). Parts can exist independently. Hollow diamond at whole end.</li>
+    <li><strong>Composition</strong> — has-a (strong). Parts cannot exist without the whole. Filled diamond at whole end.</li>
+  </ul>
+  {% endcall %}
+
+  {% call accordion("rev-05-b", "Summary: Why do cohesion and coupling matter for long-term software quality?") %}
+  <p>
+    Software is never finished — it is always being changed. A system with high cohesion and
+    low coupling can be changed safely: modifying one class does not force changes elsewhere,
+    and each class is simple enough to understand and test in isolation.
+  </p>
+  <p>
+    A system with low cohesion and high coupling accumulates technical debt — the cost of
+    changes grows over time until the system becomes too fragile to modify. Good class design
+    keeps that cost low.
+  </p>
+  {% endcall %}
+</div>
+
+<p class="mt-3 small" style="color:#e0e0e0;">
+  <i class="bi bi-arrow-right-circle"></i>
+  Proceed to <a href="{{ (courseBaseUrl + '/unit-06') | url }}">Unit 6: Sequence Diagrams</a> when ready.
+</p>
+{% endcall %}
