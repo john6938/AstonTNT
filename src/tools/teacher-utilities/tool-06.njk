@@ -1,386 +1,446 @@
 ---
 tool: 6
-toolTitle: Score Counter
-title: "Tool 6: Score Counter — Teacher Utilities"
-description: "Track team scores in real time with customisable team names and score increments."
+toolTitle: Topic Wheel
+title: "Tool 6: Topic Wheel — Teacher Utilities"
+description: "Spin the wheel to randomly select a topic. Edit topics freely, add as many as you need, and remove selected topics after each spin."
 ---
-
-<style>
-.sc-grid {
-  display: grid;
-  gap: 0.75rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-  align-items: stretch;
-}
-.sc-col {
-  background: #1e1e1e;
-  border-radius: 0.5rem;
-  border-top-width: 7px;
-  border-top-style: solid;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.75rem 0.6rem;
-  min-width: 110px;
-  gap: 0.35rem;
-}
-.sc-name-input {
-  font-weight: 700;
-  font-size: 0.95rem;
-  text-align: center;
-  background: transparent;
-  border: none;
-  border-bottom: 1px dashed rgba(255,255,255,0.25);
-  width: 100%;
-  padding: 0.2rem 0.1rem;
-  transition: border-color 0.15s;
-}
-.sc-name-input:focus { outline: none; border-bottom-style: solid; }
-.sc-score {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 900;
-  color: #fff;
-  line-height: 1;
-  padding: 0.5rem 0;
-  font-variant-numeric: tabular-nums;
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
-.sc-btns { display: flex; gap: 0.4rem; width: 100%; }
-.sc-btn {
-  flex: 1;
-  padding: 0.5rem 0.25rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 0.375rem;
-  cursor: pointer;
-  color: #000;
-  min-height: 42px;
-  transition: filter 0.12s;
-}
-.sc-btn:hover  { filter: brightness(1.18); }
-.sc-btn:active { filter: brightness(0.82); }
-
-/* Fullscreen */
-#sc-fs {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  flex-direction: row;
-}
-.sc-fs-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: clamp(0.75rem,2vw,2rem) clamp(0.5rem,1.5vw,1.5rem);
-  min-width: 0;
-}
-.sc-fs-name {
-  font-size: clamp(1rem,2.5vw,2rem);
-  font-weight: 800;
-  color: #000;
-  text-align: center;
-  word-break: break-word;
-  width: 100%;
-}
-.sc-fs-score {
-  font-size: clamp(4rem,11vw,12rem);
-  font-weight: 900;
-  color: #000;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
-.sc-fs-btns { display: flex; gap: 0.4rem; width: 100%; }
-.sc-fs-btn {
-  flex: 1;
-  padding: clamp(0.4rem,1.2vw,0.9rem) 0.25rem;
-  font-size: clamp(0.9rem,2vw,1.5rem);
-  font-weight: 700;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  background: rgba(0,0,0,0.22);
-  color: #000;
-  min-height: 44px;
-  transition: background 0.12s;
-}
-.sc-fs-btn:hover  { background: rgba(0,0,0,0.38); }
-.sc-fs-btn:active { background: rgba(0,0,0,0.55); }
-</style>
 
 <div class="course-tool-section mb-4">
 
   <div class="activity-header">
-    <span class="activity-num"><i class="bi bi-bar-chart-line"></i></span>
-    <h2 class="activity-title-text">Score Counter</h2>
-    <button onclick="scFullscreen()" title="Full screen"
-            style="margin-left:auto; background:transparent; border:1px solid #555; color:#aaa;
-                   padding:0.3rem 0.7rem; border-radius:0.375rem; cursor:pointer; font-size:0.85rem;">
-      <i class="bi bi-fullscreen"></i> Full screen
-    </button>
+    <span class="activity-num"><i class="bi bi-arrow-repeat"></i></span>
+    <h2 class="activity-title-text">Topic Wheel</h2>
   </div>
 
-  {# ── Settings bar ── #}
-  <div class="d-flex align-items-center gap-3 flex-wrap mb-4 p-3"
-       style="background:#1a1a1a; border-radius:0.5rem; font-size:0.9rem;">
+  <p style="color:#ccc; margin-bottom:1.5rem;">
+    Edit the topics on the left, then spin the wheel. After it stops, choose to <strong>keep</strong> the topic in the wheel or <strong>remove</strong> it so it won&rsquo;t appear again this session.
+  </p>
 
-    <div class="d-flex align-items-center gap-2 flex-wrap">
-      <span style="color:#aaa; white-space:nowrap;">Teams:</span>
-      <div class="d-flex gap-1" id="sc-team-btns">
-        {% for n in [2,3,4,5,6,7] %}
-        <button onclick="scSetCount({{ n }})"
-                id="sc-cnt-{{ n }}"
-                class="btn btn-sm btn-outline-secondary"
-                style="min-width:2rem;">{{ n }}</button>
-        {% endfor %}
+  <div class="row g-4 align-items-start">
+
+    {# ── Topic list ── #}
+    <div class="col-md-5">
+      <label class="tool-label mb-2">Topics</label>
+      <div id="tw-list"></div>
+      <div class="d-flex gap-2 mt-2 flex-wrap">
+        <button onclick="twAddTopic()" class="btn btn-sm btn-outline-secondary">
+          <i class="bi bi-plus-circle"></i> Add topic
+        </button>
+        <button onclick="twReset()" class="btn btn-sm btn-outline-secondary">
+          <i class="bi bi-arrow-counterclockwise"></i> Reset defaults
+        </button>
       </div>
     </div>
 
-    <div class="d-flex align-items-center gap-2">
-      <label style="color:#aaa; white-space:nowrap;" for="sc-start">Start:</label>
-      <input type="number" id="sc-start" value="0" min="-9999" max="9999"
-             style="width:70px; background:#333; color:#fff; border:1px solid #555;
-                    border-radius:0.375rem; padding:0.25rem 0.5rem; font-size:0.9rem;"
-             oninput="scUpdateStart()">
-    </div>
+    {# ── Wheel ── #}
+    <div class="col-md-7">
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <div style="width:0; height:0;
+                    border-left:14px solid transparent;
+                    border-right:14px solid transparent;
+                    border-top:26px solid #ff8c00;
+                    margin-bottom:-3px; position:relative; z-index:2;"></div>
+        <canvas id="tw-canvas" width="380" height="380"
+                style="max-width:100%; display:block; border-radius:50%;
+                       box-shadow:0 0 24px rgba(0,0,0,0.6);"></canvas>
+      </div>
 
-    <div class="d-flex align-items-center gap-2">
-      <label style="color:#aaa; white-space:nowrap;" for="sc-step">Step:</label>
-      <input type="number" id="sc-step" value="1" min="1" max="9999"
-             style="width:70px; background:#333; color:#fff; border:1px solid #555;
-                    border-radius:0.375rem; padding:0.25rem 0.5rem; font-size:0.9rem;"
-             oninput="scUpdateStep()">
-    </div>
+      <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+        <button id="tw-spin-btn" class="tool-btn"
+                style="font-size:1.05rem; padding:0.7rem 2rem;"
+                onclick="twSpin()">
+          <i class="bi bi-arrow-clockwise"></i>&nbsp; Spin
+        </button>
+        <button class="tool-btn" style="font-size:1.05rem; padding:0.7rem 1.5rem; background:#1a3a5c;"
+                onclick="twOpenFs()">
+          <i class="bi bi-fullscreen"></i>&nbsp; Fullscreen
+        </button>
+      </div>
 
-    <button class="btn btn-sm btn-outline-secondary" onclick="scResetScores()">
-      <i class="bi bi-arrow-counterclockwise"></i> Reset scores
-    </button>
+      {# Inline result panel #}
+      <div id="tw-result"
+           style="display:none; margin-top:1.25rem; padding:1.25rem;
+                  background:#1e1e1e; border-radius:0.5rem; text-align:center;
+                  border:2px solid #ff8c00;">
+        <p style="color:#aaa; margin-bottom:0.35rem; font-size:0.78rem;
+                  text-transform:uppercase; letter-spacing:0.07em;">Selected topic</p>
+        <p id="tw-result-text"
+           style="font-size:1.75rem; font-weight:800; color:#ff8c00;
+                  margin-bottom:1rem; line-height:1.2; word-break:break-word;"></p>
+        <div class="d-flex gap-2 justify-content-center flex-wrap">
+          <button class="tool-btn" onclick="twKeep()">
+            <i class="bi bi-check-circle me-1"></i>Keep in wheel
+          </button>
+          <button class="tool-btn" style="background:#6b1a1a;" onclick="twRemove()">
+            <i class="bi bi-x-circle me-1"></i>Remove from wheel
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-
-  {# ── Scoreboard ── #}
-  <div id="sc-grid" class="sc-grid"></div>
 
 </div>
 
-{# ══ Full-screen scoreboard ══════════════════════════════════════ #}
-<div id="sc-fs">
-  <div id="sc-fs-inner" style="display:flex; flex-direction:row; width:100%; height:100%;"></div>
-  <button onclick="scExitFullscreen()"
-          style="position:absolute; top:1rem; right:1rem; z-index:10; background:rgba(0,0,0,0.35);
-                 border:1px solid rgba(0,0,0,0.4); color:#fff; padding:0.5rem 1rem;
-                 cursor:pointer; border-radius:0.375rem; font-size:1rem;">
+{# ── Fullscreen overlay ── #}
+<div id="tw-fs"
+     style="display:none; position:fixed; inset:0; background:#111; z-index:9999;
+            flex-direction:column; align-items:center; justify-content:center; padding:1rem;">
+
+  <div style="display:flex; flex-direction:column; align-items:center; width:100%; max-width:700px; flex:1; justify-content:center; gap:0;">
+    {# Pointer #}
+    <div style="width:0; height:0;
+                border-left:18px solid transparent;
+                border-right:18px solid transparent;
+                border-top:34px solid #ff8c00;
+                margin-bottom:-4px; position:relative; z-index:2;"></div>
+    <canvas id="tw-fs-canvas" width="560" height="560"
+            style="max-width:min(90vw, 70vh); max-height:min(90vw, 70vh);
+                   display:block; border-radius:50%;
+                   box-shadow:0 0 48px rgba(0,0,0,0.9);"></canvas>
+  </div>
+
+  {# FS controls #}
+  <div style="display:flex; flex-direction:column; align-items:center; gap:0.75rem;
+              width:100%; max-width:520px; margin-top:1.25rem; padding:0 0.5rem;">
+    <button id="tw-fs-spin-btn" class="tool-btn"
+            style="font-size:1.2rem; padding:0.8rem 3rem;"
+            onclick="twSpin()">
+      <i class="bi bi-arrow-clockwise"></i>&nbsp; Spin
+    </button>
+
+    <div id="tw-fs-result"
+         style="display:none; width:100%; padding:1.1rem;
+                background:#1e1e1e; border-radius:0.5rem; text-align:center;
+                border:2px solid #ff8c00;">
+      <p style="color:#aaa; margin-bottom:0.3rem; font-size:0.78rem;
+                text-transform:uppercase; letter-spacing:0.07em;">Selected topic</p>
+      <p id="tw-fs-result-text"
+         style="font-size:2rem; font-weight:800; color:#ff8c00;
+                margin-bottom:0.9rem; line-height:1.2; word-break:break-word;"></p>
+      <div class="d-flex gap-2 justify-content-center flex-wrap">
+        <button class="tool-btn" onclick="twKeep()">
+          <i class="bi bi-check-circle me-1"></i>Keep in wheel
+        </button>
+        <button class="tool-btn" style="background:#6b1a1a;" onclick="twRemove()">
+          <i class="bi bi-x-circle me-1"></i>Remove from wheel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {# Exit button #}
+  <button onclick="twExitFs()"
+          style="position:absolute; top:1.1rem; right:1.1rem; background:transparent;
+                 border:1px solid #555; color:#aaa; padding:0.45rem 1rem;
+                 cursor:pointer; border-radius:0.375rem; font-size:0.95rem;">
     <i class="bi bi-fullscreen-exit"></i> Exit
   </button>
 </div>
 
 <script>
-(function() {
+(function () {
+  var DEFAULTS = ['Topic 1', 'Topic 2', 'Topic 3', 'Topic 4', 'Topic 5', 'Topic 6'];
+  var COLORS   = [
+    '#e05c00', '#2979d8', '#7b1fa2', '#2e7d32',
+    '#b71c1c', '#006064', '#e65100', '#1565c0',
+    '#4a148c', '#558b2f', '#880e4f', '#37474f'
+  ];
 
-  var NAMES  = ['Red','Blue','Orange','Green','Pink','Purple','Yellow'];
-  var COLORS = ['#e74c3c','#2980b9','#ff8c00','#27ae60','#e91e8c','#8e44ad','#f1c40f'];
-
-  var numTeams   = 2;
-  var startScore = 0;
-  var step       = 1;
-  var teamNames  = NAMES.slice();
-  var scores     = [0,0,0,0,0,0,0];
+  var topics     = DEFAULTS.slice();
+  var spinAngle  = 0;
+  var isSpinning = false;
+  var winnerIdx  = -1;
+  var animId     = null;
   var fsOpen     = false;
 
-  /* ── Helpers ─────────────────────────────────────────────── */
-  function highlightCountBtn(n) {
-    for (var i = 2; i <= 7; i++) {
-      var btn = document.getElementById('sc-cnt-' + i);
-      if (!btn) continue;
-      var active = i === n;
-      btn.style.background  = active ? '#ff8c00' : '';
-      btn.style.color       = active ? '#000'    : '';
-      btn.style.borderColor = active ? '#ff8c00' : '';
+  /* ── Word-wrap helper ────────────────────────────────────────── */
+  function wrapWords(ctx, text, maxWidth) {
+    var words = text.split(' ');
+    var lines = [];
+    var cur   = '';
+    for (var i = 0; i < words.length; i++) {
+      var test = cur ? cur + ' ' + words[i] : words[i];
+      if (ctx.measureText(test).width <= maxWidth) {
+        cur = test;
+      } else {
+        if (cur) lines.push(cur);
+        cur = words[i]; /* single word may exceed maxWidth — still one line */
+      }
     }
+    if (cur) lines.push(cur);
+    return lines;
   }
 
-  /* ── Render standard grid ────────────────────────────────── */
-  function renderGrid() {
-    var grid = document.getElementById('sc-grid');
-    grid.style.gridTemplateColumns = 'repeat(' + numTeams + ', 1fr)';
-    grid.innerHTML = '';
+  /* Find the largest font size where every label fits within maxLines lines */
+  function bestLayout(ctx, r, n) {
+    var seg    = (2 * Math.PI) / n;
+    var tr     = r * 0.63;
+    var availW = 2 * tr * Math.sin(seg / 2) * 0.78;
+    var availH = r * 0.50;
 
-    for (var i = 0; i < numTeams; i++) {
-      (function(idx) {
-        var col = document.createElement('div');
-        col.className = 'sc-col';
-        col.style.borderTopColor = COLORS[idx];
-
-        /* Name input */
-        var inp = document.createElement('input');
-        inp.type      = 'text';
-        inp.className = 'sc-name-input';
-        inp.value     = teamNames[idx];
-        inp.style.color       = COLORS[idx];
-        inp.style.borderColor = COLORS[idx] + '66';
-        inp.addEventListener('input', function() {
-          teamNames[idx] = this.value;
-          var fsEl = document.getElementById('sc-fs-name-' + idx);
-          if (fsEl) fsEl.textContent = this.value;
-        });
-
-        /* Score display */
-        var sc = document.createElement('div');
-        sc.className   = 'sc-score';
-        sc.id          = 'sc-score-' + idx;
-        sc.textContent = scores[idx];
-
-        /* +/- buttons */
-        var btns  = document.createElement('div');
-        btns.className = 'sc-btns';
-
-        var minus = document.createElement('button');
-        minus.className   = 'sc-btn';
-        minus.textContent = '\u2212' + step;
-        minus.style.background = COLORS[idx];
-        minus.addEventListener('click', function() { scAdjust(idx, -1); });
-
-        var plus = document.createElement('button');
-        plus.className   = 'sc-btn';
-        plus.textContent = '+' + step;
-        plus.style.background = COLORS[idx];
-        plus.addEventListener('click', function() { scAdjust(idx, 1); });
-
-        btns.appendChild(minus);
-        btns.appendChild(plus);
-        col.appendChild(inp);
-        col.appendChild(sc);
-        col.appendChild(btns);
-        grid.appendChild(col);
-      })(i);
+    for (var fs = 18; fs >= 7; fs--) {
+      ctx.font = 'bold ' + fs + 'px sans-serif';
+      var lh  = fs * 1.3;
+      var ok  = true;
+      for (var i = 0; i < topics.length; i++) {
+        var label = (topics[i] || '').trim() || ('Topic ' + (i + 1));
+        var lines = wrapWords(ctx, label, availW);
+        if (lines.length > 3 || lines.length * lh > availH) { ok = false; break; }
+      }
+      if (ok) return { fs: fs, lh: lh, availW: availW };
     }
+    ctx.font = 'bold 7px sans-serif';
+    return { fs: 7, lh: 9.1, availW: availW };
   }
 
-  /* ── Render fullscreen board ─────────────────────────────── */
-  function renderFs() {
-    var inner = document.getElementById('sc-fs-inner');
-    inner.innerHTML = '';
+  /* ── Draw wheel on a given canvas ────────────────────────────── */
+  function drawOn(id, hi) {
+    var canvas = document.getElementById(id);
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width, H = canvas.height;
+    var cx = W / 2, cy = H / 2;
+    var r  = Math.min(cx, cy) - 6;
+    var n  = topics.length;
 
-    for (var i = 0; i < numTeams; i++) {
-      (function(idx) {
-        var col = document.createElement('div');
-        col.className = 'sc-fs-col';
-        col.style.background = COLORS[idx];
+    ctx.clearRect(0, 0, W, H);
 
-        var nm = document.createElement('div');
-        nm.className   = 'sc-fs-name';
-        nm.id          = 'sc-fs-name-' + idx;
-        nm.textContent = teamNames[idx];
-
-        var sc = document.createElement('div');
-        sc.className   = 'sc-fs-score';
-        sc.id          = 'sc-fs-score-' + idx;
-        sc.textContent = scores[idx];
-
-        var btns  = document.createElement('div');
-        btns.className = 'sc-fs-btns';
-
-        var minus = document.createElement('button');
-        minus.className   = 'sc-fs-btn';
-        minus.textContent = '\u2212' + step;
-        minus.addEventListener('click', function() { scAdjust(idx, -1); });
-
-        var plus = document.createElement('button');
-        plus.className   = 'sc-fs-btn';
-        plus.textContent = '+' + step;
-        plus.addEventListener('click', function() { scAdjust(idx, 1); });
-
-        btns.appendChild(minus);
-        btns.appendChild(plus);
-        col.appendChild(nm);
-        col.appendChild(sc);
-        col.appendChild(btns);
-        inner.appendChild(col);
-      })(i);
+    if (n === 0) {
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+      ctx.fillStyle = '#2a2a2a'; ctx.fill();
+      ctx.fillStyle = '#666';
+      ctx.font = '15px sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('Add topics to get started', cx, cy);
+      return;
     }
+
+    var seg    = (2 * Math.PI) / n;
+    var layout = bestLayout(ctx, r, n);
+
+    for (var i = 0; i < n; i++) {
+      var a0 = spinAngle + i * seg;
+      var a1 = a0 + seg;
+      var isWin = (i === hi);
+
+      /* segment fill */
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, r, a0, a1);
+      ctx.closePath();
+      ctx.fillStyle   = isWin ? '#ffd54f' : COLORS[i % COLORS.length];
+      ctx.fill();
+      ctx.strokeStyle = '#111';
+      ctx.lineWidth   = 2;
+      ctx.stroke();
+
+      /* label */
+      var mid   = a0 + seg / 2;
+      var tr    = r * 0.63;
+      var tx    = cx + tr * Math.cos(mid);
+      var ty    = cy + tr * Math.sin(mid);
+      var label = (topics[i] || '').trim() || ('Topic ' + (i + 1));
+
+      ctx.font = 'bold ' + layout.fs + 'px sans-serif';
+      var lines   = wrapWords(ctx, label, layout.availW);
+      var totalH  = lines.length * layout.lh;
+
+      ctx.save();
+      ctx.translate(tx, ty);
+      /* flip text on the left half so it stays readable */
+      var rot = (Math.cos(mid) < 0) ? mid + Math.PI : mid;
+      ctx.rotate(rot);
+      ctx.fillStyle    = isWin ? '#000' : '#fff';
+      ctx.textAlign    = 'center';
+      ctx.textBaseline = 'middle';
+      for (var li = 0; li < lines.length; li++) {
+        var y = -totalH / 2 + layout.lh / 2 + li * layout.lh;
+        ctx.fillText(lines[li], 0, y);
+      }
+      ctx.restore();
+    }
+
+    /* centre pin */
+    ctx.beginPath(); ctx.arc(cx, cy, 10, 0, 2 * Math.PI);
+    ctx.fillStyle = '#111'; ctx.fill();
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 2; ctx.stroke();
   }
 
-  /* ── Score adjust (updates both views) ──────────────────── */
-  function scAdjust(idx, direction) {
-    scores[idx] += direction * step;
-    var el = document.getElementById('sc-score-' + idx);
-    if (el) el.textContent = scores[idx];
-    var fEl = document.getElementById('sc-fs-score-' + idx);
-    if (fEl) fEl.textContent = scores[idx];
+  function redraw(hi) {
+    drawOn('tw-canvas', hi);
+    if (fsOpen) drawOn('tw-fs-canvas', hi);
   }
 
-  /* ── Public API ──────────────────────────────────────────── */
-  window.scSetCount = function(n) {
-    numTeams = n;
-    highlightCountBtn(n);
-    renderGrid();
-    if (fsOpen) renderFs();
-  };
+  /* ── Topic list renderer ─────────────────────────────────────── */
+  function renderList() {
+    var ul = document.getElementById('tw-list');
+    ul.innerHTML = '';
+    topics.forEach(function (t, i) {
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex; align-items:center; gap:0.4rem; margin-bottom:0.35rem;';
 
-  window.scUpdateStart = function() {
-    startScore = parseInt(document.getElementById('sc-start').value) || 0;
-  };
+      var dot = document.createElement('span');
+      dot.style.cssText = 'width:11px; height:11px; border-radius:50%; flex-shrink:0; background:'
+                        + COLORS[i % COLORS.length] + ';';
 
-  window.scUpdateStep = function() {
-    step = Math.max(1, parseInt(document.getElementById('sc-step').value) || 1);
-    document.querySelectorAll('#sc-grid .sc-btn').forEach(function(btn, i) {
-      btn.textContent = (i % 2 === 0 ? '\u2212' : '+') + step;
-    });
-    if (fsOpen) {
-      document.querySelectorAll('#sc-fs-inner .sc-fs-btn').forEach(function(btn, i) {
-        btn.textContent = (i % 2 === 0 ? '\u2212' : '+') + step;
+      var inp = document.createElement('input');
+      inp.type = 'text';
+      inp.value = t;
+      inp.className = 'tool-input';
+      inp.style.cssText = 'flex:1; padding:0.28rem 0.5rem; font-size:0.875rem;';
+      inp.dataset.i = i;
+      inp.addEventListener('input', function () {
+        topics[+this.dataset.i] = this.value;
+        redraw();
       });
+
+      var del = document.createElement('button');
+      del.innerHTML = '<i class="bi bi-x"></i>';
+      del.title = 'Remove topic';
+      del.style.cssText = 'background:transparent; border:1px solid #555; color:#aaa;'
+                        + 'padding:0.2rem 0.45rem; border-radius:0.25rem; cursor:pointer; flex-shrink:0;';
+      del.dataset.i = i;
+      del.addEventListener('click', function () {
+        topics.splice(+this.dataset.i, 1);
+        renderList();
+        hideResult();
+        redraw();
+      });
+
+      row.appendChild(dot); row.appendChild(inp); row.appendChild(del);
+      ul.appendChild(row);
+    });
+  }
+
+  /* ── Result helpers ──────────────────────────────────────────── */
+  function showResult(label) {
+    document.getElementById('tw-result-text').textContent    = label;
+    document.getElementById('tw-fs-result-text').textContent = label;
+    document.getElementById('tw-result').style.display    = 'block';
+    document.getElementById('tw-fs-result').style.display = 'block';
+  }
+  function hideResult() {
+    document.getElementById('tw-result').style.display    = 'none';
+    document.getElementById('tw-fs-result').style.display = 'none';
+  }
+  function setSpinBtns(disabled) {
+    document.getElementById('tw-spin-btn').disabled    = disabled;
+    document.getElementById('tw-fs-spin-btn').disabled = disabled;
+  }
+
+  /* ── Spin ────────────────────────────────────────────────────── */
+  window.twSpin = function () {
+    if (isSpinning || topics.length === 0) return;
+    isSpinning = true;
+    winnerIdx  = -1;
+    hideResult();
+    setSpinBtns(true);
+
+    var n     = topics.length;
+    var seg   = (2 * Math.PI) / n;
+    winnerIdx = Math.floor(Math.random() * n);
+
+    var jitter     = (Math.random() - 0.5) * seg * 0.55;
+    var targetRaw  = (-Math.PI / 2) - winnerIdx * seg - seg / 2 - jitter;
+    var targetNorm = ((targetRaw % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+    var curNorm    = ((spinAngle  % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+    var delta      = targetNorm - curNorm;
+    if (delta < 0) delta += 2 * Math.PI;
+    var totalSpin  = (5 + Math.floor(Math.random() * 4)) * 2 * Math.PI + delta;
+
+    var startAngle = spinAngle;
+    var duration   = 3200 + Math.random() * 1200;
+    var startTime  = null;
+
+    function ease(t) { return 1 - Math.pow(1 - t, 4); }
+
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var t = Math.min((ts - startTime) / duration, 1);
+      spinAngle = startAngle + totalSpin * ease(t);
+      redraw();
+      if (t < 1) {
+        animId = requestAnimationFrame(step);
+      } else {
+        spinAngle  = startAngle + totalSpin;
+        isSpinning = false;
+        setSpinBtns(false);
+        redraw(winnerIdx);
+        var label = (topics[winnerIdx] || '').trim() || ('Topic ' + (winnerIdx + 1));
+        showResult(label);
+      }
     }
+    animId = requestAnimationFrame(step);
   };
 
-  window.scResetScores = function() {
-    for (var i = 0; i < numTeams; i++) {
-      scores[i] = startScore;
-      var el = document.getElementById('sc-score-' + i);
-      if (el) el.textContent = startScore;
-      var fEl = document.getElementById('sc-fs-score-' + i);
-      if (fEl) fEl.textContent = startScore;
+  window.twKeep = function () { hideResult(); redraw(); };
+
+  window.twRemove = function () {
+    if (winnerIdx >= 0 && winnerIdx < topics.length) {
+      topics.splice(winnerIdx, 1);
+      winnerIdx = -1;
+      renderList();
     }
+    hideResult();
+    redraw();
   };
 
-  window.scFullscreen = function() {
-    renderFs();
-    var el = document.getElementById('sc-fs');
-    el.style.display = 'flex';
+  window.twAddTopic = function () {
+    topics.push('Topic ' + (topics.length + 1));
+    renderList();
+    redraw();
+  };
+
+  window.twReset = function () {
+    if (animId) { cancelAnimationFrame(animId); animId = null; }
+    topics     = DEFAULTS.slice();
+    spinAngle  = 0;
+    winnerIdx  = -1;
+    isSpinning = false;
+    setSpinBtns(false);
+    hideResult();
+    renderList();
+    redraw();
+  };
+
+  /* ── Fullscreen ──────────────────────────────────────────────── */
+  window.twOpenFs = function () {
+    var fsEl = document.getElementById('tw-fs');
+    fsEl.style.display = 'flex';
     fsOpen = true;
-    if (el.requestFullscreen) el.requestFullscreen().catch(function(){});
-    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    /* Size canvas to viewport on open */
+    var size = Math.round(Math.min(window.innerWidth * 0.88, window.innerHeight * 0.62, 700));
+    size = Math.max(300, size);
+    var fc = document.getElementById('tw-fs-canvas');
+    fc.width = fc.height = size;
+    redraw(winnerIdx >= 0 ? winnerIdx : undefined);
+    if (fsEl.requestFullscreen) fsEl.requestFullscreen().catch(function () {});
+    else if (fsEl.webkitRequestFullscreen) fsEl.webkitRequestFullscreen();
   };
 
-  window.scExitFullscreen = function() {
-    document.getElementById('sc-fs').style.display = 'none';
+  window.twExitFs = function () {
+    document.getElementById('tw-fs').style.display = 'none';
     fsOpen = false;
-    if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
+    if (document.exitFullscreen) document.exitFullscreen().catch(function () {});
     else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
   };
 
-  document.addEventListener('fullscreenchange', function() {
-    if (!document.fullscreenElement && fsOpen) {
-      document.getElementById('sc-fs').style.display = 'none';
+  document.addEventListener('fullscreenchange', function () {
+    if (document.fullscreenElement === document.getElementById('tw-fs')) {
+      /* Entered fullscreen — resize canvas to actual screen */
+      var size = Math.round(Math.min(window.screen.width * 0.88, window.screen.height * 0.62, 700));
+      size = Math.max(300, size);
+      var fc = document.getElementById('tw-fs-canvas');
+      fc.width = fc.height = size;
+      redraw(winnerIdx >= 0 ? winnerIdx : undefined);
+    } else if (!document.fullscreenElement && fsOpen) {
+      document.getElementById('tw-fs').style.display = 'none';
       fsOpen = false;
     }
   });
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && fsOpen) window.scExitFullscreen();
-  });
-
-  /* ── Boot — MUST be last, after all functions defined ────── */
-  highlightCountBtn(2);
-  renderGrid();
-
-})();
+  /* init */
+  renderList();
+  redraw();
+}());
 </script>

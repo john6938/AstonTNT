@@ -136,11 +136,11 @@ description: "A spin-the-wheel decision tool for minor rule-breaking in the clas
     c.fillText('FINE', r * 0.55, 0);
     c.restore();
 
-    // Pointer (pointing right = 0 rad)
+    // Pointer (tip points into wheel at 0 rad)
     c.beginPath();
-    c.moveTo(cx + r + 10, cy);
-    c.lineTo(cx + r - 14, cy - 10);
-    c.lineTo(cx + r - 14, cy + 10);
+    c.moveTo(cx + r - 4, cy);
+    c.lineTo(cx + r + 20, cy - 10);
+    c.lineTo(cx + r + 20, cy + 10);
     c.closePath();
     c.fillStyle = '#ff8c00';
     c.fill();

@@ -2,13 +2,14 @@
   "layout": "layouts/tool-page.njk",
   "suiteTitle": "Teacher Utilities",
   "suiteBaseUrl": "/tools/teacher-utilities",
-  "toolCount": 7,
+  "toolCount": 8,
   "toolTitles": [
     "Timer",
     "Randomizer",
     "Attention Getter",
     "Forgive or Fine",
     "Reward Generator",
+    "Topic Wheel",
     "Score Counter",
     "Virtual Board"
   ]
