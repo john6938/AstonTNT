@@ -9,20 +9,14 @@
       "Bash(git commit:*)",
       "Bash(git remote:*)",
       "Bash(git branch:*)",
-      "Bash(git push:*)"
-    ]
-  },
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cd /mnt/c/Users/jb/Documents/GitHub/aston_site && pkill -f 'eleventy' 2>/dev/null; npm run build 2>/dev/null && npm start &",
-            "statusMessage": "Rebuilding site..."
-          }
-        ]
-      }
+      "Bash(git push:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/)",
+      "Bash(for i:*)",
+      "Bash(do echo:*)",
+      "Bash(__NEW_LINE_fc30d910d66b5268__ grep:*)",
+      "Bash(__NEW_LINE_fc30d910d66b5268__ echo:*)",
+      "Bash(__NEW_LINE_fc30d910d66b5268__ done:*)",
+      "Bash(git add:*)"
     ]
   }
 }
