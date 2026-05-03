@@ -48,6 +48,7 @@ Academic website for showcasing research, recruiting graduate students, and shar
 
 ### To Do
 - [x] Add units to Applied Logic course by adapting old course (`/courses/applied-logic/`)
+- [ ] Set up GitHub Actions workflow to auto-deploy to jb11.org (GoDaddy cPanel FTP) on push — manual FTP upload currently required; target path is /home/y194gl8kcwu7/public_html (credentials to be stored as GitHub Actions secrets)
 - [ ] Test slide viewer (`/slides-viewer/?deck=test`)
 - [ ] Fill in `booktitle` for all book chapters in `publications_data/`
 - [ ] Add more tool links as new versions of tools are finalised
